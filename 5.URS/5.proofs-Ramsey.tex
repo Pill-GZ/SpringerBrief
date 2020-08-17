@@ -1,0 +1,123 @@
+
+
+% We start by providing a general result on the structure of arbitrary correlation matrices in this section, which helps us establish the `only if' part of Theorem \ref{thm:Gaussian-weak-dependence}. 
+% Its proof uses the Ramsey Theorem from graph theory, which we briefly review next.
+
+Given any integer $k\ge 1$, there is always an integer $R(k,k)$ called the {\em Ramsey number}:
+\begin{equation}\label{eq:Ramsey-number}
+k\le R(k,k)\le \binom{2k-2}{k-1}
+\end{equation}
+such that the following property holds:
+every undirected graph with at least $R(k,k)$ vertices will contain {\em either} a clique of size $k$, or an {\em independent set} of $k$ nodes. 
+Recall that a clique is a complete sub-graph where all pairs of nodes are connected, and an independent set is a set of nodes where no two nodes are connected.
+
+This result is a consequence of the celebrated work of \citet{ramsey2009problem}, which 
+gave birth to Ramsey Theory (see e.g., \citet{conlon2015recent}).  
+The Ramsey Theorem and the upper bound \eqref{eq:Ramsey-number} (established first in \cite{erdos1935combinatorial}) are at the heart of the proof of the following result.
+%An excellent introduction to Ramsey theory is given in \url{http://math.mit.edu/~fox/MAT307-lecture05.pdf}.
+
+\begin{proposition} \label{prop:lower-bound-correlation-Ramsey}
+  Fix $\gamma\in(0,1)$ and let $P = \left(\rho(i,j)\right)_{n\times n}$ be an arbitrary correlation
+  matrix. If 
+  \begin{equation}\label{eq:Ramsey-the-k-def}
+   k:= \lfloor \log_2({n})/2 \rfloor  \ge \lceil 1/\gamma \rceil + 1,
+  \end{equation}
+  then there is a set of $k$ indices $K = \{l_1, \ldots, l_k\}\subseteq \{1,\ldots,n\}$ 
+  such that 
+  \begin{equation} \label{eq:lower-bound-correlation-Ramsey}
+      \rho(i,j) \ge -\gamma, \mbox{ for all } i,j\in K.
+  \end{equation}
+\end{proposition}
+
+\begin{proof}[Proof of Proposition \ref{prop:lower-bound-correlation-Ramsey}]
+By using \eqref{eq:Ramsey-number} and a refinement of the Stirling's formula, 
+we will show at the end of the proof that for $k \le \log_2({n})/2$, we have 
+\begin{equation}\label{eq:Ramsey-bounds}
+ R(k,k) \le n,
+\end{equation}
+where $R(k,k)$ is the Ramsey number.  
+
+Now, construct a graph with vertices $\{1,\dots,n\}$ such that there is an edge between nodes $i$ and $j$ if and only if $\rho(i,j) > -\gamma$. 
+In view of \eqref{eq:Ramsey-bounds} and Ramsey's theorem (see e.g., Theorem 1 in \cite{fox2009lecture} or \cite{conlon2015recent} for a recent survey on Ramsey theory), there is a subset of $k$ nodes $K =\{l_1,\dots,l_k\}$, which is either a {\em complete graph} or an {\em independent set}.
+
+If $K$ is a complete graph, then by our construction of the graph, Relation \eqref{eq:lower-bound-correlation-Ramsey} holds. 
+
+Now, suppose that $K$ is a set of independent nodes.  This means, again by the construction of our graph, that
+$$
+\rho(i,j) < -\gamma,\quad\mbox{for all }i\not= j\in K.
+$$
+Let $Z_i,\ i \in K$ be zero-mean random variables such that 
+$\rho(i,j) = \E [Z_iZ_j]$. Observe that
+\begin{equation} \label{eq:Ramsey-proof-contradiction}
+    \var\left( \sum_{i\in K} Z_i\right) 
+    = \sum_{i\in K} \var(Z_i) + \sum_{\substack{i\not=j\\i,j \in K}} \cov(Z_i, Z_j) 
+    <  k - k(k-1)\gamma,
+\end{equation}
+since $\var(Z_i)=1$ and $\rho(i,j)<-\gamma$ for $i\neq j$.
+By our assumption, $k\ge \left(\lceil 1/\gamma \rceil + 1\right)$, or equivalently, $(k-1) \ge 1/\gamma$, the variance in \eqref{eq:Ramsey-proof-contradiction} is negative. 
+This is a contradiction showing that there are no independent sets $K$ with cardinality $k$.
+
+To complete the proof, it remains to show that Relation \eqref{eq:Ramsey-bounds} holds.
+In view of the upper bound on the Ramsey numbers \eqref{eq:Ramsey-number}, it 
+is enough to show that $k \le \log_2(\sqrt{n})$ implies
+$$
+\binom{2k-2}{k-1} \le n.
+$$
+This follows from a refinement of the Stirling formula, due to \citet{robbins1955remark}:
+$$
+ \sqrt{2\pi} m^{m+1/2} e^{-m} e^{\frac{1}{(12 m +1)}} \le  m! \le \sqrt{2\pi} m^{m+1/2} e^{-m} 
+ e^{\frac{1}{12 m}}.
+$$
+Indeed, letting $\widetilde k:= k-1$, and applying the above upper and lower bounds 
+to the  terms $(2\widetilde k)!$ and $\widetilde k!$, respectively, we obtain:
+\begin{align*}
+\binom{2k-2}{k-1} \equiv \frac{(2\widetilde k)!}{ (\widetilde k!)^2 }
+\le \frac{2^{2\widetilde k}}{\sqrt{\pi \widetilde k}}\exp\left \{ \frac{1}{24 \widetilde k} -
+\frac{2}{ 12 \widetilde k +1}\right\} < 2^{2 k}
+\end{align*}
+where the last two inequalities follow by simply dropping positive factors less than $1$.
+Since $2k \le \log_2(n)$, the above bound implies Relation \eqref{eq:Ramsey-bounds} 
+and the proof is complete.
+\end{proof}
+
+Using Proposition \ref{prop:lower-bound-correlation-Ramsey}, we establish the key lemma used in the proof of Theorem \ref{thm:Gaussian-weak-dependence}.
+
+
+\begin{lemma} \label{lemma:positive-correlation}
+  Let $c\in(0,1)$, and $P = \left(\rho(i,j)\right)_{(n+1)\times(n+1)}$ be a correlation matrix such that \begin{equation} \label{eq:positive-correlation-lemma-condition}
+      \rho(1,j) > c \quad \mbox{for all } j = 1,\ldots,n+1.
+  \end{equation}
+  If $n \ge 2^{2\lceil2/c^2\rceil+4}$, then there is a set of indices $K = \{l_1, \ldots, l_k\}\subseteq \{2,\ldots,n+1\}$ of cardinality $k = |K| = \lfloor\log_2{\sqrt{n}}\rfloor$, such that 
+  \begin{equation} \label{eq:positive-correltation-lemma-conclusion}
+      \rho(i,j) > \frac{c^2}{2} \quad\mbox{for all } i,j\in K.
+  \end{equation}
+  That is, all entries of the $k\times k$ sub-correlation matrix $P_K:=\left(\rho(i,j)\right)_{i,j\in K}$ are larger than $c^2/2$.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma \ref{lemma:positive-correlation}]
+    Let $Z_1, \ldots, Z_{n+1}$ be random variables with covariance matrix $P$.
+    Denote $\rho_j = \rho(1,j)$ and define 
+    \begin{equation}
+      R(j) = 
+      \begin{cases}
+        \frac{1}{\sqrt{1-\rho_j^2}}\left(Z(j) - \rho_j Z(1)\right), &\mbox{if } \rho_j<1,\\
+        R^* &\mbox{if } \rho_j=1,
+      \end{cases}
+    \end{equation}
+    where $R^*$ is an arbitrary zero-mean, unit-variance random variable.
+    It is easy to see that $\var(R(j)) = 1$, and
+    \begin{align*}
+    \cov\left(Z(i), Z(j)\right) &= \cov\left(\rho_i Z(1) + \sqrt{1-\rho_i^2} R(i), \; \rho_j Z(1) + \sqrt{1-\rho_j^2} R(j)\right) \\
+        &= \rho_i\rho_j + \sqrt{1-\rho_i^2}\sqrt{1-\rho_j^2} \;\cov\left(R(i), R(j)\right) \\
+        &\ge c^2 + \min\left\{\cov\left(R(i), R(j)\right), 0\right\}.
+    \end{align*}
+    
+    Therefore, Relation \eqref{eq:positive-correltation-lemma-conclusion} would hold if we can find a set of indices $K = \{l_1,\ldots,l_k\}$ such that $\cov\left(R(i),R(j)\right)>-c^2/2$ for all $i,j\in K$, where $k=|K|=\lfloor\log_2\sqrt{n}\rfloor$.
+    This, however, follows from Proposition \ref{prop:lower-bound-correlation-Ramsey} applied to $\left(R(j)\right)_{j=2}^{n+1}$ with $\gamma = c^2/2$, provided that 
+    $$
+    k = \lfloor\log_2\sqrt{n}\rfloor \ge \lceil 2/c^2 \rceil + 1.
+    $$
+    The last inequality indeed follows form the assumption that $n \ge 2^{2\lceil2/c^2\rceil+4}$.
+\end{proof}
+
+

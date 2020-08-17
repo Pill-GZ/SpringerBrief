@@ -1,0 +1,69 @@
+
+We investigate the fundamental limits of multiple testing problems in high-dimensional chi-square models, and in genome-wide association studies as introduced in Section \ref{sec:motivation-chisq}.
+
+In Section \ref{sec:chisq-boundaries}, we shall establish the phase transitions of the sparse chi-square model \eqref{eq:model-chisq}.
+Recall that in large-scale screening studies where a large number of association tests are conducted, resulting statistics may be approximated by
+\begin{equation} \label{eq:model-chisq-Chapter6}
+    %x(i) \distras{\mathrm{ind.}} \chi_\nu^2\left(\lambda(i)\right), \quad i=1,\ldots,p.
+    x(i) \sim \chi_\nu^2\left(\lambda(i)\right), \quad i=1,\ldots,p,
+\end{equation}
+where $\chi_\nu^2\left(\lambda(i)\right)$ is a chi-square distributed random variable with $\nu$ degrees of freedom and non-centrality parameter $\lambda(i)$.
+In parallel to results in Chapter \ref{chap:phase-transitions}, we show that several commonly used family-wise error rate-control procedures --- including Bonferroni's procedure --- are asymptotically optimal for the {exact}, and {exact-approximate} support recovery problems (as defined in Definition \ref{def:exact-recovery-success-failure}) in idealized chi-square models \eqref{eq:model-chisq-Chapter6} with independent components.
+We further show that the \ac{BH} procedure is asymptotically optimal for the {approximate}, and {approximate-exact} support recovery problems.
+% \ref{thm:chi-squared-exact-boundary}, \ref{thm:chi-squared-exact-approx-boundary}, \ref{thm:chi-squared-approx-boundary}, and \ref{thm:chi-squared-approx-exact-boundary}.
+Under appropriate parametrizations of the signal sizes and sparsity, they establish the phase transitions of support recovery problems in the chi-square model.
+Remarkably, the degree-of-freedom parameter does not affect the asymptotic boundaries in any of the four support recovery problems.
+
+All phase transition boundaries coincide with those in the additive error models obtained in Chapter \ref{chap:phase-transitions} under suitable parametrizations.
+% and Figure \ref{fig:phase-chi-squared} continues to apply.
+indicating vanishing differences between the difficulties of the one-sided and two-sided alternatives in the Gaussian additive error model \eqref{eq:model-additive}.
+
+\medskip
+
+We then return to association screenings of categorical variables in
+Section \ref{sec:odds-and-power}, and present the consequences of the phase transition in the exact-approximate problem in large-scale genetic association studies.
+% present empirical evidence for the phase transition in the exact-approximate problem using real data from large-scale association studies on breast cancer obtained from the NHGRI-EBI GWAS Catalog \citep{macarthur2016new}.
+% demystify the notion of signal size $\lambda$ in this context.
+% which is perhaps less transparent than in additive error models.
+We do so by characterizing the relationship between the signal size $\lambda$ and the marginal frequencies, odds ratio, and sample sizes for association tests on 2-by-2 contingency tables.
+% Specifically, the amount of signal, when rare variants are present, is weaker compared to the signal when the marginal distributions are balanced.
+% In other words, reliable detection of the effects by rare variants would require more samples compared to common variants, even at the same odds ratio.
+This result, establishing the relationship between sample sizes and signal sizes, is made precise in Section \ref{sec:odds-and-power}.
+
+We elaborate on the implications of this relationship on optimal study designs for association studies in Section \ref{sec:optimal-design}.
+Perhaps surprisingly, our analysis reveals that balanced designs with equal number of cases and controls are often statistically inefficient.
+Practical consequences of these results in power analysis will be illustrated with data examples in Section \ref{sec:phase-transitions-in-GWAS}. 
+
+The phase transitions in the chi-square models are demonstrated with numerical simulations in Section \ref{sec:numerical}.
+Proofs of results in this Chapter are collected in Section \ref{sec:proof-signal-size-odds-ratio}.
+
+% Practical issues are also addressed to make for simple and effective power analysis.
+
+\section{Support recovery problems in chi-squared models}
+\label{sec:chisq-boundaries}
+\input{6.GWAS/6.chi-square.tex}
+
+
+\section{Odds ratios and statistical power}
+\label{sec:odds-and-power}
+\input{6.GWAS/6.odds-and-power.tex}
+
+
+\section{Optimal study designs and rare variants}
+\label{sec:optimal-design} 
+\input{6.GWAS/6.optimal-design.tex}
+
+
+\section{Phase transitions in large-scale association screening studies}
+\label{sec:phase-transitions-in-GWAS}
+\input{6.GWAS/6.GWAS-phase-transitions.tex}
+
+
+\section{Numerical illustrations of the phase transitions in chi-square models}
+\label{sec:numerical}
+\input{6.GWAS/6.numerical.tex}
+
+
+\section{Proofs}
+\label{sec:proof-signal-size-odds-ratio}
+\input{6.GWAS/6.proofs-GWAS.tex}

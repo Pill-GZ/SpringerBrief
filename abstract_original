@@ -1,0 +1,29 @@
+This dissertation consists of results on the fundamental performance limits of statistical procedures in sparse signal detection and support recovery problems.
+We first study an idealized model where high-dimensional signals are observed with independent additive Gaussian noise.
+Under suitable parametrization of the signal sparsity and signal sizes, 
+we characterize several new phase transition phenomena in high-dimensional additive error models, and derive the signal sizes necessary and sufficient for statistical procedures to simultaneously control false discovery (in terms of Type I error, {FDR}, or {FWER}) and missed detection (in terms of Type II error, {FNR}, or {FWNR}) in large dimensions.
+%These phase transitions are akin to the signal detection problem studied by Ingster in 1998. 
+Specifically, if the signal sizes are above the {phase transition 
+boundaries}, we show that several classes of well-known detection and multiple testing procedures can make statistical risks vanish as the dimension goes to infinity. 
+Conversely, if the signal is below these boundaries, the corresponding risk metrics have liminf 1 for all thresholding procedures, including data-dependent procedures.
+
+In the exact support recovery problem, we show that the phase transition phenomenon continues to hold under a very broad class of error dependence structures, and for a very broad class of error distributions with light, rapidly varying, tails.
+% We note that our study of the strong classification boundary is in a finer, point-wise, rather than minimax, sense. 
+Together with our new results on finite-sample Bayes optimality of thresholding procedures, we obtain a fine, point-wise, characterization of the phase transition phenomenon for errors with log-concave densities. 
+The key to these general phase-transition-type results under dependent observations is a certain {concentration of maxima} phenomenon known as relative stability. 
+We provide a complete characterization of the relative stability concept for Gaussian triangular arrays in terms of their correlation structures.
+% The proof uses classic Sudakov-Fernique and Slepian lemma arguments along with a curious application of Ramsey's coloring theorem. 
+
+Finally, motivated by marginal screenings of categorical variables, we study high-dimensional multiple testing problems where test statistics have approximate chi-square distributions.
+Phase transitions are established for support recovery problems in high-dimensional chi-square models.
+Remarkably, the degree-of-freedom parameters in the chi-square distributions do not affect the boundaries in all phase transitions.
+% Several well-known procedures are shown to attain these boundaries.
+We also elucidate on the notion of signal sizes in association tests by characterizing its relationship with marginal frequencies, odds ratio, and sample sizes in $2\times2$ contingency tables. 
+This allows us to illustrate an interesting manifestation of the phase transition phenomena in % \ac{GWAS},
+genome-wide association studies (GWAS), 
+and explain some long-standing empirical observations on the discoverability of signals in GWAS.
+As an auxiliary result, we show that, perhaps surprisingly, given total sample sizes, balanced designs in such association studies rarely deliver optimal power. % for detecting rare genetic variants with high odds ratios.
+We provide explicit formulas for power calculations, as well as software tools for finding the optimal study designs.
+% The phase transition phenomena is demonstrated with numerical simulations, and with empirical evidence from GWAS.
+% data from the NHGRI-EBI GWAS catalog.
+

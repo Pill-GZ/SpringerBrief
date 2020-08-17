@@ -1,0 +1,140 @@
+We analyze the performance of thresholding estimators under heavy-tailed models in this section, and illustrate its lack of phase transition.
+Suppose we have iid errors with Pareto tails in Model \eqref{eq:model-additive}, that is, $\epsilon(i)$'s have common marginal distribution $F$ where
+\begin{equation} \label{eq:pareto-tails}
+    \overline{F}(x) \sim x^{-\alpha} \quad \text{and} \quad F(-x) \sim x^{-\alpha},    
+\end{equation}
+as $x\to\infty$. 
+It is well-known (see, e.g., Theorem 1.6.2 of \citep{leadbetter2012extremes}) that the maxima of iid Pareto random variables have Frechet-type limits.
+Specifically, we have
+\begin{equation} \label{eq:Frechet-limit-1}
+    \frac{\max_{i\in\{1,\ldots,p\}}\epsilon(i)}{u_p} \implies Y,
+\end{equation}
+in distribution, where $u_p = F^{\leftarrow}(1-1/p)\sim p^{1/\alpha}$, and $Y$ is a standard $\alpha$-Frechet random variable, i.e.,
+\begin{equation*}
+    \P[Y\le t] = \exp{\{-t^{-\alpha}\}}, \quad t>0.
+\end{equation*}
+By symmetry in our assumptions, the same argument applies to the minima as well.
+
+\begin{theorem} \label{thm:heavy-tails}
+Let errors in Model \eqref{eq:model-additive} be as described in Relation \eqref{eq:pareto-tails}.
+Let the signal have $s = |S| = fp$ non-zero entries, with magnitude $\Delta = rp^{1/\alpha}$, where both $f\in(0,1)$ and $r\in(0,+\infty)$ may depend on $p$, so that no generality is lost.
+
+Under these assumptions, the necessary condition for thresholding procedures $\widehat{S}$ to achieve exact support recovery ($\P[\widehat{S}=S]\to1$) is 
+\begin{equation} \label{eq:heavy-tails-exact-recovery}
+    \liminf_{p\to\infty} r = \infty.
+\end{equation}
+Condition \eqref{eq:heavy-tails-exact-recovery} is also sufficient for the oracle thresholding procedure to succeed in the exact support recovery problem.
+
+On the other hand, the necessary and sufficient condition for all thresholding procedures to fail exact support recovery ($\P[\widehat{S}=S]\to0$) is 
+$$
+\limsup_{p\to\infty} r = 0.
+$$
+\end{theorem}
+
+In other words, Theorem \ref{thm:heavy-tails} states that there does not exist a non-trivial phase transition for thresholding procedures when errors have (two-sided) $\alpha$-Pareto tails.
+
+\begin{proof}[Proof of Theorem \ref{thm:heavy-tails}]
+Recall the oracle thresholding procedure $\widehat{S}^* = \left\{i:x(i) \ge x_{[s]}\right\}$, and the set of all thresholding procedures, denoted 
+${\cal S}$ (see Definition \ref{eq:thresholding-procedure}).
+The probability of exact support recovery by any thresholding procedure $\widehat{S}\in{\cal S}$ is bounded above by that of $\widehat{S}^*$, that is,
+\begin{align}
+    \max_{\widehat{S}\in{\cal S}}\P[\widehat{S}=S] 
+        &= \P[\widehat{S}^*=S] 
+        = \P\Big[\max_{i\in S^c}x(i) \le \min_{i\in S}x(i)\Big] \nonumber \\
+        &= \P\Big[\frac{\max_{i\in S^c}x(i)}{u_p} \le \frac{\min_{i\in S}x(i)}{u_p}\Big] \nonumber \\
+        &= \P\Big[\frac{M_{S^c}}{u_p} \le \frac{m_S}{u_p} + r_p\Big], \label{eq:heavy-tailed-case-proof-0}
+        % &= \P\Big[\underbrace{(1-f)^{1/\alpha}Y^{(1)}}_{=:F_1} + \underbrace{f^{1/\alpha}Y^{(2)}}_{=:F_2} \le r\Big], 
+\end{align}
+where $M_{S^c} = \max_{i\in S^c}\epsilon(i)$ and $m_S = \min_{i\in S}\epsilon(i)$.
+For any $\alpha > 0$, the following elementary relations hold,
+\begin{equation*}
+    0 < L \le (1-f)^{1/\alpha} + f^{1/\alpha} \le U < \infty, \quad \text{for all} \; f\in(0,1),
+\end{equation*}
+where $L = \min\left\{1, 2(1/2)^{1/\alpha}\right\}$ and $U = \max\left\{1, 2(1/2)^{1/\alpha}\right\}$.
+Therefore we have,
+\begin{equation} \label{eq:heavy-tailed-case-proof-1}
+    U\max\left\{\frac{M_{S^c}}{u_p}, -\frac{m_S}{u_p}\right\} < r_p
+    \implies
+    (1-f)^{1/\alpha}\frac{M_{S^c}}{u_p} - f^{1/\alpha}\frac{m_S}{u_p} < r_p,
+\end{equation}
+and 
+\begin{equation} \label{eq:heavy-tailed-case-proof-2}
+    L\min\left\{\frac{M_{S^c}}{u_p}, -\frac{m_S}{u_p}\right\} < r_p
+    \impliedby
+    (1-f)^{1/\alpha}\frac{M_{S^c}}{u_p} - f^{1/\alpha}\frac{m_S}{u_p} < r_p.
+\end{equation}
+Putting together \eqref{eq:heavy-tailed-case-proof-0}, \eqref{eq:heavy-tailed-case-proof-1}, and \eqref{eq:heavy-tailed-case-proof-2}, we have
+\begin{equation} \label{eq:heavy-tailed-case-proof-3}
+    \P\Big[\max\left\{\frac{M_{S^c}}{u_p}, -\frac{m_S}{u_p}\right\} < r_p/U\Big]
+    \le \P[\widehat{S}^*=S]
+    \le \P\Big[\min\left\{\frac{M_{S^c}}{u_p}, -\frac{m_S}{u_p}\right\} < r_p/L\Big].
+\end{equation}
+We know from the weak convergence result \eqref{eq:Frechet-limit-1} that for any $\epsilon>0$ there is a constant $N$ such that for all $p>N$ we have 
+\begin{equation} \label{eq:heavy-tailed-case-proof-3.5}
+    \P\Big[\max\left\{\frac{M_{S^c}}{u_p}, -\frac{m_S}{u_p}\right\} < r_p/U\Big]
+    \ge \P\Big[\max\left\{Y^{(1)}, Y^{(2)}\right\} < {r_p}/{U}\Big] - \epsilon,
+\end{equation}
+where $Y^{(1)}$ and $Y^{(2)}$ are independent $\alpha$-Frechet random variables with scale coefficients $(1-f)^{1/\alpha}$ and $f^{1/\alpha}$ respectively.
+That is,
+\begin{equation*}
+    \P[Y^{(1)}\le t] = \exp{\{-(1-f)/t^\alpha\}}, 
+    \quad \text{and} \quad
+    \P[Y^{(2)}\le t] = \exp{\{-f/t^\alpha\}}.
+\end{equation*}
+Since the distributional limit in \eqref{eq:heavy-tailed-case-proof-3.5} has a density (with respect to the Lebesgue measure), we know that density is bounded above by a finite constant, say, $K$.
+For the same choice of $\epsilon$ as before, we can find a further constant $N'$ such that for all $p>\max\{N, N'\}$ we have 
+$$
+    \liminf r_p < \epsilon/K + r_p,
+$$
+so that the right hand side of \eqref{eq:heavy-tailed-case-proof-3.5} is bounded by
+\begin{equation} \label{eq:heavy-tailed-case-proof-3.6}
+    \P\Big[\max\left\{Y^{(1)}, Y^{(2)}\right\} < {r_p}/{U}\Big] - \epsilon
+    \ge \P\Big[\max\left\{Y^{(1)}, Y^{(2)}\right\} < \frac{\liminf r_p}{U}\Big] - 2\epsilon.
+\end{equation}
+By the arbitrariness in the choice of $\epsilon$, we conclude from \eqref{eq:heavy-tailed-case-proof-3.5} and \eqref{eq:heavy-tailed-case-proof-3.6} that
+\begin{equation} \label{eq:heavy-tailed-case-proof-4}
+    \liminf \P\Big[\max\left\{\frac{M_{S^c}}{u_p}, -\frac{m_S}{u_p}\right\} < r_p/U\Big]
+    \ge \P\Big[\max\left\{Y^{(1)}, Y^{(2)}\right\} < \frac{\liminf r_p}{U}\Big].
+\end{equation}
+Combining Relations \eqref{eq:heavy-tailed-case-proof-3} and \eqref{eq:heavy-tailed-case-proof-4}, we know that if $\liminf r_p = \infty$, we must have 
+$$
+    \liminf\P\left[\widehat{S}^*=S\right]
+    \ge \P\Big[\max\left\{Y^{(1)}, Y^{(2)}\right\} < \frac{\liminf r_p}{U}\Big] = 1.
+$$
+Conversely, if $\liminf\P\left[\widehat{S}^*=S\right]<1$, we must have $\liminf r_p < \infty$.
+
+Similarly, we can obtain the upper bound of exact support recovery probability for the optimal thresholding procedure,
+\begin{equation} \label{eq:heavy-tailed-case-proof-5}
+    \limsup \P\Big[\min\left\{\frac{M_{S^c}}{u_p}, -\frac{m_S}{u_p}\right\} < r_p/L\Big]
+    \le \P\Big[\min\left\{Y^{(1)}, Y^{(2)}\right\} < \frac{\limsup r_p}{L}\Big].
+\end{equation}
+The conclusions of the second part of Theorem \ref{thm:heavy-tails} follow from \eqref{eq:heavy-tailed-case-proof-3} and \eqref{eq:heavy-tailed-case-proof-5}.
+\end{proof}
+
+The probability of exact recovery can be approximated if the parameters $r$ and $f$ converge.
+The next result follows from a small modification of the arguments in the proof of Theorem \ref{thm:heavy-tails}.
+
+\begin{corollary}
+Under the assumptions in Theorem \ref{thm:heavy-tails}, if 
+$\lim r = r^*$, and $\lim f = f^*$, for some constant $r^*\ge0$ and $f^*\in[0,1]$, then 
+$$
+    \lim \P[\widehat{S}^*=S] 
+    = \P\Big[(1-f^*)^{1/\alpha}Z_1 + (f^*)^{1/\alpha}Z_2 < {r^*}\Big].
+$$
+where $Z_1$ and $Z_2$ are independent standard $\alpha$-Frechet random variables, i.e., $\P[Z_i \le t] = \exp{\{-x^{-\alpha}\}}$, $x>0$.
+\end{corollary}
+
+\begin{remark}
+Of course one might wonder if it would be meaningful to derive a ``phase transition'' under a different parametrization of the signal sizes, say 
+\begin{equation} \label{eq:Pareto-parametrization-with-boundary}
+    \Delta = p^{r/\alpha}.
+\end{equation}
+In this case, Theorem \ref{thm:heavy-tails} suggests that a ``phase transition'' takes place at $r=1$.
+However, this non-multiplicative parametrization of the signal sizes would make power analysis (like in Example \ref{exmp:gap-when-signal-sparse}) dimension-dependent. 
+
+To illustrate, in the case of Gaussian errors with variance 1, if we were interested in small signals of size $\sqrt{2r\log{p}}$, where $r<1$ is below the boundary \eqref{eq:strong-classification-boundary}, then we only need $n > 2/r$ samples to guarantee discovery of their support.
+In the Pareto case with parametrization \eqref{eq:Pareto-parametrization-with-boundary}, however, if we were interested in small signals of size $p^{r/\alpha}$, where $r<1$, then the ``boundary'' says that we will need $n > p^{2(1-r)/\alpha}$ samples, which is exponential in the dimension $p$ and quickly diverges.
+Recall that the ``boundary'' is really an asymptotic result in $p$. 
+Such an approximation in finite dimensions becomes invalid.
+\end{remark}
+

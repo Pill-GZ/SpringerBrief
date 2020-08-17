@@ -1,0 +1,53 @@
+#### Theoretical phase diagram - all known boundaries ####
+
+setEPS()
+postscript("phase_diagram_Gaussian_ALL_boundaries.eps", height = 5, width = 5)
+# png("phase_diagram_chisquared_ALL_boundaries.png", height = 400, width = 400, units = "px")
+plot.ylim <- 4
+beta.seq <- seq(0,1,0.001)
+strong.classification.boundary <- (sqrt(1-beta.seq) + 1)^2
+classification.boundary.FDR_FNDR <- (sqrt(1-beta.seq) + sqrt(beta.seq))^2
+classification.boundary.FWER_FNR <- rep(1, length(beta.seq))
+weak.classification.boundary <- beta.seq
+detection.boundary.bonf <- (1-sqrt(1-beta.seq))^2
+detection.boundary <- detection.boundary.bonf
+detection.boundary[1:(length(beta.seq)/2)] <- 0
+detection.boundary[(length(beta.seq)/2):(length(beta.seq)*3/4)] <- 
+  beta.seq[(length(beta.seq)/2):(length(beta.seq)*3/4)] - 0.5
+par(mar = c(3,3,2,2))
+plot(beta.seq, strong.classification.boundary, type = 'l',
+     xaxs="i", yaxs="i", ylim = c(0,plot.ylim),
+     xlab = expression(beta), ylab = expression(r),
+     las = 1)
+lines(beta.seq, detection.boundary, type = 'l')
+polygon(x = c(beta.seq,rev(beta.seq)),
+        y = c(detection.boundary,rep(0,length(beta.seq))),
+        col = grey(0.0), border = T)
+polygon(x = c(beta.seq,rev(beta.seq)),
+        y = c(detection.boundary,rev(weak.classification.boundary)),
+        col = grey(0.2), border = T)
+polygon(x = c(beta.seq,rev(beta.seq)),
+        y = c(weak.classification.boundary,rev(classification.boundary.FWER_FNR)),
+        col = grey(0.4), border = T)
+polygon(x = c(beta.seq,rev(beta.seq)),
+        y = c(classification.boundary.FWER_FNR,rev(classification.boundary.FDR_FNDR)),
+        col = grey(0.6), border = T)
+polygon(x = c(beta.seq,rev(beta.seq)),
+        y = c(classification.boundary.FDR_FNDR,rev(strong.classification.boundary)),
+        col = grey(0.8), border = T)
+polygon(x = c(beta.seq,rev(beta.seq)),
+        y = c(strong.classification.boundary, rep(plot.ylim, length(beta.seq))),
+        col = grey(1.0), border = T)
+lines(beta.seq, weak.classification.boundary, col = 'white')
+lines(beta.seq, detection.boundary, col = 'white')
+abline(h = c(0, 4), v = c(0, 1))
+mtext(text = expression(paste("sparsity ", beta)), 
+      side = 1, line = 2, at = 0.95)
+mtext(text = expression(paste("signal size ", r, " = ", mu^2/(2*log(p)))), side = 2, line = -7.5, at = plot.ylim * 1.06, las = 1)
+text(x = 0.87, y = 0.13, labels = "Undetectable", col = "white")
+text(x = 0.75, y = 0.45, labels = "Type I + II", col = "white")
+text(x = 0.25, y = 0.60, labels = "FDR + FNR", col = 'white')
+text(x = 0.50, y = 1.50, labels = "FWER + FNR")
+text(x = 0.25, y = 2.50, labels = "FDR + FWNR")
+text(x = 0.80, y = 3.00, labels = "FWER + FWNR")
+dev.off()

@@ -1,0 +1,48 @@
+
+We study the fundamental limits of the signal detection and support recovery problems in the location models with independent Gaussian errors in this chapter.
+Specifically, we derive the conditions under which the detection and support recovery problems succeed and fail in the sense of \eqref{eq:support-recovery-success} and \eqref{eq:support-recovery-failure}, in the additive error model 
+\begin{equation} \label{eq:model-additive-Chapter3}
+    x(i) = \mu(i) + \epsilon(i), \quad i=1,\ldots,p,
+\end{equation}
+where the errors $\epsilon(i)$'s are \ac{iid} standard Gaussians random variables.
+We restrict our analysis to models with independent and identically distributed Gaussian errors for the moment.
+Both the distributional assumption and the independence assumption will be relaxed in the following chapters.
+
+As laid out in Section \ref{sec:asymptotics}, we work under the asymptotic regime where the problem dimension $p$ diverges to infinity.
+Let the signal vectors $\mu = \mu_p$ have 
+\begin{equation} \label{eq:signal-sparsity-additive}
+    |S_p| = \left\lfloor p^{1-\beta} \right\rfloor, \quad \beta\in(0,1]
+\end{equation}
+non-zero entries, where $\beta$ parametrizes the problem sparsity.
+The closer $\beta$ is to 1, the sparser the support $S$; conversely, when $\beta$ is close to 0, the support is dense with many non-null signals.
+We consider one-sided alternatives \eqref{eq:global-test-one-sided}, and parametrize the range of the non-zero (and perhaps unequal) signals with
+\begin{equation} \label{eq:signal-size-additive}
+    \underline{\Delta} = \sqrt{2\underline{r}\log{p}}
+    \le \mu(i) \le
+    \overline{\Delta} = \sqrt{2\overline{r}\log{p}}, \quad \text{for all}\;\;i\in S_p,
+\end{equation}
+for some constants $0<\underline{r}\le\overline{r}\le+\infty$.
+
+% \label{rmk:global-test-boundary}
+The parametrization of signal sparsity \eqref{eq:signal-sparsity-additive} and signal sizes \eqref{eq:signal-size-additive} in the Gaussian model was first introduced in \citet{ingster1998minimax}, and later adopted by \cite{hall2010innovated}, \cite{cai2011optimal}, \cite{zhong2013tests}, \cite{cai2014optimal}, \cite{arias2017distribution1}, and numerous others for studying the signal detection problem in Gaussian location-scale models.
+Similar scalings of sparsity and signal size are also used in, e.g., \cite{ji2012ups}, \cite{jin2014optimality}, \cite{butucea2018variable} to study the phase transitions of the support recovery problems under Gaussianity assumptions.
+
+\section{Sparse signal detection problems}
+\label{sec:global-tests}
+\input{3.phase_transitions/3.global-tests.tex}
+
+
+\section{Sparse signal support recovery problems}
+\label{sec:additive-error-model-boundaries}
+\input{3.phase_transitions/3.Gaussian-support-recovery.tex}
+
+
+\section{Proofs}
+\label{sec:proofs}
+\input{3.phase_transitions/3.proofs-phase-transitions.tex}
+
+
+
+
+
+

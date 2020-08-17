@@ -1,0 +1,69 @@
+
+In view of Remark \ref{rmk:choice-of-N(delta)}, UDD is equivalent to the requirement that
+$N(\delta) := 1+\sup_{p} N_p(\delta) < \infty$ for all $\delta\in(0,1)$,
+where 
+\begin{equation} \label{eq:N_p(c)}
+    N_p(\delta) := \max_{j\in\{1,\ldots,p\}} \Big|\{i:i\neq j,\;\Sigma_p(j,i) > \delta\}\Big|.
+\end{equation}
+Therefore, if ${\cal E}$ is not UDD, then there must exist a constant $c\in (0,1)$ for which $N(c)$ is infinite, i.e., there is a subsequence $\widetilde p\to\infty$ such that $N_{\widetilde p}(c) \to \infty$.
+Without loss of generality,  we may assume that $\widetilde{p}=p$.
+
+Let $j_p(c)$ be the maximizers of \eqref{eq:N_p(c)}, and let
+\begin{equation} \label{eq:sub-sequence_of_sets}
+S_p(c):= \{ i\in\{1,\dots,p\}\, :\, \Sigma_p(j_p(c), i) > c \}.% \quad\quad \text{for all }k\in S_p(c).
+\end{equation}
+Observe that $|S_p(c)| = N_p(c)+1 \to \infty$, as $p\to\infty$ 
+(note $j_p(c) \in S_{p}(c)$).
+
+Applying Lemma \ref{lemma:positive-correlation} to the set of random variables indexed by $S_p(c)$, we conclude, for $N_p(c) \ge 2^{2\lceil2/c^2\rceil+4}$, there must be a further subset 
+\begin{equation} \label{eq:further_sub-sequence_of_sets}
+  K_p(c) \subseteq S_p(c),
+\end{equation}
+of cardinality 
+\begin{equation} \label{eq:further_sub-sequence_of_sets_size}
+k_p(c) := \left|K_p(c)\right| \ge \log_2{\sqrt{N_p(c)}},
+\end{equation}
+such that all pairwise correlations of the random variables indexed by $K_p(c)$ are greater than $c^2/2$.
+Since the sequence $N_p(c)\to\infty$, by \eqref{eq:further_sub-sequence_of_sets_size}, we have $k_p(c)\to\infty$ as $p\to\infty$.
+
+Therefore, we have identified a sequence of subsets $K_p(c)\subseteq\{1,\ldots,p\}$ with the following two properties:
+\begin{enumerate}
+  \item $k_p(c) := \left|K_p(c)\right| \to \infty$, as $p\to\infty$, and
+  \item For all $i,j\in K_p(c)$, we have
+  \begin{equation} \label{eq:further_sub-sequence_of_sets_cor}
+    \Sigma_p(i,j) > c^2/2.
+  \end{equation}
+\end{enumerate}
+Without loss of generality, we may assume $K_p(c) = \{1,\ldots,k_p(c)\} \subseteq \{1,\ldots,p\}$, upon re-labeling of the coordinates. 
+
+Now consider a Gaussian sequence $\epsilon^* = \{\epsilon^*(j),\;j = 1,2,\ldots\}$, independent of ${\cal E}$, defined as follows:
+$$
+\epsilon^*(j):= Z \left(c/\sqrt{2}\right) + Z(j) \sqrt{1-{c^2}/{2}}, \quad j = 1, 2, \ldots,
+$$ 
+where $Z$ and $Z(j), j = 1, 2, \ldots$ are independent standard normal random variables. 
+Hence,
+\begin{equation} \label{eq:Slepian-conclusion-condition-1}
+    {\rm Var}(\epsilon^*(j)) = 1 = {\rm Var}(\epsilon_p(j)),
+\end{equation}
+and
+\begin{equation} \label{eq:Slepian-conclusion-condition-2}
+    \cov(\epsilon^*(i),\epsilon^*(j)) = \frac{c^2}{2} \le \cov(\epsilon_p(i),\epsilon_p(j)),
+\end{equation}
+for all $p$, and all $i\neq j$, $i,j\in K_p(c)$.
+Thus we have, as $p\to\infty$, 
+\begin{equation} \label{eq:!UDD=>subsequence-fail}
+    \frac{1}{u_{k_p(c)}} \max_{j\in K_p(c)} \epsilon^*(j) = \frac{c/\sqrt{2}}{u_{k_p(c)}}Z + \frac{\sqrt{1-c^2/2}}{u_{k_p(c)}} \max_{j\in K_p(c)} Z(j) \stackrel{\mathbb P}{\to} \sqrt{1-\frac{c^2}{2}},
+\end{equation}
+where the convergence in probability follows from Proposition \ref{prop:rapid-varying-tails} part \ref{prop:rapid-varying-tails_part-ii}.
+%The fact that the last limit is strictly less than $1$, together with Relation \eqref{eq:Slepian-conclusion}, shows that \eqref{eq:URS-condition} is impossible, for $S_p:=K_p(c)$.
+
+Relations \eqref{eq:Slepian-conclusion-condition-1} and \eqref{eq:Slepian-conclusion-condition-2}, by Slepian's Lemma \cite{slepian1962one}, also imply,
+\begin{equation}\label{eq:Slepian-conclusion}
+  \frac{1}{u_{k_p(c)}} \max_{j\in K_p(c)} \epsilon^*(j) \stackrel{d}{\ge} \frac{1}{u_{k_p(c)}} \max_{j\in K_p(c)} \epsilon_p(j).
+\end{equation}
+Therefore, by \eqref{eq:Slepian-conclusion} and \eqref{eq:!UDD=>subsequence-fail}, for all $\sqrt{1-c^2/2} \le \delta < 1$, we have,
+$$
+\P\left[\frac{1}{u_{k_p(c)}} \max_{j\in K_p(c)} \epsilon_p(j) < \delta \right] \to 1 \quad\mbox{as  }p\to\infty.
+$$
+This contradicts the definition of URS (with the particular choice of $S_p:=K_p(c)$), and the proof of the `only if' part is complete.
+

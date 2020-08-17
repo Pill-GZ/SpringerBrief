@@ -1,0 +1,29 @@
+
+We offer a brief discussion on the statistical implications of Theorem \ref{thm:sufficient} and \ref{thm:necessary}.
+Before doing so, we shall first review some related work on sparse signal detection and approximate support recovery.
+
+The problem of sparse signal detection was first studied by \citet*{ingster1998minimax} under independent Gaussian errors.
+Specifically, under the parametrization \eqref{eq:sparsity-parametrized} and \eqref{eq:signal-size-parametrized} (with $\nu=2$), it was shown that the detection problem can be answered perfectly as $p\to\infty$, when signal size $r$ is above a threshold $f(\beta)$, where
+\begin{equation} \label{eq:detection-boundary}
+f(\beta) = \begin{cases}
+\left(1 - \sqrt{1 - \beta}\right)^2 &,\ \beta\ge3/4\\
+\beta - 0.5 &,\ 1/2<\beta<3/4.
+\end{cases}
+\end{equation}
+Conversely, when $r<f(\beta)$, we can do no better than random guessing. 
+Thus, the function $f(\beta)$ fully characterizes the so-called \emph{detection boundary} of the signal detection problem, and demonstrates a phase-transition phenomenon. 
+\citet*{donoho2004higher} showed that the Higher Criticism statistic, originally proposed by Tukey, is a procedure that achieves the detection boundary asymptotically, without prior knowledge of the sparsity and the signal size.
+
+In this context of approximate support recovery, the corresponding concept to type I error is the \emph{False Discovery Proportion} (FDP), defined as $\text{FDP} = |\widehat{S}\setminus S|\big/|\widehat{S}|$ (with \emph{False Discovery Rate} (FDR) being the expectation of FDP), 
+and the counterpart of type II error in this context being the \emph{False Non-discovery Proportion} (FNP), defined $\text{NDP} = |S\setminus\widehat{S}|\big/|S|$.
+\citet*{haupt2011distilled} showed that for signal size $r > \beta$, the sum of FDP and FNP can be made to vanish as $p\to\infty$; while if $r < \beta$, no thresholding procedure can succeed asymptotically. We shall call this boundary 
+\begin{equation} \label{eq:weak-classification-boundary}
+    h(\beta) = \beta
+\end{equation}
+the \emph{weak classification boundary}. Recently, \citet*{arias2017distribution} showed that the Benjamini-Hochberg procedure \citep*{benjamini1995controlling} and the Barber-Cand{\`e}s procedure \citep*{barber2015controlling} are practical procedures that achieve this weak classification boundary.
+These procedures are special cases of \emph{thresholding procedures}.
+
+An even more stringent notion of false discovery is the \emph{Family-Wise Error Rate} (FWER), defined as $1 - \mathbb P[\widehat{S} \subseteq S]$, which is probability of falsely reporting any signal not in the support set.
+Observe that vanishing FDP and NDP does not imply $\P\left[\widehat{S} = S\right]\to 1$;
+the latter, stronger, notion of set consistency requires that the FWER vanish as well.
+

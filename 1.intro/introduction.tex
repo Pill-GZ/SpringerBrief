@@ -1,0 +1,189 @@
+
+The proliferation of information technology has enabled us to collect and consume huge volumes of data at unprecedented speeds and at very low costs.
+This fast and cheap access to data gave rise to fundamentally new ways of pursuing scientific questions.
+In contrast with the traditional hypothesis--experiment--analysis cycle where data are collected from the experiments, abundant information are often available before specific questions are even formulated. 
+Such information can be used for not just evaluating hypotheses, but also for \emph{generating}, and \emph{selecting} the hypotheses to pursue. 
+As a result, {multiple testing} --- where a large number of hypotheses are formulated and screened for their plausibility simultaneously --- has become a staple of modern data-driven studies.
+
+An archetypal example of multiple testing problems is genetic association studies \citep{bush2012genome}.
+In genetic association studies, scientists test hypotheses relating each of the hundreds of thousands of genetic marker locations to phenotypic traits of interest;
+the goal here is to select the set of most promising genetic markers for subsequent investigation.
+Another example of multiple testing problems arise in cybersecurity, where millions of IP addresses are monitored in real time.
+In this engineering application, statistics are collected and tests are performed for each IP address, in an attempt to locate the IP addresses with anomalous network activities, so that and malicious traffic and volumetric attacks can be filtered to protect end users of network services \citep{kallitsis2016amon}.
+
+We are motivated by the above examples in particular to study {high-dimensional} multiple testing problems where a large number of hypotheses are tested simultaneously.
+
+% This high multiplicity of tests brings along a multitude of challenges, and has been a subject of extensive study in recent years.
+
+In the rest of the introduction, we shall review the main objectives of high-dimensional multiple testing, elaborate on these objectives in two classes of data models and in the context of the genetic applications, and briefly summarize the contents of this text.
+
+% While many such multiplicities are explicit, where screenings and selections of hypotheses, models, or variables are performed \emph{and} annouced, they may be completely ``silent'', where such selections are performed but not explicitly reported \citep{berry2012multiplicities}.
+
+% This paper seeks to establish some new asymptotic optimality results for common multiple testing procedures, including the Bonferroni procedure and the Benjamini-Hochberg procedure, in high-dimensional chi-square models.
+
+% This dissertation studies in detail the theoretical limits of multiple problems in high-dimensional sparse models
+
+\section{The additive error model}
+
+Consider the canonical signal-plus-noise model where the observation $x$ is a high-dimensional vector in $\R^p$,
+\begin{equation} \label{eq:model-additive}
+    x(i) = \mu(i) + \epsilon(i), \quad i=1,\ldots,p.
+\end{equation}
+The signal, $\mu = (\mu(i))_{i=1}^p$, is a vector with $s$ non-zero components supported on the set $S=\{i:\mu(i)\neq 0\}$; the second term $\epsilon$ is a random error vector. 
+The goal of high-dimensional statistics is usually two-fold: 
+\begin{enumerate}
+    \item To detect the presence of non-zero components in $\mu$. That is, to test the global hypothesis $\mu = 0$, which we call the \emph{detection} problem, and
+    \item To estimate the support set $S$, which we call the \emph{support recovery} problem.
+\end{enumerate}
+To illustrate, in the engineering application of cybersecurity, Internet service providers (ISP) routinely collect statistics of network traffic to determine if there are abnormal surges or blackouts.
+The data vector $x$ could represent, for example, incoming traffic volumes to each server node that the ISP maintains.
+In this case, the vector $\mu$ would be the average traffic volumes when under normal operating conditions, and $\epsilon$'s the fluctuations around these normal levels of traffic.
+% The ISPs collect, for example, incoming traffic volumes to each server to determine if there are abnormal surges or blackouts.
+The signal detection problem in this context is then equivalent to determining if there are \emph{any} anomalies among all servers, and the support recovery problem is equivalent to \emph{identifying} the servers with anomalies.
+Similar questions of signal detection and support recovery are pursued in large-scale microarray experiments, %\citep{dudoit2003multiple}, 
+brain imaging and fMRI analysis, %\citep{nichols2003controlling}, 
+and numerous other applications.
+
+A common theme in such applications is that the errors are correlated, and that the signal vectors are believed to be sparse: the number of non-zero components in $\mu$ is small compared to the number of test performed --- in the cybersecurity example, while monitoring is performed over a large number of servers, it is often believed that only very few servers will be experiencing problems at any time.
+Under such sparsity assumptions, it is natural to ask if and when one can reliably {(1)} detect the signals, and {(2)} recover the support set $S$.
+% Further, one would like to characterize the statistical procedures that achieve efficient detection and support recovery, whenever such goals become possible to achieve.
+We explore both the \emph{detection} and the \emph{support recovery} problems in this thesis. 
+More precisely, we are interested in the theoretical feasibility of both problems, and seek minimal conditions under which these problems can be consistently solved in large dimensions.
+
+
+\medskip
+
+Model \eqref{eq:model-additive} is simple yet ubiquitous.
+Consider the linear model
+\begin{equation*}
+ Y = X\mu + \xi,
+\end{equation*}
+where $\mu$ is a $p$-dimensional vector of regression coefficients of interest to be inferred from observations of $X$ and $Y$.
+If the design matrix $X$ is of full column rank, then the ordinary least squares (OLS) estimator of $\mu$ can be formed 
+\begin{equation} \label{eq:OLS}
+    \widehat{\mu} = \left(X'X\right)^{-1}X'Y = \mu + \epsilon,
+\end{equation}
+where $\epsilon := (X'X)^{-1}X'\xi$.
+Hence we recover the generic problem \eqref{eq:model-additive}. 
+Signal detection is therefore equivalent to the problem of testing the global null model, and support recovery problem corresponds to the fundamental problem of variable selection.
+
+Note that the components in the observation $x$ (and equivalently, the noise $\epsilon$) in \eqref{eq:model-additive} need not be independent. 
+In the linear regression example, even when the components of the noise term $\xi$ are independent, those of the OLS estimator \eqref{eq:OLS} need not be, unless we have an orthogonal design.
+Indeed, in practice, independence is the exception rather than the rule.
+Therefore a general theory of feasibility must address the role of the error dependence structures in such testing problems, and identify practical procedures that attain the performance limits in independent as well as dependent cases, as soon as the problems become theoretically feasible.
+
+
+\section{Genome-wide association studies and the chi-square model}
+\label{sec:motivation-chisq}
+
+The second data model we analyze is the high-dimensional chi-square model,
+\begin{equation} \label{eq:model-chisq}
+    %x(i) \distras{\mathrm{ind.}} \chi_\nu^2\left(\lambda(i)\right), \quad i=1,\ldots,p.
+    x(i) \sim \chi_\nu^2\left(\lambda(i)\right), \quad i=1,\ldots,p,
+\end{equation}
+where the data $x(i)$'s follow independent (non-central) chi-square distributions with $\nu$ degrees of freedom and non-centrality parameter $\lambda(i)$.
+
+% While the additive error models are frequently featured in the literature, the chi-square models need some introduction.
+
+Model \eqref{eq:model-chisq} is motivated by large-scale categorical variable screening problems, typified by \ac{GWAS}
+% genome-wide association studies (GWAS) 
+where millions of genetic factors are examined for their potential influence on phenotypic traits.
+% We briefly introduce the scientific background next, to provide some context.
+
+% introduced through the language of GWAS next.
+% These categorical covariate screening problems naturally give rise to the high-dimensional chi-square models, introduced through the language of GWAS next.
+% 
+% Broadly speaking, GWAS aim to discover genetic variations that are linked to traits or diseases of interested, by testing for associations between the subjects' genetic compositions and their phenotypes.
+In a GWAS with a case-control design, a total of $n$ subjects are recruited,  consisting of $n_1$ subjects possessing some defined traits, and $n_2$ subjects without the traits serving as controls.
+The genetic compositions of the subjects are then examined for variations known as \ac{SNP} at an array of $p$ genomic marker locations, and compared between the case and the control group.
+These physical traits are commonly referred to as \emph{phenotypes}, and the genetic variations are known as \emph{genotypes}.
+
+Focusing on one specific genomic location, the counts of observed genotypes, if two variants are present, can be tabulated as follows.
+% \begin{table}[ht]
+% \centering
+\begin{center}
+    \begin{tabular}{cccc}
+    \hline
+    & \multicolumn{2}{c}{Genotype} & \\
+    \cline{2-3}
+    \# Observations & Variant 1 & Variant 2 & Total by phenotype \\
+    \hline
+    Cases & $O_{11}$ & $O_{12}$ & $n_1$ \\
+    Controls & $O_{21}$ & $O_{22}$ & $n_2$ \\
+    \hline
+    \end{tabular}
+    % \caption{Tabulated counts of genotype-phenotype combinations in a genetic association test.}
+\end{center}
+% \end{table}
+Researchers test for associations between the genotypes and phenotypes using, for example, the Pearson chi-square test with statistic
+\begin{equation} \label{eq:chisq-statistic}
+    x = \sum_{j=1}^2 \sum_{k=1}^2 \frac{(O_{jk} - E_{jk})^2}{E_{jk}},
+\end{equation}
+where ${E}_{jk} = (O_{j1}+O_{j2})(O_{1k}+O_{2k})/n$.
+% are the expected number of observations under the null.
+%E_{jk} = \Big(\sum_{l}O_{jl}\Big)\Big(\sum_{l}O_{lk}\Big)\Big/n.
+
+Under the mild assumption that the counts $O_{jk}$'s follow a multinomial distribution (or a product-binomial distribution, if we decide to condition on one of the marginals), the statistic $x$ in \eqref{eq:chisq-statistic} can be shown to have an approximate $\chi^2(\lambda)$ distribution with $\nu=1$ degree of freedom at large sample sizes (see, e.g., classical results in \citet{ferguson2017course} and
+\cite{agresti2018introduction}). 
+Independence between the genotypes and phenotypes would imply a non-centrality parameter $\lambda$ value of zero; if dependence exists, we would have a non-zero $\lambda$ where its value depends on the underlying multinomial probabilities.
+More generally, if we have a $J$ phenotypes and $K$ genetic variants, assuming a $J\times K$ multinomial distribution, the statistic will follow approximately a $\chi^2_{\nu}(\lambda)$ distribution with $\nu = (J-1)(K-1)$ degrees of freedom, when sample sizes are large.
+
+The same asymptotic distributional approximations also apply to the likelihood ratio statistic, and many other statistics under slightly different modeling assumptions \citep{gao2019upass}.
+These association tests are performed at each of the $p$ SNP marker locations throughout the whole genome, and we arrive at $p$ statistics having approximately (non-central) chi-square distributions, $\chi_{\nu(i)}^2\left(\lambda(i)\right)$, for $i=1,\ldots,p$,
+% \begin{equation} \label{eq:model-chisquare-approx}
+%     x(i) \mathrel{\dot\sim} \chi_{\nu(i)}^2\left(\lambda(i)\right), \quad i=1,\ldots,p,
+% \end{equation}
+where $\lambda = (\lambda(i))_{i=1}^p$ is the $p$-dimensional non-centrality parameter.
+%, with $\lambda(i)=0$ indicating independence of the $i$-th SNP with the outcomes, and $\lambda(i)\neq0$ indicating associations.
+
+Although the number of tested genomic locations $p$ can sometimes exceed $10^5$ or even $10^6$, it is often believed that only a small set of genetic locations have tangible influences on the outcome of the disease or the trait of interest.
+Under the stylized assumption of sparsity, $\lambda$ is assumed to have $s$ non-zero components, with $s$ being much smaller than the problem dimension $p$. 
+The goal of researchers is again two-fold: (1) to test if $\lambda(i)=0$ for all $i$, and (2) to estimate the set $S=\{i:\lambda(i)\neq 0\}$.
+In other words, we look to first determine if there are \emph{any} genetic variations associated with the disease; and if there are associations, we want to locate them.
+
+\medskip
+
+The chi-square model \eqref{eq:model-chisq} also plays an important role in analyzing variable screening problems under omnidirectional alternatives.
+A primary example is multiple testing under two-sided alternatives in the additive error model \eqref{eq:model-additive} where the errors $\epsilon$ are assumed to have standard normal distributions.
+
+Under two-sided alternatives, unbiased test procedures call for rejecting the hypothesis $\mu(i)=0$ at locations where observations have large absolute values, or equivalently, large squared values.
+Taking squares on both sides of \eqref{eq:model-additive}, and we arrive at Model \eqref{eq:model-chisq} with non-centrality parameters $\lambda(i) = \mu^2(i)$ and degree-of-freedom parameter $\nu =1$.
+In this case, the support recovery problem is equivalent to locating the set of observations with mean shifts, $S=\{i:\mu(i)\neq 0\}$, where the mean shifts could take place in both directions.
+
+Therefore, a theory for the chi-square model \eqref{eq:model-chisq} naturally lends itself to the study of two-sided alternatives in the Gaussian additive error model \eqref{eq:model-additive}.
+In comparing such results with existing theory on one-sided alternatives, we will be able to quantify if, and how much of a price has to be paid for the additional uncertainty when we have no prior knowledge on the direction of the signals.
+
+% In many applications, of course, restricting ourselves to one-sided tests is unrealistic.
+% For example, in fMRI studies, the interest is in \emph{both} regions where average brain activities {increase} and where they {decrease}, when comparing the case group to the controls \citep{narayan2015two}. 
+% In the challenging application of anomaly detection on Internet traffic streams, millions of IP addresses need to be scanned in real time to identify \emph{both} volumetric attacks and blackouts \citep{kallitsis2016amon}.
+% Indeed, omnidirectional tests are the more natural choice in so-called discovery sciences where little to no prior knowledge is available.
+
+\section{Contents}
+
+Important notions and definitions in high-dimensional testing problems are recalled in Chapter \ref{chap:background}. 
+We review related literature as well as key concepts and technical results used in our subsequent analyses.
+
+In Chapter \ref{chap:phase-transitions} we study the sparse signal detection and support recovery problems for the additive error model \eqref{eq:model-additive} when components of the noise term $\epsilon$ are independent standard Gaussian random variables.
+In particular, we point out several new \emph{phase transitions} in signal detection problems, and provide a unified account of recently discovered phase transitions in support recovery problems.
+These result show that as the dimension $p\to\infty$, the tasks of detecting the existence of signals, or identifying the support set $S$ are either doable or impossible depending on the sparsity and signal sizes of the problems.
+We also identify commonly used procedures that attain the performance limits in both detection and support recovery problems.
+
+Both the Gaussianity assumption and the independence assumption are relaxed in Chapter \ref{chap:exact-support-recovery}.
+Established are the necessary and sufficient conditions for exact support recovery in the high-dimensional asymptotic regime.
+This is a major theoretical contribution of the thesis, solving, and expanding on, open problems in the literature (see \cite{butucea2018variable, gao2018fundamental}).
+The analysis of support recovery problem is intimately related to a \emph{concentration of maxima} phenomena in the analysis of extremes.
+The latter concept is key to understanding the role played by dependence in the phase transition phenomena of high-dimensional testing problems.
+Using this probabilistic concept, we establish minimax optimality results that hold for a very large class of dependence structures.
+
+The dependence condition defined by the concentration of maxima  concepts is further demystified in Chapter \ref{chap:URS} for Gaussian errors.
+We offer a complete characterization of the concentration of maxima phenomenon, known as uniform relative stability, in terms of the covariance structures of the Gaussian arrays.
+This result may be of independent interest since it relates to the so-called \emph{superconcentration} phenomenon coined by \cite{chatterjee2014superconcentration}.
+See also, \cite{gao2018fundamental} and \citet*{kartsioukas2019rate}.
+
+Chapter \ref{chap:GWAS} returns to high-dimensional multiple testing problems, and study the chi-square model \eqref{eq:model-chisq} inspired by the marginal association screening problems.
+We establish four new phase-transition-type results in the chi-square model, and illustrate their practical implications in the GWAS application.
+Our theory enables us to explain the long-standing empirical observation that small perturbations in the frequency and penetrance of genetic variations lead to drastic changes in the discoverability in genetic association studies.
+% We also provide a user-friendly web-based software tool for planning, and reviewing, genome-wide association studies, published in \cite{gao2019upass}.
+
+
+

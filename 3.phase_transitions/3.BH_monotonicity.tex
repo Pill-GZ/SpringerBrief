@@ -1,0 +1,67 @@
+
+We make a connection between power of the \ac{BH} procedure and the stochastic ordering of distributions under the alternative.
+This result, though natural, seems new. 
+
+\begin{lemma}[Monotonicity of the BH procedure] \label{lemma:monotonicity-BH-procedure}
+Consider $p$ independent observations $x(i)$, $i\in\{1,\ldots,p\}$, where the $(p-s)$ coordinates in the null part have common distribution $F_0$, and the remaining $s$ signals have alternative distributions $F^{i}_j$, $i\in S$, respectively.
+Compare the two alternatives $j\in\{1,2\}$, where the distributions in Alternative 2 are stochastically larger than those in Alternative 1, i.e.,
+\begin{equation*}
+    F^{i}_2(t) \le F^{i}_1(t), \quad \text{for all} \;\; t\in\R, \; \text{and for all} \;\; i\in S.
+\end{equation*}
+If the BH procedure is applied at the same nominal level of FDR, then the FNR of the \ac{BH} procedure under Alternative 2 is bounded above by the FNR under Alternative 1.
+Further, the threshold of the \ac{BH} procedure under Alternative 2 is stochastically smaller than that under Alternative 1.
+\end{lemma}
+
+Loosely put, the power of the BH procedure is monotone increasing with respect to the stochastic ordering of the alternatives, yet (the distribution of) the \ac{BH} threshold is monotone decreasing in the distributions of the alternatives.
+
+\begin{proof}[Proof of Lemma \ref{lemma:monotonicity-BH-procedure}]
+We first re-express the BH procedure in a different form.
+Recall that on observing $x(i)$, $i\in\{1,\ldots,p\}$, the BH procedure is the thresholding procedure with threshold set at $x_{[i^*]}$, where $i^* := \max\{i\,|\,\overline{F_0}(x_{[i]})\le \alpha i/p\}$, and $x_{[1]}\ge\ldots\ge x_{[p]}$ are the order statistics.
+
+Let $\widehat{G}$ denote the left-continuous empirical survival function
+\begin{equation} \label{eq:empirical-tail-distribution}
+    \widehat{G}(t) = \frac{1}{p}\sum_{i=1}^p\mathbbm{1}\{x(i) \ge t\}.
+\end{equation}
+By the definition, we know that $\widehat{G}(x_{[i]}) = i/p$.
+Therefore, by the definition of $i^*$, we have
+\begin{equation*} 
+    \overline{F_0}(x_{[i]}) > \alpha\widehat{G}(x_{[i]}) = \alpha i/p \quad \text{for all }i>i^*.
+\end{equation*}
+Since $\widehat{G}$ is constant on $(x_{[i^*+1]}, x_{[i^*]}]$, the fact that 
+$\overline{F_0}(x_{[i^*]}) \le \alpha\widehat{G}(x_{[i^*]})$ and $\overline{F_0}(x_{[i^*+1]}) > \alpha\widehat{G}(x_{[i^*+1]})$ implies that $\alpha\widehat{G}$ and $\overline{F_0}$ must ``intersect'' on the interval by continuity of $F_0$.
+We denote this ``intersection'' as
+\begin{equation} \label{eq:approx-boundary-proof-tau}
+    \tau = \inf\{t\,|\,\overline{F_0}(t)\le\alpha\widehat{G}(t)\}. 
+    %= \min\{t\,|\,\overline{F_0}(t)=\alpha\widehat{G}(t)\}.
+\end{equation}
+Note that $\tau$ cannot be equal to $x_{[i^*+1]}$ since $\overline{F}_0$ is c\`adl\`ag.
+Since there is no observation in $[\tau, x_{[i^*]})$, we can write the BH procedure as the thresholding procedure with threshold set at $\tau$.
+
+Now, denote the observations under Alternatives 1 and 2 as $x_1(i)$ and $x_2(i)$.
+Since $x_2(i)$ stochastically dominates $x_1(i)$ for all $i\in\{1,\ldots,p\}$, there exists a coupling $(\widetilde{x}_1, \widetilde{x}_2)$ of $x_1$ and $x_2$ such that 
+% $\widetilde{x}_1(i) = \widetilde{x}_2(i)$ for $i\in S^c$, and 
+$\widetilde{x}_1(i) \le \widetilde{x}_2(i)$ almost surely for all $i$.
+We will replace $\widetilde{x}_1$ and $\widetilde{x}_2$ with $x_1$ and $x_2$ in what follows.
+Since we will compare the FNR's, i.e., expectations with respect to the marginals of ${x}$'s in the last step, this replacement does not affect the conclusions.
+To simplify notation, we still write $x_1$ and $x_2$ in place of $\widetilde{x}_1$ and $\widetilde{x}_2$.
+
+Let $\widehat{G}_k$ be the left-continuous empirical survival function under Alternative $k$, i.e.,
+\begin{equation} \label{eq:empirical-survival}
+    \widehat{G}_k(t) = \frac{1}{p}\sum_{i=1}^p\mathbbm{1}\{x_k(i) \ge t\}, \quad k\in\{1,2\}.
+\end{equation}
+We define the BH thresholds $\tau_1$ and $\tau_2$ by replacing $\widehat{G}$ in \eqref{eq:approx-boundary-proof-tau} with $\widehat{G}_1$ and $\widehat{G}_2$, respectively.
+Denote the set estimates of signal support $\widehat{S}_k = \{i\,|\,x_k(i)\ge\tau_k\}$ by the BH procedure.
+We claim that 
+\begin{equation} \label{eq:monotonicity-BH-procedure-thresholds}
+    \tau_2 \le \tau_1 \quad \text{with probability } 1.
+\end{equation}
+
+Indeed, by definition of the empirical survival function \eqref{eq:empirical-survival} and the fact that $x_1(i) \le x_2(i)$ almost surely for all $i$,  we have $\widehat{G}_1(t) \le \widehat{G}_2(t)$ for all $t$.
+Hence, $\overline{F_0}(t)\le\alpha\widehat{G}_1(t)$ implies $\overline{F_0}(t)\le\alpha\widehat{G}_2(t)$, and Relation \eqref{eq:monotonicity-BH-procedure-thresholds} follows from the definition of $\tau$ in \eqref{eq:approx-boundary-proof-tau}.
+The claim of stochastic ordering of the \ac{BH} thresholds in Lemma \ref{lemma:monotonicity-BH-procedure} follows from \eqref{eq:monotonicity-BH-procedure-thresholds}.
+
+Finally, when $\tau_2 \le \tau_1$, we have $\tau_2 \le \tau_1 \le x_1(i) \le x_2(i)$ with probability 1 for all $i\in\widehat{S}_1$.
+Therefore, it follows that $\widehat{S}_1 \subseteq \widehat{S}_2$ and hence $|S\setminus\widehat{S}_2| \le |S\setminus\widehat{S}_1|$ almost surely. 
+The first conclusion in Lemma \ref{lemma:monotonicity-BH-procedure} follows from the last inequality.
+\end{proof}
+

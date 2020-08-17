@@ -1,0 +1,42 @@
+{\bf Software availability.}
+U-PASS runs as an R Shiny application. It is a free, open source software under the MIT license.
+A live instance of the application is hosted at 
+\url{https://power.stat.lsa.umich.edu/u-pass/}.
+The source code can be obtained from the repository hosting service Github, by running in the computer's terminal:
+\begin{verbatim}
+  clone https://github.com/Pill-GZ/U-PASS.git
+\end{verbatim}
+or by downloading directly from the GitHub page: 
+\url{https://github.com/Pill-GZ/U-PASS}.
+
+Should the user choose to run the application from their local machine, we recommend downloading the source code, and follow the next two steps of this user guide.
+
+\bigskip
+\noindent
+{\bf Installation and dependencies.}
+We have collected the required R packages inside the R script
+\texttt{install\_required\_packages.R}.
+These packages can be installed by navigating to the project folder, and running in the computer's terminal:
+\begin{verbatim}
+  Rscript install_required_packages.R 
+\end{verbatim}
+or by running the following command from inside R (RStudio):
+\begin{verbatim}
+  source("install_required_packages.R")    
+\end{verbatim}
+The U-PASS software itself requries no installation.
+
+\bigskip
+\noindent
+{\bf Start/terminate the application.}
+The application can be started by running in the computer's terminal:
+\begin{verbatim}
+  Rscript -e 'library(methods);
+              shiny::runApp("./", launch.browser=TRUE)'
+\end{verbatim}
+or by running the following command from inside R (RStudio):
+\begin{verbatim}
+  shiny::runApp()
+\end{verbatim}
+The application can be terminated by simply closing the browser (or browser tab).
+Alternatively, the application can be terminated by pressing \texttt{Ctrl} + \texttt{C} in the terminal, or by clicking on the red stop button in Rstudio.

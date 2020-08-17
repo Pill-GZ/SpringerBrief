@@ -1,0 +1,76 @@
+We now elaborate on the relationship between statistical risks, as promised in Section \ref{sec:risks}.
+The first lemma concerns the asymptotic relationship between the probability of exact recovery \eqref{eq:risk-prob} and the risk of exact support recovery \eqref{eq:risk-exact}.
+
+\begin{lemma} \label{lemma:risk-exact-recovery-probability}
+For any sequence of procedures for support recovery $\mathcal{R} = \mathcal{R}_p$, we have, 
+%The probability of exact recovery $\P[\widehat{S} = S]$, and risk of exact support recovery $\mathrm{risk}^{\mathrm{E}}$, defined in \eqref{eq:risk-exact}, are related as follows,
+\begin{equation} \label{eq:exact-recovery-implies-risk-0}
+    \P[\widehat{S} = S] \to 1 \iff \mathrm{risk}^{\mathrm{E}}(\mathcal{R})\to0,
+\end{equation}
+and
+\begin{equation} \label{eq:failure-recovery-implies-risk-1}
+    \P[\widehat{S} = S] \to 0 \implies \liminf\mathrm{risk}^{\mathrm{E}}(\mathcal{R})\ge1,
+\end{equation}
+as $p\to\infty$. Dependence on $p$ was suppressed for notational convenience.
+\end{lemma}
+
+
+\begin{proof}[Proof of Lemma \ref{lemma:risk-exact-recovery-probability}]
+Notice that $\{\widehat{S}=S\}$ implies $\{\widehat{S}\subseteq S\} \cap \{\widehat{S}\supseteq S\}$, therefore we have for every fixed $p$,
+\begin{equation} \label{eq:risk-exact-recovery-probability-proof-1}
+    \mathrm{risk}^{\mathrm{E}} 
+    = 2 - \P[\widehat{S} \subseteq S] - \P[S \subseteq \widehat{S}] \\
+    \le 2 - 2\P[\widehat{S}=S].
+\end{equation}
+On the other hand, since $\{\widehat{S}\neq S\}$ implies $\{\widehat{S}\not\subseteq S\} \cup \{\widehat{S}\not\supseteq S\}$, we have for every fixed $p$,
+\begin{equation} \label{eq:risk-exact-recovery-probability-proof-2}
+    1 - \P[\widehat{S}=S]
+    = \P[\widehat{S}\neq S]
+    \le 2 - \P[\widehat{S} \subseteq S] - \P[S \subseteq \widehat{S}]
+    = \mathrm{risk}^{\mathrm{E}}. 
+\end{equation}
+Relation \eqref{eq:exact-recovery-implies-risk-0} follows from \eqref{eq:risk-exact-recovery-probability-proof-1} and \eqref{eq:risk-exact-recovery-probability-proof-2}, and Relation \eqref{eq:failure-recovery-implies-risk-1} from \eqref{eq:risk-exact-recovery-probability-proof-2}.
+\end{proof}
+
+By virtue of Lemma \ref{lemma:risk-exact-recovery-probability}, it is sufficient to study the probability of exact support recovery $\P[\widehat{S}=S]$ in place of $\mathrm{risk}^{\mathrm{E}}$, if we are interested in the asymptotic properties of the risk in the sense of \eqref{eq:support-recovery-success} and \eqref{eq:support-recovery-failure}.
+% (The converse, discussed in Section \ref{sec:discussions} below, is not true.)
+
+\medskip
+
+Keen readers must have noticed the asymmetry in Relation \eqref{eq:failure-recovery-implies-risk-1} when we discussed the relationship between the exact support recovery risk \eqref{eq:risk-exact} and the probability of exact support recovery \eqref{eq:risk-prob}.
+
+%The converse of \eqref{eq:failure-recovery-implies-risk-1} is not true.
+While a trivial procedure that never rejects and a procedure that always rejects both have $\mathrm{risk}^{\mathrm{E}}$ equal to 1, the converse is not true.
+For example, it is possible that a procedure selects the true index set $S$ with probability $1/2$, but makes one false inclusion \emph{and} one false omission simultaneously the other half of the time. 
+In this case the procedure will have 
+$$\mathrm{risk}^{\mathrm{E}} = 1, \quad \text{and} \quad \P[\widehat{S}=S] = 1/2,$$
+showing that the converse of Relation \eqref{eq:failure-recovery-implies-risk-1} is in fact false.
+
+The same argument applies to $\mathrm{risk}^{\mathrm{A}}$:
+a procedure may select the true index set $S$ with probability $1/2$, but makes enough false inclusions and omissions other half of the time, so that $\mathrm{risk}^{\mathrm{A}}$ is equal to one.
+Therefore, although the class of methods with risks equal to or exceeding 1 certainly contains the trivial procedures that we mentioned, they are not necessarily ``useless'' as some researchers have claimed (c.f., \citet{arias2017distribution}, Remark 2).
+
+\medskip
+
+Upper and lower bounds for \ac{FDR} and \ac{FNR} can be immediately derived by replacing the numerators in \eqref{eq:FDR-FNR} with the Hamming loss,
+\begin{equation} \label{eq:Hamming-loss-FDR-FNR-bound}
+    \E\left[\frac{H(\widehat{S}, S)}{\max\{|\widehat{S}|, |S|, 1\}}\right] 
+    \le \mathrm{FDR} + \mathrm{FNR}
+    \le \E\left[\frac{H(\widehat{S}, S)}{\max\{\min\{|\widehat{S}|, |S|\}, 1\}}\right].
+\end{equation}
+Therefore, it is sufficient, but not necessary, that the Hamming loss vanish in order to have vanishing approximate support recovery risks \eqref{eq:risk-approximate}.
+
+\medskip
+
+Turning to the relationship between the probability of exact support recovery \eqref{eq:risk-prob} and Hamming loss \eqref{eq:Hamming-loss}, we point out a natural lower bound of the former using the expectation of the latter,
+\begin{equation} \label{eq:Hamming-loss-lower-bound}
+    \mathbb{P}[\widehat S = S] 
+    \ge 1 - \mathbb{E}[H(\widehat S, S)]
+    = 1 - \sum\limits_{i=1}^p\E\left|\mathbbm{1}_{\widehat{S}}(i)- \mathbbm{1}_{S}(i)\right|.
+\end{equation}
+A key observation in Relation \eqref{eq:Hamming-loss-lower-bound} is that the expected Hamming loss decouples into $p$ terms, and dependence of the estimates $\mathbbm{1}_{\widehat{S}}(i)$ among the $p$ locations no longer plays a role in the sum.
+Therefore, studying support recovery problems via the expected Hamming loss is not very informative especially under severe dependence, as the bound \eqref{eq:Hamming-loss-lower-bound} may become {very} loose.
+Vanishing Hamming loss is again sufficient, but not necessary for 
+$\P[\widehat{S}=S]$ or the exact support recovery risk to fo to zero.
+% the probability of exact support recovery --- and hence the exact support recovery risk --- to go to zero.
+

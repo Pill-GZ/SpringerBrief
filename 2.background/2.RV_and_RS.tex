@@ -1,0 +1,100 @@
+
+The behavior of the maxima of identically distributed random variables has been studied extensively in the literature (see, e.g., \cite{leadbetter2012extremes,resnick2013extreme,embrechts2013modelling,de2007extreme} 
+and the references therein). 
+% We show in this subsection that the maxima of errors with rapidly varying tails can be bounded above using quantiles of their marginal distribution, regardless of their dependence structure; this was a key step in the proof of Theorem \ref{thm:sufficient}.
+The concept of rapid variation plays an important role in the light-tailed case.
+
+\begin{definition}[Rapid variation] \label{def:rapid-variation}
+The survival function of a distribution, $\overline{F}(x) = 1 - F(x)$, is said to be rapidly varying if
+\begin{equation}\label{e:def:rapid-variation}
+\lim_{x\to\infty} \frac{\overline{F}(tx)}{\overline{F}(x)} 
+    = \begin{cases}
+    0, & t > 1\\
+    1, & t = 1\\
+    \infty, & 0 < t < 1
+\end{cases}.
+\end{equation}
+\end{definition}
+
+When $F(x)<1$ for all finite $x$, \citet{gnedenko1943distribution} showed that the distribution $F$ has rapidly varying tails if and only if the maxima of independent observations from $F$ are \emph{relatively stable} in the following sense.
+\begin{definition}[Relative stability] \label{def:RS}
+Let $\epsilon_p = \left(\epsilon_p(i)\right)_{i=1}^p$ be a sequence of random variables with identical marginal distributions $F$. 
+Define the sequence $(u_p)_{p=1}^\infty$ to be the $(1-1/p)$-th generalized quantile of $F$, i.e., 
+\begin{equation} \label{eq:quantiles}
+    u_p = F^\leftarrow(1 - 1/p).
+\end{equation}
+The triangular array ${\cal E} = \{\epsilon_p, p\in\N\}$ is said to have relatively stable (RS) maxima if
+\begin{equation} \label{eq:RS-condition}
+    \frac{1}{u_{p}} M_p := \frac{1}{u_{p}} \max_{i=1,\ldots,p} \epsilon_p(i) \xrightarrow{\P} 1,\quad \text{as }\;p\to\infty.
+\end{equation}
+\end{definition}
+
+In the case of independent and identically distributed $\epsilon_p(i)$'s, \citet{barndorff1963limit} and \citet{resnick1973almost} obtained necessary and sufficient conditions for the \emph{almost sure stability} of maxima, where the convergence in \eqref{eq:RS-condition} holds almost surely.
+
+While relative stability (and almost sure stability) is well-understood in the independent case, the role of dependence has not been fully explored.
+We start this investigation with a small refinement of Theorem 2 in \citet{gnedenko1943distribution} valid under arbitrary dependence.
+
+\begin{proposition}[Rapid variation and relative stability] \label{prop:rapid-varying-tails}
+Assume that the array ${\cal E}$ consists of identically distributed random 
+variables with cumulative distribution function $F$, where $F(x)<1$ for all finite $x>0$. 
+\begin{enumerate}
+    \item If $F$ has rapidly varying right tail, then for all $\delta>0$,
+        \begin{equation} \label{eq:rapid-varying-tails}
+            \P\left[\frac{1}{u_p} M_p\le1+\delta\right] \ge 1 - \frac{\overline F((1+\delta)u_p)}{\overline F(u_p)} \to 1.
+        \end{equation}
+    \item If, in addition, the array ${\cal E}$ has independent entries, then it is relatively stable if and only if $F$ has rapidly varying tail.
+    \label{prop:rapid-varying-tails_part-ii}
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof of Proposition \ref{prop:rapid-varying-tails}] 
+By the union bound and the fact that 
+$p\overline F(u_p) \le 1$, we have
+\begin{align}\label{e:prop:rapid-varying-tails_part-i-1}
+\P [ M_p > (1+\delta)u_p] \le p \overline F((1+\delta)u_p)
+ \le \frac{\overline F((1+\delta)u_p)}{\overline F(u_p)}.
+\end{align}
+In view of \eqref{e:def:rapid-variation} (rapid variation) and the fact that $u_p\to\infty$, as $p\to\infty$, the right-hand side of \eqref{e:prop:rapid-varying-tails_part-i-1} vanishes 
+as $p\to\infty$, for all $\delta>0$.  This completes the proof of \eqref{eq:rapid-varying-tails}. Part 2 is a re-statement of the classic result due to Gnedenko in \cite{gnedenko1943distribution}.
+\end{proof}
+
+We next demonstrate that Gaussian, Exponential, Laplace, and Gamma distributions all have rapidly varying tails. 
+
+% \begin{corollary} \label{cor:AGG-is-RS}
+% If $F\in\text{AGG}(\nu)$, $\nu>0$, an independent array ${\cal E}$ is relatively stable. Further, $\text{AGG}(\nu)$ is the only class of model with $u_{p} \sim \left(\nu\log{p}\right)^{1/\nu}$.
+% \end{corollary}
+% 
+% \begin{proof}[Proof of Corollary \ref{cor:AGG-is-URS}]
+% By Proposition \ref{prop:rapid-varying-tails}, it is enough to show that in the AGG model,  $\overline{F}$ has rapidly varying tail. 
+% By definition of the AGG tails \eqref{def:AGG}, we have
+% $$
+% \lim_{t\to\infty} \frac{\log{\left(\overline{F}(tx)\Big/\overline{F}(t)\right)}}{-\frac{1}{\nu}t^\nu(x^\n% u-1)} = 1,
+% $$
+% where the denominator tends to $+\infty$ or $-\infty$ depending on whether $0<x<1$ or $x>1$.
+% Therefore, we must have $\overline{F}(tx) / \overline{F}(t)$ converging to $\infty$ or 0 in the correct range of $x$'s; the case where $x=1$ is trivial.
+% The last claim follows from the expression for AGG quantiles; see Proposition \ref{prop:quantile}.
+% \end{proof}
+
+\begin{example}[Generalized AGG] \label{exmp:AGG}
+A distribution is said to have \emph{Generalized AGG} right tail, if $\log{\overline{F}}$ is regularly varying,
+\begin{equation} \label{eq:GAGG}
+    \log{\overline{F}(x)} = - x^\nu L(x),
+\end{equation}
+where $\nu>0$ and $L: (0,+\infty)\to(0,+\infty)$ is a slowly varying function. (A function is said to be slowly varying if $\lim_{x\to\infty}L(tx)/L(x) = 1$ for all $t>0$.) Note that the $\text{AGG}(\nu)$ model corresponds to the special case where $L(x)\to 1/\nu$, as $x\to\infty$.
+
+Relation \eqref{eq:rapid-varying-tails} holds for all arrays $\cal E$ with \emph{generalized} AGG marginals; if the entries are independent, the maxima are relatively stable. 
+This follows directly from Proposition \ref{prop:rapid-varying-tails}, once we show that $F$ has rapidly varying tail. 
+Indeed, by \eqref{eq:GAGG}, we have
+$$
+\log{\left(\overline{F}(tx)\Big/ \overline{F}(x)\right)} = - L(x)x^\nu\left(t^\nu\frac{L(tx)}{L(x)} - 1\right),
+$$
+which converges to $-\infty$, 0, and $+\infty$, as $x\to\infty$, when $t>1$, $t=1$, and $t<1$, respectively, since $x^\nu L(x)\to\infty$ as $x\to\infty$ by definition of $L$.
+\end{example}
+
+
+The \ac{AGG} class encompasses a wide variety of rapidly varying tail models such as Gaussian and double exponential distributions. The larger class \eqref{eq:GAGG} is needed, however, for the Gamma distribution.
+
+More generally, distributions with heavier tails (e.g., log-normal) and lighter tails (e.g., Gompertz) outside the generalized AGG class \eqref{eq:GAGG} may also possess rapidly varying tails;
+heavy-tailed distributions like the Pareto and t-distributions, on the other hand, do not.
+These alternative classes of models are will be introduced when we study the phase transitions in Chapter \ref{chap:exact-support-recovery}. 
+%For brevity, we focus here on the $\text{AGG}(\nu)$ models.

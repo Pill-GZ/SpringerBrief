@@ -1,0 +1,57 @@
+For a study with a fixed budget, i.e., a fixed total number of subjects $n$, the researcher is free to choose the fraction of cases $\phi_1$ to be included in the study.
+A natural question is how this budget should be allocated to maximize the statistical power of discovery, or equivalently, the signal sizes $\lambda=nw^2$.
+
+In principal, Relation \eqref{eq:signal-size-odds-ratio} can be optimized with respect to the fraction of cases $\phi_1$ in order to find optimal designs, if $\theta_1$ is known and held constant.
+In practice, this is not the case.
+While the fraction of cases can be controlled, the distributions of genotypes \emph{in the study} are often unknown prior to data collection, and can change with the case-to-control ratio.
+
+Fortunately, the conditional distributions of genotypes in the healthy control groups are often estimated by existing studies, and are made available by consortia such as the NHGRI-EBI GWAS catalog \cite{macarthur2016new}.
+% Assume (after appropriate relabelling, hence without loss of generality) that the first variant is associated with an increased risk of disease, and is henceforth referred to as the risk variant.
+We denote the conditional frequency of the first genetic variant in the control group as $(f, 1-f)$, where
+\begin{equation} \label{eq:RAF}
+    f := \mu_{21} / \phi_2.
+\end{equation}
+The multinomial probability is fully parametrized by the new trio: $(f, \phi_1, R)$.
+\begin{center}
+    \begin{tabular}{cccc}
+    \hline
+    & \multicolumn{2}{c}{Genotype} \\
+    \cline{2-3}
+    Probabilities & Variant 1 & Variant 2 & Total by phenotype \\
+    \hline
+    Cases & $\frac{\phi_1fR}{fR+1-f}$ & $\frac{\phi_1(1-f)}{fR+1-f}$ & $\phi_1$ \\
+    Controls & $f(1-\phi_1)$ & $(1-f)(1-\phi_1)$ & $1-\phi_1$ \\
+    \hline
+    \end{tabular}
+\end{center}
+Proposition \ref{prop:signal-size-odds-ratio} may also be re-stated in terms of the new parametrization.
+
+% Note that all these quantities refer to what is in the study, and differ from their counterparts in the general population.
+
+\begin{corollary} \label{cor:signal-size-odds-ratio-conditional-frequency}
+In the 2-by-2 multinomial distribution with marginals $(\phi_1, \phi_2 = 1-\phi_1)$, and conditional distribution of the variants in the control group $(f, 1-f)$,
+Relation \eqref{eq:signal-size-odds-ratio} holds with $\theta_1 = {\phi_1fR}/{(fR+1-f)} + f(1-\phi_1)$ and $\theta_2 = 1-\theta_1$.
+\end{corollary} 
+
+The choice of $\phi_1$ now has a practical solution.
+
+\begin{corollary} \label{cor:optimal-design}
+In the context of Corollary \ref{cor:signal-size-odds-ratio-conditional-frequency},
+the optimal design $(\phi^*_1, \phi^*_2)$ that maximizes the signal size per sample $w^2$ is prescribed by
+\begin{equation} \label{eq:optimal-design}
+    \phi_1^* = \frac{fR+1-f}{fR+1-f+\sqrt{R}}, \quad\text{and}\quad 
+    \phi_2^* = 1-\phi_1^*.
+\end{equation}
+% when the denominator in \eqref{eq:optimal-design} is non-zero; otherwise, $\phi_1^*=\phi_2^*=1/2$.
+\end{corollary} 
+
+Corollary \ref{cor:optimal-design} is proved in Section \ref{subsec:proof-signal-size-odds-ratio}. 
+
+Of particular interest in the genetics literature are genetic variants with very low allele frequencies in the control group (i.e., $f\approx 0$), known as rare variants.
+In such cases, Equation \eqref{eq:optimal-design} can be approximated using the Taylor expansion,
+\begin{equation} \label{eq:optimal-design-approx}
+    \phi_1^* = \frac{1}{1 + \sqrt{R}} + \frac{(R-\sqrt{R})f}{1+\sqrt{R}} + O(f^2).
+\end{equation}
+To illustrate, for rare and adversarial factors ($f\approx0$ and $R>1$), the optimal $\phi_1^*$ is less than $1/2$.
+Therefore, for studies under a fixed budget, controls should constitute the majority of the subjects, in order to maximize power.
+On the other hand, for rare and protective factors ($f\approx0$ and $R<1$), the optimal $\phi_1^*$ is greater than $1/2$, and cases should be the majority.

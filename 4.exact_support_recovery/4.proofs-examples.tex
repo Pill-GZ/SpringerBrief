@@ -1,0 +1,75 @@
+\subsection{Proof of the claims in Examples \ref{exmp:FWER-controlling_procedures} and \ref{exmp:signals-straddling-the-boundary}}
+\label{subsec:proofs-examples}
+
+\begin{proof}[Proof of claims in Example \ref{exmp:FWER-controlling_procedures}]
+By the Mill's ratio for the standard Gaussian distribution,
+$$
+\frac{t_p \P\left[Z>t_p\right]}{\phi(t_p)} \to 1,\quad \text{as}\quad t_p\to\infty,
+$$
+where $Z\sim \text{N}(0,1)$. 
+Using the expression for $t_p = \sqrt{2\log{p}}$, we have
+$$
+p \;\P\left[Z>t_p\right] \sim \sqrt{2\pi}^{-1}\left(2\log{p}\right)^{-1/2} \to 0,
+$$
+as desired. The rest of the claims follow from Corollary \ref{cor:FWER-controlling_procedures}.
+\end{proof}
+
+
+\begin{proof}[Proof of claims in Example \ref{exmp:signals-straddling-the-boundary}]
+In the first scenario, signal sizes in $S^{(1)}_p$ are by definition above the strong classification boundary \eqref{eq:strong-classification-boundary}.
+The signal in $S^{(2)}_p$ has size parameter $1+\delta<2-\beta<(1+\sqrt{1-\beta})^2$, and therefore falls below the boundary.
+
+It remains to show that $\mathbb{P}[\widehat{S}^{\text{Bonf}}_p=S_p]\to 1$.
+To do so, we define two new arrays 
+$$
+{\cal Y}^{(k)} = \{y^{(k)}_p(j),\;j=1,2,\ldots,p\},\quad k\in\{1,2\}_p,
+$$
+where $y^{(k)}_p(j)=x_p(j)$ if $j\not\in S^{(k)}_p$, and $y^{(k)}_p(j)=\widetilde{\epsilon}_p(j)$ if $j\in S^{(k)}_p$, using an independent error array $\{\widetilde{\epsilon}_p(j),\;j=1,\ldots,p\}$ with iid standard Gaussian elements.
+That is, we replace the elements in $S^{(1)}_p$ and $S^{(2)}_p$ with iid standard Gaussian noise.
+Notice both arrays ${\cal Y}^{(1)}$ and ${\cal Y}^{(2)}$ satisfy the conditions in Theorem \ref{thm:sufficient} (with sparsity parameter equal to $\beta$ and $1$, respectively). 
+Hence, we have
+$$
+\P[\widehat{S}^{\text{Bonf}}_p\subseteq S_p] 
+= \P\left[\max_{j\in S^c}x(j) \le t_p\right]
+\le \P\left[\max_{j\in S^c}y^{(1)}(j) \le t_p\right] \to 0,
+$$
+and 
+\begin{align*}
+    \P[\widehat{S}^{\text{Bonf}}_p\supseteq S_p]
+    = \P\left[\min_{j\in S}x(j) > t_p\right] 
+    &\ge 1 - \P\left[\min_{j\in S^{(1)}}x(j) \le t_p\right] - \P\left[\min_{j\in S^{(2)}}x(j) \le t_p\right] \\
+    &\ge 1 - \P\left[\min_{j\in S^{(1)}}y^{(2)}_p(j) \le t_p\right] - \P\left[\min_{j\in S^{(2)}}y^{(1)}_p(j) \le t_p\right] 
+    \to 1,
+\end{align*}
+where $t_p$ is the threshold in Bonferroni's procedure. The conclusion follows.
+% only need to show $\mathbb{P}[S^{(2)}_p\subseteq\widehat{S}^{\text{Bonf}}_p]\to 1$.
+
+In the second scenario, the signal sizes in $S^{(2)}$ by definition falls below the strong classification boundary \eqref{eq:strong-classification-boundary}.
+To see that no thresholding procedure succeeds, we adapt the proof of Theorem \ref{thm:necessary}.
+In particular, we obtain
+$$
+    \P[\widehat{S}_p = S_p] 
+    \le \P\left[\max_{j\in S^c}x(j) \le t_p < \min_{j\in S}x(j)\right]
+    \le \P\left[\max_{j\in S^c}x(j) < \min_{j\in S^{(2)}}x(j)\right].
+$$
+By the assumption that signals in $S^{(2)}$ have size parameter $(1-\delta)g(\beta)$, we have
+\begin{equation}
+\P\left[\max_{j\in S^c}x(j) < \min_{j\in S^{(2)}}x(j)\right]
+= \P\left[ \frac{M_{S^{c}}}{u_p} < \frac{\sqrt{2(1-\delta)g(\beta)\log{p}} - m_{S^{(2)}}}{u_p}\right], 
+\end{equation}
+where $M_{S^{c}} = \max_{j\in S^{c}}\epsilon(j)$ and $m_{S^{(2)}} = \max_{j\in S^{(2)}}\left(-\epsilon(j)\right)$.
+The ratio on the left-hand-side of the inequality converges to 1 as in \eqref{eq:classification-possible-dependent-proof-3} in the main text, whereas the term on the right-hand-side
+\begin{align*}
+    \frac{\sqrt{2(1-\delta)g(\beta)\log{p}} - m_{S^{(2)}}}{u_p} 
+    &= \sqrt{(1-\delta)g(\beta)} - \frac{m_{S^{(2)}}}{u_{|S^{(2)}|}} \frac{u_{|S^{(2)}|}}{u_p} \\
+    &\xrightarrow{\P} \sqrt{(1-\delta)} + \sqrt{1-\beta}(\sqrt{(1-\delta)} - 1) < 1.
+\end{align*}
+where we used the URS of the error arrays, and that 
+$$
+u_{|S^{(2)}|} \sim \sqrt{2\log{(p^{1-\beta}/2)}} 
+= \sqrt{2(({1-\beta})\log{p}-\log2)} \sim \sqrt{2({1-\beta})\log{p}}.
+$$
+to conclude the convergence in probability.
+\end{proof}
+
+

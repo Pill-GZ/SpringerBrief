@@ -1,0 +1,105 @@
+We shall recall, and establish, some auxiliary facts about chi-square distributions. 
+These facts will be used in the proofs of Theorem \ref{thm:chi-squared-exact-boundary} and Theorem \ref{thm:chi-squared-approx-boundary}.
+
+\begin{lemma}[Rapid variation of chi-square distribution tails] \label{lemma:rapid-variation-chisq}
+The central chi-square distribution with $\nu$ degrees of freedom has rapidly varying tails.
+That is, 
+\begin{equation} \label{eq:rapid-variation-chisq}
+    \lim_{x\to\infty}\frac{\P[\chi_\nu^2(0)>tx]}{\P[\chi_\nu^2(0)>x]} = 
+    \begin{cases}
+    0, & t > 1 \\
+    1, & t = 1 \\
+    \infty, & 0 < t < 1
+\end{cases},
+\end{equation}
+where we overloaded the notation $\chi_\nu^2(0)$ to represent a random variable with the chi-square distribution.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma \ref{lemma:rapid-variation-chisq}]
+When $\nu=1$, the chi-square distribution reduces to a squared Normal, and \eqref{eq:rapid-variation-chisq} follows from the rapid variation of the standard Normal distribution.
+For $\nu\ge2$, we recall the following bound on tail probabilities (see, e.g., \citep{inglot2010inequalities}),
+$$
+\frac{1}{2}\mathcal{E}_\nu(x) \le \P[\chi_\nu^2(0)>x] \le \frac{x}{(x-\nu+2)\sqrt{\pi}} \mathcal{E}_\nu(x), \quad \nu\ge2,\;x>\nu-2,
+$$
+where $\mathcal{E}_\nu(x) = \exp\left\{-\frac{1}{2}[(x-\nu-(\nu-2)\log(x/\nu) + \log\nu]\right\}$.
+Therefore, we have 
+$$
+\frac{(x-\nu+2)\sqrt{\pi}}{2x}\frac{\mathcal{E}_\nu(tx)}{\mathcal{E}_\nu(x)} 
+\le \frac{\P[\chi_\nu^2(0)>tx]}{\P[\chi_\nu^2(0)>x]}
+\le \frac{2tx}{(tx-\nu+2)\sqrt{\pi}}\frac{\mathcal{E}_\nu(tx)}{\mathcal{E}_\nu(x)},
+$$
+where ${\mathcal{E}_\nu(tx)}/{\mathcal{E}_\nu(x)} = \exp\{-\frac{1}{2}[(t-1)x-(\nu-2)\log{t}]\}$ converges to $0$ or $\infty$ depending on whether $t>1$ or $0<t<1$.
+The case where $t=1$ is trivial.
+\end{proof}
+
+Lemma \ref{lemma:rapid-variation-chisq} and Proposition \ref{prop:rapid-varying-tails} yield the following Corollary.
+
+\begin{corollary} \label{cor:relative-stability}
+Maxima of independent observations from central chi-square distributions with $\nu$ degrees of freedom are relatively stable. 
+Specifically, let $\epsilon_p = \left(\epsilon_p(i)\right)_{i=1}^p$ be independently and identically distributed (iid) $\chi_\nu^2(0)$ random variables. 
+Then the triangular array ${\cal E} = \{\epsilon_p, p\in\N\}$ has relatively stable (RS) maxima in the sense of \eqref{eq:RS-condition}.
+\end{corollary}
+
+
+\begin{lemma}[Stochastic monotonicity] \label{lemma:stochastic-monotonicity}
+The non-central chi-square distribution is stochastically monotone in its non-centrality parameter.
+Specifically, for two non-central chi-square distributions both with $\nu$ degrees of freedom, and non-centrality parameters $\lambda_1 \le \lambda_2$, we have $\chi^2_\nu(\lambda_1) \stackrel{\mathrm{d}}{\le} \chi^2_\nu(\lambda_2)$. 
+That is,
+\begin{equation} \label{eq:stochastic-monotonicity}
+    \P[\chi^2_\nu(\lambda_1) \le t] \ge \P[\chi^2_\nu(\lambda_2) \le t], \quad \text{for any}\quad t\ge0.
+\end{equation}
+where we overloaded the notation $\chi_\nu^2(\lambda)$ to represent a random variable with the chi-square distribution with non-centrality parameter $\lambda$ and degree-of-freedom parameter $\nu$.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma \ref{lemma:stochastic-monotonicity}]
+Recall that non-central chi-square distributions can be written as sums of $\nu-1$ standard normal random variables and a non-central normal random variable with mean $\sqrt{\lambda}$ and variance 1,
+\begin{equation*}
+    \chi_\nu^2(\lambda) 
+    \stackrel{\mathrm{d}}{=} Z_1^2 + \ldots + Z_{\nu-1}^2 + (Z_\nu + \sqrt{\lambda})^2.
+\end{equation*}
+Therefore, it suffices to show that $\P[(Z+\sqrt{\lambda})^2 \le t]$ is non-increasing in $\lambda$ for any $t\ge0$, where $Z$ is a standard normal random variable.
+We rewrite this expression in terms of standard normal probability function $\Phi$,
+\begin{align}
+    \P[(Z+\sqrt{\lambda})^2 \le t] 
+    &= \P[-\sqrt{\lambda} - \sqrt{t} \le Z \le -\sqrt{\lambda} + \sqrt{t}] \nonumber \\
+    &= \Phi(-\sqrt{\lambda} + \sqrt{t}) - \Phi(-\sqrt{\lambda} - \sqrt{t}). \label{eq:stochastic-monotonicity-proof-1}
+\end{align}
+The derivative of the last expression (with respect to $\lambda$) is 
+\begin{equation} \label{eq:stochastic-monotonicity-proof-2}
+    \frac{1}{2\sqrt{\lambda}} \left(\phi(\sqrt{\lambda} + \sqrt{t}) - \phi(\sqrt{\lambda} - \sqrt{t})\right) 
+    = \frac{1}{2\sqrt{\lambda}} \left(\phi(\sqrt{\lambda} + \sqrt{t}) - \phi(\sqrt{t} - \sqrt{\lambda})\right),
+\end{equation}
+where $\phi$ is the density of the standard normal distribution.
+Notice that we have used the symmetry of $\phi$ around 0 in the last expression.
+
+Since $0 \le \max\{\sqrt{\lambda} - \sqrt{t}, \sqrt{t} - \sqrt{\lambda}\} < \sqrt{t} + \sqrt{\lambda}$ when $t>0$, by monotonicity of the normal density on $(0,\infty)$, we conclude that the derivative \eqref{eq:stochastic-monotonicity-proof-2} is indeed negative.
+Therefore, \eqref{eq:stochastic-monotonicity-proof-1} is decreasing in $\lambda$, and \eqref{eq:stochastic-monotonicity} follows for $t>0$.
+For $t = 0$, equality holds in \eqref{eq:stochastic-monotonicity} with both probabilities being 0.
+\end{proof}
+
+
+Finally, we derive asymptotic expressions for  chi-square quantiles.
+
+\begin{lemma}[Chi-square quantiles] \label{lemma:chisq-quantiles}
+Let $F$ be the central chi-square distributions with $\nu$ degrees of freedom, and let $u(y)$ be the $(1-y)$-th generalized quantile of $F$, i.e.,
+\begin{equation} \label{eq:quantiles-generic}
+    u(y) = F^\leftarrow(1 - y).
+\end{equation}
+Then 
+\begin{equation}
+    u(y) \sim 2\log(1/y), \quad \text{as }y\to0. 
+\end{equation}
+\end{lemma}
+
+\begin{proof}[Proof of Lemma \ref{lemma:chisq-quantiles}]
+The case where $\nu=1$ follows from the well-known formula for Normal quantiles (see, e.g., Proposition 1.1 in \cite{gao2018fundamental})
+$$
+F^\leftarrow(1 - y) = \Phi^\leftarrow(1-y/2)\sim\sqrt{2\log{(2/y)}}\sim\sqrt{2\log{(1/y)}}.
+$$
+The case where $\nu\ge2$ follows from the following estimates of high quantiles of chi-square distributions (see, e.g., \citep{inglot2010inequalities}),
+$$
+    \nu +  2\log(1/y) -5/2 \le u(y) \le \nu +  2\log(1/y) + 2\sqrt{\nu\log(1/y)}, \quad \text{for all }y\le0.17,
+$$
+where both the lower and upper bound are asymptotic to $2\log(1/y)$.
+\end{proof}
+

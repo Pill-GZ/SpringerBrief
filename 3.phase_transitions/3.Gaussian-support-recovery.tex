@@ -1,0 +1,183 @@
+
+Turning to support recovery problems in the Gaussian error model \eqref{eq:model-additive-Chapter3},
+we will analyze the asymptotic performance limits in terms of the risk metrics for exact, exact-approximate, approximate-exact support recovery problems (i.e., \eqref{eq:risk-exact}, \eqref{eq:risk-exact-approx}, and \eqref{eq:risk-approx-exact}, respectively), as well as the probability of support recovery \eqref{eq:risk-prob}. 
+We will also review the recent result for exact support recovery risk \eqref{eq:risk-approximate} by \cite{arias2017distribution}, to reveal a rather complete landscape of support recovery problems in high-dimensional Gaussian error models.
+
+We restrict our attention to the class of thresholding procedures in this section.
+Specifically, the lower bounds that we develop in Theorems \ref{thm:Gaussian-error-exact-boundary} through \ref{thm:Gaussian-error-approx-exact-boundary} below are only meant to apply to thresholding procedures. 
+Although it is intuitively appealing to consider only data-thresholding procedures in multiple testing problems, such procedures are not always optimal in more general settings. 
+% Recently, \cite{arias2019detection} showed that thresholding procedures are in fact sub-optimal in the additive models \eqref{eq:model-additive} when errors have heavy (regularly-varying) tails. 
+% Gao and Stoev [14] characterized the conditions under which thresholding procedures are optimal in the exact support recovery problem. 
+% The optimality of data-thresholding procedures in terms of other statistical risks is an open problem that invites a dedicated investigation in a future study.
+The optimality of thresholding procedures and the consequences of this restriction will be treated in Chapter \ref{chap:exact-support-recovery}.
+
+\medskip
+
+A technical ingredient is needed in order to state our main results.
+We define a rate at which the nominal levels of FWER or FDR go to zero.
+\begin{definition} \label{def:slowly-vanishing}
+We say the nominal level of errors $\alpha = \alpha_p$ vanishes slowly, if
+\begin{equation} \label{eq:slowly-vanishing-error}
+    \alpha\to 0,\quad \text{and} \quad \alpha p^\delta\to\infty \text{  for any } \delta>0.
+\end{equation}
+\end{definition}
+As an example, the sequence of nominal levels $\alpha_p = 1/\log{(p)}$ is slowly vanishing, while the sequence $\alpha_p = 1/\sqrt{p}$ is not.
+
+
+\subsection{The exact support recovery problem}
+\label{subsec:exact-support-recovery-Gaussian}
+
+Our study of the exact support recovery risk \eqref{eq:risk-exact} begins with a brief review of existing results for the Hamming loss \eqref{eq:Hamming-loss}.
+Indeed, as discussions in Section \ref{sec:asymptotics} suggest, the latter can be informative of the exact support recovery problems for models with independent components.
+
+Inspired by the phase transition results for the signal detection problem, \cite{ji2012ups}, \citet{genovese2012comparison}, and \cite{jin2014optimality} derived interesting sharp results on support recovery problems in linear models under the Hamming loss $H(\widehat S, S)$.
+Specifically, these papers establish minimax-type phase transition results in their respective settings. 
+Under the sparsity parametrization in \eqref{eq:signal-sparsity-additive} and assuming equal signal sizes of ${(2r\log{p})^{1/2}}$, Hamming losses were shown to diverge to $+\infty$ when $r$ falls below the threshold
+\begin{equation} \label{eq:strong-classification-boundary-Gaussian}
+    g(\beta) = (1 + (1 - \beta)^{1/2})^2,
+\end{equation}
+for any method of support estimation.
+Conversely, under orthogonal, or near-orthogonal random designs, if $r>g(\beta)$, they showed that the methods they proposed achieve vanishing Hamming loss.
+
+Very recently, \citet{butucea2018variable}\; studied both asymptotics and non-asymptotics of support recovery problems in the additive noise model \eqref{eq:model-additive-Chapter3} under the assumption of equal signal sizes, using the Hamming loss.
+Again, the analysis of asymptotic optimality focused on a newly proposed procedure which is very specific to the Gaussian model.
+It is not at all clear if the optimality properties are a consequence of its mysterious construction.
+
+We now show that commonly used and computationally efficient procedures can also be asymptotically optimal in the exact support recovery problem.
+
+\begin{theorem} \label{thm:Gaussian-error-exact-boundary}
+Consider the high-dimensional additive error model \eqref{eq:model-additive-Chapter3} under independent standard Gaussian errors, with signal sparsity and size as described in \eqref{eq:signal-sparsity-additive} and \eqref{eq:signal-size-additive}.
+The function \eqref{eq:strong-classification-boundary-Gaussian} characterizes the phase transition of the exact support recovery problem.
+Specifically, if $\underline{r} > {{g}}(\beta)$, then Bonferroni's, Sid\'ak's, Holm's, and Hochberg's procedures with slowly vanishing  nominal FWER levels (as defined in Definition \ref{def:slowly-vanishing}) all achieve asymptotically exact support recovery in the sense of \eqref{eq:support-recovery-success}. 
+
+Conversely, if $\overline{r} < {{g}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, we have $\P[\widehat{S}_p=S_p]\to0$.
+Therefore, in view of Lemma \ref{lemma:risk-exact-recovery-probability}, exact support recovery asymptotically fails for all thresholding procedures in the sense of \eqref{eq:support-recovery-failure}.
+\end{theorem}
+
+We visualize the result in a $\beta$-$r$ phase diagram in Figure \ref{fig:phase-Gaussian-errors}.
+
+Theorem \ref{thm:Gaussian-error-exact-boundary} is in fact a special case of the more general Theorem \ref{thm:sufficient} which covers dependent and non-Gaussian errors.
+We will study the exact support recovery problem in greater detail, and prove the more general version of the Theorem in Chapter \ref{chap:exact-support-recovery}. 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{./figures/phase_diagram_Gaussian_ALL_boundaries.eps}
+  \end{center}
+   \caption{The phase diagram of support recovery problems for the high-dimensional chi-square model \eqref{eq:model-additive-Chapter3}, illustrating the boundaries of the exact support recovery (FWER + FWNR; top curve; Theorem \ref{thm:Gaussian-error-exact-boundary}), the approximate-exact support recovery (FDR + FWNR; second curve from top; Theorem \ref{thm:Gaussian-error-approx-exact-boundary}), the exact-approximate support recovery (FWER + FNR; horizontal line $r=1$; Theorem \ref{thm:Gaussian-error-exact-approx-boundary}), and the approximate support recovery problems (FDR + FNR; tilted line $r=\beta$; Theorem \ref{thm:Gaussian-error-approx-boundary}). The signal detection problem (Type I + Type II errors of the global test; lower curve) was studied in Donoho and Jin (2004). In each region of the diagram and above, the annotated statistical risk can be made to vanish, as dimension $p$ diverges. Conversely, the risks has liminf at least one.}
+   \label{fig:phase-Gaussian-errors}
+\end{figure}
+
+
+\subsection{The approximate support recovery problem}
+\label{subsec:approx-support-recovery-Gaussian}
+
+\cite{arias2017distribution} studied the performance of the Benjamini-Hochberg procedure \citep{benjamini1995controlling} and a stripped-down version of the Cand\'es-Barber procedure \citep{barber2015controlling} in approximate support recovery problems when the components of the noise term $\epsilon$ in \eqref{eq:model-additive-Chapter3} have independent and symmetric distributions.
+A phase transition phenomenon for the approximate support recovery risk \eqref{eq:risk-approximate} was established in the Gaussian additive error model, where the two aforementioned methods are both shown to be asymptotically optimal.
+
+The analysis therein, however, assumed equal signal sizes for the alternatives.
+We generalize the main results of \citet{arias2017distribution} to allow for unequal signal sizes.
+
+\begin{theorem} \label{thm:Gaussian-error-approx-boundary}
+In the context of Theorem \ref{thm:Gaussian-error-exact-boundary}, the function 
+\begin{equation} \label{eq:approx-boundary-Gaussian}
+    h(\beta) = \beta
+\end{equation}
+characterizes the phase transition of approximate support recovery problem.
+Specifically, if $\underline{r} > {h}(\beta)$, then the Benjamini-Hochberg procedure (defined in Section \ref{sec:statistical-procedures}) with slowly vanishing nominal FDR levels (as defined in Definition \ref{def:slowly-vanishing}) achieves asymptotically approximate support recovery in the sense of \eqref{eq:support-recovery-success}. 
+
+Conversely, if $\overline{r} < {h}(\beta)$, then approximate support recovery asymptotically fails in the sense of \eqref{eq:support-recovery-failure} for all thresholding procedures.
+\end{theorem}
+
+Proof of Theorem \ref{thm:Gaussian-error-approx-boundary} is presented in Section \ref{sec:proofs}. 
+The key to proving this generalization is a monotonicity property of the \ac{BH} procedure. 
+Namely, the power of the \ac{BH} procedure in terms of FNR monotonically increases for stochastically larger alternatives.
+This fact will be formalized in Lemma \ref{lemma:monotonicity-BH-procedure}, and may be of independent interest.
+
+\subsection{The exact-approximate support recovery problem}
+\label{subsec:exact-approx-support-recovery-Gaussian}
+
+We now derive two new asymptotic phase transition results for the \emph{asymmetric} statistical risks, \eqref{eq:risk-exact-approx} and \eqref{eq:risk-approx-exact}, in the Gaussian error models.
+The next theorem describes the phase transition in the exact-approximate support recovery problem.
+
+\begin{theorem} \label{thm:Gaussian-error-exact-approx-boundary}
+In the context of Theorem \ref{thm:Gaussian-error-exact-boundary}, the function 
+\begin{equation} \label{eq:exact-approx-boundary-Gaussian}
+    \widetilde{g}(\beta) = 1
+\end{equation}
+characterizes the phase transition of exact-approximate support recovery problem.
+Specifically, if $\underline{r} > \widetilde{g}(\beta)$, then the procedures listed in Theorem \ref{thm:Gaussian-error-exact-boundary} with slowly vanishing nominal FWER levels (as defined in Definition \ref{def:slowly-vanishing}) achieve asymptotically exact-approximate support recovery in the sense of \eqref{eq:support-recovery-success}. 
+
+Conversely, if $\overline{r} < \widetilde{g}(\beta)$, then for any thresholding procedure $\widehat{S}$, the exact-approximate support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
+\end{theorem}
+
+Theorem \ref{thm:Gaussian-error-exact-approx-boundary} is proved in Section \ref{sec:proofs}. 
+The phase transition boundary \eqref{eq:exact-approx-boundary-Gaussian} is visualized in Figure \ref{fig:phase-Gaussian-errors}.
+
+
+\begin{remark}
+Boundary \eqref{eq:exact-approx-boundary-Gaussian} was briefly suggested by \citet{arias2017distribution}.
+Unfortunately, it was falsely claimed that the boundary characterized the phase transition of the \emph{exact} support recovery problem, and the alleged proof was left as an ``exercise to the reader''.
+This exercise was completed in Chapter \ref{chap:exact-support-recovery}, where the correct boundary \eqref{eq:exact-boundary-chisquared} was identified. 
+
+Theorem \ref{thm:Gaussian-error-exact-approx-boundary} here shows that the boundary \eqref{eq:exact-approx-boundary-Gaussian} \emph{does} exist, though for the slightly different \emph{exact-approximate} support recovery problem.
+As we will see in Section \ref{sec:chisq-boundaries}, the boundary \eqref{eq:exact-approx-boundary-Gaussian} also applies to the exact-approximate support recovery problem in chi-square models \eqref{eq:model-chisq}.
+\end{remark}
+
+\subsection{The approximate-exact support recovery problem}
+\label{subsec:aprox-exact-support-recovery-Gaussian}
+
+The last phase transition is in terms of the approximate-exact support recovery risk
+\eqref{eq:risk-approx-exact}.
+
+\begin{theorem} \label{thm:Gaussian-error-approx-exact-boundary}
+In the context of Theorem \ref{thm:Gaussian-error-exact-boundary}, the function 
+\begin{equation} \label{eq:approx-exact-boundary-Gaussian}
+    \widetilde{h}(\beta) = \left(\sqrt{\beta} + \sqrt{1-\beta}\right)^2
+\end{equation}
+characterizes the phase transition of approximate-exact support recovery problem.
+Specifically, if $\underline{r} > \widetilde{h}(\beta)$, then the Benjamini-Hochberg procedure with slowly vanishing nominal FDR levels (as defined in Definition \ref{def:slowly-vanishing}) achieves asymptotically approximate-exact support recovery in the sense of \eqref{eq:support-recovery-success}. 
+
+Conversely, if $\overline{r} < \widetilde{h}(\beta)$, then for any thresholding procedure $\widehat{S}$, the approximate-exact support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
+\end{theorem}
+
+Theorem \ref{thm:Gaussian-error-approx-exact-boundary} is proved in Section \ref{sec:proofs}.
+The phase transition boundary \eqref{eq:approx-exact-boundary-Gaussian} is visualized in Figure \ref{fig:phase-Gaussian-errors}.
+
+
+\subsection{Asymptotic power analysis}
+\label{subsec:power-analysis}
+
+Theorems \ref{thm:Gaussian-error-exact-boundary} through \ref{thm:Gaussian-error-approx-exact-boundary} allow us to asymptotically quantify the required signals sizes in support recovery problems, as well as in the global hypothesis testing problem in the Gaussian additive error model \eqref{eq:model-additive-Chapter3}. 
+Specifically, these results indicate that at all sparsity levels $\beta\in(0,1)$, the difficulties of the problems in terms of the required signal sizes have the following ordering
+$$
+f(\beta) < h(\beta) < \widetilde{g}(\beta) < \widetilde{h}(\beta) < g(\beta),
+$$
+as previewed in Figure \ref{fig:phase-Gaussian-errors}.
+The ordering aligns with our intuition that the required signal sizes must increase as we move from detection to support recovery problems.
+Similarly, more stringent criteria for error control (e.g., FWER compared to FDR) require larger signals.
+We can now also compare $\widetilde{g}(\beta)$ and $\widetilde{h}(\beta)$, whose ordering may not be clear from this line of reasoning.
+
+
+\medskip
+
+Our last comment is on the gap between FDR and FWER under sparsity assumptions. 
+Although it is believed that FWER control is sometimes too stringent compared to, say, FDR control in support recovery problems, the fact that all three thresholds (detection, weak, and strong classification) involve the same scaling indicates that the difficulties of the three problems (signal detection, approximate, and exact support recovery) are comparable when signals are very sparse, i.e., when $\beta$ is close to 1.
+This is illustrated with the next example.
+
+\begin{example}[Power analysis for variable selection] \label{exmp:gap-when-signal-sparse}
+For Gaussian errors (AGG with $\nu = 2$), when $\beta = 3/4$, the signal detection boundary \eqref{eq:detection-boundary-large-signals} says that signals will have to be at least of magnitude $\sqrt{(\log{p})/2}$, 
+while approximate support recovery \eqref{eq:approx-boundary-Gaussian} requires signal sizes of at least $\sqrt{3(\log{p})/2}$, 
+and exact support recovery \eqref{eq:strong-classification-boundary-Gaussian} calls for signal sizes of at least $\sqrt{9(\log{p})/2}$. 
+The required signal sizes increases, but are within the same order of magnitude.
+
+If $m$ independent copies $x_1,\ldots,x_m$ of the observations were made on the same set of $p$ locations, then by taking location-wise averages, $\overline{x}_{m}(j) = \frac{1}{m}\sum_{i=1}^{m} x_i(j)$,
+we can reduce error standard deviation, and hence boost the signal-to-noise ratio, by a factor of $\sqrt{m}$.
+By the simple calculations above, if $m$ samples are needed to detect (sparse) signals of a certain magnitude, then $3m$ samples will enable approximate support recovery with FDR control, and in fact, $9m$ samples would enable exact support recovery with FWER control.
+\end{example}
+
+On the other hand, the gap between FDR and FWER is much larger when signals are dense.
+For example, if the signals are only \emph{approximately} sparse, i.e., having a few components above \eqref{eq:strong-classification-boundary-Gaussian} but many smaller components above  \eqref{eq:approx-boundary-Gaussian}, then FDR-controlling procedures will discover substantially larger proportion of signals than FWER-controlling procedures.
+
+Indeed, as $\beta\to0$, the required signal size for approximate support recovery \eqref{eq:approx-boundary-Gaussian} tends to 0, while the required signal size for exact support recovery \eqref{eq:strong-classification-boundary-Gaussian} tends to $4$ in the Gaussian error models.
+While Example \ref{exmp:gap-when-signal-sparse} indicates that the exact support recovery is not much more stringent than approximate support recovery when signals are sparse, the gap between required signal sizes widens when signals are dense. 
+

@@ -1,0 +1,65 @@
+
+We introduce a fairly general class of distributions known as \ac{AGG} in this section, and state some properties about the tails of the AGG distributions.
+
+\begin{definition} \label{def:AGG}
+A distribution $F$ is called asymptotic generalized Gaussian with parameter $\nu>0$ (denoted $\text{AGG}(\nu)$) if
+\begin{enumerate}
+    \item $F(x)\in(0,1)$ for all $x\in\R$, and \smallskip
+    \item $\log{\overline{F}(x)} \sim -\frac{1}{\nu}x^\nu$ and $\log{F(-x)} \sim -\frac{1}{\nu}(-x)^\nu,$ \label{eq:AGG}
+\end{enumerate}
+where $\overline{F}(x) = 1 - F(x)$ is the survival function, and $a(x)\sim b(x)$ is taken to mean $\lim_{x\to\infty} a(x)/b(x) = 1$.
+\end{definition}
+
+The AGG models include, for example, the Gaussian distribution ($\nu = 2$), and the Laplace distribution ($\nu = 1$) as special cases. 
+Since the requirement is only placed on the tail behavior, this class encompasses a large variety of light-tailed models, and is commonly used in the literature on high-dimensional testing \citep{cai2007estimation, arias2017distribution}.
+
+
+% On the other hand, the AGG models are themselves special cases of a more general class of tail models as we will see in Example \ref{exmp:AGG}.
+% For simplicity of exposition, however, we shall focus on the $\text{AGG}(\nu)$ distributions, where the quantiles have explicit expressions.
+
+\begin{proposition} \label{prop:quantile}
+The $(1/p)$-th upper quantile of $\text{AGG}(\nu)$ is
+\begin{equation} \label{eq:AGG-quantiles}
+    u_{p} := F^\leftarrow(1-1/p) \sim \left(\nu\log{p}\right)^{1/\nu},\quad \text{as }\;p\to\infty,
+\end{equation}
+where $F^\leftarrow(q) = \inf_x\{x:F(x)\ge q\},\ q\in (0,1)$.
+\end{proposition}
+% The proof of Proposition \ref{prop:quantile} can be found in Section \ref{suppsec:AGG} of the supplement \citep{gao2018supplement}.
+% We remark here that the family of density is log-concave for $\nu \ge 1$, therefore the oracle procedure is the thresholding procedure (See Section \ref{subsec:oracle}).
+
+
+% \begin{proposition}[$(1 - 1/p)$-th quantile] \label{prop:quantile}
+% Let 
+% \begin{equation} \label{eq:quantiles-Appendix}
+% u_p = F^{\leftarrow}(1-1/p),    
+% \end{equation}
+% then,
+% \begin{equation}
+% \lim_{p\to\infty} \frac{u_p}{\left(\nu\log{p}\right)^{1/\nu}} = 1.
+% \end{equation}
+% \end{proposition}
+% 
+\begin{proof}[Proof of Proposition \ref{prop:quantile}]
+By definition of AGG, for any $\epsilon>0$, there is a constant $C(\epsilon)$ such that for all $x\ge C$, we have
+$$
+-\frac{1}{\nu}x^\nu(1+\epsilon) \le \log{\overline{F}(x)} \le -\frac{1}{\nu}x^\nu(1-\epsilon).
+$$
+Therefore, for all $x < x_l := \left((1+\epsilon)^{-1}\nu\log{p}\right)^{1/\nu}$, we have
+\begin{equation} \label{eq:AGG-quantiles-proof-1}
+    -\log{p} = -\frac{1}{\nu}x_l^\nu(1+\epsilon) \le \log{\overline{F}(x_l)} \le \log{\overline{F}(x)},
+\end{equation}
+and for all $x > x_u := \left((1-\epsilon)^{-1}\nu\log{p}\right)^{1/\nu}$, we have
+\begin{equation} \label{eq:AGG-quantiles-proof-2}
+    \log{\overline{F}(x)} \le \log{\overline{F}(x_u)} \le -\frac{1}{\nu}x_u^\nu(1-\epsilon) = -\log{p}.
+\end{equation}
+By definition of generalized inverse,
+\begin{equation*}
+    u_p := F^\leftarrow(1-1/p) = \inf\{x:\overline{F}(x)\le 1/p\} = \inf\{x:\log{\overline{F}(x)} \le -\log{p}\}.
+\end{equation*}
+We know from relations \eqref{eq:AGG-quantiles-proof-1} and \eqref{eq:AGG-quantiles-proof-2} that 
+$$
+[x_u, +\infty) \subseteq \{x:\log{\overline{F}(x)} \le -\log{p}\} \subseteq [x_l, +\infty),
+$$
+and so $x_l\le u_p \le x_u$, and the expression for the quantiles follow.
+\end{proof}
+

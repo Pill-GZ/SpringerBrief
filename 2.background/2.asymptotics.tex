@@ -1,0 +1,111 @@
+
+We look to derive useful asymptotic approximations for high dimensional problems, and analyze the afore-mentioned procedures in the regime where the dimensionality of the observations diverge.
+Throughout this text, we consider triangular arrays of observations as described in Models \eqref{eq:model-additive} and \eqref{eq:model-chisq}, and study the performance of procedures in the signal detection and support recovery tasks when 
+\begin{equation*}
+  p\to\infty.
+\end{equation*}
+The criteria for success and failure in support recovery problems under this high-dimensional asymptotic regime are defined as follows.
+\begin{definition} \label{def:exact-recovery-success-failure}
+We say a sequence of procedures $\mathcal{R} = \mathcal{R}_p$ succeeds asymptotically in the detection problem (and respectively, exact, exact-approximate, approximate-exact, and approximate support recovery problem) if 
+\begin{equation} \label{eq:support-recovery-success}
+    \mathrm{risk}^{\mathrm{P}}(\mathcal{R}) \to 0, \quad \text{as}\quad p\to\infty,
+\end{equation}
+where $\mathrm{P}=\mathrm{D}$ (respectively, $\mathrm{E}$, $\mathrm{EA}$, $\mathrm{AE}$, $\mathrm{A}$).
+
+Conversely, we say the exact support recovery fails asymptotically in the detection problem (and respectively, exact, exact-approximate, approximate-exact, and approximate support recovery problem) if 
+\begin{equation} \label{eq:support-recovery-failure}
+    \liminf\mathrm{risk}^{\mathrm{P}}(\mathcal{R}) \ge 1, \quad \text{as}\quad p\to\infty,
+\end{equation}
+where $\mathrm{P}=\mathrm{D}$ (respectively, $\mathrm{E}$, $\mathrm{EA}$, $\mathrm{AE}$, $\mathrm{A}$).
+\end{definition}
+The choice of the constant 1 in the definition \eqref{eq:support-recovery-failure} allows us to declare failure for trivial testing procedures. 
+For example, trivial deterministic procedures that always reject, and ones that always fail to reject, both have statistical risks 1 in either the detection or the support recovery problem.
+Similarly, a trivial randomized procedure that reject the nulls uniformly at random also has risk of 1, and is declared as a failure in both problems.
+
+% Similarly, we define the criteria for asymptotic success and failure for approximate support recovery as follows.
+% \begin{definition} \label{def:approx-recovery-success-failure}
+% We say a sequence of procedures $\mathcal{R} = \mathcal{R}_p$ succeeds asymptotically in the approximate support recovery problem if 
+% \begin{equation} \label{eq:approx-recovery-success}
+%     \mathrm{risk}^{\mathrm{A}}(\mathcal{R}) \to 0, \quad \text{as}\quad p\to\infty.
+% \end{equation}
+% We say the approximate support recovery fails asymptotically if 
+% \begin{equation} \label{eq:approx-recovery-failure}
+%     \liminf\mathrm{risk}^{\mathrm{A}}(\mathcal{R}) \ge 1, \quad \text{as}\quad p\to\infty.
+% \end{equation}
+% \end{definition}
+
+% The performance of procedures in terms of the criteria in Definition \ref{def:exact-recovery-success-failure} 
+% % and \ref{def:approx-recovery-success-failure} 
+% will be analyzed in Sections \ref{subsec:exact-support-recovery-boundary} and \ref{subsec:approx-support-recovery-boundary}.
+
+{\bf Signal detection.}
+The asymptotic behavior of the statistical risk of signal detection problems \eqref{eq:risk-detection} in high dimensions was first studied in \cite{ingster1998minimax}, where a so-called phase transition phenomena was discovered for sparse additive models \eqref{eq:model-additive} with independent and Gaussian components. 
+That is, depending on the signal size and sparsity of the signal $\mu$, the detection risk either vanishes, or has a liminf of 1 when we apply the theoretically optimal \ac{LR} test, as dimensionality of the problem diverges.
+The \ac{LR} test, unfortunately, relies on the knowledge of signal sparsity and signal sizes which are often unknown.
+The sparsity-and-signal-size-agnostic statistic \ac{HC} was identified to attain such optimal performance limits in sparse Gaussian models in \cite{donoho2004higher}. 
+A modified goodness-of-fit test statistic in \citet{zhang2002powerful}, and two statistics based on thresholded-$L_1$ and $L_2$ norms in \cite{zhong2013tests} were also shown to be asymptotically optimal in the detection problem.
+Recent studies have also focused on the behavior of detection risk \eqref{eq:risk-detection} in dense and scale mixture models \cite{cai2011optimal}, under general distributional assumptions \citep{cai2014optimal, arias2017distribution1}, as well as when errors are dependent \citep{hall2010innovated}.
+A comprehensive review focusing on the role of \ac{HC} in detection problems can be found in \cite{donoho2015special}.
+Notwithstanding the extensive literature on the detection problem, performances of simple statistics such as $L_q$ norms \eqref{eq:Lq-norm} and sums \eqref{eq:sum-statistic}, to the best of our knowledge, have only been sparingly documented. 
+We gather relevant results in Chapter \ref{chap:phase-transitions}, and make several new reports on the performance of statistics commonly used in practice.
+
+\medskip
+
+{\bf Exact support recovery.}
+There is a wealth of literature on the so-called sparsistency (i.e., $\P[\widehat{S} = S]\to 1$ as $p\to\infty$) problem in the regression context. 
+Sparsistency problems were pursued, among many others, by \citet{zhao2006model} and \citet{wasserman2009high} in the high-dimensional regression setting (where the number of samples $n\ll p$), and by \citet*{meinshausen2006high} in graphical models.
+Although there have been numerous studies on the sufficient conditions for sparsistency, efforts on necessary conditions have been scarce.
+Notable exceptions include \cite{wainwright2009information, wainwright2009sharp} and \cite{comminges2012tight} in regression problems.
+We refer readers to the recent book by \cite{wainwright2019high} (and in particular, the bibliographical sections of Chapters 7 and 15) for a comprehensive review.
+
+Elaborate asymptotic minimax optimality results under the Hamming loss were derived for methods proposed in \cite{ji2012ups} and \cite{jin2014optimality} for regression problems.
+More recently, \cite{butucea2018variable} also obtained similar minimax optimality results for a specific procedure in the Gaussian additive error model \eqref{eq:model-additive} in terms of the expected Hamming loss.
+
+Nevertheless, two important questions remained unanswered.
+Namely, precise phase-transition-type results for the exact support recovery risk \eqref{eq:risk-exact} and for the support recovery probability \eqref{eq:risk-prob} 
+% --- akin to that obtained in \cite{arias2017distribution} for the approximate support recovery risk \eqref{eq:risk-approximate} --- 
+have not been established.
+And secondly, performance of commonly used statistical procedures reviewed in Section \ref{sec:statistical-procedures}
+in terms of these risk metrics have not been studied.
+Resolving these two issues, we show in this text that several well-known FWER-controlling procedures --- including Bonferroni's procedure --- are optimal in the additive error model under both one-sided and two-sided alternatives.
+% these results have appeared in \cite{gao2018fundamental} and \cite{gao2019five}
+
+\medskip
+
+{\bf Approximate support recovery.}
+Performance limits of FDR-controlling procedures in the support recovery problem have been actively studied in recent years.
+The asymptotic optimality of the Benjamini-Hochberg procedure
+% in the Gaussian scale mixture model 
+was analyzed under decision theoretic frameworks in \cite{genovese2002operating, bogdan2011asymptotic, neuvial2012false}, with main focus on location/scale models. 
+In particular, these papers show that the statistical risks of the procedures come close to that of the oracle procedures under suitable asymptotic regimes.
+Strategies for dealing with multiple testing under general distributional assumptions can be found in, e.g., \cite{efron2004large}, \cite{storey2007optimal}, and \cite{sun2007oracle}.
+The two-sided alternative in the additive error model was featured as the primary example in \cite{sun2007oracle}.
+
+In the additive error model \eqref{eq:model-additive} under independent Gaussian errors and one-sided alternatives \eqref{eq:global-test-one-sided},
+\cite{arias2017distribution} showed that a phase transition exists for  the approximate support recovery risk \eqref{eq:risk-approximate}.
+The \ac{BH} procedure \cite{benjamini1995controlling}, and the Cand\'es-Barber procedure \cite{barber2015controlling} was identified to be asymptotically optimal. % \citet{rabinovich2017optimal} further established the rate-optimality of both procedures under the same regime.
+However, \cite{arias2017distribution}, as all related work so far, assumed the non-nulls to follow a common alternative distribution.
+We derive a new phase transitions result that relaxes this assumption on the alternatives in Chapter \ref{chap:phase-transitions}.
+
+\medskip
+
+{\bf Asymmetric statistical risks.}
+Although weighted sums of false discovery and non-discovery have been studied in the literature mentioned above, none has considered simultaneous family-wise error control and marginal, location-wise power requirements.
+As a result, asymmetric statistical risks such as \eqref{eq:risk-exact-approx} and \eqref{eq:risk-approx-exact} have not been investigated.
+As argued in Section \ref{sec:risks}, properties of these asymmetric risks are of important practical concern in applications such as GWAS.
+We study the asymptotic behavior of these risks in Chapters \ref{chap:phase-transitions} and \ref{chap:GWAS} of this text.
+% ; the results therein have appeared in \cite{gao2019five}.
+% these results have appeared in \cite{gao2018fundamental} and \cite{gao2019five}
+
+\medskip
+
+{\bf Chi-square models and GWAS.}
+The high-dimensional chi-square model \eqref{eq:model-chisq} seemed to have received little attention in the literature.
+While the sparse signal detection problem in the chi-square model has been studied \cite{donoho2004higher}, to the best of our knowledge,  asymptotic limits of the support recovery problems have not been studied.
+The chi-squared model and the motivating GWAS application are analyzed in Chapter \ref{chap:GWAS}.
+The results obtained therein help us understand the sharp power decay in GWAS that have been long observed \citep{bush2012genome} and recently reviewed and visualized \citep{gao2019upass}.
+
+% Results in Chapter \ref{chap:GWAS} now appear in \cite{gao2019five}.
+% We also analyzed asymptotic equivalences of several additional common association tests, and implement power calculations for GWAS in a software tool \cite{gao2019upass}. 
+% The software streamlines power analysis with a canonical disease model invariant parametrization, and therefore enables forensics of reported findings in genetic association studies.
+% We introduce the software and illustrate its use in the appendix.
