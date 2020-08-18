@@ -1,0 +1,80 @@
+
+\preface
+
+
+%\fbox{From Springer}
+%{\color{blue}
+%% Please write your preface here
+%Use the template \emph{preface.tex} together with the Springer document class SVMono (monograph-type books) or SVMult (edited books) to %style your preface in the Springer layout.
+
+%A preface\index{preface} is a book's preliminary statement, usually written by the \textit{author or editor} of a work, which states its origin, scope,
+ %purpose, plan, and intended audience, and which sometimes includes afterthoughts and acknowledgments of assistance. 
+%When written by a person other than the author, it is called a foreword. The preface or foreword is distinct from the introduction, which deals with 
+%the subject of the work.
+%
+%Customarily \textit{acknowledgments} are included as last part of the preface.}
+ 
+
+
+This text presents a collection of new results and recent developments on the phase transition phenomena in sparse signal problems.
+The main theme is the study of the fundamental limits in testing and signal support recovery in high-dimensions.  This subject has 
+received a lot of attention since the seminal works of \cite{ingster1998minimax,donoho2004higher} \fbox{Add references}. These works
+have established the presence of fundamental limits in the so-called {\em needle in haystack} problems, where sparse 
+signal is observed in high-dimensional additive noise.  In this setting, two archetypal problems arise -- the {\em signal detection} and 
+{\em support support recovery}.  Signal detection is a hypothesis testing problem, which aims to determine the presence of non-zero
+signal in some of the dimensions. On the other hand, support recovery is an inference problem, where one aims to estimates the set of
+coordinates with non-trivial signal.
+
+
+
+  to , pamounts to testing for the presence of a signal, while the support recovery is an inference problem 
+
+aims to do inference 
+on the components of the signal  deals with 
+
+ , where one wants to {\em detect}
+the presence of a sparse signal observed with high-dimensional additive noise.  
+
+testing and inference problems, which manifest themselves 
+as sharp phase-transitions between regimes where the statistical problems are possible or impossible to solve.  
+
+Such phase transitions are formally described in the high-dimensional asymptotics regime where both the signal size and its dimension 
+grow to infinity, while the sample size is {\em fixed}.   In such a regime, sparse signals can be detected and their non-zero entries can be 
+recovered 
+
+  with the help of asympt
+
+ a  may be formulated as
+{\em phase transitions} between the on a certain sparsity
+
+  and makes the connection to the forces behind these statistcal results --- a probablistic phenomena known as concentration of maxima.
+We begin with idealized models where high-dimensional signals are observed with independent additive Gaussian noise.
+Under suitable parametrization of the signal sparsity and signal sizes, 
+we characterize several new phase transition phenomena in high-dimensional additive error models, and derive the signal sizes necessary and sufficient for statistical procedures to simultaneously control false discovery (in terms of Type I error, {FDR}, or {FWER}) and missed detection (in terms of Type II error, {FNR}, or {FWNR}) in large dimensions.
+% Several new phase transition phenomena are characterized.
+Specifically, we show that, depending on the signal sparsity and signal sizes, the sum of the statistical risks for false discovery  and missed detection either can be controlled at very low levels in high dimensions, or must be at least one in the limit, for all thresholding procedures.
+
+The phase transition in the case of family-wise type I and type II error control is further generalized to cover non-Gaussian and dependent observations.
+We show that the sharp zero-one law continues to hold under a very broad class of error dependence structures, and for a very broad class of error distributions with light, rapidly varying, tails.
+The key to this important generalization is a certain {concentration of maxima} phenomenon known as relative stability. 
+We demystify the dependence conditions of the phase transition by providing a complete characterization of the relative stability concept for Gaussian triangular arrays in terms of their correlation structures.
+% The proof uses classic Sudakov-Fernique and Slepian lemma arguments along with a curious application of Ramsey's coloring theorem. 
+
+Finally, motivated by marginal screenings of categorical variables, we study high-dimensional multiple testing problems where test statistics have approximate chi-square distributions.
+Phase transitions are established for support recovery problems in high-dimensional chi-square models.
+Remarkably, the degree-of-freedom parameters in the chi-square distributions do not affect the boundaries in all phase transitions.
+% Several well-known procedures are shown to attain these boundaries.
+We also elucidate on the notion of signal sizes in association tests by characterizing its relationship with marginal frequencies, odds ratio, and sample sizes in $2\times2$ contingency tables. 
+This allows us to illustrate an interesting manifestation of the phase transition phenomena in % \ac{GWAS},
+genome-wide association studies (GWAS), 
+and explain some long-standing empirical observations on the discoverability of signals in GWAS.
+As an auxiliary result, we show that, perhaps surprisingly, given total sample sizes, balanced designs in such association studies rarely deliver optimal power. 
+
+
+\vspace{\baselineskip}
+\begin{flushright}\noindent
+Chicago \hfill {\it Zheng Gao }\\
+Ann Arbor, August 2020\hfill {\it Stilian Stoev}\\
+\end{flushright}
+
+
