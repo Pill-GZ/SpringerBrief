@@ -17,35 +17,90 @@
 
 
 This text presents a collection of new results and recent developments on the phase transition phenomena in sparse signal problems.
-The main theme is the study of the fundamental limits in testing and signal support recovery in high-dimensions.  This subject has 
-received a lot of attention since the seminal works of \cite{ingster1998minimax,donoho2004higher} \fbox{Add references}. These works
-have established the presence of fundamental limits in the so-called {\em needle in haystack} problems, where sparse 
-signal is observed in high-dimensional additive noise.  In this setting, two archetypal problems arise -- the {\em signal detection} and 
-{\em support support recovery}.  Signal detection is a hypothesis testing problem, which aims to determine the presence of non-zero
-signal in some of the dimensions. On the other hand, support recovery is an inference problem, where one aims to estimates the set of
-coordinates with non-trivial signal.
+The main theme is the study of the fundamental limits in high-dimensional testing and inference. Since the seminal works
+of \cite{ingster1998minimax} and \cite{donoho2004higher}, the subject has received a lot of attention in the literature with important contributions
+from \fbox{Add references}.  These works (among others) have discovered the presence of fundamental limits in the so-called 
+{\em needle in haystack} problems, where a sparse signal is observed in high-dimensional additive noise.  In this setting, two archetypal 
+problems arise -- the {\em signal detection} and {\em support support recovery}.  Signal detection is a hypothesis testing problem, which amounts
+to testing for the presence of non-zero signal in some (any) of the dimensions.  Support recovery, on the other hand, is an inference problem, which aims to estimate the signal support -- the locations of the non-zero signal components.  The fundamental limits of these problems are studied in the so-called high-dimensional asymptotics regime where the sample size $n$ is fixed and the dimension $p$ of the underlying signal 
+grows to infinity.   
+
+From a probabilistic perspective, the above phase transition phenomena are asymptotic zero-one type laws, as $p\to\infty$.  
+Namely, consider a sparse signal with  {\em support size} on the order of $p^{1-\beta}$ for some parameter $\beta\in (0,1)$.  
+Parameterize the non-zero {\em signal amplitude} by $\Delta(p^r)$, 
+for some $r>0$ and a suitable monotone non-decreasing function $\Delta(\cdot)$.  Then, for a broad range of error distributions and
+statistical problems, one encounters a sharp transition between the regimes where the problem is solvable and unsolvable depending on 
+the signal magnitude $r$ and signal sparsity $\beta$.  More precisely, there exists a boundary function $f(\beta)$ such that if 
+the signal magnitudes are {\em above} the boundary, $r> f(\beta)$, then the problem can be solved with vanishing loss as $p\to\infty$, with a suitable statistical procedure.  On the other hand, if the signal is below that same boundary, i.e., $r<f(\beta)$, all statistical procedures fail to  provide a solution with a vanishing loss, as $p\to\infty$. Of course, depending on whether one considers the  detection (testing) or support recovery 
+(inference) problems, different loss functions quantify success and failure. The choice of the loss functions is often guided by the 
+applications, resulting in a wide variety of phase-transitions (see e.g.\ Figure \ref{FIGURE} \fbox{FIGURE?}).
+
+     
+{\bf The contributions of this work.} The fundamental limits of the classic detection problem hinge 
+of the analysis of the discrepancy between the {\em null} and {\em alternative} hypotheses e.g., via Hellinger distance.  Thus, perhaps 
+for  technical reasons, much of the analysis was done under the assumption that the additive errors are independent and/or Gaussian.  
+In this work, we demonstrate that the support recovery problems, especially {\em exact support recovery}, are best understood from 
+the novel perspective of the {\em concentration of maxima} phenomenon in extreme value theory.  It turns out that under a very broad 
+range of light-tailed error distributions and under a {\em very} broad range of error dependence structures, the maxima of the errors, 
+when rescaled (but not centered!) converge in probability to a positive constant. This concentration property leads to a complete solution 
+of the exact  support recovery problem for the broad family of thresholding procedures.  Most if not all existing support estimation procedures 
+are types thresholding procedures.   That is, the signal support estimate comprises of all components exceeding a suitable (potentially 
+data-dependent)  threshold.  We show, by exploiting concentration of maxima, that thresholding procedures obey a phase-transition, where if the signal is above a 
+certain boundary, asymptotically exact recovery is possible while below the boundary all thresholding procedures fail, as $p\to\infty$.  
+Remarkably, light-tailed maxima concentrate under very broad and strong dependence.  This is exemplified by our characterization of
+the concentration of maxima phenomenon for Gaussian triangular arrays.  For example, in the special case of stationary Gaussian time
+series, vanishing auto-covariance is necessary and sufficient for the maxima to concentrate in the same way as independent standard 
+normal random variables.   These probabilistic contributions are of independent interest and extend classic work of \cite{berman1964limit}. 
+Concentration of maxima is a type of super-concentration phenomenon studied also in \cite{chatterjee:2014} and \cite{tanguy:2015}.
+The robustness of the concentration of maxima phenomenon to dependence can perhaps explain the universality 
+of phase transitions in support recovery problems.
+
+The use of concentration of maxima phenomenon highlights one core idea in our work, which allows for a first of its kind comprehensive 
+treatment of thresholding procedures under very broad error-dependence conditions.  The text involves also a full spectrum of related results 
+such as minimax-optimality and finite-sample Bayes-optimality in support estimation.  Using different type of loss functions and typeI error 
+controls, we obtain a rich picture of the exact and approximate support recovery problems in high dimensions.  
+Many of these phase transitions have not appeared in previously published literature.  
+
+High-dimensional support recovery problems arise in many modern applications ranging from cybersecurity to  statistical genetics.  
+Genome-wide association studies (GWAS) in genetics is a particularly natural application, where the theoretical phase-transition results help 
+explain and quantify a previously observed empirical phenomenon of the so-called steep part of the power curve.  
+In the last chapter of this work, we detail this application and highlight future theoretical and practical consequences of our work.
+
+
+{\bf Target audience.} The original research presented in this text originates from the doctoral dissertation of the first author in the 
+Statistics department at the University of Michigan, Ann Arbor.  The main goal of this text is to provide a comprehensive treatment of the
+exact and approximate support recovery problems by utilizing existing and newly developed probabilistic tools on concentration of maxima.
+The text also provides a self-contained introduction to the state-of-the-art in the dynamic area of phase-transitions in high-dimensional 
+testing and inference.  It is accessible to doctoral students in Statistics with background in measure-theoretic probability and  
+statistics as well as to researchers in applied fields working with high-dimensional data sets.  The text can be used as a reference and a
+supplement to a special topics course on high-dimensional inference.
+
+{\bf Acknowledgements.} The authors gratefully acknowledge the support of all colleagues from the Statistics Department at the 
+University of Michigan, Ann Arbor.   Special thanks (in alphabetical order) go to Xuming He, Tailen Hsing, Michalis Kallitsis, Liza Levina, 
+Rodderick Little, Ya'acov Ritov, Kerby Shedden, Jinqi Shen, Jonathan Terhorst, Gongjun Xu, \fbox{add more}
+The authors were partially supported by the NSF program {\em Algorithms for Threat Detection}.
+
+
+\comment{
+
+  \fbox{ ADD ATD}
+
+application of t
+complete pi phase transitions in support estimation under several important loss functions arising
+in applications.  This leads to a rich picture of phase transitions, 
+
+ Our contributions involve a The support 
+
+  for the support to be recovered (as $p\to\infty$) the 
+
+ effectively implies that for the support to be possible to estimate, the set of 
+positive signal entries must separate as $p\to\infty$
+from the rest of the signal, when the signal magnitude is above a certa is  with with 
+
+one has that 
 
 
 
-  to , pamounts to testing for the presence of a signal, while the support recovery is an inference problem 
-
-aims to do inference 
-on the components of the signal  deals with 
-
- , where one wants to {\em detect}
-the presence of a sparse signal observed with high-dimensional additive noise.  
-
-testing and inference problems, which manifest themselves 
-as sharp phase-transitions between regimes where the statistical problems are possible or impossible to solve.  
-
-Such phase transitions are formally described in the high-dimensional asymptotics regime where both the signal size and its dimension 
-grow to infinity, while the sample size is {\em fixed}.   In such a regime, sparse signals can be detected and their non-zero entries can be 
-recovered 
-
-  with the help of asympt
-
- a  may be formulated as
-{\em phase transitions} between the on a certain sparsity
 
   and makes the connection to the forces behind these statistcal results --- a probablistic phenomena known as concentration of maxima.
 We begin with idealized models where high-dimensional signals are observed with independent additive Gaussian noise.
@@ -68,7 +123,7 @@ We also elucidate on the notion of signal sizes in association tests by characte
 This allows us to illustrate an interesting manifestation of the phase transition phenomena in % \ac{GWAS},
 genome-wide association studies (GWAS), 
 and explain some long-standing empirical observations on the discoverability of signals in GWAS.
-As an auxiliary result, we show that, perhaps surprisingly, given total sample sizes, balanced designs in such association studies rarely deliver optimal power. 
+As an auxiliary result, we show that, perhaps surprisingly, given total sample sizes, balanced designs in such association studies rarely deliver optimal power. }
 
 
 \vspace{\baselineskip}
