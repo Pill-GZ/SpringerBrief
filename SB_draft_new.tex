@@ -10,6 +10,8 @@
 % RECOMMENDED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[graybox,envcountchap,sectrefs]{svmono}
 
+
+
 % choose options for [] as required from the list
 % in the Reference Guide
 
@@ -31,9 +33,9 @@
 % see the list of further useful packages
 % in the Reference Guide
 
-\makeindex             % used for the subject index
-                       % please use the style svind.ist with
-                       % your makeindex program
+\makeindex       % used for the subject index
+                         % please use the style svind.ist with
+                         % your makeindex program
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -111,8 +113,12 @@
 \usepackage{bbm}
 \usepackage{booktabs}
 \usepackage{hyperref}
+\usepackage{makeidx}
 
-
+%
+% Setting table of contents depth,
+%
+\setcounter{tocdepth}{1}
 
 \begin{document}
 
@@ -128,11 +134,22 @@
 %\include{author/preface}
 %\include{author/acknowledgement}
 
+
+
+{\color{blue}
+\fbox{TO DO}
+\begin{itemize}
+  \item Add index.
+  \item Add exercises to each chapter.
+  \item Add more examples and references to the planted matrix problems.
+\end{itemize}
+}
+
 \tableofcontents
 
 \include{acronyms}
 
-\include{abstract}
+\include{preamble}
 
 \mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -176,9 +193,14 @@ Fundamental Statistical Limits in Genome-wide Association Studies}
 
 %\include{author/glossary}
 %\include{author/solutions}
+
+
+\chapter{Index and Bibliography}
+
 \printindex
 
 \bibliography{./tex/thesis}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
