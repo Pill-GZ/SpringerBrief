@@ -258,20 +258,13 @@ We claim that we can find a $\gamma$-packing $\mathcal{N}$ whose number of eleme
     |\mathcal{N}| \ge q/N(\delta).
 \end{equation}
 Indeed, $\mathcal{N}$ can be constructed iteratively as follows:
-\begin{itemize}[
-    align=left,
-    leftmargin=4em,
-    itemindent=0pt,
-    labelsep=0pt,
-    labelwidth=4em
-    ]
-    \raggedright
-    \item[{\bf Step 1:}] Set $S_p^{(1)}:=S_p$ and $\mathcal{N}:=\{j_1\}$, where $j_1\in S_p^{(1)}$ is an arbitrary element. Set $k:=1$.\\
-    \item[{\bf Step 2:}] Set $S_p^{(k+1)}:=S_p^{(k)}\setminus B_\gamma(j_k)$, where
+\begin{itemize}    \raggedright
+    \item[{\bf 1:}] Set $S_p^{(1)}:=S_p$ and $\mathcal{N}:=\{j_1\}$, where $j_1\in S_p^{(1)}$ is an arbitrary element. Set $k:=1$.\\
+    \item[{\bf 2:}] Set $S_p^{(k+1)}:=S_p^{(k)}\setminus B_\gamma(j_k)$, where
     $$
     B_\gamma(j_k) := \{i\in S_p: \;d(i,j_k) < \gamma \equiv \sqrt{2(1-\delta)}\}.
     $$
-    \item[{\bf Step 3:}] If $S_p^{(k)} \neq \emptyset$, pick an arbitrary $j_{k+1}\in S_p^{(k)}$, set $\mathcal{N}:=\mathcal{N}\cup\{j_{k+1}\}$, and $k:=k+1$, go to step 2; otherwise, stop.
+    \item[{\bf 3:}] If $S_p^{(k)} \neq \emptyset$, pick an arbitrary $j_{k+1}\in S_p^{(k)}$, set $\mathcal{N}:=\mathcal{N}\cup\{j_{k+1}\}$, and $k:=k+1$, go to step 2; otherwise, stop.
 \end{itemize}
 By the definition of UDD (see Definition \ref{def:UDD}), there are at most $N(\delta)$ coordinates whose covariance with $\epsilon(j)$ exceed $\delta$. 
 Therefore at each iteration, $\left|B_\gamma(j_k)\right|\le N(\delta)$, and hence

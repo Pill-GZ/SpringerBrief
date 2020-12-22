@@ -64,7 +64,14 @@ If the design matrix $X$ is of full column rank, then the ordinary least squares
 \begin{equation} \label{eq:OLS}
     \widehat{\mu} = \left(X'X\right)^{-1}X'Y = \mu + \epsilon,
 \end{equation}
-where $\epsilon := (X'X)^{-1}X'\xi$.
+where $\epsilon := (X'X)^{-1}X'\xi$. \stilian{R2, Typo 2}{I see no problems here except that we are not in the high-dimensional regime $p\gg n$. If we were to address that, we need to expand the discussion. 1) Talk about sparsity of $\mu$ 2) Introduce the assumption that if ${\rm supp}(\mu) = r <n$, then every $r$ of the $p$ columns of 
+$X$ must be linearly independent -- is there a name for such a condition in the literature? We know it happens with probability one if $X$ has independent, say Gaussian, entries.  3) Then, it seems clear that the support of $\mu$ will be identifiable if we replace the inverse with a Moore-Penrose inverse. BTW, an intriguing question: Given a design matrix $X$, consider the quantity:
+$$
+c_r(X) :=\min_{w\subset \{1,\cdots,p\},\ |w| = r} {\| (X_w' X_w)^{-1}\| \over \| X_w'X_w\| },
+$$
+where the minimum is taken over all subsets of indices $w$ with cardinality $r<n$ and $X_w:= (x_{i,j})_{j\in w}$ is the sub-matrix of $X$ obtained
+by selecting the columns indexed by the elements in $w\subset\{1,\cdots,p\}$.  Intuitively, $c_r(X)$ gives us the overall difficulty of identifying a 
+sparse signal $\mu$ with support of size $r$. \fbox{Going off on a tangent here...}}
 Hence we recover the generic problem \eqref{eq:model-additive}. 
 Signal detection is therefore equivalent to the problem of testing the global null model, and support recovery problem corresponds to the fundamental problem of variable selection.
 
