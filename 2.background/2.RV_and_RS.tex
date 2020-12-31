@@ -58,6 +58,19 @@ In view of \eqref{e:def:rapid-variation} (rapid variation) and the fact that $u_
 as $p\to\infty$, for all $\delta>0$.  This completes the proof of \eqref{eq:rapid-varying-tails}. Part 2 is a re-statement of the classic result due to Gnedenko in \cite{gnedenko1943distribution}.
 \end{proof}
 
+\stilian{ 
+\begin{remark} \label{rem:iid-max} Part (1) of Proposition \ref{prop:rapid-varying-tails} is equivalent to 
+\begin{equation}\label{e:rem:iid-max}
+  \P\left[\frac{1}{u_p} M_p >  1+\delta_p \right] \longrightarrow 0,\ \ \mbox{ as }p\to\infty,
+\end{equation}
+for some positive sequence $\delta_p\to 0$.  Notice on the other hand that if $M_p^*$ is the maximum of $p$ iid variables with distribution $F$,
+the relative stability property entails $M_p^*/u_p \to 1$, in probability, as $p\to\infty$.  Since the sequence $1+\delta_p\to 1$, 
+Relation \eqref{e:rem:iid-max} means that the rate of growth of the maxima $M_n$ in ${\cal E}$ cannot be faster than that of the independent
+maxima $M_p^*$.  This somewhat surprising fact is true regardless of the dependence structure of ${\cal E}$ and is solely a 
+consequence of the rapid variation of $F$.
+\end{remark}
+}{}
+
 We next demonstrate that Gaussian, Exponential, Laplace, and Gamma distributions all have rapidly varying tails. 
 
 % \begin{corollary} \label{cor:AGG-is-RS}
