@@ -1,8 +1,15 @@
-We define the statistical risk metrics for signal detection and signal support recovery problems in this section.
+  
+\stilian{To understand the fundamental limits of the signal detection and support recovery problems, one needs to first
+define the respective notions of statistical risk.  In this section, we review many existing as well as some new notions 
+of statistical risk, motivated by applications. Formally, in both problems, we have a statistical procedure 
+${\cal R}={\cal R}(x)$, which is a measurable function of the data.
+In the testing context, ${\cal R}$ takes binary values encoding the presence or absence of a signal, while in the support
+recovery problem the values of ${\cal R}$ are sets of indices in $\{1,\cdots,p\}$.  The risk will then be a suitable 
+functional of ${\cal R}$ accounting for the Type I, Type II, and various mis-classification errors.}{We define the statistical risk metrics for signal detection and signal support recovery problems in this section.}
 
-{\bf Signal detection.}
+{\bf Signal detection.} 
 Recall that in sparse signal detection problems, our goal is to come up with a procedure, $\mathcal{R}(x)$, such that the null hypothesis is rejected if the data $x$ is deemed incompatible with the null.
-In the example of additive error models \eqref{eq:model-additive}, we wish to tell apart two hypotheses
+In the additive error models context \eqref{eq:model-additive}, we wish to tell apart two hypotheses
 \begin{equation} \label{eq:global-test-additive}
     \mathcal{H}_0: \mu(i) = 0, \;i=1,\ldots,p,
     \quad\text{v.s.}\quad 
@@ -15,12 +22,14 @@ Similarly in the chi-square model \eqref{eq:model-chisq}, we look to test
     \quad\text{v.s.}\quad 
     \mathcal{H}_1: \lambda(i)\neq 0, \; \text{for some }i\in\{1,\ldots,p\}.
 \end{equation} 
-Since the decision is binary, we may write the outcome of the procedure in the form of an indicator function, $T(\mathcal{R}(x))\in\{0,1\}$, where the function $T$ takes on value 1 if the null is to be rejected in favor of the alternative, and 0 if we fail to reject the null. 
+Since the decision is binary, we may write the outcome of the procedure in the form of an indicator function, 
+$\mathcal{R}(x)\in\{0,1\}$, where ${\cal R}$ takes on value 1 if the null is to be rejected in favor of the alternative, 
+and 0 if we fail to reject the null. 
 The Type I and Type II errors of the procedure, i.e., the probability of wrong decisions under the null hypothesis $\mathcal{H}_0$ and alternative hypothesis $\mathcal{H}_1$, respectively, are defined as 
 \begin{equation} \label{eq:type-II-error}
-    \alpha(\mathcal{R}) := \P_{\mathcal{H}_0}\left(T(\mathcal{R}(x))=1\right)
+    \alpha(\mathcal{R}) := \P_{\mathcal{H}_0}\left(\mathcal{R}(x)=1\right)
     \quad \text{and} \quad
-    \beta(\mathcal{R}) := \P_{\mathcal{H}_1}\left(T(\mathcal{R}(x))=0\right).
+    \beta(\mathcal{R}) := \P_{\mathcal{H}_1}\left(\mathcal{R}(x)=0\right).
 \end{equation}
 The Neyman-Pearson framework of hypothesis testing then seeks tests that minimize the Type II error of the test, while controlling the Type I error of the test at low levels.
 We are particularly interested in the sum of the two errors, 
@@ -33,15 +42,15 @@ It is trivial that a small $\mathrm{risk}^{\mathrm{D}}$ would imply both small T
 \medskip
 
 {\bf Signal support recovery.}
-Turning to support recovery problems, our goal is to design a procedure $\mathcal R$ that produces a set estimate $\widehat{S}$ of the true index set of relevant variables $S$.
+Turning to support recovery problems, our goal is to design a procedure $\mathcal R$ that produces a set estimate $\widehat{S}= {\cal R}(x)$ of the true index set of relevant variables $S$.
 % The true index set, of course, depends on the modeling assumptions. 
 For example, in the sparse additive error model \eqref{eq:model-additive} we aim to estimate $S=\{i:\mu(i)\neq 0\}$, while in the sparse chi-square model \eqref{eq:model-chisq} the goal is to estimate $S=\{i:\lambda(i)\neq 0\}$.
-Formally, one should write $\widehat{S}(\mathcal{R}(x))$ to reflect the dependence of the set estimate on the procedure $\mathcal{R}$ and on the test statistics $x$; 
-for notational convenience, we suppress this dependence and simply write $\widehat{S}$.
-% in place of $\widehat{S}(\mathcal{R}(x))$ 
+\stilian{For simplicity of notation, we shall write $\widehat{S}$ for the support estimation procedure ${\cal R}(x)$.}{\xout{Formally, one should write $\widehat{S}_{{\cal R}}(x)$ to reflect the dependence of the set estimate on the 
+procedure $\mathcal{R}$ and on the test statistics $x$; for notational convenience, we suppress this dependence and simply write $\widehat{S}$.
+}}% in place of $\widehat{S}(\mathcal{R}(x))$ 
 
-For a given procedure $\mathcal{R}$, the {false discovery rate} (FDR) 
-and the {false non-discovery rate} (FNR) of a procedure are defined as
+For a given procedure $\mathcal{R}$, its {false discovery rate} (FDR) 
+and  {false non-discovery rate} (FNR) are defined, respectively, as
 % of the procedure is defined to be the expected fraction of false findings not in the true index set, among the reported discoveries \cite{benjamini1995controlling}. 
 % Its counterpart, \emph{false non-discovery rate} (FNR), measuring the power of the procedure, is defined as the expected fraction of missed detection. 
 % Mathematically, we define
@@ -53,13 +62,9 @@ and the {false non-discovery rate} (FNR) of a procedure are defined as
 where the maxima in the denominators resolve the possible division-by-0 problem. 
 Roughly speaking, FDR measures the expected fraction of false findings, while FNR describes the proportion of Type II errors among the true signals, and reflects the average marginal power of the procedure.
 
-A more stringent criterion for false discovery is the \ac{FWER},
-%family-wise error rate (FWER),
-% defined to be the probability of reporting at least one finding not contained in the true index set.
-and correspondingly, a more stringent criteria for false non-discovery is the \ac{FWNR},
-%family-wise non-discovery rate (FWNR), 
-i.e.,
-% the probability of missing at least one signal in the true index set. That is,
+A more stringent criterion for false discovery is the family-wise error rate (\ac{FWER}), defined to be the probability of 
+reporting at least one finding not contained 
+in the true index set. Correspondingly, a more stringent criterion for false non-discovery is the family-wise non-discovery rate (\ac{FWNR}), i.e., the probability of missing at least one signal in the true index set. That is,
 \begin{equation} \label{eq:FWER-FWNR}
     \mathrm{FWER}(\mathcal{R}) := 1 - \P[\widehat{S} \subseteq S]
     \quad \text{and} \quad
@@ -67,7 +72,8 @@ i.e.,
 \end{equation}
 
 We introduce five different statistical risk metrics, 
-each having different asymptotic limits in the support recovery problems as we will see later in this text. 
+each having different asymptotic limits in the support recovery problems as we will see in 
+Chapter \ref{chap:phase-transitions}.
 Following \cite{arias2017distribution}, we define the risk for \emph{approximate} support recovery as
 \begin{equation} \label{eq:risk-approximate}
     \mathrm{risk}^{\mathrm{A}}(\mathcal{R}) := \mathrm{FDR}(\mathcal{R}) + \mathrm{FNR}(\mathcal{R}).
@@ -93,8 +99,10 @@ The relationship between probability of support recovery $\P[\widehat{S} = S]$, 
 
 Notice that all risk metrics introduced so far penalize false discoveries and missed signals somewhat symmetrically --- the approximate support recovery risk combines proportions of errors, the exact support recovery risk combines probabilities of errors, and the Hamming loss increments the risk by one regardless of the types of errors made.
 In applications, however, attitudes towards Type I and Type II errors are often different.
-In the example of GWAS, where the number of candidate locations $p$ could be in the millions, researchers are typically interested in the marginal (location-wise) power of discovery, while exercising stringent (family-wise) false discovery control --- a situation not reflected in the above-mentioned risk metrics.
-This asymmetric consideration, and in particular the GWAS application, prompts us to consider risks that weigh both the family-wise error rate and the marginal power of discovery.
+In the example of GWAS, where the number of candidate locations $p$ could be in the millions, the researchers are typically interested in the marginal (location-wise) power of discovery, while exercising stringent (family-wise) false discovery control. 
+ \stilian{Such types of asymmetric risks, while important in applications, have not been studied theoretically.  The}{ 
+ \xout{--- a situation not reflected in the above-mentioned risk metrics.
+This asymmetric consideration, and in particular the}} GWAS application, prompts us to consider risks that weigh both the family-wise error rate and the marginal power of discovery.
 One such risk metric is what shall be referred to as the \emph{exact-approximate} support recovery risk
 \begin{equation} \label{eq:risk-exact-approx}
     \mathrm{risk}^{\mathrm{EA}}(\mathcal{R}) := \mathrm{FWER}(\mathcal{R}) + \mathrm{FNR}(\mathcal{R}).

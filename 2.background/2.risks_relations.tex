@@ -2,7 +2,7 @@ We now elaborate on the relationship between statistical risks, as promised in S
 The first lemma concerns the asymptotic relationship between the probability of exact recovery \eqref{eq:risk-prob} and the risk of exact support recovery \eqref{eq:risk-exact}.
 
 \begin{lemma} \label{lemma:risk-exact-recovery-probability}
-For any sequence of procedures for support recovery $\mathcal{R} = \mathcal{R}_p$, we have, 
+For any sequence of procedures for support recovery $\mathcal{R} = \mathcal{R}_p$, we have
 %The probability of exact recovery $\P[\widehat{S} = S]$, and risk of exact support recovery $\mathrm{risk}^{\mathrm{E}}$, defined in \eqref{eq:risk-exact}, are related as follows,
 \begin{equation} \label{eq:exact-recovery-implies-risk-0}
     \P[\widehat{S} = S] \to 1 \iff \mathrm{risk}^{\mathrm{E}}(\mathcal{R})\to0,
@@ -11,7 +11,7 @@ and
 \begin{equation} \label{eq:failure-recovery-implies-risk-1}
     \P[\widehat{S} = S] \to 0 \implies \liminf\mathrm{risk}^{\mathrm{E}}(\mathcal{R})\ge1,
 \end{equation}
-as $p\to\infty$. Dependence on $p$ was suppressed for notational convenience.
+as $p\to\infty$. Dependence on $p$ and ${\cal R}$ was suppressed for notational convenience.
 \end{lemma}
 
 
@@ -38,17 +38,18 @@ By virtue of Lemma \ref{lemma:risk-exact-recovery-probability}, it is sufficient
 \medskip
 
 Keen readers must have noticed the asymmetry in Relation \eqref{eq:failure-recovery-implies-risk-1} when we discussed the relationship between the exact support recovery risk \eqref{eq:risk-exact} and the probability of exact support recovery \eqref{eq:risk-prob}.
-
+%
 %The converse of \eqref{eq:failure-recovery-implies-risk-1} is not true.
-While a trivial procedure that never rejects and a procedure that always rejects both have $\mathrm{risk}^{\mathrm{E}}$ equal to 1, the converse is not true.
-For example, it is possible that a procedure selects the true index set $S$ with probability $1/2$, but makes one false inclusion \emph{and} one false omission simultaneously the other half of the time. 
+While a trivial procedure that never rejects and a procedure that always rejects both have $\mathrm{risk}^{\mathrm{E}}$ equal to 1, the converse is not true. For example, it is possible that a procedure selects the true index set $S$ with probability $1/2$, but otherwise makes one false inclusion \emph{and} one false omission simultaneously. 
 In this case the procedure will have 
 $$\mathrm{risk}^{\mathrm{E}} = 1, \quad \text{and} \quad \P[\widehat{S}=S] = 1/2,$$
 showing that the converse of Relation \eqref{eq:failure-recovery-implies-risk-1} is in fact false.
 
 The same argument applies to $\mathrm{risk}^{\mathrm{A}}$:
-a procedure may select the true index set $S$ with probability $1/2$, but makes enough false inclusions and omissions other half of the time, so that $\mathrm{risk}^{\mathrm{A}}$ is equal to one.
-Therefore, although the class of methods with risks equal to or exceeding 1 certainly contains the trivial procedures that we mentioned, they are not necessarily ``useless'' as some researchers have claimed (c.f., \citet{arias2017distribution}, Remark 2).
+a procedure may select the true index set $S$ with probability $1/2$, but makes enough false inclusions and omissions 
+the rest of the time, so that $\mathrm{risk}^{\mathrm{A}}$ is equal to one. Therefore, although the class of methods with 
+risks equal to or exceeding 1 certainly contains the trivial procedures that we mentioned, they are not necessarily 
+``useless'' as some researchers have claimed \citep[cf.\ Remark 2 in][]{arias2017distribution}.
 
 \medskip
 
@@ -68,7 +69,7 @@ Turning to the relationship between the probability of exact support recovery \e
     \ge 1 - \mathbb{E}[H(\widehat S, S)]
     = 1 - \sum\limits_{i=1}^p\E\left|\mathbbm{1}_{\widehat{S}}(i)- \mathbbm{1}_{S}(i)\right|.
 \end{equation}
-A key observation in Relation \eqref{eq:Hamming-loss-lower-bound} is that the expected Hamming loss decouples into $p$ terms, and dependence of the estimates $\mathbbm{1}_{\widehat{S}}(i)$ among the $p$ locations no longer plays a role in the sum.
+A key observation in Relation \eqref{eq:Hamming-loss-lower-bound} is that the expected Hamming loss decouples into $p$ terms, and the dependence of the estimates $\mathbbm{1}_{\widehat{S}}(i)$ among the $p$ locations no longer plays any role in the sum.
 Therefore, studying support recovery problems via the expected Hamming loss is not very informative especially under severe dependence, as the bound \eqref{eq:Hamming-loss-lower-bound} may become {very} loose.
 Vanishing Hamming loss is again sufficient, but not necessary for 
 $\P[\widehat{S}=S]$ or the exact support recovery risk to fo to zero.

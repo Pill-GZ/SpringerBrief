@@ -19,6 +19,9 @@
 %\usepackage{helvet}
 %\usepackage{courier}
 %
+\usepackage{etoolbox}
+ \AtEndEnvironment{proof}{\phantom{}\qed} %Automatically add qed symbol to the end of proof environment
+
 \usepackage{type1cm}         
 
 \usepackage{makeidx}         % allows index generation
@@ -54,6 +57,15 @@
 %
 % My definitions:
 %
+
+%
+%
+%
+\def\DateEdited{\today}
+%
+%
+%
+
 \def\bbN{{\mathbb N}}
 \def\bbZ{{\mathbb Z}}
 \def\bbR{{\mathbb R}}
@@ -114,6 +126,7 @@
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{makeidx}
+\usepackage[normalem]{ulem}
 
 %
 % Setting table of contents depth,
@@ -162,7 +175,7 @@
 \label{chap:intro}
 \input{./1.intro/introduction.tex}
 
-\chapter{Technical Preparations and Background}
+\chapter{Risks, Procedures, and Error Models} %Technical Preparations and Background}
 \label{chap:background}
 \input{./2.background/background.tex}
 
@@ -199,13 +212,17 @@ Fundamental Statistical Limits in Genome-wide Association Studies}
 %\include{author/solutions}
 
 
-\chapter{Index and Bibliography}
+\chapter*{Bibliography}
 
-\printindex
+%\printindex
 
 \bibliography{./tex/thesis}
 
+\appendix
+ \input{./7.Supplement/supplement.tex}
 
+%\chapter{}
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}

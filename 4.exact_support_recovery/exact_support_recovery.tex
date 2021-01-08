@@ -43,7 +43,7 @@ That is, when errors are \emph{independent} Gaussians, the Hamming loss cannot b
 Conversely, if signal size falls below, the Hamming loss can be made to vanish with a specific thresholding procedure.
 
 Unfortunately, as pointed out in Section \ref{sec:risks-relations}, vanishing Hamming loss is only sufficient, not necessary for support recovery \eqref{eq:exact-recovery}, and the sharp result does not carry over directly to the study of the probability of support recovery or exact support recovery risk.
-More importantly, despite their elegance, these Hamming loss-minimax studies naturally \stilian{replace ``amounts" by ``reduce"}{amounts} to the analysis of the elementary case of iid data, and is by design blind to non-trivial error-dependence structures.
+More importantly, despite their elegance, these Hamming loss-minimax studies naturally \stilian{reduce}{\xout{amounts}} to the analysis of the elementary case of iid data, and is by design blind to non-trivial error-dependence structures.
 This prevents us from fully exploring of the phase transition phenomena under other dependence conditions.
 % This is arguably a consequence of the inherent limitation of the Hamming-loss approach. 
 % For practitioners, a minimax statement in the Gaussian case seems to offer little guidance.
@@ -131,24 +131,20 @@ In this case, we also demonstrate the absence of a phase transition phenomenon i
 \input{4.exact_support_recovery/4.minimax.tex}
 
 
-\section{Strong classification boundaries in other light-tailed error models}
-\label{suppsec:other-boundaries}
-\input{4.exact_support_recovery/4.other-boundaries.tex}
+%\section{Strong classification boundaries in other light-tailed error models}
+%\label{suppsec:other-boundaries}
+%\input{4.exact_support_recovery/4.other-boundaries.tex}
 
 
-\section{Thresholding procedures under heavy-tailed errors}
-\label{suppsec:heavy-tailed}
-\input{4.exact_support_recovery/4.heavy-tailed.tex}
+%\section{Thresholding procedures under heavy-tailed errors}
+%\label{suppsec:heavy-tailed}
+%\input{4.exact_support_recovery/4.heavy-tailed.tex}
 
 
 \section{Additional proofs}
 \label{suppsec:proofs}
 \input{4.exact_support_recovery/4.proofs-examples.tex}
 \input{4.exact_support_recovery/4.proofs-convexity.tex}
-
-
-
-\input{4.exact_support_recovery/4.Exercises.tex}
 
 
 

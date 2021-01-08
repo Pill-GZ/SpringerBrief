@@ -7,50 +7,61 @@ One of the commonly used statistics in sparse signal detection problems such as 
    L_q(x) = \left(\sum_{i=1}^p{|x(i)|^q}\right)^{1/q}.
 \end{equation}
 Typical choices of $q$ include $q=1, 2$ and $\infty$, where $L_\infty(x)$ is interpreted as the limit of $L_q(x)$ norms as $q\to\infty$, and is equivalent to $\max_{i}|x(i)|$.
-Test procedures based on \eqref{eq:Lq-norm} may then be written as $T(\mathcal{R}(x)) = \mathbbm{1}_{(t,+\infty)}(L_q(x))$, where the cutoff $t$ can be chosen to control the Type I error at desired levels.
+Test procedures based on \eqref{eq:Lq-norm} may then be written as $\mathcal{R}(x) = \mathbbm{1}_{(t,+\infty)}(L_q(x))$, where the cutoff $t$ can be chosen to control the Type I error at desired levels.
 
 While \eqref{eq:Lq-norm} measures the deviation of the data from the origin in an omnidirectional manner, statistics that are tailored to the alternatives can be used in the hopes of power improvement if the directions of the alternatives are known.
-For example, if we were to test positive mean shifts in the additive error model \eqref{eq:model-additive} in the one-sided alternative,
+For example, in the additive error model \eqref{eq:model-additive}, suppose we want to test for positive mean shifts, i.e., 
+we have a one-sided alternative
 \begin{equation} \label{eq:global-test-one-sided}
     %\mathcal{H}_0: \mu(i) = 0, \;i=1,\ldots,p,
     %\quad\text{v.s.}\quad 
-    \mathcal{H}_1: \mu(i)> 0, \; \text{for some }i\in\{1,\ldots,p\},
+    \mathcal{H}_1: \mu(i)> 0, \; \text{for some }i\in\{1,\ldots,p\}.
 \end{equation}
-one might consider monitoring the sum (or equivalently, the arithmetic average) of the observations, 
+Then, one might consider monitoring the sum (or equivalently, the arithmetic average) of the observations, 
+\stilian{Replacing $S$ with $T$}{\fbox{Pls check}}
 \begin{equation} \label{eq:sum-statistic}
-    S(x) := \sum_{i=1}^p{x(i)},
+    T(x) := \sum_{i=1}^p{x(i)},
 \end{equation}
 or the maximum of the observations,
 \begin{equation} \label{eq:max-statistic}
     M(x) := \max_{i=1,\ldots,p}{x(i)}.
 \end{equation}
 Other tests based on the empirical \ac{CDF} are also available.
-Assuming the same one-sided alternative, let 
+Assuming the same one-sided alternative, let \stilian{Replacing $p(i)$ with $v(i)$ to avoid confusing with $p$}{\fbox{pls check}}
 \begin{equation}
-    p(i) = 1 - \sup\{F_i(y)\,:\,y<x(i)\}, \quad i = 1,\ldots,p,
+    v(i) = 1 - \sup\{F_i(y)\,:\,y<x(i)\}, \quad i = 1,\ldots,p,
 \end{equation}
 be the p-values of the individual observations, where $F_i$ is the \ac{CDF} of the $i$-th component $x(i)$ under $\mathcal{H}_0$.
 We define empirical \ac{CDF} of the p-values as
 \begin{equation}
     \widehat{F}_p(t) = 
-    \frac{1}{p} \sum_{i=1}^p \mathbbm{1}_{(-\infty, t]}(p(i)).
+    \frac{1}{p} \sum_{i=1}^p \mathbbm{1}_{[0, t]}(v(i)).
 \end{equation}
 Viewed as random elements in the space of c\`adl\`ag functions with the Skorohod $J_1$ topology, the centered and scaled \ac{CDF}s converge weakly to a Brownian bridge,
 \begin{equation*}
     \left\{\sqrt{p}\left(\widehat{F}_p(t) - t\right)\right\}_{t\in[0,1]} 
     % \stackrel{J_1}{\longrightarrow} 
     \implies
-    \left\{\mathbb{B}(t)\right\}_{t\in[0,1]},
+    \left\{\mathbb{B}(t)\right\}_{t\in[0,1]},\ \ \ \mbox{ as } p\to\infty,
 \end{equation*}
 under the global null $\mathcal{H}_0$ and mild continuity assumptions on the $F_i$'s \citep{skorokhod1956limit}. 
 Therefore, goodness-of-fit statistics such as Kolmogorov-Smirnov distance \citep{smirnov1948table}, Cramer-von Mises-type statistics \citep{cramer1928composition, anderson1952asymptotic} that measure the departure from this limiting behavior can be used for testing $\mathcal{H}_0$ against $\mathcal{H}_1$.
-Of particular interest is the \ac{HC} statistic, first proposed by \cite{tukey1976lecture},
-\begin{equation*} %\label{eq:HC-statistic}
+Of particular interest is the higher criticism (\ac{HC}) statistic, first proposed by \cite{tukey1976lecture},
+\begin{equation} \label{eq:HC-statistic}
     HC(x) = 
     \max_{0\le t\le\alpha_0}\frac{\widehat{F}_p(t) - t}{\sqrt{t(1 - t)/p}}.
-\end{equation*}
+\end{equation}
 
-Performance of these statistics in high-dimensional sparse signal detection problems will be reviewed in Section \ref{sec:asymptotics}, and analyzed in Chapter \ref{chap:phase-transitions}.
+\stilian{Each of the above statistics $L_q, T, M,$ or $HC$, gives rise to a decision rule, whereby the null hypothesis is rejected if 
+the statistic exceeds a suitably calibrated threshold. The choice of the threshold is typically determined based on large-sample limit 
+theorems. For example, as shown in Theorem 1.1 of \cite{donoho2004higher}, under the null hypothesis
+$$
+ \frac{HC(x)}{\sqrt{2\log\log(p)}} \longrightarrow  1,\ \ \mbox{ in probability,}
+$$ 
+as $p\to\infty$.  Thus, one decision rule is to reject ${\cal H}_0$, if $HC(x)> t(p,\alpha_p)$, where 
+$t(p,\alpha_p) = \sqrt{2\log\log(p)}(1+o(1))$.  As we will see, this yields an optimal signal detection procedure 
+\citep[see also Theorem 1.2 in ][]{donoho2004higher}.}{\fbox{added} Agree?} The performance of these statistics in high-dimensional 
+sparse signal detection problems will be reviewed in Section \ref{sec:asymptotics}, and analyzed in Chapter \ref{chap:phase-transitions}.
 
 \medskip
 
@@ -65,7 +76,7 @@ $S:=\{i\, :\, \lambda(i)\neq0\}$ is one that takes on the form
 where the threshold $t(x)$ may depend on the data $x$.
 \end{definition}
 
-Examples of thresholding procedures include ones that aim to control FWER \eqref{eq:FWER-FWNR} --- Bonferroni's \cite{dunn1961multiple}, Sid\'ak's \citep{vsidak1967rectangular}, Holm's \citep{holm1979simple}, and Hochberg's procedure \citep{hochberg1988sharper} --- as well as procedures that target FDR \eqref{eq:FDR-FNR}, such as the Benjamini-Hochberg \cite{benjamini1995controlling} and the \stilian{R2,Typo 3}{fixed} Cand\`es-Barber procedure \cite{barber2015controlling}.
+Examples of thresholding procedures include ones that aim to control FWER \eqref{eq:FWER-FWNR} --- Bonferroni's \citep{dunn1961multiple}, Sid\'ak's \citep{vsidak1967rectangular}, Holm's \citep{holm1979simple}, and Hochberg's procedure \citep{hochberg1988sharper} --- as well as procedures that target FDR \eqref{eq:FDR-FNR}, such as the Benjamini-Hochberg \cite{benjamini1995controlling} and the \stilian{R2,Typo 3}{fixed} Cand\`es-Barber procedure \citep{barber2015controlling}.
 Indeed, the class of thresholding procedures \eqref{eq:thresholding-procedure} is so general that it contains most (but not all) of the statistical procedures in the multiple testing literature.
 % \cite{roquain2011type}.
 
@@ -107,23 +118,24 @@ Holm's procedure with level $\alpha$ is the thresholding procedure with threshol
 \end{definition}
 In contrast to the Bonferroni procedure, Holm's procedure is data-dependent.
 % It can be shown that Holm's procedure also controls FWER at $\alpha$ level, regardless of dependence in the data.
-A closely related, more aggressive (data-dependent) thresholding procedure is Hochberg's procedure \citep{hochberg1988sharper}
+A closely related, more aggressive (and also data-dependent) thresholding procedure is Hochberg's procedure \citep{hochberg1988sharper}.
 %\begin{definition}[Hochberg's procedure]
 %Hochberg's procedure 
-which replaces the index $i^*$ in Holm's procedure with the largest index such that
+It replaces the index $i^*$ in Holm's procedure with the largest index such that
 $$
 \overline{F}(x_{[i]}) \le \alpha / (p-i+1).
 $$
-Notice that both Holm's procedure and Hochberg's procedure compare p-values to the same thresholds $\alpha / (p-i+1)$.
+Notice that both Holm's and Hochberg's procedures compare p-values to the same thresholds $\alpha / (p-i+1)$.
 However, Holm's procedure only rejects the set of hypotheses whose p-values are all smaller than their respective thresholds.
 On the other hand, Hochberg's procedure rejects the set of hypotheses as long as the largest of their p-values fall below its threshold, and therefore, can be more powerful than Holm's procedure. 
 %where  $\overline{F}(x)=1-F(x)$ is the survival function.
 %\end{definition}
 
-It can be shown that Bonferroni's procedure and Holm's procedure both control FWER at their nominal levels, regardless of dependence in the data \citep{holm1979simple}.
-In contrast, Sid\'ak's procedure and Hochberg's procedure control FWER at nominal levels when data are independent \citep{vsidak1967rectangular, hochberg1988sharper}.
+It can be shown that Bonferroni's and Holm's procedures both control FWER at their nominal levels, regardless of dependence in the 
+data \citep{holm1979simple}. In contrast, Sid\'ak's and Hochberg's procedures control FWER at nominal levels when data are independent \citep{vsidak1967rectangular, hochberg1988sharper}. \stilian{DISCUSS}{Explain in the Supplement?}
 
-Last but not least, we review the \ac{BH} procedure, which aims at controlling \ac{FDR} in \eqref{eq:FDR-FNR}, proposed by  \cite{benjamini1995controlling}.
+Last but not least, we review the \ac{BH} procedure, which aims at controlling \ac{FDR} in 
+\eqref{eq:FDR-FNR}, proposed by  \cite{benjamini1995controlling}.
 
 Recall the order statistics of our observations $x_{[1]} \ge x_{[2]}  \ge \ldots \ge x_{[p]}$.
 \begin{definition}[Benjamini-Hochberg's procedure] \label{def:BH}
@@ -131,14 +143,14 @@ Let $i^*$ be the largest index such that
 $$
 \overline{F}(x_{[i]}) \le \alpha i/p.
 $$
-The Benjamini-Hochberg procedure with level $\alpha$ is the thresholding procedure with threshold
+The Benjamini-Hochberg (BH) procedure with level $\alpha$ is the thresholding procedure with threshold
 \begin{equation} \label{eq:BH-procedure}
     t_p(x) = x_{[i^*]},
 \end{equation}
 \end{definition}
-The \ac{BH} procedure is shown to control the FDR at level $\alpha$ when the $x(i)$'s are independent \citep{benjamini1995controlling}.
-Variations of the \ac{BH} procedure have been proposed to control the \ac{FDR} under dependent observations \citep{benjamini2001control}.
+The \ac{BH} procedure is shown to control the FDR at level $\alpha$ when the $x(i)$'s are independent \citep{benjamini1995controlling}. 
+\stilian{DISCUSS}{Again, explain in the Supplement?} Variations of this procedure have been proposed to control the \ac{FDR} under \stilian{certain models of}{\fbox{added} correct?} dependent observations \citep{benjamini2001control}.
 
 % We now turn to discuss the framework for anlayzing the asymptotic risks in high dimensions.
 
-Performance of these procedures in high-dimensional sparse signal support recovery problems will be reviewed in Section \ref{sec:asymptotics}, and analyzed in Chapters \ref{chap:phase-transitions}, \ref{chap:exact-support-recovery}, and \ref{chap:GWAS}.
+The performance of these procedures in high-dimensional sparse signal support recovery problems will be reviewed in Section \ref{sec:asymptotics}, and analyzed in Chapters \ref{chap:phase-transitions}, \ref{chap:exact-support-recovery}, and \ref{chap:GWAS}.
