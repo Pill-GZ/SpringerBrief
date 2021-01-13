@@ -1,27 +1,21 @@
-
 The proliferation of information technology has enabled us to collect and consume huge volumes of data at unprecedented speeds and at very low costs.
-This fast and cheap access to data gave rise to fundamentally new ways of pursuing scientific questions.
-In contrast with the traditional hypothesis--experiment--analysis cycle where data are collected from the experiments, abundant information are often available before specific questions are even formulated. 
-Such information can be used for not just evaluating hypotheses, but also for \emph{generating}, and \emph{selecting} the hypotheses to pursue. 
+This convenient access to data gave rise to a fundamentally different way of pursuing scientific questions.
+In contrast with the traditional hypothesis--experiment--analysis cycle where data are collected from the experiments, nowadays abundant data are often available before specific questions are even formulated. 
+Such data can be used for not just evaluating hypotheses, but also for \emph{generating}, and \emph{selecting} the hypotheses to pursue. 
 As a result, {multiple testing} --- where a large number of hypotheses are formulated and screened for their plausibility simultaneously --- has become a staple of modern data-driven studies.
 
 An archetypal example of multiple testing problems is genetic association studies \citep{bush2012genome}.
-In genetic association studies, scientists test hypotheses relating each of the hundreds of thousands of genetic marker locations to phenotypic traits of interest;
-the goal here is to select the set of most promising genetic markers for subsequent investigation.
+In these studies, scientists test hypotheses relating each of the hundreds of thousands of genetic marker locations to phenotypic traits of interest.
+For a phenotypic trait on which we have little prior knowledge, we cannot simply test for association on one or a few specific genetic locations, as there are often not enough empirical evidence or biological theory to pin point these genetic locations in the first place.
+Rather, the goal here is to select the set of most promising genetic markers from a large number of candidate locations for subsequent investigation.
+
 Another example of multiple testing problems arise in cybersecurity, where millions of IP addresses are monitored in real time.
 In this engineering application, statistics are collected and tests are performed for each IP address, in an attempt to locate the IP addresses with anomalous network activities, so that and malicious traffic and volumetric attacks can be filtered to protect end users of network services \citep{kallitsis2016amon}.
+Similar to the genetic application above, we use data to search over candidate IP addresses and identify locations of interest.
 
-We are motivated by the above examples in particular to study {high-dimensional} multiple testing problems where a large number of hypotheses are tested simultaneously.
-
+We are motivated very much by these examples to study {high-dimensional} multiple testing problems where a large number of hypotheses are tested simultaneously.
 % This high multiplicity of tests brings along a multitude of challenges, and has been a subject of extensive study in recent years.
-
-In the rest of the introduction, we shall review the main objectives of high-dimensional multiple testing, elaborate on these objectives in two classes of data models and in the context of the genetic applications, and briefly summarize the contents of this text.
-
-% While many such multiplicities are explicit, where screenings and selections of hypotheses, models, or variables are performed \emph{and} annouced, they may be completely ``silent'', where such selections are performed but not explicitly reported \citep{berry2012multiplicities}.
-
-% This paper seeks to establish some new asymptotic optimality results for common multiple testing procedures, including the Bonferroni procedure and the Benjamini-Hochberg procedure, in high-dimensional chi-square models.
-
-% This dissertation studies in detail the theoretical limits of multiple problems in high-dimensional sparse models
+In the rest of the introduction, we shall more review the main objectives of high-dimensional multiple testing, and elaborate on these objectives with two classes of data models in the context of various applications.
 
 \section{The additive error model}
 
@@ -30,21 +24,28 @@ Consider the canonical signal-plus-noise model where the observation $x$ is a hi
     x(i) = \mu(i) + \epsilon(i), \quad i=1,\ldots,p.
 \end{equation}
 The signal, $\mu = (\mu(i))_{i=1}^p$, is a vector with $s$ non-zero components supported on the set $S=\{i:\mu(i)\neq 0\}$; the second term $\epsilon$ is a random error vector. 
-The goal of high-dimensional statistics is usually two-fold: 
-\begin{enumerate}
-    \item To detect the presence of non-zero components in $\mu$. That is, to test the global hypothesis $\mu = 0$, which we call the \emph{detection} problem, and
-    \item To estimate the support set $S$, which we call the \emph{support recovery} problem.
-\end{enumerate}
-To illustrate, in the engineering application of cybersecurity, Internet service providers (ISP) routinely collect statistics of network traffic to determine if there are abnormal surges or blackouts.
-The data vector $x$ could represent, for example, incoming traffic volumes to each server node that the ISP maintains.
-In this case, the vector $\mu$ would be the average traffic volumes when under normal operating conditions, and $\epsilon$'s the fluctuations around these normal levels of traffic.
-% The ISPs collect, for example, incoming traffic volumes to each server to determine if there are abnormal surges or blackouts.
-The signal detection problem in this context is then equivalent to determining if there are \emph{any} anomalies among all servers, and the support recovery problem is equivalent to \emph{identifying} the servers with anomalies.
-Similar questions of signal detection and support recovery are pursued in large-scale microarray experiments, %\citep{dudoit2003multiple}, 
-brain imaging and fMRI analysis, %\citep{nichols2003controlling}, 
-and numerous other applications.
+The goal of high-dimensional statistics is usually two-fold: \\
 
-A common theme in such applications is that the errors are correlated, and that the signal vectors are believed to be sparse: the number of non-zero components in $\mu$ is small compared to the number of test performed --- in the cybersecurity example, while monitoring is performed over a large number of servers, it is often believed that only very few servers will be experiencing problems at any time.
+\begin{enumerate}
+\item [{\rm I.}] \emph{Signal detection}: to detect the presence of non-zero components in $\mu$. That is, to test the global hypothesis $\mu = 0$. \\
+
+\item[{\rm II.}] \emph{Support recovery}: to estimate the support set $S$. This is also sometimes referred to as the \emph{support estimation} or \emph{signal identification} problem.
+\end{enumerate}
+\medskip
+To illustrate, in the engineering application of cybersecurity, Internet service providers (ISP) routinely monitor a large number of network traffic streams to determine 
+if there are abnormal surges, blackouts, or other types of anomalies.  The data vector $x$ could represent, for example, incoming traffic volumes to each server 
+node, internet protocol (IP) address, or port that the ISP monitors.  In this case, the vector $\mu$ represents the average traffic volumes in each of the streams 
+under normal operating conditions, and $\epsilon$'s -- the fluctuations around these normal levels of traffic.  
+% The ISPs collect, for example, incoming traffic volumes to each server to determine if there are abnormal surges or blackouts.
+The signal detection problem in this context is then equivalent to determining if there are \emph{any} anomalies among all data streams, and the support recovery problem is equivalent to \emph{identifying} the streams experiencing anomalies.  
+%The dimension of $x$ (number of streams) is typically very large, while the non-trivial 
+%signal is sparse (relatively few data streams experience anomalies).
+Similar questions of signal detection and support recovery are pursued in large-scale microarray experiments \citep{dudoit2003multiple},
+brain imaging and fMRI analysis \citep{nichols2003controlling}, and numerous other anomaly detection applications.
+
+A common theme in such applications is that the errors are {\em correlated}, and that the signal vectors are believed to be {\em sparse}: the number of non-zero
+ (or large) components in $\mu$ is small compared to the number of tests performed.  In the cybersecurity context, while a very large number of data streams are 
+ monitored, typically only just a few of them will be experiencing problems at any time, barring large-scale outages or distributed denial of service attacks.
 Under such sparsity assumptions, it is natural to ask if and when one can reliably {(1)} detect the signals, and {(2)} recover the support set $S$.
 % Further, one would like to characterize the statistical procedures that achieve efficient detection and support recovery, whenever such goals become possible to achieve.
 In this text, we explore both the \emph{detection} and the \emph{support recovery} problems.  More precisely, we are interested in the 
@@ -60,18 +61,25 @@ Consider the linear model
  Y = X\mu + \xi,
 \end{equation*}
 where $\mu$ is a $p$-dimensional vector of regression coefficients of interest to be inferred from observations of $X$ and $Y$.
-If the design matrix $X$ is of full column rank, then the ordinary least squares (OLS) estimator of $\mu$ can be formed 
+If the design matrix $X$ is of full column rank\footnote{This, of course, requires that we have more samples than dimensions, i.e., $n>p$. Nevertheless, multiplicity of tests is still present when $p$ itself is large -- the multiple testing problem is by no means exclusive to situations where $p\gg n$.}, then the ordinary least squares (OLS) estimator of $\mu$ can be formed 
 \begin{equation} \label{eq:OLS}
     \widehat{\mu} = \left(X'X\right)^{-1}X'Y = \mu + \epsilon,
 \end{equation}
-where $\epsilon := (X'X)^{-1}X'\xi$.
+where $\epsilon := (X'X)^{-1}X'\xi$. 
+% \stilian{R2, Typo 2 -- \fbox{DISCUSS} }{I see no problems here except that we are not in the high-dimensional regime $p\gg n$. If we were to address that, we need to expand the discussion. 1) Talk about sparsity of $\mu$ 2) Introduce the assumption that if ${\rm supp}(\mu) = r <n$, then every $r$ of the $p$ columns of $X$ must be linearly independent -- is there a name for such a condition in the literature? We know it happens with probability one if $X$ has independent, say Gaussian, entries.  3) Then, it seems clear that the support of $\mu$ will be identifiable if we replace the inverse with a Moore-Penrose inverse. BTW, an intriguing question: Given a design matrix $X$, consider the quantity:
+% $$
+% c_r(X) :=\min_{w\subset \{1,\cdots,p\},\ |w| = r} {\| (X_w' X_w)^{-1}\| \over \| X_w'X_w\| },
+% $$
+% where the minimum is taken over all subsets of indices $w$ with cardinality $r<n$ and $X_w:= (x_{i,j})_{j\in w}$ is the sub-matrix of $X$ obtained by selecting the columns indexed by the elements in $w\subset\{1,\cdots,p\}$.  Intuitively, $c_r(X)$ gives us the overall difficulty of identifying a sparse signal $\mu$ with support of size $r$. \fbox{Going off on a tangent here...}}
 Hence we recover the generic problem \eqref{eq:model-additive}. 
 Signal detection is therefore equivalent to the problem of testing the global null model, and support recovery problem corresponds to the fundamental problem of variable selection.
 
-Note that the components in the observation $x$ (and equivalently, the noise $\epsilon$) in \eqref{eq:model-additive} need not be independent. 
-In the linear regression example, even when the components of the noise term $\xi$ are independent, those of the OLS estimator \eqref{eq:OLS} need not be, unless we have an orthogonal design.
+Note that the components of the observation vector $x$ (and equivalently, the noise $\epsilon$) in \eqref{eq:model-additive} need not be independent. 
+In the linear regression example, even when the components of the noise term $\xi$ are independent, those of the OLS estimator \eqref{eq:OLS} need not be, except in the case of orthogonal designs.
 Indeed, in practice, independence is the exception rather than the rule.
-Therefore a general theory of feasibility must address the role of the error dependence structures in such testing problems, and identify practical procedures that attain the performance limits in independent as well as dependent cases, as soon as the problems become theoretically feasible.
+Therefore, a general theory of feasibility must address the role of the {\em error dependence} structure in such testing and support estimation 
+problems.
+It is also important to identify practical and/or optimal procedures that attain the performance limits in independent as well as dependent cases, as soon as the problems become theoretically feasible.  We address both themes in this text.
 
 
 \section{Genome-wide association studies and the chi-square model}

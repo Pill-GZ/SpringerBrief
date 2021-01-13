@@ -19,6 +19,9 @@
 %\usepackage{helvet}
 %\usepackage{courier}
 %
+\usepackage{etoolbox}
+ \AtEndEnvironment{proof}{\phantom{}\qed} %Automatically add qed symbol to the end of proof environment
+
 \usepackage{type1cm}         
 
 \usepackage{makeidx}         % allows index generation
@@ -54,6 +57,15 @@
 %
 % My definitions:
 %
+
+%
+%
+%
+\def\DateEdited{\today}
+%
+%
+%
+
 \def\bbN{{\mathbb N}}
 \def\bbZ{{\mathbb Z}}
 \def\bbR{{\mathbb R}}
@@ -85,7 +97,7 @@
 \newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}}
 \newcommand\version[2]{{#1}} % The short version of the paper
 %\newcommand\version[2]{{#2}} % The long version of the paper
-
+\newcommand\stilian[2]{{\color{blue}\fbox{Stilian:} #1 }{\color{red}#2}}
 
 %\usepackage{amsthm}
 %\startlocaldefs
@@ -114,6 +126,7 @@
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{makeidx}
+\usepackage[normalem]{ulem}
 
 %
 % Setting table of contents depth,
@@ -135,15 +148,19 @@
 %\include{author/acknowledgement}
 
 
+\stilian{I suggest to:
 
-{\color{blue}
-\fbox{TO DO}
 \begin{itemize}
-  \item Add index.
-  \item Add exercises to each chapter.
-  \item Add more examples and references to the planted matrix problems.
+  \item Create a chapter called Supplement, which will become an ``online supplement".
+  \item Begin moving some lengthy background material and the exercises to the Supplement.
+  \item Respond to R2's question about the role of dependence on the rate of growth of maxima 
+  with a sub-section and/or examples in the Supplement.  This will be an illustration of the ``Folklore Theorem"
+  {\em Dependence can only slow down the rate of growth of the maxima of identically distributed random variables}.
+  \item Add index. {\bf Should we have an Index?}
+  \item Add more examples and references to the planted matrix problems.  {\bf If we have time, it would be great 
+  to broaden the scope of applications.}
 \end{itemize}
-}
+}{}
 
 \tableofcontents
 
@@ -158,7 +175,7 @@
 \label{chap:intro}
 \input{./1.intro/introduction.tex}
 
-\chapter{Technical Preparations and Background}
+\chapter{Risks, Procedures, and Error Models} %Technical Preparations and Background}
 \label{chap:background}
 \input{./2.background/background.tex}
 
@@ -195,13 +212,17 @@ Fundamental Statistical Limits in Genome-wide Association Studies}
 %\include{author/solutions}
 
 
-\chapter{Index and Bibliography}
+\chapter*{Bibliography}
 
-\printindex
+%\printindex
 
 \bibliography{./tex/thesis}
 
+\appendix
+ \input{./7.Supplement/supplement.tex}
 
+%\chapter{}
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}

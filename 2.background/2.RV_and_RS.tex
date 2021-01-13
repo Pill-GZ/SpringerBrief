@@ -1,6 +1,6 @@
 
-The behavior of the maxima of identically distributed random variables has been studied extensively in the literature (see, e.g., \cite{leadbetter2012extremes,resnick2013extreme,embrechts2013modelling,de2007extreme} 
-and the references therein). 
+The behavior of the maxima of identically distributed random variables has been studied extensively in the extreme 
+value theory literature \citep[see, e.g.,][and the references therein]{leadbetter2012extremes,resnick2013extreme,embrechts2013modelling,de2007extreme}. 
 % We show in this subsection that the maxima of errors with rapidly varying tails can be bounded above using quantiles of their marginal distribution, regardless of their dependence structure; this was a key step in the proof of Theorem \ref{thm:sufficient}.
 The concept of rapid variation plays an important role in the light-tailed case.
 
@@ -18,8 +18,8 @@ The survival function of a distribution, $\overline{F}(x) = 1 - F(x)$, is said t
 
 When $F(x)<1$ for all finite $x$, \citet{gnedenko1943distribution} showed that the distribution $F$ has rapidly varying tails if and only if the maxima of independent observations from $F$ are \emph{relatively stable} in the following sense.
 \begin{definition}[Relative stability] \label{def:RS}
-Let $\epsilon_p = \left(\epsilon_p(i)\right)_{i=1}^p$ be a sequence of random variables with identical marginal distributions $F$. 
-Define the sequence $(u_p)_{p=1}^\infty$ to be the $(1-1/p)$-th generalized quantile of $F$, i.e., 
+Let $\epsilon_p = \left(\epsilon_p(i)\right)_{i=1}^p$ be a sequence of random variables with common marginal 
+distribution $F$. Define the sequence $(u_p)_{p=1}^\infty$ to be the $(1-1/p)$-th generalized quantile of $F$, i.e., 
 \begin{equation} \label{eq:quantiles}
     u_p = F^\leftarrow(1 - 1/p).
 \end{equation}
@@ -29,20 +29,22 @@ The triangular array ${\cal E} = \{\epsilon_p, p\in\N\}$ is said to have relativ
 \end{equation}
 \end{definition}
 
-In the case of independent and identically distributed $\epsilon_p(i)$'s, \citet{barndorff1963limit} and \citet{resnick1973almost} obtained necessary and sufficient conditions for the \emph{almost sure stability} of maxima, where the convergence in \eqref{eq:RS-condition} holds almost surely.
+In the case of independent and identically distributed $\epsilon_p(i)$'s, \citet{barndorff1963limit} and \citet{resnick1973almost} obtained necessary and sufficient conditions for the \emph{almost sure stability} of maxima, where the convergence in \eqref{eq:RS-condition} holds almost surely. See also \cite{klass:1984} for further sharp results on almost sure stability, and \cite{naveau2003almost} for almost sure stability in stationary sequences. 
+Here, we will only need the weaker notion in \eqref{eq:RS-condition} but extend our inquiry to the case of dependent $\epsilon_p(i)$'s.
 
 While relative stability (and almost sure stability) is well-understood in the independent case, the role of dependence has not been fully explored.
-We start this investigation with a small refinement of Theorem 2 in \citet{gnedenko1943distribution} valid under arbitrary dependence.
+We start this investigation with a small refinement of Theorem 2 in \citet{gnedenko1943distribution} valid under {\em
+arbitrary dependence.}
 
 \begin{proposition}[Rapid variation and relative stability] \label{prop:rapid-varying-tails}
-Assume that the array ${\cal E}$ consists of identically distributed random 
+Assume that the array ${\cal E}$ consists of identically distributed and possibly dependent random 
 variables with cumulative distribution function $F$, where $F(x)<1$ for all finite $x>0$. 
 \begin{enumerate}
-    \item If $F$ has rapidly varying right tail, then for all $\delta>0$,
+    \item If $F$ has rapidly varying right tail in the sense of \eqref{e:def:rapid-variation}, then for all $\delta>0$,
         \begin{equation} \label{eq:rapid-varying-tails}
             \P\left[\frac{1}{u_p} M_p\le1+\delta\right] \ge 1 - \frac{\overline F((1+\delta)u_p)}{\overline F(u_p)} \to 1.
         \end{equation}
-    \item If, in addition, the array ${\cal E}$ has independent entries, then it is relatively stable if and only if $F$ has rapidly varying tail.
+    \item If the array ${\cal E}$ has independent entries, then it is relatively stable if and only if $F$ has rapidly varying tail, i.e., \eqref{e:def:rapid-variation} holds.
     \label{prop:rapid-varying-tails_part-ii}
 \end{enumerate}
 \end{proposition}
@@ -55,10 +57,22 @@ $p\overline F(u_p) \le 1$, we have
  \le \frac{\overline F((1+\delta)u_p)}{\overline F(u_p)}.
 \end{align}
 In view of \eqref{e:def:rapid-variation} (rapid variation) and the fact that $u_p\to\infty$, as $p\to\infty$, the right-hand side of \eqref{e:prop:rapid-varying-tails_part-i-1} vanishes 
-as $p\to\infty$, for all $\delta>0$.  This completes the proof of \eqref{eq:rapid-varying-tails}. Part 2 is a re-statement of the classic result due to Gnedenko in \cite{gnedenko1943distribution}.
+as $p\to\infty$, for all $\delta>0$.  This completes the proof of \eqref{eq:rapid-varying-tails}. Part 2 is a re-statement of a classic result dating back to \cite{gnedenko1943distribution}.
 \end{proof}
 
-We next demonstrate that Gaussian, Exponential, Laplace, and Gamma distributions all have rapidly varying tails. 
+\begin{remark} \label{rem:iid-max} Part (1) of Proposition \ref{prop:rapid-varying-tails} is equivalent to 
+\begin{equation}\label{e:rem:iid-max}
+  \P\left[\frac{1}{u_p} M_p >  1+\delta_p \right] \longrightarrow 0,\ \ \mbox{ as }p\to\infty,
+\end{equation}
+for some positive sequence $\delta_p\to 0$.  
+Notice on the other hand that, if $M_p^*$ is the maximum of $p$ iid variables with distribution $F$,
+the relative stability property entails $M_p^*/u_p \to 1$, in probability, as $p\to\infty$.  Since the sequence $1+\delta_p\to 1$, 
+Relation \eqref{e:rem:iid-max} means that the rate of growth of the maxima $M_n$ in ${\cal E}$ cannot be faster than that of the independent
+maxima $M_p^*$. 
+This somewhat surprising fact holds regardless of the dependence structure of ${\cal E}$ and is solely a consequence of the rapid variation of $F$.
+\end{remark}
+
+We demonstrate next that the Gaussian, Exponential, Laplace, and Gamma distributions all have rapidly varying tails. 
 
 % \begin{corollary} \label{cor:AGG-is-RS}
 % If $F\in\text{AGG}(\nu)$, $\nu>0$, an independent array ${\cal E}$ is relatively stable. Further, $\text{AGG}(\nu)$ is the only class of model with $u_{p} \sim \left(\nu\log{p}\right)^{1/\nu}$.
@@ -96,7 +110,10 @@ The \ac{AGG} class encompasses a wide variety of rapidly varying tail models suc
 
 More generally, distributions with heavier tails (e.g., log-normal) and lighter tails (e.g., Gompertz) outside the generalized AGG class \eqref{eq:GAGG} may also possess rapidly varying tails;
 heavy-tailed distributions like the Pareto and t-distributions, on the other hand, do not.
-These alternative classes of models are will be introduced when we study the phase transitions in Chapter \ref{chap:exact-support-recovery}. 
+\stilian{More details on these alternative classes of models can be found in the Supplement.}
+{\fbox{Move these to the online Supplement?} 
+These alternative classes of models will be introduced when we study the phase transitions in 
+Chapter \ref{chap:exact-support-recovery}.}
 %For brevity, we focus here on the $\text{AGG}(\nu)$ models.
 
 

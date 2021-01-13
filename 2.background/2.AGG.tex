@@ -1,6 +1,6 @@
 
-We introduce a fairly general class of distributions known as \ac{AGG} in this section, and state some properties about the tails of the 
-\index{AGG}{AGG} distributions.
+We introduce a fairly general class of distributions known as asymptotic generalized Gaussians \ac{AGG}. 
+We also state some of their tail properties which play important roles in the analysis of phase transitions of high-dimensional testing problems.
 
 \begin{definition} \label{def:AGG}
 A distribution $F$ is called \index{asymptotic generalized Gaussian}{asymptotic generalized Gaussian} 
@@ -12,8 +12,10 @@ with parameter $\nu>0$ (denoted $\text{AGG}(\nu)$) if
 where $\overline{F}(x) = 1 - F(x)$ is the survival function, and $a(x)\sim b(x)$ is taken to mean $\lim_{x\to\infty} a(x)/b(x) = 1$.
 \end{definition}
 
-The AGG models include, for example, the Gaussian distribution ($\nu = 2$), and the Laplace distribution ($\nu = 1$) as special cases. 
-Since the requirement is only placed on the tail behavior, this class encompasses a large variety of light-tailed models, and is commonly used in the literature on high-dimensional testing \citep{cai2007estimation, arias2017distribution}.
+The AGG models include, for example, the standard Gaussian distribution ($\nu = 2$) and the Laplace distribution ($\nu = 1$) as special cases. 
+Since the requirement is only placed on the tail behavior, this class encompasses a large variety of light-tailed models. 
+This class is commonly used in the literature on high-dimensional testing
+ \citep{cai2007estimation, arias2017distribution}.
 
 
 % On the other hand, the AGG models are themselves special cases of a more general class of tail models as we will see in Example \ref{exmp:AGG}.
@@ -42,7 +44,7 @@ where $F^\leftarrow(q) = \inf_x\{x:F(x)\ge q\},\ q\in (0,1)$.
 % \end{proposition}
 % 
 \begin{proof}[Proof of Proposition \ref{prop:quantile}]
-By definition of AGG, for any $\epsilon>0$, there is a constant $C(\epsilon)$ such that for all $x\ge C$, we have
+By the definition of AGG, for any $\epsilon>0$, there is a constant $C=C(\epsilon)$ such that for all $x\ge C$, we have
 $$
 -\frac{1}{\nu}x^\nu(1+\epsilon) \le \log{\overline{F}(x)} \le -\frac{1}{\nu}x^\nu(1-\epsilon).
 $$
@@ -62,6 +64,6 @@ We know from relations \eqref{eq:AGG-quantiles-proof-1} and \eqref{eq:AGG-quanti
 $$
 [x_u, +\infty) \subseteq \{x:\log{\overline{F}(x)} \le -\log{p}\} \subseteq [x_l, +\infty),
 $$
-and so $x_l\le u_p \le x_u$, and the expression for the quantiles follow.
+and so $x_l\le u_p \le x_u$, and the expression for the quantiles follows.
 \end{proof}
 

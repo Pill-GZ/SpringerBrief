@@ -1,20 +1,28 @@
 
-We study the fundamental limits of the signal detection and support recovery problems in the location models with independent Gaussian errors in this chapter.
+\stilian{The purpose of this chapter is to provide a unified review of the fundamental statistical limits in the 
+sparse signal detection and support recovery problems.  Our goal is to convey the main ideas and thus we shall focus on 
+the simple but important setting of independent Gaussian errors.}{\xout{We study the fundamental limits of the signal detection and support recovery problems in the location models with independent Gaussian errors in this chapter.}}
 Specifically, we derive the conditions under which the detection and support recovery problems succeed and fail in the sense of \eqref{eq:support-recovery-success} and \eqref{eq:support-recovery-failure}, in the additive error model 
 \begin{equation} \label{eq:model-additive-Chapter3}
     x(i) = \mu(i) + \epsilon(i), \quad i=1,\ldots,p,
 \end{equation}
 where the errors $\epsilon(i)$'s are \ac{iid} standard Gaussians random variables.
-We restrict our analysis to models with independent and identically distributed Gaussian errors for the moment.
-Both the distributional assumption and the independence assumption will be relaxed in the following chapters.
+Once again, we restrict our analysis to models with independent and identically distributed Gaussian errors for the 
+moment. Both the distributional assumption and the independence assumption will be relaxed substantially in the following chapters.
 
-As laid out in Section \ref{sec:asymptotics}, we work under the asymptotic regime where the problem dimension $p$ diverges to infinity.
-Let the signal vectors $\mu = \mu_p$ have 
+As laid out in Section \ref{sec:asymptotics}, we work under the asymptotic regime where the problem dimension 
+$p$ diverges to infinity.  The set of non-zero entires of the signal vector $\mu = \mu_p$ will be referred
+to as its {\em support} and denoted by 
+$$
+ S_p:=\{i\, :\, \mu(i)\not = 0\}.
+$$
+We shall assume that the size of the support is
 \begin{equation} \label{eq:signal-sparsity-additive}
-    |S_p| = \left\lfloor p^{1-\beta} \right\rfloor, \quad \beta\in(0,1]
+    |S_p| = \left\lfloor p^{1-\beta} \right\rfloor, \quad \beta\in(0,1],
 \end{equation}
-non-zero entries, where $\beta$ parametrizes the problem sparsity.
-The closer $\beta$ is to 1, the sparser the support $S$; conversely, when $\beta$ is close to 0, the support is dense with many non-null signals.
+where $\beta$ parametrizes the problem sparsity.
+The closer $\beta$ is to 1, the sparser the support $S_p$.  
+Conversely, when $\beta$ is close to 0, the support is dense with many non-null signals.
 We consider one-sided alternatives \eqref{eq:global-test-one-sided}, and parametrize the range of the non-zero (and perhaps unequal) signals with
 \begin{equation} \label{eq:signal-size-additive}
     \underline{\Delta} = \sqrt{2\underline{r}\log{p}}
@@ -37,14 +45,9 @@ Similar scalings of sparsity and signal size are also used in, e.g., \cite{ji201
 \input{3.phase_transitions/3.Gaussian-support-recovery.tex}
 
 
-\section{Proofs}
-\label{sec:proofs}
-\input{3.phase_transitions/3.proofs-phase-transitions.tex}
-
-
-\section{Exercises}
-\label{sec:Phase-Transitions:Exercises}
-\input{3.phase_transitions/3.Exercises.tex}
+%\section{Proofs}
+%\label{sec:proofs}
+%\input{3.phase_transitions/3.proofs-phase-transitions.tex}
 
 
 
