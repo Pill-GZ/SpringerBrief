@@ -1,11 +1,10 @@
   
-\stilian{To understand the fundamental limits of the signal detection and support recovery problems, one needs to first
-define the respective notions of statistical risk.  In this section, we review many existing as well as some new notions 
-of statistical risk, motivated by applications. Formally, in both problems, we have a statistical procedure 
-${\cal R}={\cal R}(x)$, which is a measurable function of the data.
-In the testing context, ${\cal R}$ takes binary values encoding the presence or absence of a signal, while in the support
-recovery problem the values of ${\cal R}$ are sets of indices in $\{1,\cdots,p\}$.  The risk will then be a suitable 
-functional of ${\cal R}$ accounting for the Type I, Type II, and various mis-classification errors.}{We define the statistical risk metrics for signal detection and signal support recovery problems in this section.}
+We define the statistical risk metrics for signal detection and signal support recovery problems in this section.
+Formally, we denote a statistical procedure, i.e., measurable function of the data, as ${\cal R}={\cal R}(x)$.
+In the testing context, a procedure ${\cal R}$ produces a binary decision $T$ that represents our judgment on the presence or absence of a signal. 
+In the support recovery problem, a procedure ${\cal R}$ produces an index set $\widehat{S}$ that represents our estimate of the signal support.  
+The statistical risks are then suitable functionals of ${T}$ and $\widehat{S}$ in respective contexts. 
+%As we will see, these risk metrics will range from the familiar Type I, Type II errors in detection problems, to various mis-classification errors.
 
 {\bf Signal detection.} 
 Recall that in sparse signal detection problems, our goal is to come up with a procedure, $\mathcal{R}(x)$, such that the null hypothesis is rejected if the data $x$ is deemed incompatible with the null.
@@ -16,20 +15,19 @@ In the additive error models context \eqref{eq:model-additive}, we wish to tell 
     \mathcal{H}_1: \mu(i)\neq 0, \; \text{for some }i\in\{1,\ldots,p\},
 \end{equation}
 based on the $p$-dimensional observation $x$.
-Similarly in the chi-square model \eqref{eq:model-chisq}, we look to test
+Similarly, in the chi-square model \eqref{eq:model-chisq}, we look to test
 \begin{equation} \label{eq:global-test-chisq}
     \mathcal{H}_0: \lambda(i) = 0, \;i=1,\ldots,p,
     \quad\text{v.s.}\quad 
     \mathcal{H}_1: \lambda(i)\neq 0, \; \text{for some }i\in\{1,\ldots,p\}.
 \end{equation} 
 Since the decision is binary, we may write the outcome of the procedure in the form of an indicator function, 
-$\mathcal{R}(x)\in\{0,1\}$, where ${\cal R}$ takes on value 1 if the null is to be rejected in favor of the alternative, 
-and 0 if we fail to reject the null. 
+$T(\mathcal{R}(x))\in\{0,1\}$, where $T=1$ if the null is to be rejected in favor of the alternative, and 0 if we fail to reject the null. 
 The Type I and Type II errors of the procedure, i.e., the probability of wrong decisions under the null hypothesis $\mathcal{H}_0$ and alternative hypothesis $\mathcal{H}_1$, respectively, are defined as 
 \begin{equation} \label{eq:type-II-error}
-    \alpha(\mathcal{R}) := \P_{\mathcal{H}_0}\left(\mathcal{R}(x)=1\right)
+    \alpha(\mathcal{R}) := \P_{\mathcal{H}_0}\left(T()\mathcal{R}(x))=1\right)
     \quad \text{and} \quad
-    \beta(\mathcal{R}) := \P_{\mathcal{H}_1}\left(\mathcal{R}(x)=0\right).
+    \beta(\mathcal{R}) := \P_{\mathcal{H}_1}\left(T(\mathcal{R}(x))=0\right).
 \end{equation}
 The Neyman-Pearson framework of hypothesis testing then seeks tests that minimize the Type II error of the test, while controlling the Type I error of the test at low levels.
 We are particularly interested in the sum of the two errors, 
@@ -42,12 +40,10 @@ It is trivial that a small $\mathrm{risk}^{\mathrm{D}}$ would imply both small T
 \medskip
 
 {\bf Signal support recovery.}
-Turning to support recovery problems, our goal is to design a procedure $\mathcal R$ that produces a set estimate $\widehat{S}= {\cal R}(x)$ of the true index set of relevant variables $S$.
+Turning to support recovery problems, our goal is to design a procedure that produces a set estimate $\widehat{S}({\cal R}(x))$ of the true index set of relevant variables $S$.
 % The true index set, of course, depends on the modeling assumptions. 
 For example, in the sparse additive error model \eqref{eq:model-additive} we aim to estimate $S=\{i:\mu(i)\neq 0\}$, while in the sparse chi-square model \eqref{eq:model-chisq} the goal is to estimate $S=\{i:\lambda(i)\neq 0\}$.
-\stilian{For simplicity of notation, we shall write $\widehat{S}$ for the support estimation procedure ${\cal R}(x)$.}{\xout{Formally, one should write $\widehat{S}_{{\cal R}}(x)$ to reflect the dependence of the set estimate on the 
-procedure $\mathcal{R}$ and on the test statistics $x$; for notational convenience, we suppress this dependence and simply write $\widehat{S}$.
-}}% in place of $\widehat{S}(\mathcal{R}(x))$ 
+For simplicity of notation, we shall write $\widehat{S}$ for the support estimator $\widehat{S}({\cal R}(x))$.
 
 For a given procedure $\mathcal{R}$, its {false discovery rate} (FDR) 
 and  {false non-discovery rate} (FNR) are defined, respectively, as
@@ -99,10 +95,9 @@ The relationship between probability of support recovery $\P[\widehat{S} = S]$, 
 
 Notice that all risk metrics introduced so far penalize false discoveries and missed signals somewhat symmetrically --- the approximate support recovery risk combines proportions of errors, the exact support recovery risk combines probabilities of errors, and the Hamming loss increments the risk by one regardless of the types of errors made.
 In applications, however, attitudes towards Type I and Type II errors are often different.
-In the example of GWAS, where the number of candidate locations $p$ could be in the millions, the researchers are typically interested in the marginal (location-wise) power of discovery, while exercising stringent (family-wise) false discovery control. 
- \stilian{Such types of asymmetric risks, while important in applications, have not been studied theoretically.  The}{ 
- \xout{--- a situation not reflected in the above-mentioned risk metrics.
-This asymmetric consideration, and in particular the}} GWAS application, prompts us to consider risks that weigh both the family-wise error rate and the marginal power of discovery.
+In the example of GWAS, where the number of candidate locations $p$ could be in the millions, researchers are typically interested in the marginal (location-wise) power of discovery, while exercising stringent (family-wise) false discovery control. 
+Such types of asymmetric risks, while important in applications, have not been studied theoretically.  
+This asymmetric consideration, and in particular the GWAS application, prompts us to consider risks that weigh both the family-wise error rate and the marginal power of discovery.
 One such risk metric is what shall be referred to as the \emph{exact-approximate} support recovery risk
 \begin{equation} \label{eq:risk-exact-approx}
     \mathrm{risk}^{\mathrm{EA}}(\mathcal{R}) := \mathrm{FWER}(\mathcal{R}) + \mathrm{FNR}(\mathcal{R}).

@@ -40,16 +40,13 @@ Similarly, a trivial randomized procedure that reject the nulls uniformly at ran
 
 \medskip
 {\bf Signal detection.}
-\stilian{The asymptotic behavior of the statistical risk in signal detection problems \eqref{eq:risk-detection} in high dimensions was first studied by Yurii Ismailovich Ingster in the context of sparse additive models \eqref{eq:model-additive} with 
+The asymptotic behavior of the statistical risk in signal detection problems \eqref{eq:risk-detection} in high dimensions was first studied by \stilian{Yurii Ismailovich Ingster}{where did you find the full name?} in the context of sparse additive models \eqref{eq:model-additive} with 
 independent and Gaussian components. Specifically, \cite{ingster1998minimax} considered the behavior of the 
-theoretically optimal likelihood ratio (\ac{LR}) test in the high-dimensional asymptotic regime, where the dimension $p$ grows to infinity. Then, under certain parameterization of the size and sparsity of the signal $\mu$, there are only two possibilities: Either ${\rm risk}^D(LR)$ vanishes, as $p\to\infty$, or $\liminf_{p\to\infty} {\rm risk}^D(LR) =1$.
-The precise signal size and sparsity parameterizations as well as the so-called {\em detection boundary} discovered 
-by Ingster are described in Chapter \ref{chap:phase-transitions}.}{\fbox{replacing?}
- where a phase transition phenomenon was discovered for 
-That is, as $p\to\infty$, depending on the size and sparsity of the signal $\mu$, the detection risk either vanishes, 
-or has a liminf of 1 when we apply the theoretically optimal likelihood ratio (\ac{LR}) test. }
+theoretically optimal likelihood ratio (\ac{LR}) test in the high-dimensional asymptotic regime, where the dimension $p$ grows to infinity. Then, under certain parameterization of the size and sparsity of the signal $\mu$, a dichotomy exists: 
+either ${\rm risk}^D(\mathcal{R})$ vanishes as $p\to\infty$ where $\mathcal{R}$ is the \ac{LR} test, or $\liminf_{p\to\infty} {\rm risk}^D(\mathcal{R}) = 1$ for any procedure.
+The precise signal size and sparsity parameterizations as well as the so-called {\em detection boundary} discovered by Ingster are described in Chapter \ref{chap:phase-transitions}.
 
-The \ac{LR} test, unfortunately, depends  relies on the knowledge of the signal sparsity and signal sizes which are 
+The \ac{LR} test, unfortunately, relies on the knowledge of the signal sparsity and signal sizes which are 
 not available in practice. The sparsity-and-signal-size-agnostic statistic \ac{HC} in \eqref{eq:HC-statistic} was identified 
 to attain such optimal performance limits in sparse Gaussian models in \cite{donoho2004higher}. 
 A modified goodness-of-fit test statistic in \citet{zhang2002powerful}, and two statistics based on thresholded-$L_1$ and $L_2$ norms in \cite{zhong2013tests} were also shown to be asymptotically optimal in the detection problem.
@@ -67,7 +64,7 @@ There is a wealth of literature on the so-called sparsistency (i.e., $\P[\wideha
 Sparsistency problems were pursued, among many others, by \citet{zhao2006model} and \citet{wasserman2009high} in the high-dimensional regression setting (where the number of samples $n\ll p$), and by \citet*{meinshausen2006high} in graphical models.
 Although there have been numerous studies on the sufficient conditions for sparsistency, efforts on necessary conditions have been scarce.
 Notable exceptions include \cite{wainwright2009information, wainwright2009sharp} and \cite{comminges2012tight} in regression problems.
-We refer the reader to the recent book by \cite{wainwright2019high} (and in particular, the bibliographical sections of Chapters 7 and 15, therein) for a comprehensive review.
+We refer the reader to the recent book by \cite{wainwright2019high} (and in particular, the bibliographical sections of Chapters 7 and 15 therein) for a comprehensive review.
 
 Elaborate asymptotic minimax optimality results under the Hamming loss were derived for methods proposed in \cite{ji2012ups} and \cite{jin2014optimality} for regression problems.
 More recently, \cite{butucea2018variable} also obtained similar minimax optimality results for a specific procedure in the Gaussian additive error model \eqref{eq:model-additive} in terms of the expected Hamming loss.
@@ -79,18 +76,14 @@ Namely, precise phase-transition-type results for the exact support recovery ris
 have not been established.
 And secondly, performance of commonly used statistical procedures reviewed in Section \ref{sec:statistical-procedures}
 in terms of these risk metrics have not been studied.
-\stilian{Some of our main contributions in this text are the solutions to these problems, presented in Chapters \ref{chap:phase-transitions} and \ref{chap:exact-support-recovery}, below. Specifically, it turns out that the simple Bonferoni thresholding procedure (among others) is asymptotically optimal for the exact support recovery problem in 
-\eqref{eq:model-additive} under broad classes of error distributions. Furthermore, a phase-transition in the exact support recovery 
-problem for thresholding procedures is established under broad dependence conditions on the 
-errors using the concentration of maxima phenomenon (Chapter \ref{chap:exact-support-recovery}). While the 
-optimality of thresholding procedures under dependence remains an open question, in Chapter \ref{sec:optimality}, 
-we establish finite-sample Bayes optimality and sub-optimality results for these procedures under independence.  
-The landscape of the fundamental statistical limits in support estimation is yet to be fully charted. We conjecture, 
-however, that the general concentration of maxima phenomenon will lead to its complete solution under very broad error 
-dependence scenarios.  }{
-Resolving these two issues, we show in this text that several well-known FWER-controlling procedures --- including Bonferroni's procedure --- are optimal in the additive error model under both one-sided and two-sided alternatives.}
-% these results have appeared in \cite{gao2018fundamental} and \cite{gao2019five}
+Some of our main contributions in this text are the solutions to these problems, presented in Chapters \ref{chap:phase-transitions} and \ref{chap:exact-support-recovery} below. 
+Specifically, we show that the Bonferroni thresholding procedure (among others) is asymptotically optimal for the exact support recovery problem in \eqref{eq:model-additive} under broad classes of error distributions. 
+Furthermore, a phase-transition in the exact support recovery problem for thresholding procedures is established under broad dependence conditions on the errors using the concentration of maxima phenomenon (Chapter \ref{chap:exact-support-recovery}). 
+We also establish finite-sample Bayes optimality and sub-optimality results for these procedures under independence, and by extension, arrive at minimax optimality results for the exact support recovery problem. 
 
+The landscape of the fundamental statistical limits in support estimation is yet to be fully charted. 
+We conjecture, however, that the general concentration of maxima phenomenon will lead to its complete solution under very broad error 
+dependence scenarios.
 \medskip
 
 {\bf Approximate support recovery.}
@@ -104,15 +97,15 @@ The two-sided alternative in the additive error model was featured as the primar
 
 In the additive error model \eqref{eq:model-additive} under independent Gaussian errors and one-sided alternatives \eqref{eq:global-test-one-sided},
 \cite{arias2017distribution} showed that a phase transition exists for  the approximate support recovery risk \eqref{eq:risk-approximate}.
-The \ac{BH} procedure \cite{benjamini1995controlling}, and the \stilian{DISCUSS}{Is it Candes-Barber or Barber-Candes?}
-Cand\`es-Barber procedure \citep{barber2015controlling} was identified to be asymptotically optimal. % \citet{rabinovich2017optimal} further established the rate-optimality of both procedures under the same regime.
+The \ac{BH} procedure \cite{benjamini1995controlling}, and the Barber-Cand\`es procedure \citep{barber2015controlling} was identified to be asymptotically optimal. % \citet{rabinovich2017optimal} further established the rate-optimality of both procedures under the same regime.
 However, \cite{arias2017distribution}, as all related work so far, assumed the non-nulls to follow a common alternative distribution.
 We derive a new phase transition result that relaxes this assumption on the alternatives in Chapter \ref{chap:phase-transitions}.
 
 \medskip
 
 {\bf Asymmetric statistical risks.}
-Although weighted sums of false discovery and non-discovery have been studied in the literature mentioned above, \stilian{the case of simultaneous family-wise error control and marginal, location-wise power requirements, has not been previously considered. }{\fbox{Altered, check the wording.}} As a result, asymmetric statistical risks such as \eqref{eq:risk-exact-approx} and \eqref{eq:risk-approx-exact} have not 
+Although weighted sums of false discovery and non-discovery have been studied in the literature mentioned above, the case of simultaneous family-wise error control and marginal, location-wise power requirements, has not been previously considered. 
+As a result, asymmetric statistical risks such as \eqref{eq:risk-exact-approx} and \eqref{eq:risk-approx-exact} have not 
 been investigated.
 As argued in Section \ref{sec:risks}, the properties of these asymmetric risks are of important practical concern in applications such as GWAS.
 We study the asymptotic behavior of these risks in Chapters \ref{chap:phase-transitions} and \ref{chap:GWAS} of this text.
@@ -125,10 +118,8 @@ We study the asymptotic behavior of these risks in Chapters \ref{chap:phase-tran
 The high-dimensional chi-square model \eqref{eq:model-chisq} seemed to have received little attention in the literature.
 While the sparse signal detection problem in the chi-square model has been studied \cite{donoho2004higher}, to the best of our knowledge,  asymptotic limits of the support recovery problems have not been studied.
 The chi-squared model and the motivating GWAS application are analyzed in Chapter \ref{chap:GWAS}.
-\stilian{The results obtained therein help us explain the sharp power decay in GWAS known as the 
-{\em steep part of the power curve}.  This empirical fact has long been observed by statistical geneticists \citep{bush2012genome} but so far it had not been mathematically quantified.  \cite{gao2019upass} provide 
-further details on the power and design in GWAS as well as an accompanying interactive 
-statistical software \citep{gaoUPASS_ShinyApp}.}{\fbox{altered the text, pls check/edit.}}
+The results obtained therein help us explain a phenomenon in GWAS where statistical power decays sharply as function of sample size when the latter is in a small region known as the {\em steep part of the power curve}.  
+This empirical fact has long been observed by statistical geneticists but has not been mathematically quantified.  \cite{gao2019upass} provide further details on the power and design in GWAS as well as an accompanying interactive statistical software \citep{gaoUPASS_ShinyApp}.
 
 % Results in Chapter \ref{chap:GWAS} now appear in \cite{gao2019five}.
 % We also analyzed asymptotic equivalences of several additional common association tests, and implement power calculations for GWAS in a software tool \cite{gao2019upass}. 

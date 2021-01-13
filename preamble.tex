@@ -19,14 +19,13 @@
 This text presents a collection of new results and recent developments on the phase transition phenomena in sparse signal problems.
 The main theme is the study of the fundamental limits in high-dimensional testing and inference. Since the seminal works
 of \cite{ingster1998minimax} and \cite{donoho2004higher}, the subject has received a lot of attention in the literature with important contributions
-from \cite{ji2012ups,genovese2012comparison,jin2014optimality,arias2017distribution,butucea2018variable}.  These works (among others) 
- have discovered the presence of fundamental limits in the so-called  {\em needle in haystack} problems, where a sparse signal is observed in 
- high-dimensional additive noise.  In this setting, two archetypal  problems arise -- the {\em signal detection} and {\em signal support recovery}.  
- Signal detection is a hypothesis testing problem, which amounts
-to testing for the presence of non-zero signal in some (any) of the dimensions.  Support recovery, on the other hand, is an inference problem, which aims to estimate the signal support -- the locations of the non-zero signal components.  The fundamental limits of these problems are studied in the so-called high-dimensional asymptotics regime where the sample size $n$ is fixed and the dimension $p$ of the underlying signal 
-grows to infinity.   
+from \cite{ji2012ups,genovese2012comparison,jin2014optimality,arias2017distribution,butucea2018variable}.  These works, among many others, have discovered some fundamental limits in the so-called  {\em needle in haystack} problems, where a sparse signal is observed with high-dimensional additive noise.  In this setting, two archetypal  problems arise -- the {\em signal detection} and {\em signal support recovery}.  
+The signal detection refers to a global hypothesis testing problem that amounts
+to determining the presence of non-zero signal in any of its dimensions. 
+The support recovery, on the other hand, can be seen either as a multiple testing problem where the presence of non-zero signal is tested for each signal location of interest, or alternatively,  as an inference problem that aims to estimate the signal support, i.e., the locations of the non-zero signal components.  The fundamental limits of these problems are studied in the so-called high-dimensional asymptotic regime where the dimension $p$ of the underlying signal grows to infinity, and the sample size $n$ is either bounded or grows slowly relative to $p$.   
+  
 
-From a probabilistic perspective, the above phase transition phenomena are asymptotic zero-one type laws, as $p\to\infty$.  
+From a probabilistic perspective, these aforementioned fundamental limits are stated as asymptotic zero-one type laws, as dimensionality diverges.  
 Namely, consider a sparse signal with  {\em support size} on the order of $p^{1-\beta}$ for some parameter $\beta\in (0,1)$.  
 Parameterize the non-zero {\em signal amplitude} by $\Delta(p^r)$, 
 for some $r>0$ and a suitable monotone non-decreasing function $\Delta(\cdot)$.  Then, for a broad range of error distributions and
@@ -81,8 +80,7 @@ statistics as well as to researchers in applied fields working with high-dimensi
 supplement to a special topics course on high-dimensional inference.
 
 {\bf Acknowledgements.} The authors gratefully acknowledge the support of their families and all colleagues from the Statistics Department 
-at the University of Michigan, Ann Arbor.   Special thanks (in alphabetical order) go to Xuming He, Tailen Hsing, Michalis Kallitsis, Liza Levina, 
-Rodderick Little, Ya'acov Ritov, Kerby Shedden, Jinqi Shen, Jonathan Terhorst, Gongjun Xu, \stilian{R2, Typo 1}{\fbox{add more}}
+at the University of Michigan, Ann Arbor.   Special thanks (in alphabetical order) go to Xuming He, Tailen Hsing, Michalis Kallitsis, Liza Levina, Yuanzhi Li, Rodderick Little, Ya'acov Ritov, Kerby Shedden, Jinqi Shen, Jonathan Terhorst, Gongjun Xu.
 The authors were partially supported by the NSF program {\em Algorithms for Threat Detection}.
 
 
