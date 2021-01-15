@@ -4,13 +4,8 @@
 % We present the key concepts regarding the behavior of the maxima, and in particular, the concentration of maxima phenomena, in Sections \ref{subsec:RS} and \ref{subsec:URS}. 
 % These concepts enable to state a partial converse in Section \ref{subsec:necessary}.
 
-We present the sufficient condition under which exact support recovery \eqref{eq:exact-recovery} can be achieved in Section \ref{subsec:sufficient}.
-A very general class of dependence structures characterized by the uniform relative stability concept will be introduced in Section \ref{subsec:URS}, to prepare us for the necessary condition in Section \ref{subsec:necessary}.
 
-Section \ref{subsec:dense-signals} discusses the case in which signals are denser than parametrized in \eqref{eq:sparsity-parametrized}, and Section \ref{suppsec:numerical} illustrates the phase transition phenomena with numerical examples.
-
-
-\subsection{Sufficient conditions for exact support recovery}
+\section{Sufficient conditions for exact support recovery}
 \label{subsec:sufficient}
 
 Following \citet*{butucea2018variable}, we define the parameter space for the signals $\mu$ as
@@ -163,7 +158,7 @@ Formally, the light-tailed nature of the error distribution allowed us to obtain
 % On the other hand, the converse of Theorem \ref{thm:sufficient} will need an (extremely mild) assumption on error dependence structures.
 
 
-\subsection{Dependence and uniform relative stability}
+\section{Dependence and uniform relative stability}
 \label{subsec:URS}
 
 An important ingredient needed for a converse of Theorem \ref{thm:sufficient} is an appropriate characterization of the error dependence structure under which the strong classification boundary \eqref{eq:strong-classification-boundary} is tight.
@@ -198,7 +193,7 @@ This concentration of maxima phenomena, in turn, is the key to establishing the 
 
 % The importance of the URS dependence class in statistics is seen in the study of support recovery problems, discussed next.
 
-\subsection{Necessary conditions for exact support recovery}
+\section{Necessary conditions for exact support recovery}
 \label{subsec:necessary}
 
 With the preparations from Section \ref{subsec:URS}, we are ready to state the necessary conditions for exact support recovery \eqref{eq:exact-recovery} by thresholding procedures. 
@@ -367,7 +362,7 @@ Therefore, the probability in \eqref{eq:classification-possible-dependent-proof-
 \end{proof}
 
 
-\subsection{Dense signals}
+\section{Dense signals}
 \label{subsec:dense-signals}
 
 We treat briefly the case of dense signals,
@@ -420,6 +415,6 @@ and ${u_{|S^*|}}/{u_p}\to 1$ for all $c\in(0,1)$, we see that Relation \eqref{eq
 \end{proof}
 
 
-\subsection{Numerical illustrations for independent errors}
+\section{Numerical illustrations for independent errors}
 \label{suppsec:numerical}
 \input{4.exact_support_recovery/4.numerical.tex}

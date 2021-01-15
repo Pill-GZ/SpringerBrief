@@ -1,62 +1,11 @@
 
-We establish in this section minimax versions of our results from Section \ref{sec:boundary}.
-Specifically, if we restrict ourselves to \emph{the class of thresholding procedures} $\cal T$ (defined in \eqref{eq:thresholding-procedure}), then Bonferroni's procedure is minimax optimal, for \emph{any} fixed dependence structures in the URS class.
-This is formalized in Corollary \ref{cor:point-wise-minimax} in Section \ref{subsec:point-wise-minimax}.
-We refer to this result as \emph{point-wise} minimax, to emphasize the fact that this optimality holds for every \emph{fixed} URS array.
-
-Meanwhile, if we search over \emph{all procedures}, but expand the parameter space to include {all} dependence structures, then a different minimax optimality statement holds for Bonferroni's procedure.
-This result, formally stated in Section \ref{subsec:minimax-over-dependence}, is a consequence of our characterization of the finite-sample Bayes optimality of thresholding procedures in Sections \ref{subsec:Bayes-optimality} and \ref{subsec:optimal-procedure-sub-exponential}.
-% The result is of independent interest and it is the main contribution of this section.
-
 Finally, we offer some insights into the support recovery problem in the case when errors have heavier-than-exponential tails in Section \ref{subsec:optimal-procedure-super-exponential}.
 
-\subsection{Point-wise minimax optimality}
-\label{subsec:point-wise-minimax}
 
-Theorems \ref{thm:sufficient} and \ref{thm:necessary} can be cast in the form of an asymptotic minimax statement. 
-% (concealing the gap between sufficient and necessary conditions as pointed out in Remark \ref{rmk:gap-between-sufficient-necessary}).
 
-\begin{corollary}[Point-wise minimax]
-\label{cor:point-wise-minimax}
-Let $\widehat{S}^{\text{Bonf}}$ be the sequence of Bonferroni's procedure described in Theorem \ref{thm:sufficient}. 
-Let also the errors have common $\text{AGG}(\nu)$ distribution $F$ with parameter $\nu>0$, and $\Theta_p^+$ be as defined in \eqref{eq:minimax-signal-config-over}.
-If $\underline{r}>g(\beta)$, then we have
-\begin{equation} \label{eq:point-wise-minimax-above}
-    \limsup_{p\to\infty} \sup_{\mu\in\Theta_p^+(\beta, \underline{r})} \P(\widehat{S}^{\text{Bonf}}_p \neq S_p) = 0,
-\end{equation}
-for arbitrary dependence structure of the error array ${\cal E} = \{\epsilon_p(i)\}_p$.
-Let $\cal T$ be the class of thresholding procedures \eqref{eq:thresholding-procedure}. 
-If $\underline{r}<g(\beta)$, then we have
-\begin{equation} \label{eq:point-wise-minimax-below}
-    \liminf_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \sup_{\mu\in\Theta_p^+(\beta, \underline{r})} \P(\widehat{S}_p \neq S_p) = 1,
-\end{equation}
-for any error dependence structure such that ${\cal E}\in U(F)$ and ${(-\cal E)}\in U(F)$.
-\end{corollary}
 
-\begin{proof}[Proof of Corollary \ref{cor:point-wise-minimax}]
-The first conclusion \eqref{eq:point-wise-minimax-above} is a restatement of Theorem \ref{thm:sufficient}.
 
-For the second statement \eqref{eq:point-wise-minimax-below}, since $\underline{r}<g(\beta)$, we can pick a sequence $\mu^*\in\Theta_p^+(\beta, \underline{r})$ such that $|S_p| = \lfloor p^{1-\beta}\rfloor$, with signals having the same signal size $\mu(i)=(2r\log{p})^{1/\nu}$ for all $i\in S_p$, where $\underline{r}<{r}<g(\beta)$.
-For this particular choice of $\mu^*$ we have $\mu^*\in\Theta_p^-(\beta, \overline{r})$ where $r<\overline{r}<g(\beta)$,
-and according to Theorem \ref{thm:necessary}, we obtain $\lim_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \mathbb P[\widehat{S}_p \neq S_p] = 1$, for all dependence structures in the URS class.
-\end{proof}
-
-\begin{remark}
-Theorem \ref{thm:necessary} is a stronger result than the traditional minimax claim in Relation \eqref{eq:point-wise-minimax-below}.
-Indeed,  \eqref{eq:classification-impossible-dependent} involves an infimum (over the class $\Theta^-_p$) while \eqref{eq:point-wise-minimax-below} has a supremum (over the class $\Theta^+_p$).
-
-On the other hand, Corollary \ref{cor:point-wise-minimax} is more informative than many minimax-type statements, since it applies ``point-wise'' to any fixed error dependence structure in the URS class.
-\end{remark}
-
-\begin{remark}
-Corollary \ref{cor:point-wise-minimax} echoes Remark \ref{rmk:dependence-assumptions}: for a very large class of dependence structures, we cannot improve upon Bonferroni's procedure in exact support recovery problems (asymptotically), unless we look beyond thresholding procedures.
-% There is a limited amount of literature on non-thresholding procedures that utilize the error dependence structures to improve power.
-% A notable effort was made by \citet{jin2014optimality}, where the performance (in terms of Hamming loss) of a so-called graphlet screening procedure was studied. 
-\end{remark}
-
-% This is an enhancement (in the asymptotic sense) of the minimax results in Section 4.1 of \cite{butucea2018variable}, where the supremum was taken over the dependence structures.
-
-\subsection{Bayes optimality in support recovery problems}
+\section{Bayes optimality in support recovery problems}
 \label{subsec:Bayes-optimality}
 
 In studying support recovery problems (e.g., \citet{arias2017distribution}), restrictions to the thresholding procedures are sometimes justified by arguing that such procedures are the ``reasonable'' choice for estimating the support set.
@@ -106,12 +55,19 @@ If, however, the sparsity $s = |S|$ of the problem is known, then a natural esti
 We call $\widehat{S}^* = \{i\,|\, x(i)\ge x_{[s]}\}$ the oracle data thresholding procedure, where $x_{[1]} \ge \ldots \ge x_{[p]}$ are the order statistics of $x$.
 \end{definition}
 
-The finite-sample optimality of the oracle thresholding procedure $\widehat{S}^*$ is intimately linked with the \emph{monotone likelihood ratio} (MLR) property.
+
+
+\subsection{When is oracle thresholding Bayes optimal?} % under sub-exponential errors}
+\label{subsec:optimal-procedure-sub-exponential}
+
+An elegant answer of this question can be given in terms of the \emph{monotone likelihood ratio} (MLR) property.
+
 \begin{definition}[Monotone Likelihood Ratio]
 A family of positive densities on $\R$, $\{f_\delta, \delta \in U\}$, is said to have the MLR property if, for all $\delta_0, \delta_1\in U\subseteq\R$ such that $\delta_0 < \delta_1$, the likelihood ratio $\left(f_{\delta_1}(x)/f_{\delta_0}(x)\right)$ is an increasing function of $x$.
 \end{definition}
 
-Their relationship is summarized in the following lemma.
+The following result provides a general criterion for the finite-sample optimality of the oracle thresholding 
+procedure $\widehat{S}^*$.
 
 \begin{proposition} \label{prop:optimal-oracle-procedures}
 Let the observations $x(i)$, $i=1,\ldots,p$ be as prescribed as in \eqref{eq:signal-distributions-ordered} through \eqref{eq:uniform-ordered}.
@@ -121,18 +77,47 @@ If each of $\{f_0, f_{1}\},\ldots,\{f_0,f_{s}\}$ form an MLR family, then the or
 \end{equation}
 for all $s$ and $p$.
 \end{proposition} 
+\begin{proof}%[Proof of Proposition \ref{prop:optimal-oracle-procedures}]
+The problem of support recovery can be equivalently stated as a classification problem, where the discrete parameter space is $\mathcal{S} = \{S\subseteq\{1,\ldots,p\}:|S|=s\}$, and the observation $x \in\R^p$ has likelihood $f(x|S)$ indexed by the support set $S$.
 
-The proof of Proposition \ref{prop:optimal-oracle-procedures} is found in Section \ref{suppsec:proofs}.
+By the optimality of the Bayes classifier (see, e.g., \citep{domingos1997optimality}), a set estimator that maximizes the probability of support recovery is such that
+$$
+\widehat{S} \in \argmax_{S\in \mathcal{S}} f(x|S) \pi(S).
+$$
+Since we know from \eqref{eq:uniform} that $\pi(S)$ is uniform, the problem in our context reduces to showing that $f(x|\widehat{S}^*) = f(x|\widehat{S})$, where $f(x|S)$ is the conditional distribution of data given the unordered support $S$,
+$$
+f(x|S) 
+= \sum_{P\in\sigma(S)} f(x|P) \pi^{\text{ord}}(P|S) 
+= \frac{1}{s!} \left(\sum_{P\in\sigma{(S)}} \prod_{i=1}^s {f_{i}(x(P(i)))}\right) \prod_{k\not\in S}{f_0(x(k))},
+$$
+where $\sigma(S)$ is the set of all permutations of the indices in the support set $S$.
 
-We emphasize that the oracle thresholding procedures are in fact \emph{finite-sample optimal} in the above Bayesian context.
-Further, our setup allows for different alternative distributions, and relaxes the assumptions of \citet{butucea2018variable} when studying distributional generalizations, where the alternatives are assumed to be identically distributed.
+Suppose $\widehat{S} \neq \widehat{S}^*$, then there must be indices $j \in \widehat{S}$ and $j' \in \widehat{S}^c$ such that $x(j) \le x(j')$.
+We exchange the labels of $x(j)$ and $x(j')$, and form a new estimate $\widehat{S}\,' = \big(\widehat{S}\setminus\{j\}\big)\cup\{j'\}$.
+Comparing the likelihoods under $\widehat{S}$ and $\widehat{S}\,'$, we have
+\begin{align}
+    f(x|\widehat{S}) - f(x|\widehat{S}\,') 
+    &= \frac{1}{s!} \sum_{P\in\sigma{(\widehat{S})}} \prod_{i=1}^s {f_{i}(x(P(i)))} f_0(x(j'))\prod_{k\not\in \widehat{S}\cup\{j'\}}{f_0(x(k))} - \nonumber \\
+    &\quad\quad\quad - \frac{1}{s!} \sum_{P'\in\sigma{(\widehat{S}')}} \prod_{i=1}^s {f_{i}(x(P'(i)))} f_0(x(j)) \prod_{k\not\in \widehat{S}'\cup\{j\}}{f_0(x(k))} \nonumber \\
+    &= \frac{1}{s!} \left(\sum_{i=1}^s a_i  \Big(f_i(x(j)) f_0(x(j')) - f_i(x(j')) f_0(x(j))\Big) \right) \prod_{k\not\in \widehat{S}\cup\{j'\}}{f_0(x(k))}, \label{eq:MLR-optimality-proof}
+    % = \log{f_\delta(x(j))} + \log{f_0(x(j'))} - \log{f_\delta(x(j'))} - \log{f_0(x(j))} 
+\end{align}
+where the last equality follows by first summing over all permutations fixing $P(i) = j$ and $P'(i) = j'$, and setting $a_i = \sum_{P\in\sigma{(\widehat{S}\setminus\{j\})}} \prod_{i'\neq i} {f_{i'} (x(P(i')))}$. Notice that the $a_i$'s are non-negative.
 
-It remains to understand when the key MLR property holds. 
-We elaborate on this question next.
+Since $x(j) \le x(j')$, and that each of $\{f_0, f_{i}\}$ is an MLR family, we have
+$$
+\frac{f_i(x(j))}{f_0(x(j))} - \frac{f_i(x(j'))}{f_0(x(j'))} \le 0 \implies f_i(x(j)) f_0(x(j')) - f_i(x(j')) f_0(x(j)) \le 0.
+$$
+Using Relation \eqref{eq:MLR-optimality-proof}, we conclude that $f(x|\widehat{S}) \le f(x|\widehat{S}\,')$.
+This implies that any estimator that is not $\widehat{S}^*$ may be improved, and the optimality follows.
+\end{proof}
 
-\subsection{Bayes optimality under sub-exponential errors}
-\label{subsec:optimal-procedure-sub-exponential}
+We emphasize that under the MLR conditions in Proposition \ref{prop:optimal-oracle-procedures},
+ the oracle thresholding procedures are in fact \emph{finite-sample optimal} in the 
+above Bayesian context. Further, our setup allows for different alternative distributions, and relaxes the assumptions 
+of \citet{butucea2018variable} when studying distributional generalizations, where the alternatives are assumed to be identically distributed.
 
+It remains to understand when the key MLR property holds.  We elaborate on this question next.
 Returning to the more concrete signal-plus-noise model \eqref{eq:model-additive}, it turns out that the error tail behavior is what determines the optimality of data thresholding procedures.
 In this setting, log-concavity of the error densities is \emph{equivalent} to the MLR property (Lemma \ref{lemma:MLR-log-concavity}). This, in turn, yields the finite-sample optimality of data thresholding procedures (Proposition \ref{prop:log-concave}).
 
@@ -141,7 +126,7 @@ Let $\delta$ be the magnitude of the non-zero signals in the signal-plus-noise m
 The family $\{f_\delta, \delta \in \R\}$ has the MLR property if and only if the error density $f_0$ is log-concave.
 \end{lemma}
 
-\begin{proof}[Proof of Lemma \ref{lemma:MLR-log-concavity}]
+\begin{proof}%[Proof of Lemma \ref{lemma:MLR-log-concavity}]
 Suppose MLR holds, we will show that $f_0(t) = \exp\{\phi(t)\}$ for some concave function $\phi$.
 By the assumption of MLR, for any $x_1 < x_2$, setting $\delta_0 = 0$, and $\delta_1 = (x_2 - x_1)/2 > 0$, we have
 \begin{equation*}
@@ -162,7 +147,29 @@ For the `if' part, when  $\phi(t) = \log{(f_0(t))}$ is log-concave, then for any
     \log{\frac{f_{\delta_1}(y)}{f_{\delta_0}(y)}} - \log{\frac{f_{\delta_1}(x)}{f_{\delta_0}(x)}}
     = \phi(y-\delta_1) - \phi(y-\delta_0) - \phi(x-\delta_1) + \phi(x-\delta_0) \ge 0,
 \end{equation}
-where the last inequality is a simple consequence of concavity (see Lemma \ref{lemma:four-point-concavity}). This proves the `if' part.
+where the last inequality is a simple consequence of concavity (see Lemma \ref{lemma:four-point-concavity} below). This proves the `if' part.
+\end{proof}
+\begin{lemma} \label{lemma:four-point-concavity}
+Let $\phi$ be any concave function on $\R$. For any $x<y\in\R$, and $\delta>0$ we have
+$$
+\phi(x) + \phi(y+\delta) \le \phi(y) + \phi(x+\delta).
+$$
+\end{lemma}
+
+\begin{proof}%[Proof of Lemma \ref{lemma:four-point-concavity}]
+Pick $\lambda = \delta/(y-x+\delta)$, by concavity of $f$ we have
+\begin{equation} \label{eq:four-point-concavity-1}
+    \lambda \phi(x) + (1-\lambda) \phi(y+\delta) 
+    \le \phi(\lambda x + (1-\lambda)(y+\delta)) 
+    = \phi(y),
+\end{equation}
+and
+\begin{equation} \label{eq:four-point-concavity-2}
+    (1-\lambda) \phi(x) + \lambda \phi(y+\delta)
+    \le \phi((1-\lambda) x + \lambda(y+\delta)) 
+    = \phi(x+\delta).
+\end{equation}
+Summing up \eqref{eq:four-point-concavity-1} and \eqref{eq:four-point-concavity-2} and we arrive at the conclusion as desired.
 \end{proof}
 
 Proposition \ref{prop:optimal-oracle-procedures} and Lemma \ref{lemma:MLR-log-concavity} yield immediately the following.
@@ -197,7 +204,7 @@ then we have
 where the infimum on $\widehat{S}_p$ is taken over all procedures.
 \end{theorem}
 
-\begin{proof}[Proof of Theorem \ref{thm:necessary-strengthened}]
+\begin{proof}%[Proof of Theorem \ref{thm:necessary-strengthened}]
 When errors are independent with log-concave density, the oracle thresholding procedure $\widehat{S}^*_p$, by Proposition \ref{prop:log-concave}, minimizes the Bayes risk \eqref{eq:Bayes-risk} among \emph{all} procedures. That is,
 $$
 \liminf_{p\to\infty} \inf_{\widehat{S}_p} \E_\pi\P[\widehat{S}_p\neq S_p]
@@ -212,6 +219,111 @@ Since $\widehat{S}^*_p$ belongs to the class of all thresholding procedures, we 
 when $\overline{r}<g(\beta)$, where the last line follows from Theorem \ref{thm:necessary}.
 \end{proof}
 
+\subsection{Bayes optimality of likelihood ratio thresholding}
+\label{subsec:optimal-procedure-super-exponential}
+
+When the MLR condition in Proposition \ref{prop:optimal-oracle-procedures} is violated, the oracle thresholding 
+procedures can in fact be sub-optimal (see Example \ref{exmp:suboptimal-data-thresholding}, below). 
+The following result provides the general form of the finite-sample Bayes optimal procedures.
+It turns out that in general, \emph{likelihood ratio thresholding} is optimal.
+
+\begin{proposition} \label{prop:likelihood-ratio-thresholding}
+Let the observations $x(i)$, $i=1,\ldots,p$ have $s$ signals as prescribed in \eqref{eq:uniform-ordered} having common density $f_a$, and let the rest $(p-s)$ locations have common density $f_0$.
+Define the likelihood ratios 
+$$
+L(i) := {f_a(x(i))}\big/{f_0(x(i))},
+$$
+and let $L_{[1]} \ge L_{[2]} \ge \ldots \ge L_{[p]}$ be the order statistics of the $L(i)$'s.
+Then the procedure $\widehat{S}_{\text{opt}} = \{i\,|\,L(i) \ge L_{[s]}\}$ is finite-sample optimal in terms of Bayes risk. That is,
+\begin{equation}
+    \widehat{S}_{\text{opt}} \in \argmin_{\widehat{S}} \E_\pi \P[\widehat{S} \neq S].
+\end{equation}
+for all $s$ and $p$, where the infimum on $\widehat{S}_p$ is taken over all procedures.
+\end{proposition} 
+\begin{proof}%[Proof of Proposition \ref{prop:likelihood-ratio-thresholding}]
+The proof is entirely analogous to that of Proposition \ref{prop:optimal-oracle-procedures}.
+Since we know from \eqref{eq:uniform} that $\pi(S)$ is uniform, the problem reduces to showing that $f(x|\widehat{S}_{\text{opt}}) = f(x|\widehat{S})$, where 
+$$
+\widehat{S} \in \argmax_{S \in \mathcal{S}} f(x|S) \pi(S).
+$$
+and
+$f(x|S)$ is the conditional distribution of data given the unordered support $S$,
+\begin{equation} \label{eq:likelihood-ratio-thresholding-proof}
+    f(x|S) = \sum_P f(x|P) \pi^{\text{ord}}(P|S) = \prod_{j\in S} f_a(x(j)) \prod_{j\not\in S}{f_0(x(j))}.
+\end{equation}
+Suppose $\widehat{S} \neq \widehat{S}_{\text{opt}}$, then there must be indices $j \in \widehat{S}$ and $j' \in \widehat{S}^c$ such that $L(j) \le L(j')$.
+If we exchange the labels of $L(j)$ and $L(j')$, that is, we form a new estimate $\widehat{S}\,' = \big(\widehat{S}\setminus\{j\}\big)\cup\{j'\}$,
+comparing the log-likelihoods under $\widehat{S}$ and $\widehat{S}\,'$, we have
+\begin{equation*}
+    \log{f(x|\widehat{S})} - \log{f(x|\widehat{S}\,')} 
+    = \log{f_a(x(j))} + \log{f_0(x(j'))} - \log{f_a(x(j'))} - \log{f_0(x(j))}.
+\end{equation*}
+By the definition of $L(j)$'s, and the order relations, we obtain
+\begin{equation*}
+    \log{f(x|\widehat{S})} - \log{f(x|\widehat{S}\,')} 
+    = \log{L(j)} - \log{L(j')} \le 0
+\end{equation*}
+This implies that any estimator that is not $\widehat{S}_{\text{opt}}$ may be improved, and the optimality follows.
+\end{proof}
+
+
+The characterization of optimal likelihood ratio thresholding procedures in Proposition \ref{prop:likelihood-ratio-thresholding} may not always yield practical estimators, as the density of alternatives, and number of signals are typically unknown.
+Still, some insights can be gained by virtue of Proposition \ref{prop:likelihood-ratio-thresholding}.
+In particular, when MLR fails (or equivalently, when the errors in model \eqref{eq:model-additive} do not have log-concave densities), data thresholding is sub-optimal. 
+
+
+\begin{example}[Sub-optimality of data thresholding] \label{exmp:suboptimal-data-thresholding}
+Let the errors have iid generalized Gaussian density with $\nu=1/2$, i.e., $\log{f_0(x)}\propto -x^{1/2}$. 
+Let dimension $p=2$, sparsity $s=1$ with uniform prior, and signal size $\delta=1$.
+That is, $\mathbb P[\mu = (0,1)^\mathrm{T}] = \mathbb P[\mu = (1,0)^\mathrm{T}] = 1/2$.
+If the observations take on values $x = (x_1, x_2)^\mathrm{T} = (1,2)^\mathrm{T}$, we see from a comparison of the likelihoods (and hence, the posteriors),
+$$
+\log \frac{f(x|\{1\})}{f(x|\{2\})} = 2x_1^{1/2} + 2(x_2 - 1)^{1/2} - 2x_2^{1/2} - 2(x_1 - 1)^{1/2} = 4 - 2\sqrt{2} > 0,
+$$
+that even though $x_1<x_2$, the set $\{1\}$ is a better estimate of support than $\{2\}$, i.e., $\mathbb P[S=\{1\}\,\big|\,x] > \mathbb P[S=\{2\}\,\big|\,x]$.
+\end{example}
+
+This simple example shows that, in the case when the errors have super-exponential tails, the optimal procedures are in general \emph{not} data thresholding.
+A slightly more general conclusion can be found in Corollary \ref{cor:log-convex}.
+
+\subsection{Sub-optimality of data thresholding procedures}
+
+We provide a slightly more general result on the sub-optimality of data thresholding procedures.
+
+\begin{corollary} \label{cor:log-convex}
+Consider the additive error model \eqref{eq:model-additive}.
+Let the errors $\epsilon$ be independent with common distribution $F$.
+Let each of the $s$ signals be located on $\{1,\ldots,p\}$ uniformly at random with equal magnitude $0<\delta<\infty$.
+% , independently with probability $p_1,\ldots,p_s$.
+% , {\color{red} so that we have $f_a = p_1f_1 + p_2f_2 + \ldots + p_sf_s$.}
+If errors $\epsilon$ are iid with density $f$ log-convex on $[K, +\infty)$, then whenever $j\in\widehat{S}_{\text{opt}}$ for some $x(j) > K+\delta$, we must have $j'\in\widehat{S}_{\text{opt}}$ for all $j'$ such that $K+\delta \le x(j') < x(j)$.
+\end{corollary} 
+
+Specifically, if there are $m$ observations exceeding $K+\delta_s$, with $m>s$, then the top $m-s$ observations will \emph{not} be included in the optimal estimator $\widehat{S}_{\text{opt}}$.
+This shows that, in the case when the errors have super-exponential tails, the optimal procedures are in general \emph{not} data thresholding.
+
+\begin{proof}[Proof of Corollary \ref{cor:log-convex}]
+Since the alternative $f_{a}(t) = {f(t-\delta)}$ are log-convex on $[K+\delta, \infty)$, by Relation \eqref{eq:concavity-implies-MLR} in the proof of Lemma \ref{lemma:MLR-log-concavity} and appealing to log-convexity (rather than log-concavity), the likelihood ratio
+$$
+L(j) := \frac{f_a(x(j))}{f_0(x(j))} %= \sum_{i=1}^s \frac{p_if_{i}(x(j))}{f_0(x(j))},
+$$
+is decreasing in $x(j)$ on $[K+\delta, \infty)$.
+The proof is complete by applying Proposition \ref{prop:likelihood-ratio-thresholding}.
+\end{proof}
+
+\begin{remark}[An open problem]
+In the non-log-concave setting, where we know that thresholding procedures are suboptimal, likelihood thresholding procedures are promising, thanks to Proposition \ref{prop:likelihood-ratio-thresholding}. 
+
+In the case where the signals have difference sizes, however, likelihood thresholding procedures are undefined since 
+in the proof of Proposition \ref{prop:likelihood-ratio-thresholding}, the signal densities need to be identical for Relation \eqref{eq:likelihood-ratio-thresholding-proof} to hold.  In such cases, the existence of an optimal procedure is an open problem.
+\end{remark}
+
+
+
+
+
+
+
 % \begin{remark}
 % In view of Theorem \ref{thm:necessary-strengthened}, Bonferroni's thresholding procedure $\widehat{S}_p^{\text{Bonf}}$ described in Theorem \ref{thm:sufficient} is an asymptotically minimax procedure over the class of error models $U(F)$.
 % That is, in the class of errors with AGG($\nu$) marginals $F$ where $\nu\ge1$, we have
@@ -223,6 +335,67 @@ when $\overline{r}<g(\beta)$, where the last line follows from Theorem \ref{thm:
 % This can be done by applying Theorem 1.1 in the supplement of \citep{butucea2018variable}.
 % We content ourselves with a Bayesian minimax result here.
 % \end{remark}
+
+\section{Minimax optimality in exact support recovery}
+
+We establish in this section minimax versions of our results from Chapter \ref{chap:exact-support-recovery}.
+Specifically, if we restrict ourselves to \emph{the class of thresholding procedures} $\cal T$ (defined in \eqref{eq:thresholding-procedure}), then Bonferroni's procedure is minimax optimal, for \emph{any} fixed dependence structures in the URS class.
+This is formalized in Corollary \ref{cor:point-wise-minimax} below.% in Section \ref{subsec:point-wise-minimax}.
+We refer to this result as \emph{point-wise} minimax, to emphasize the fact that this optimality holds for every \emph{fixed} URS array.
+
+Meanwhile, if we search over \emph{all procedures}, but expand the model space to include {\em all} dependence 
+structures, then a different minimax optimality statement holds for Bonferroni's procedure.
+This result, formally stated in Section \ref{subsec:minimax-over-dependence}, is a consequence of our characterization 
+of the finite-sample Bayes optimality of thresholding procedures in Sections \ref{subsec:Bayes-optimality} and \ref{subsec:optimal-procedure-sub-exponential}.
+% The result is of independent interest and it is the main contribution of this section.
+
+
+\subsection{Point-wise minimax optimality for thresholding procedures}
+\label{subsec:point-wise-minimax}
+
+Theorems \ref{thm:sufficient} and \ref{thm:necessary} can be cast in the form of an asymptotic minimax statement. 
+% (concealing the gap between sufficient and necessary conditions as pointed out in Remark \ref{rmk:gap-between-sufficient-necessary}).
+
+\begin{corollary}[Point-wise minimax]
+\label{cor:point-wise-minimax}
+Let $\widehat{S}^{\text{Bonf}}$ be the sequence of Bonferroni's procedure described in Theorem \ref{thm:sufficient}. 
+Let also the errors have common $\text{AGG}(\nu)$ distribution $F$ with parameter $\nu>0$, and $\Theta_p^+$ be as defined in \eqref{eq:minimax-signal-config-over}.
+If $\underline{r}>g(\beta)$, then we have
+\begin{equation} \label{eq:point-wise-minimax-above}
+    \limsup_{p\to\infty} \sup_{\mu\in\Theta_p^+(\beta, \underline{r})} \P(\widehat{S}^{\text{Bonf}}_p \neq S_p) = 0,
+\end{equation}
+for arbitrary dependence structure of the error array ${\cal E} = \{\epsilon_p(i)\}_p$.
+Let $\cal T$ be the class of thresholding procedures \eqref{eq:thresholding-procedure}. 
+If $\underline{r}<g(\beta)$, then we have
+\begin{equation} \label{eq:point-wise-minimax-below}
+    \liminf_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \sup_{\mu\in\Theta_p^+(\beta, \underline{r})} \P(\widehat{S}_p \neq S_p) = 1,
+\end{equation}
+for any error dependence structure such that ${\cal E}\in U(F)$ and ${(-\cal E)}\in U(F)$.
+\end{corollary}
+
+\begin{proof}%[Proof of Corollary \ref{cor:point-wise-minimax}]
+The first conclusion \eqref{eq:point-wise-minimax-above} is a restatement of Theorem \ref{thm:sufficient}.
+
+For the second statement \eqref{eq:point-wise-minimax-below}, since $\underline{r}<g(\beta)$, we can pick a sequence $\mu^*\in\Theta_p^+(\beta, \underline{r})$ such that $|S_p| = \lfloor p^{1-\beta}\rfloor$, with signals having the same signal size $\mu(i)=(2r\log{p})^{1/\nu}$ for all $i\in S_p$, where $\underline{r}<{r}<g(\beta)$.
+For this particular choice of $\mu^*$ we have $\mu^*\in\Theta_p^-(\beta, \overline{r})$ where $r<\overline{r}<g(\beta)$,
+and according to Theorem \ref{thm:necessary}, we obtain $\lim_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \mathbb P[\widehat{S}_p \neq S_p] = 1$, for all dependence structures in the URS class.
+\end{proof}
+
+\begin{remark}
+Theorem \ref{thm:necessary} is a stronger result than the traditional minimax claim in Relation \eqref{eq:point-wise-minimax-below}.
+Indeed,  \eqref{eq:classification-impossible-dependent} involves an infimum (over the class $\Theta^-_p$) while \eqref{eq:point-wise-minimax-below} has a supremum (over the class $\Theta^+_p$).
+
+On the other hand, Corollary \ref{cor:point-wise-minimax} is more informative than many minimax-type statements, since it applies ``point-wise'' to any fixed error dependence structure in the URS class.
+\end{remark}
+
+\begin{remark}
+Corollary \ref{cor:point-wise-minimax} echoes Remark \ref{rmk:dependence-assumptions}: for a very large class of dependence structures, we cannot improve upon Bonferroni's procedure in exact support recovery problems (asymptotically), unless we look beyond thresholding procedures.
+% There is a limited amount of literature on non-thresholding procedures that utilize the error dependence structures to improve power.
+% A notable effort was made by \citet{jin2014optimality}, where the performance (in terms of Hamming loss) of a so-called graphlet screening procedure was studied. 
+\end{remark}
+
+% This is an enhancement (in the asymptotic sense) of the minimax results in Section 4.1 of \cite{butucea2018variable}, where the supremum was taken over the dependence structures.
+
 
 \subsection{Minimax optimality over all procedures}
 \label{subsec:minimax-over-dependence}
@@ -245,21 +418,7 @@ Further, when $\underline{r}<g(\beta)$, and $F$ has a positive log-concave densi
 \end{equation}
 where the infimum on $\widehat{S}_p$ is taken over all procedures.
 \end{corollary}
-
-\begin{remark}
-Since the class $\text{AGG}(\nu)$, $\nu\ge1$ contains distributions with log-concave densities (Example \ref{exmp:AGG-logconcave}), the minimax statement \eqref{eq:minimax-over-dependence-under} continues to hold if the supremum is taken over the entire class $F\in\text{AGG}(\nu)$, $\nu\ge1$.
-We opted for a more informative formulation which emphasizes the log-concavity condition on the density of $F$.
-\end{remark}
-
-\begin{remark}
-Corollary \ref{cor:minimax-over-dependence} is no stronger than Corollary \ref{cor:point-wise-minimax}. 
-In Corollary \ref{cor:point-wise-minimax} we search over only the class of thresholding procedures, but offer a tight, point-wise lower bound on the asymptotic risk over the class of URS dependence structures.
-On the other hand, Corollary \ref{cor:minimax-over-dependence} provides a uniform lower bound for the asymptotic risk over all dependence structures, which may not be tight except in the case of independent errors.
-% , and when the errors have nice, log-concave densities.
-\end{remark}
-
-
-\begin{proof}[Proof of Corollary \ref{cor:minimax-over-dependence}]
+\begin{proof}%[Proof of Corollary \ref{cor:minimax-over-dependence}]
 Relation \eqref{eq:minimax-over-dependence-over} is a re-statement of Remark \ref{rmk:sufficient-strengthened}.
 
 For any distribution $\pi$ (with a slight abuse of notation) over the parameter space $\Theta_p^+\times D(F)$, we have
@@ -287,52 +446,28 @@ Since the density $f$ of $F$ is log-concave, the distribution of the signal conf
 Thus, the desired conclusion \eqref{eq:minimax-over-dependence-under} follows from Theorem \ref{thm:necessary-strengthened} and \eqref{eq:minimax-over-dependence-under-proof}.
 \end{proof}
 
-\subsection{Bayes optimality of likelihood ratio thresholding}
-\label{subsec:optimal-procedure-super-exponential}
+\begin{remark}
+Since the class $\text{AGG}(\nu)$, $\nu\ge1$ contains distributions with log-concave densities (Example \ref{exmp:AGG-logconcave}), the minimax statement \eqref{eq:minimax-over-dependence-under} continues to hold if the supremum is taken over the entire class $F\in\text{AGG}(\nu)$, $\nu\ge1$.
+We opted for a more informative formulation which emphasizes the log-concavity condition on the density of $F$.
+\end{remark}
 
-The following result provides the general form of finite-sample Bayes optimal procedures.
-It turns out that in general, \emph{likelihood ratio thresholding} is optimal.
-
-\begin{proposition} \label{prop:likelihood-ratio-thresholding}
-Let the observations $x(i)$, $i=1,\ldots,p$ have $s$ signals as prescribed in \eqref{eq:uniform-ordered} having common density $f_a$, and let the rest $(p-s)$ locations have common density $f_0$.
-Define the likelihood ratios 
-$$
-L(i) := {f_a(x(i))}\big/{f_0(x(i))},
-$$
-and let $L_{[1]} \ge L_{[2]} \ge \ldots \ge L_{[p]}$ be the order statistics of the $L(i)$'s.
-Then the procedure $\widehat{S}_{\text{opt}} = \{i\,|\,L(i) \ge L_{[s]}\}$ is finite-sample optimal in terms of Bayes risk. That is,
-\begin{equation}
-    \widehat{S}_{\text{opt}} \in \argmin_{\widehat{S}} \E_\pi \P[\widehat{S} \neq S].
-\end{equation}
-for all $s$ and $p$, where the infimum on $\widehat{S}_p$ is taken over all procedures.
-\end{proposition} 
-
-The proof of Proposition \ref{prop:likelihood-ratio-thresholding} is found  in Section \ref{suppsec:proofs}.
-
-% \begin{remark}
-% While the assumption that the alternatives have a common density $f_a$ is slightly more restrictive than in Proposition \ref{prop:optimal-oracle-procedures}, it is not excessively so if one considers a fully Bayesian alternative, where $f_a = p_1f_1 + p_2f_2 + \ldots + p_sf_s$ is a random mixture of alternatives $f_1,\ldots,f_s$ with probability weights $p_1,\ldots,p_s$.
-% \end{remark}
-
-The characterization of optimal likelihood ratio thresholding procedures in Proposition \ref{prop:likelihood-ratio-thresholding} may not always yield practical estimators, as the density of alternatives, and number of signals are typically unknown.
-Still, some insights can be gained by virtue of Proposition \ref{prop:likelihood-ratio-thresholding}.
-In particular, when MLR fails (or equivalently, when the errors in model \eqref{eq:model-additive} do not have log-concave densities), data thresholding is sub-optimal. 
+\begin{remark}
+Corollary \ref{cor:minimax-over-dependence} is no stronger than Corollary \ref{cor:point-wise-minimax}. 
+In Corollary \ref{cor:point-wise-minimax} we search over only the class of thresholding procedures, but offer a tight, point-wise lower bound on the asymptotic risk over the class of URS dependence structures.
+On the other hand, Corollary \ref{cor:minimax-over-dependence} provides a uniform lower bound for the asymptotic risk over all dependence structures, which may not be tight except in the case of independent errors.
+% , and when the errors have nice, log-concave densities.
+\end{remark}
 
 
-\begin{example}[Sub-optimality of data thresholding] \label{exmp:suboptimal-data-thresholding}
-Let the errors have iid generalized Gaussian density with $\nu=1/2$, i.e., $\log{f_0(x)}\propto -x^{1/2}$. 
-Let dimension $p=2$, sparsity $s=1$ with uniform prior, and signal size $\delta=1$.
-That is, $\mathbb P[\mu = (0,1)^\mathrm{T}] = \mathbb P[\mu = (1,0)^\mathrm{T}] = 1/2$.
-If the observations take on values $x = (x_1, x_2)^\mathrm{T} = (1,2)^\mathrm{T}$, we see from a comparison of the likelihoods (and hence, the posteriors),
-$$
-\log \frac{f(x|\{1\})}{f(x|\{2\})} = 2x_1^{1/2} + 2(x_2 - 1)^{1/2} - 2x_2^{1/2} - 2(x_1 - 1)^{1/2} = 4 - 2\sqrt{2} > 0,
-$$
-that even though $x_1<x_2$, the set $\{1\}$ is a better estimate of support than $\{2\}$, i.e., $\mathbb P[S=\{1\}\,\big|\,x] > \mathbb P[S=\{2\}\,\big|\,x]$.
-\end{example}
 
-This simple example shows that, in the case when the errors have super-exponential tails, the optimal procedures are in general \emph{not} data thresholding.
-A slightly more general conclusion can be found in Corollary \ref{cor:log-convex}.
 
-\begin{remark} \label{rmk:tail-assumptions}
+\section{A discussion on optimality}
+
+  \stilian{Here we briefly discuss the optimality and sub-optimality of the 
+ thresholding procedures.}{Needs work}
+ 
+%\begin{remark} \label{rmk:tail-assumptions}
+
 Consider the model \eqref{eq:model-additive} with independent errors, Proposition \ref{prop:likelihood-ratio-thresholding}, and indeed, Example \ref{exmp:suboptimal-data-thresholding} demonstrate that thresholding procedures are in fact \emph{sub-optimal} for $\text{AGG}(\nu)$ models with $\nu<1$.
 Therefore, the optimality of thresholding procedures (specifically, Bonferroni's procedure) only applies to $\text{AGG}(\nu)$ models with $\nu\ge1$. 
 % This suggests that the condition $\nu\ge1$ in Corollary \ref{cor:minimax-over-dependence} is tight.
@@ -341,7 +476,8 @@ If we restrict the space of methods to only thresholding procedures, then result
 This includes $\text{AGG}(\nu)$ models {\it for all} $\nu>0$.
 In contrast, models with heavy (regularly varying) tailed errors do not exhibit this phenomenon (see Theorem \ref{thm:heavy-tails}).
 We summarize the properties of thresholding procedures in Table \ref{table:role-of-thresholding}. 
-\end{remark}
+
+%\end{remark}
 
 \begin{table}[ht]
     \centering
