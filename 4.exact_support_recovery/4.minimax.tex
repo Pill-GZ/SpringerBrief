@@ -4,7 +4,7 @@ Specifically, if we restrict ourselves to \emph{the class of thresholding proced
 This is formalized in Corollary \ref{cor:point-wise-minimax} in Section \ref{subsec:point-wise-minimax}.
 We refer to this result as \emph{point-wise} minimax, to emphasize the fact that this optimality holds for every \emph{fixed} URS array.
 
-Meanwhile, if we search over \emph{all procedures}, but expand the parameter space to include {all} dependence structures, then a different minimax optimality statement holds for Bonferroni's procedure.
+Meanwhile, if we search over \emph{all procedures}, but expand the space of models to include {\em all} dependence structures, then a different minimax optimality statement holds for Bonferroni's procedure.
 This result, formally stated in Section \ref{subsec:minimax-over-dependence}, is a consequence of our characterization of the finite-sample Bayes optimality of thresholding procedures in Sections \ref{subsec:Bayes-optimality} and \ref{subsec:optimal-procedure-sub-exponential}.
 % The result is of independent interest and it is the main contribution of this section.
 
@@ -59,26 +59,40 @@ Corollary \ref{cor:point-wise-minimax} echoes Remark \ref{rmk:dependence-assumpt
 \subsection{Bayes optimality in support recovery problems}
 \label{subsec:Bayes-optimality}
 
-In studying support recovery problems (e.g., \citet{arias2017distribution}), restrictions to the thresholding procedures are sometimes justified by arguing that such procedures are the ``reasonable'' choice for estimating the support set.
+\stilian{\fbox{SUGGESTION}}{ What do you think about making the Bayesian stuff a Chapter?  I think it stands well on its own... plus it is somewhat different from the ``non-Bayesian'' setup of the previous support recovery results...}
+
+\stilian{
+In studying support recovery problems \citep[e.g.,][]{arias2017distribution}, often the attention is restricted to the class of
+thresholding procedures.  This is justified by arguing that such procedures are the ``reasonable'' choice for estimating the support set.
 %  In Theorem \ref{thm:sufficient} we saw that a (FWER-controlling) thresholding procedure is indeed consistent for support recovery. 
 % It is natural to ask if it will be sufficient to restrict our attention to only such procedures.
-We show in this section that, perhaps surprisingly, for general error models, thresholding procedures are not always optimal, even when the observations are independent.
+We show in this section that, in many cases, the finite-sample Bayes optimal procedures do indeed belong to the class of thresholding procedures.  
+Perhaps surprisingly, however, we also show that for general error models, the thresholding procedures are sub-optimal, 
+even when the observations are independent.  Roughly speaking, in the additive error 
+models \eqref{eq:model-additive},  this distinction depends on whether or not the error density is log-concave 
+(Proposition \ref{prop:log-concave} and Corollary \ref{cor:log-convex}).}{\fbox{edited, agree?}}
 
-We shall identify the optimal procedure for support recovery problems under a Bayesian setting with general distributional assumptions (including but not limited to additive models \eqref{eq:model-additive}).
-Specifically, we assume that there is an ordered set $P = (i_1,\ldots,i_s)$, $i_i\in\{1,\ldots,p\}$, and $s$ (not necessarily equal) densities $f_{1}, \ldots, f_{s}$, such that the observations indexed by $P$ have corresponding densities. That is,
+We shall identify the optimal procedure for support recovery problems under a Bayesian setting with general distributional assumptions 
+(including but not limited to additive models \eqref{eq:model-additive}). 
+Specifically, consider an ordered set $P = (i_1,\ldots,i_s)$ of $s$ distinct indices in $\{1,\ldots,p\}$, which will be referred to 
+as the {\em ordered support} of the signal.  Consider also $s$ (not necessarily equal) signal densities 
+$f_{1}, \ldots, f_{s}$ as well as an error density $f_0$. We shall assume that the observations with indices $i_j$ 
+are drawn independently from $f_j$:
 \begin{equation} \label{eq:signal-distributions-ordered}
-x(i_j) \sim f_j, \quad j=1,\ldots,s.
+x(i_j) \sim f_j, \quad j=1,\ldots,s,
 \end{equation}
-Let also the rest $(p-s)$ observations have common density $f_0$, i.e., $x(i)\sim f_0$ for $i\not\in S$.
+while the remaining $(p-s)$ observations have common density $f_0$, i.e., $x(i)\sim f_0$ for $i\not\in S$. 
 We further assume that the observations $x$ are mutually independent.
 
-We adopt here a Bayesian framework to measure statistical risks. 
-Let the ordered support $P=(i_1,\ldots,i_s)$ have prior
+
+We adopt now a Bayesian framework to measure statistical risks and assume that the underlying (unknown) support is {\em random}. Namely,
+let the ordered support $P=(i_1,\ldots,i_s)$ have prior
 \begin{equation} \label{eq:uniform-ordered}
 \pi((i_1,\ldots, i_s)) = {(p-s)!}/{p!},
 \end{equation}
 for all distinct $1\le i_1, \ldots, i_s\le p$.
-Consequently, the unordered support $S=\{i_1,\ldots,i_s\}$ is distributed uniformly in the collection of all set of size $s$, with the unordered uniform distribution $\pi^{\text{u}}$. That is, for all for all $S\in\mathcal{S}:=\left\{S\subseteq\{1,\ldots,p\};|S|=s\right\}$, we have 
+Consequently, the unordered support $S=\{i_1,\ldots,i_s\}$ is distributed uniformly over the collection of all sets of size $s$, with 
+the unordered uniform distribution $\pi^{\text{u}}$. That is, for all $S\in\mathcal{S}:=\left\{S\subseteq\{1,\ldots,p\};|S|=s\right\}$, we have 
 \begin{equation} \label{eq:uniform}
 \pi^{\text{u}}
 (\{i_1,\ldots, i_s\}) = \sum_{\sigma}\pi((i_{\sigma(1)},\ldots, i_{\sigma(s)})) = {(p-s)!s!}/{p!},
@@ -89,7 +103,8 @@ For any fixed configuration $P$, consider the loss function,
 $$
 \ell(\widehat{S},S) := \P[\widehat{S} \neq S] = \P_{P}[\widehat{S} \neq S],
 $$
-where the probability is taken over the randomness in the observations only.
+where the probability is taken over the randomness in the observations only. 
+\stilian{(The $x(i)$'s are conditionally independent, given the ordered support $P$.)}{\fbox{added.  Agree?}}
 The Bayes optimal procedures should minimize 
 \begin{equation} \label{eq:Bayes-risk}
     \E_\pi \P[\widehat{S} \neq S],
@@ -111,7 +126,7 @@ The finite-sample optimality of the oracle thresholding procedure $\widehat{S}^*
 A family of positive densities on $\R$, $\{f_\delta, \delta \in U\}$, is said to have the MLR property if, for all $\delta_0, \delta_1\in U\subseteq\R$ such that $\delta_0 < \delta_1$, the likelihood ratio $\left(f_{\delta_1}(x)/f_{\delta_0}(x)\right)$ is an increasing function of $x$.
 \end{definition}
 
-Their relationship is summarized in the following lemma.
+The relationship between the above two notions is summarized next.
 
 \begin{proposition} \label{prop:optimal-oracle-procedures}
 Let the observations $x(i)$, $i=1,\ldots,p$ be as prescribed as in \eqref{eq:signal-distributions-ordered} through \eqref{eq:uniform-ordered}.
