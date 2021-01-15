@@ -1,6 +1,7 @@
 
 We focus on exact support recovery problems in this chapter, and generalize the results we obtained in Chapter \ref{chap:phase-transitions} to additive error models with much relaxed distributional and dependence assumptions.
 
+
 Consider the additive error model \eqref{eq:model-additive} with the triangular array of errors,
 \begin{equation} \label{eq:error-array}
     {\cal E} = \left\{ (\epsilon_p(i))_{i=1}^p,\ p=1,2,\dots\right\},
@@ -8,6 +9,8 @@ Consider the additive error model \eqref{eq:model-additive} with the triangular 
 where the $\epsilon_p(i)$'s have common cumulative distribution function $F(x)=\P[\epsilon_p(i)\le x]$.
 In contrast to the assumptions in Chapter \ref{chap:phase-transitions}, we only require the errors to have common marginal distributions, and allow them to have potentially arbitrary dependence.
 % We will study the role of dependence in support recovery problems in Section \ref{sec:URS}. 
+
+\section{Summary and related work} 
 
 Although our method of analysis applies to all light-tailed error distributions with rapidly varying tails (see Definition \ref{def:rapid-variation}), to be concrete and better convey the main ideas, we will focus on the class of $\mathrm{AGG}(\nu)$ laws (see Definition \ref{def:AGG}).
 Extensions of the results to other error models are presented in Section \ref{suppsec:other-boundaries}.
@@ -78,6 +81,8 @@ These two results show that the thresholding procedures obey a phase transition 
 The conclusions are fundamentally stronger and more informative than the minimax statements in the literature (see, e.g., \cite{butucea2018variable}).
 The techniques developed in this here are also entirely different from those in \citet{ji2012ups} or \citet{butucea2018variable}, and transparent characterizations of the dependence conditions under which the phase transition type result holds will be established in the Chapter \ref{chap:URS} later.
 
+%In Chapter \ref{sec:optimality} we study the finite-sample optimality of the threshold-based support estimation procedures in a Bayesian setting. 
+
 % The strong classification boundary $g$ characterizes a phase-transition phenomenon similar to that of the signal detection and approximate support recovery. 
 % A preview of this result is presented in Figure \ref{fig:phase}.
 
@@ -124,11 +129,9 @@ In this case, we also demonstrate the absence of a phase transition phenomenon i
 \section{Exact support recovery under AGG errors}
 \label{sec:boundary}
 \input{4.exact_support_recovery/4.phase_transition_results.tex}
+\input{4.exact_support_recovery/4.pointwise.minimax.tex}
 
-
-\section{Bayes minimax optimality and (sub)optimality of thresholding procedures}
-\label{sec:optimality}
-\input{4.exact_support_recovery/4.minimax.tex}
+%\section{Bayes minimax optimality and (sub)optimality of thresholding procedures}
 
 
 %\section{Strong classification boundaries in other light-tailed error models}
