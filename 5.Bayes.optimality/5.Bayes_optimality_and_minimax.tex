@@ -1,6 +1,20 @@
 
-Finally, we offer some insights into the support recovery problem in the case when errors have heavier-than-exponential tails in Section \ref{subsec:optimal-procedure-super-exponential}.
+In this chapter, we investigate the universality of the phase-transition results on exact support recovery established in
+Chapter \ref{chap:exact-support-recovery}.  Specifically, we would like to know to what extent the signal classification 
+boundary valid for thresholding estimators applies to the best possible support estimators.  The answer to this question 
+will complete the characterization of the fundamental limits in exact support recovery.
 
+To this end, we begin by characterizing the finite-sample Bayes optimality of the thresholding procedures (Section
+\ref{subsec:optimal-procedure-sub-exponential}). As we will see, the so-called oracle thresholding estimators are in 
+fact finite-sample optimal for certain classes of models.  These optimality results allow us to establish 
+powerful minimax formulations of the exact support recovery phase-transition phenomenon showing its universality for all estimators (Theorem \ref{thm:necessary-strengthened}). 
+
+Perhaps surprisingly, however, thresholding estimators can be sub-optimal.  This is so for example 
+in the additive noise model with heavier than exponential error densities (Example 
+\ref{exmp:suboptimal-data-thresholding}).   In this case, the likelihood ratio
+thresholding rather than data thresholding can lead to optimal support estimators
+(Section \ref{subsec:optimal-procedure-super-exponential}).  In such cases, the universality 
+of the exact support recovery boundary remains an open question. 
 
 
 
@@ -8,10 +22,10 @@ Finally, we offer some insights into the support recovery problem in the case wh
 \section{Bayes optimality in support recovery problems}
 \label{subsec:Bayes-optimality}
 
-In studying support recovery problems (e.g., \citet{arias2017distribution}), restrictions to the thresholding procedures are sometimes justified by arguing that such procedures are the ``reasonable'' choice for estimating the support set.
-%  In Theorem \ref{thm:sufficient} we saw that a (FWER-controlling) thresholding procedure is indeed consistent for support recovery. 
-% It is natural to ask if it will be sufficient to restrict our attention to only such procedures.
-We show in this section that, perhaps surprisingly, for general error models, thresholding procedures are not always optimal, even when the observations are independent.
+In studying support recovery problems \citep[e.g.,][]{arias2017distribution}, restrictions to the thresholding procedures 
+are sometimes justified by arguing that such procedures are the ``reasonable'' choice for estimating the support set.
+We show in this chapter that, perhaps surprisingly, for general error models, thresholding procedures are not always 
+optimal, even when the observations are independent.
 
 We shall identify the optimal procedure for support recovery problems under a Bayesian setting with general distributional assumptions (including but not limited to additive models \eqref{eq:model-additive}).
 Specifically, we assume that there is an ordered set $P = (i_1,\ldots,i_s)$, $i_i\in\{1,\ldots,p\}$, and $s$ (not necessarily equal) densities $f_{1}, \ldots, f_{s}$, such that the observations indexed by $P$ have corresponding densities. That is,
@@ -50,13 +64,9 @@ where the expectation is taken over the random configurations $P$, with a unifor
 %     R(\widehat{S}) := \limsup_{p\to\infty} \E_{P,{\cal E}} [\ell(\widehat{S},S)] = \limsup_{p\to\infty} \P_{P,{\cal E}}[\widehat{S} \neq S].
 % \end{equation}
 
-If, however, the sparsity $s = |S|$ of the problem is known, then a natural estimator for $S$ would be based on the set of top $s$ order statistics.
-
-\stilian{\fbox{COMMENT} Just like for the likelihood thresholding procedure, we should be more careful about the ties and how to define
-the oracle thresholding procedure so that $\widehat{S}^*$ has exactly $s$ elements.  I propose the following change}{\, }
+If, however, the sparsity $s = |S|$ of the problem is known, then a natural estimator for $S$ would be based on the set of top $s$ order statistics. Such estimators will be referred to as oracle thresholding estimators and formally defined next. 
 
 \stilian{ 
-
 For any collection of numbers $\{a_i,\ i=1,\cdots,s\}$, let 
 $$
 \langle a_1,\cdots,a_s\rangle := (a_{[1]},\cdots,a_{[s]})
@@ -82,16 +92,17 @@ We call $\widehat{S}^* = \{i\,|\, x(i)\ge x_{[s]}\}$ the oracle data thresholdin
 
 
 
-\subsection{When is oracle thresholding Bayes optimal?} % under sub-exponential errors}
+\section{Bayes optimality of oracle thresholding} % under sub-exponential errors}
 \label{subsec:optimal-procedure-sub-exponential}
 
-An elegant answer of this question can be given in terms of the \emph{monotone likelihood ratio} (MLR) property.
+In this section, we study the Bayes optimality of the oracle thresholding procedures.  
+The following \emph{monotone likelihood ratio} (MLR) property will play a key role.
 
 \begin{definition}[Monotone Likelihood Ratio]
 A family of positive densities on $\R$, $\{f_\delta, \delta \in U\}$, is said to have the MLR property if, for all $\delta_0, \delta_1\in U\subseteq\R$ such that $\delta_0 < \delta_1$, the likelihood ratio $\left(f_{\delta_1}(x)/f_{\delta_0}(x)\right)$ is an increasing function of $x$.
 \end{definition}
 
-The following result provides a general criterion for the finite-sample optimality of the oracle thresholding 
+The next result provides a general criterion for the finite-sample Bayes optimality of the oracle thresholding 
 procedure $\widehat{S}^*$.
 
 \begin{proposition} \label{prop:optimal-oracle-procedures}
@@ -234,41 +245,9 @@ The generalized Gaussian density $f(x)\propto \exp\{-|x|^\nu/\nu\}$ is log-conca
 Therefore in the additive error model \eqref{eq:model-additive}, according to Proposition \ref{prop:log-concave}, the oracle thresholding procedure is Bayes optimal in the sense of \eqref{eq:finite-sample-Bayes-optimal}.
 \end{example}
 
-%(This also explains the $\gamma\ge 1$ condition in Theorem 1 of Arias-Castro and Chen)
 
-\stilian{COMMENT}{Consider moving the following discussion \& theorem to the section on Minimax below...}
 
-Consider the asymptotic Bayes risk as defined in \eqref{eq:Bayes-risk}. The statement for the 
-necessary condition of support recovery, with the help of Proposition \ref{prop:log-concave}, can be 
-strengthened to include all procedures (in the Bayesian context), regardless of whether they are thresholding.
-
-\begin{theorem} \label{thm:necessary-strengthened}
-Consider the additive model \eqref{eq:model-additive} where the $\epsilon_p(i)$'s are independent and identically distributed with log-concave densities in the AGG class. 
-Let the signals be as prescribed in Proposition \ref{prop:log-concave}.
-If the signal sizes fall below the strong classification boundary \eqref{eq:strong-classification-boundary}, i.e. $\overline{r}<g(\beta)$,
-then we have
-\begin{equation} \label{eq:classification-impossible-Bayes}
-    \liminf_{p\to\infty} \inf_{\widehat{S}_p} \E_\pi \P[\widehat{S}_p\neq S_p] = 1,
-\end{equation}
-where the infimum on $\widehat{S}_p$ is taken over all procedures.
-\end{theorem}
-
-\begin{proof}%[Proof of Theorem \ref{thm:necessary-strengthened}]
-When the errors are independent with log-concave density, the oracle thresholding procedure $\widehat{S}^*_p$, by Proposition \ref{prop:log-concave}, minimizes the Bayes risk \eqref{eq:Bayes-risk} among \emph{all} procedures. That is,
-$$
-\liminf_{p\to\infty} \inf_{\widehat{S}_p} \E_\pi\P[\widehat{S}_p\neq S_p]
-\ge \liminf_{p\to\infty} \E_\pi\P[\widehat{S}^*_p\neq S_p].
-$$
-Since $\widehat{S}^*_p$ belongs to the class of all thresholding procedures, we have
-\begin{align*}
-    \liminf_{p\to\infty} \E_\pi\P[\widehat{S}^*_p\neq S_p] 
-    &\ge \liminf_{p\to\infty} \inf_{\widehat{S}_p\in{\cal T}} \E_\pi\P[\widehat{S}_p\neq S_p] \\
-    &\ge \liminf_{p\to\infty} \inf_{\widehat{S}_p\in{\cal T}} \inf_{S_p} \P[\widehat{S}_p\neq S_p] = 1,
-\end{align*}
-when $\overline{r}<g(\beta)$, where the last line follows from Theorem \ref{thm:necessary}.
-\end{proof}
-
-\subsection{Bayes optimality of likelihood ratio thresholding}
+\section{Bayes optimality of likelihood ratio thresholding}
 \label{subsec:optimal-procedure-super-exponential}
 
 When the MLR condition in Proposition \ref{prop:optimal-oracle-procedures} is violated, the oracle thresholding 
@@ -363,7 +342,7 @@ that even though $x_1<x_2$, the set $\{1\}$ is a better estimate of support than
 This simple example shows that, in the case when the errors have super-exponential tails, the optimal procedures are in general \emph{not} data thresholding.
 A slightly more general conclusion can be found in Corollary \ref{cor:log-convex}.
 
-\subsection{Sub-optimality of data thresholding procedures}\label{sec:sup-optimality-of-thresholding}
+\section{Sub-optimality of data thresholding procedures}\label{sec:sup-optimality-of-thresholding}
 
 We provide a slightly more general result on the sub-optimality of data thresholding procedures.
 
@@ -417,10 +396,10 @@ In the case where the signals have difference sizes, however, the argument in th
 % We content ourselves with a Bayesian minimax result here.
 % \end{remark}
 
-\section{Minimax optimality in exact support recovery}
+\section{Minimax optimality in exact support recovery} \label{sec:minimax}
 
 We establish in this section minimax versions of our results from Chapter \ref{chap:exact-support-recovery}.
-Specifically, if we restrict ourselves to \emph{the class of thresholding procedures} $\cal T$ (defined in \eqref{eq:thresholding-procedure}), then Bonferroni's procedure is minimax optimal, for \emph{any} fixed dependence structures in the URS class.
+Specifically, if we restrict ourselves to \emph{the class of thresholding procedures} $\cal T$ (defined in \eqref{eq:thresholding-procedure}), then Bonferroni's procedure is minimax optimal, for \emph{any} fixed dependence structure in the URS class.
 This is formalized in Corollary \ref{cor:point-wise-minimax} below.% in Section \ref{subsec:point-wise-minimax}.
 We refer to this result as \emph{point-wise} minimax, to emphasize the fact that this optimality holds for every \emph{fixed} URS array.
 
@@ -480,6 +459,40 @@ Corollary \ref{cor:point-wise-minimax} echoes Remark \ref{rmk:dependence-assumpt
 
 \subsection{Minimax optimality over all procedures}
 \label{subsec:minimax-over-dependence}
+
+%(This also explains the $\gamma\ge 1$ condition in Theorem 1 of Arias-Castro and Chen)
+
+Consider the asymptotic Bayes risk as defined in \eqref{eq:Bayes-risk}. The statement for the 
+necessary condition of support recovery in Theorem \ref{thm:necessary}, with the help of Proposition 
+\ref{prop:log-concave}, can be strengthened to include all procedures (in the Bayesian context), regardless 
+of whether they are thresholding or not.
+
+\begin{theorem} \label{thm:necessary-strengthened}
+Consider the additive model \eqref{eq:model-additive} where the $\epsilon_p(i)$'s are independent and identically distributed with log-concave densities in the AGG class. 
+Let the signals be as prescribed in Proposition \ref{prop:log-concave}.
+If the signal sizes fall below the strong classification boundary \eqref{eq:strong-classification-boundary}, 
+i.e. $\overline{r}<g(\beta)$, then we have
+\begin{equation} \label{eq:classification-impossible-Bayes}
+    \liminf_{p\to\infty} \inf_{\widehat{S}_p} \E_\pi \P[\widehat{S}_p\neq S_p] = 1,
+\end{equation}
+where the infimum on $\widehat{S}_p$ is taken over all procedures.
+\end{theorem}
+
+\begin{proof}%[Proof of Theorem \ref{thm:necessary-strengthened}]
+When the errors are independent with log-concave density, the oracle thresholding procedure $\widehat{S}^*_p$, by Proposition \ref{prop:log-concave}, minimizes the Bayes risk \eqref{eq:Bayes-risk} among \emph{all} procedures. That is,
+$$
+\liminf_{p\to\infty} \inf_{\widehat{S}_p} \E_\pi\P[\widehat{S}_p\neq S_p]
+\ge \liminf_{p\to\infty} \E_\pi\P[\widehat{S}^*_p\neq S_p].
+$$
+Since $\widehat{S}^*_p$ belongs to the class of all thresholding procedures, we have
+\begin{align*}
+    \liminf_{p\to\infty} \E_\pi\P[\widehat{S}^*_p\neq S_p] 
+    &\ge \liminf_{p\to\infty} \inf_{\widehat{S}_p\in{\cal T}} \E_\pi\P[\widehat{S}_p\neq S_p] \\
+    &\ge \liminf_{p\to\infty} \inf_{\widehat{S}_p\in{\cal T}} \inf_{S_p} \P[\widehat{S}_p\neq S_p] = 1,
+\end{align*}
+when $\overline{r}<g(\beta)$, where the last line follows from Theorem \ref{thm:necessary}.
+\end{proof}
+
 
 % In the previous section we demonstrated the minimax optimality of thresholding procedures, in a point-wise sense over a large class of dependence structure.
 Theorem \ref{thm:necessary-strengthened} allows us to state another minimax conclusion --- one in which we search over \emph{all procedures}, by allowing the supremum in the minimax statement to be taken over the dependence structures. 
@@ -544,12 +557,14 @@ On the other hand, Corollary \ref{cor:minimax-over-dependence} provides a unifor
 
 \section{A discussion on optimality}
 
-  \stilian{Here we briefly discuss the optimality and sub-optimality of the 
- thresholding procedures.}{Needs work}
- 
-%\begin{remark} \label{rmk:tail-assumptions}
+\stilian{NEEDS}{WORK}
 
-Consider the model \eqref{eq:model-additive} with independent errors, Proposition \ref{prop:likelihood-ratio-thresholding}, and indeed, Example \ref{exmp:suboptimal-data-thresholding} demonstrate that thresholding procedures are in fact \emph{sub-optimal} for $\text{AGG}(\nu)$ models with $\nu<1$.
+Consider the model \eqref{eq:model-additive} with independent errors. Theorem \ref{thm:necessary-strengthened} 
+and Corollary \ref{cor:minimax-over-dependence} provide a nearly complete picture of the difficulty in the exact support 
+recovery problem, in the regime when the thresholding estimators are optimal. Specifically, in such cases the signal classification boundary is universal.
+
+
+ Proposition \ref{prop:likelihood-ratio-thresholding}, and indeed, Example \ref{exmp:suboptimal-data-thresholding} demonstrate that thresholding procedures are in fact \emph{sub-optimal} for $\text{AGG}(\nu)$ models with $\nu<1$.
 Therefore, the optimality of thresholding procedures (specifically, Bonferroni's procedure) only applies to $\text{AGG}(\nu)$ models with $\nu\ge1$. 
 % This suggests that the condition $\nu\ge1$ in Corollary \ref{cor:minimax-over-dependence} is tight.
 
@@ -564,7 +579,7 @@ We summarize the properties of thresholding procedures in Table \ref{table:role-
     \centering
     \caption{Properties of thresholding procedures under different error distributions when errors are independent. Properties of the error distributions are listed in brackets.}
     \medskip
-    \begin{tabular}{p{45mm}p{40mm}p{40mm}} \toprule
+    \begin{tabular}{p{40mm}p{37mm}p{37mm}} \toprule
         Thresholding procedure & Bayes optimality &  Phase transition \\ 
         (Error distributions) &  (Log-concave density) & (Rapidly-varying tails) \\ \midrule
         AGG($\nu$), $\nu\ge1$ & Yes (Yes) & Yes (Yes) \\ \cmidrule{1-3}
