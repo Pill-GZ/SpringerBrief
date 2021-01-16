@@ -51,9 +51,34 @@ where the expectation is taken over the random configurations $P$, with a unifor
 % \end{equation}
 
 If, however, the sparsity $s = |S|$ of the problem is known, then a natural estimator for $S$ would be based on the set of top $s$ order statistics.
+
+\stilian{\fbox{COMMENT} Just like for the likelihood thresholding procedure, we should be more careful about the ties and how to define
+the oracle thresholding procedure so that $\widehat{S}^*$ has exactly $s$ elements.  I propose the following change}{\, }
+
+\stilian{ 
+
+For any collection of numbers $\{a_i,\ i=1,\cdots,s\}$, let 
+$$
+\langle a_1,\cdots,a_s\rangle := (a_{[1]},\cdots,a_{[s]})
+$$
+denote the vector of $a_i$'s arranged in a non-increasing order.
+
+\begin{definition}[Oracle data thresholding] Let $x_{[1]} \ge \ldots \ge x_{[p]}$ be the order statistics of
+the data vector $x$.  Any estimator $\widehat{S}^* :=\{ i_1,\cdots,i_s\}$, where
+ $$
+  \langle x(i_1),\cdots,x(i_s)\rangle  = (x_{[1]},\cdots,x_{[s]})
+ $$ 
+ will be referred to as an {\em oracle thresholding estimator}.
+ \end{definition}
+ 
+ Simply put, the oracle thresholding estimators are comprised of the indices corresponding to the $s$ largest values in the
+ data.  Note that, in the absence of ties among the largest $s+1$ data values, the oracle thresholding estimator is unique.  
+ For concreteness,  one can break possible ties lexicographically.  In many cases, 
+ the oracle thresholding estimators will be almost surely unique.}
+{\fbox{IMPORTANT, replacing the following}
 \begin{definition}[Oracle data thresholding]
 We call $\widehat{S}^* = \{i\,|\, x(i)\ge x_{[s]}\}$ the oracle data thresholding procedure, where $x_{[1]} \ge \ldots \ge x_{[p]}$ are the order statistics of $x$.
-\end{definition}
+\end{definition}}
 
 
 
@@ -71,7 +96,7 @@ procedure $\widehat{S}^*$.
 
 \begin{proposition} \label{prop:optimal-oracle-procedures}
 Let the observations $x(i)$, $i=1,\ldots,p$ be as prescribed as in \eqref{eq:signal-distributions-ordered} through \eqref{eq:uniform-ordered}.
-If each of $\{f_0, f_{1}\},\ldots,\{f_0,f_{s}\}$ form an MLR family, then the oracle data thresholding procedure $\widehat{S}^* = \{i\,|\, x(i)\ge x_{[s]}\}$ is finite-sample optimal in terms of Bayes risk $\E_\pi \P[\widehat{S} \neq S]$. That is,
+If each of the pairs $\{f_0, f_{1}\},\ldots,\{f_0,f_{s}\}$ forms an MLR family, then every oracle data thresholding procedure $\widehat{S}^*$ is finite-sample optimal in terms of Bayes risk $\E_\pi \P[\widehat{S} \neq S]$. That is,
 \begin{equation} \label{eq:finite-sample-Bayes-optimal}
     \widehat{S}^* \in \argmin_{\widehat{S}} \E_\pi \P[\widehat{S} \neq S].
 \end{equation}
@@ -80,11 +105,11 @@ for all $s$ and $p$.
 \begin{proof}%[Proof of Proposition \ref{prop:optimal-oracle-procedures}]
 The problem of support recovery can be equivalently stated as a classification problem, where the discrete parameter space is $\mathcal{S} = \{S\subseteq\{1,\ldots,p\}:|S|=s\}$, and the observation $x \in\R^p$ has likelihood $f(x|S)$ indexed by the support set $S$.
 
-By the optimality of the Bayes classifier (see, e.g., \citep{domingos1997optimality}), a set estimator that maximizes the probability of support recovery is such that
+By the optimality of the Bayes classifier \citep[see, e.g.,][]{domingos1997optimality}, a set estimator that maximizes the probability of support recovery is such that
 $$
 \widehat{S} \in \argmax_{S\in \mathcal{S}} f(x|S) \pi(S).
 $$
-Since we know from \eqref{eq:uniform} that $\pi(S)$ is uniform, the problem in our context reduces to showing that $f(x|\widehat{S}^*) = f(x|\widehat{S})$, where $f(x|S)$ is the conditional distribution of data given the unordered support $S$,
+Since we know from \eqref{eq:uniform} that $\pi(\cdot)$ is uniform, the problem in our context reduces to showing that $f(x|\widehat{S}^*) = f(x|\widehat{S})$, where $f(x|S)$ is the conditional distribution of data given the unordered support $S$,
 $$
 f(x|S) 
 = \sum_{P\in\sigma(S)} f(x|P) \pi^{\text{ord}}(P|S) 
@@ -92,8 +117,10 @@ f(x|S)
 $$
 where $\sigma(S)$ is the set of all permutations of the indices in the support set $S$.
 
-Suppose $\widehat{S} \neq \widehat{S}^*$, then there must be indices $j \in \widehat{S}$ and $j' \in \widehat{S}^c$ such that $x(j) \le x(j')$.
-We exchange the labels of $x(j)$ and $x(j')$, and form a new estimate $\widehat{S}\,' = \big(\widehat{S}\setminus\{j\}\big)\cup\{j'\}$.
+Suppose that $\widehat{S}$ is {\em not} an oracle thresholding estimator, then there must be indices 
+$j \in \widehat{S}$ and $j' \not \in \widehat{S}$ such that $x(j) < x(j')$.
+We exchange the labels of $x(j)$ and $x(j')$, and form a new estimate 
+$\widehat{S}\,' = \big(\widehat{S}\setminus\{j\}\big)\cup\{j'\}$.
 Comparing the likelihoods under $\widehat{S}$ and $\widehat{S}\,'$, we have
 \begin{align}
     f(x|\widehat{S}) - f(x|\widehat{S}\,') 
@@ -104,12 +131,14 @@ Comparing the likelihoods under $\widehat{S}$ and $\widehat{S}\,'$, we have
 \end{align}
 where the last equality follows by first summing over all permutations fixing $P(i) = j$ and $P'(i) = j'$, and setting $a_i = \sum_{P\in\sigma{(\widehat{S}\setminus\{j\})}} \prod_{i'\neq i} {f_{i'} (x(P(i')))}$. Notice that the $a_i$'s are non-negative.
 
-Since $x(j) \le x(j')$, and that each of $\{f_0, f_{i}\}$ is an MLR family, we have
+Since $x(j) < x(j')$, and since each of $\{f_0, f_{i}\}$ is an MLR family, we have
 $$
 \frac{f_i(x(j))}{f_0(x(j))} - \frac{f_i(x(j'))}{f_0(x(j'))} \le 0 \implies f_i(x(j)) f_0(x(j')) - f_i(x(j')) f_0(x(j)) \le 0.
 $$
 Using Relation \eqref{eq:MLR-optimality-proof}, we conclude that $f(x|\widehat{S}) \le f(x|\widehat{S}\,')$.
-This implies that any estimator that is not $\widehat{S}^*$ may be improved, and the optimality follows.
+\stilian{Continuing this way, we can successively improve the likelihood of every estimator until we arrive at an oracle thresholding estimator, proving the desired optimality.  Note that with the same argument, any two oracle 
+thresholding estimators have the same likelihood.}{
+\fbox{replacing} This implies that any estimator that is not $\widehat{S}^*$ may be improved, and the optimality follows.}
 \end{proof}
 
 We emphasize that under the MLR conditions in Proposition \ref{prop:optimal-oracle-procedures},
@@ -140,7 +169,7 @@ This implies that the log-density $\phi(t)$ is midpoint-concave, i.e., for all $
     \phi\left(\frac{(x_1+x_2)}{2}\right) 
     \ge \frac{1}{2} \phi(x_1) + \frac{1}{2} \phi(x_2).
 \end{equation}
-For Lebesgue measurable functions, midpoint concavity is equivalent to concavity by the Sierpinki Theorem (see, e.g., Sec I.3 of \cite{donoghue2014distributions}). This proves the `only-if' part.
+For Lebesgue measurable functions, midpoint concavity is equivalent to concavity by the Sierpinki Theorem \citep[see, e.g., Sec I.3 of][]{donoghue2014distributions}. This proves the `only-if' part.
 
 For the `if' part, when  $\phi(t) = \log{(f_0(t))}$ is log-concave, then for any $\delta_0 < \delta_1$, and any $x<y$, we have
 \begin{equation} \label{eq:concavity-implies-MLR}
@@ -175,14 +204,30 @@ Summing up \eqref{eq:four-point-concavity-1} and \eqref{eq:four-point-concavity-
 Proposition \ref{prop:optimal-oracle-procedures} and Lemma \ref{lemma:MLR-log-concavity} yield immediately the following.
 
 \begin{proposition} \label{prop:log-concave}
-Consider the additive error model \eqref{eq:model-additive}.
-Let the errors $\epsilon$ be independent with common distribution $F$.
-Let the signal $\mu$ have $s$ positive entries with magnitudes $0<\delta_1\le\ldots\le\delta_s$, located on $\{1,\ldots,p\}$ as prescribed in \eqref{eq:uniform-ordered}.
-If $F$ has a positive, log-concave density $f$, then the oracle thresholding procedure $\widehat{S}^* = \{i\,;\,x(i)\ge x_{[s]}\}$ is finite-sample optimal in terms of Bayes risk in the sense of \eqref{eq:finite-sample-Bayes-optimal}.
-\end{proposition} 
-Notice that under MLR (or equivalently, log-concavity of the errors in additive models), the oracle thresholding procedure is finite-sample optimal even in the case where the signals have different (positive) sizes.
+Consider the additive error model \eqref{eq:model-additive}, where the $\epsilon(i)$'s are
+independent with common distribution $F$.  Let the signal $\mu$ have $s$ positive entries with magnitudes $0<\delta_1\le\ldots\le\delta_s$, located on $\{1,\ldots,p\}$ as prescribed in \eqref{eq:uniform-ordered}.
 
-The assumption of log-concavity of the densities is compatible with the AGG model when $\nu\ge1$, as demonstrated in the next example.
+If $F$ has a positive, log-concave density $f$, then the support estimator % oracle thresholding procedure 
+$$
+ \widehat{S}^* := \{i\, :\, x(i)\ge x_{[s]}\}
+$$ 
+is  %a.s.\ unique and
+finite-sample optimal in terms of Bayes risk in the sense of \eqref{eq:finite-sample-Bayes-optimal}.
+\end{proposition} 
+\begin{proof} The independence and the fact that the observations have densities implies the absence of 
+ties among the order statistics $\{x_{[i]}\}$, with probability one.  Thus, the oracle thresholding procedure is a.s.\ unique 
+and given by $\widehat{S}^* = \{i\, :\, x(i)\ge x_{[s]}\}$.  The result then follows from 
+Proposition \ref{prop:optimal-oracle-procedures} and Lemma \ref{lemma:MLR-log-concavity}.
+\end{proof}
+
+\begin{remark}
+Propositions \ref{prop:optimal-oracle-procedures} and \ref{prop:log-concave} show that under MLR (or equivalently, 
+log-concavity of the errors in additive models), the oracle thresholding procedures are finite-sample optimal even in the case where the signals have different (positive) sizes. This fascinating property perhaps 
+explains the success of the thresholding estimators.
+\end{remark}
+
+The assumption of log-concavity of the densities is compatible with the AGG model when $\nu\ge1$, as 
+demonstrated in the next example.
 
 \begin{example} \label{exmp:AGG-logconcave}
 The generalized Gaussian density $f(x)\propto \exp\{-|x|^\nu/\nu\}$ is log-concave for all $\nu\ge1$.
@@ -191,7 +236,11 @@ Therefore in the additive error model \eqref{eq:model-additive}, according to Pr
 
 %(This also explains the $\gamma\ge 1$ condition in Theorem 1 of Arias-Castro and Chen)
 
-Consider the asymptotic Bayes risk as defined in \eqref{eq:Bayes-risk}, the statement for the necessary condition of support recovery, with the help of Proposition \ref{prop:log-concave}, can be strengthened to include all procedures (in the Bayesian context), regardless of whether they are thresholding.
+\stilian{COMMENT}{Consider moving the following discussion \& theorem to the section on Minimax below...}
+
+Consider the asymptotic Bayes risk as defined in \eqref{eq:Bayes-risk}. The statement for the 
+necessary condition of support recovery, with the help of Proposition \ref{prop:log-concave}, can be 
+strengthened to include all procedures (in the Bayesian context), regardless of whether they are thresholding.
 
 \begin{theorem} \label{thm:necessary-strengthened}
 Consider the additive model \eqref{eq:model-additive} where the $\epsilon_p(i)$'s are independent and identically distributed with log-concave densities in the AGG class. 
@@ -205,7 +254,7 @@ where the infimum on $\widehat{S}_p$ is taken over all procedures.
 \end{theorem}
 
 \begin{proof}%[Proof of Theorem \ref{thm:necessary-strengthened}]
-When errors are independent with log-concave density, the oracle thresholding procedure $\widehat{S}^*_p$, by Proposition \ref{prop:log-concave}, minimizes the Bayes risk \eqref{eq:Bayes-risk} among \emph{all} procedures. That is,
+When the errors are independent with log-concave density, the oracle thresholding procedure $\widehat{S}^*_p$, by Proposition \ref{prop:log-concave}, minimizes the Bayes risk \eqref{eq:Bayes-risk} among \emph{all} procedures. That is,
 $$
 \liminf_{p\to\infty} \inf_{\widehat{S}_p} \E_\pi\P[\widehat{S}_p\neq S_p]
 \ge \liminf_{p\to\infty} \E_\pi\P[\widehat{S}^*_p\neq S_p].
@@ -223,36 +272,61 @@ when $\overline{r}<g(\beta)$, where the last line follows from Theorem \ref{thm:
 \label{subsec:optimal-procedure-super-exponential}
 
 When the MLR condition in Proposition \ref{prop:optimal-oracle-procedures} is violated, the oracle thresholding 
-procedures can in fact be sub-optimal (see Example \ref{exmp:suboptimal-data-thresholding}, below). 
-The following result provides the general form of the finite-sample Bayes optimal procedures.
-It turns out that in general, \emph{likelihood ratio thresholding} is optimal.
+procedures can in fact be sub-optimal (see Example \ref{exmp:suboptimal-data-thresholding} and 
+Section \ref{sec:sup-optimality-of-thresholding}, below).  
+%
+\stilian{In this section, we demonstrate that thresholding the \emph{likelihood ratio} rather than signal values
+yields the finite-sample Bayes optimal procedures.  We consider a special but sufficiently general case of signal 
+models with equal densities.
 
-\begin{proposition} \label{prop:likelihood-ratio-thresholding}
-Let the observations $x(i)$, $i=1,\ldots,p$ have $s$ signals as prescribed in \eqref{eq:uniform-ordered} having common density $f_a$, and let the rest $(p-s)$ locations have common density $f_0$.
+Namely, let the observations $x(i)$, $i=1,\ldots,p$ have $s$ signals as prescribed in \eqref{eq:uniform-ordered} with {\em common} ``signal'' density $f_a$, and let the remaining $(p-s)$ locations have common ``error'' density $f_0$.
 Define the likelihood ratios 
 $$
 L(i) := {f_a(x(i))}\big/{f_0(x(i))},
 $$
 and let $L_{[1]} \ge L_{[2]} \ge \ldots \ge L_{[p]}$ be the order statistics of the $L(i)$'s.
-Then the procedure $\widehat{S}_{\text{opt}} = \{i\,|\,L(i) \ge L_{[s]}\}$ is finite-sample optimal in terms of Bayes risk. That is,
+
+\begin{definition}[Oracle likelihood ratio thresholding] Recall that $\langle a_1,\cdots,a_s\rangle$ denotes
+the vector of $a_i$'s arranged in a non-increasing order.  Any estimator $\hat S = \{i_1,\cdots,i_s\}$ such that
+$$
+\langle L(i_1),\cdots,L(i_s) \rangle = (L_{[1]},\cdots,L_{[s]}),
+$$
+will be referred to as an {\em oracle likelihood thresholding} estimator of the support $S$.
+\end{definition}
+\begin{proposition} \label{prop:likelihood-ratio-thresholding} Any oracle likelihood ratio thresholding 
+procedure $\widehat{S}_{\text{LRT}}$ is finite-sample optimal in terms of Bayes risk. That is,
 \begin{equation}
-    \widehat{S}_{\text{opt}} \in \argmin_{\widehat{S}} \E_\pi \P[\widehat{S} \neq S].
+    \widehat{S}_{\text{LRT}} \in \argmin_{\widehat{S} \in {\mathcal S}} \E_\pi \P[\widehat{S} \neq S].
 \end{equation}
-for all $s$ and $p$, where the infimum on $\widehat{S}_p$ is taken over all procedures.
+for all $s$ and $p$, where the infimum on $\widehat{S}$ is taken over all support estimators of size $s$.
 \end{proposition} 
+}{Introducing part of the proposition as a definition....}
+
+\stilian{NOTE}{This change \& definition
+ was motivated by the annoying fact that we could have ties among the likelihood ratios.  Also, to my understanding we
+ must LIMIT OURSELVES to estimators of size $s$, so we should limit $|\widehat{S}_{{\rm LRT}}|$ to $s$. \fbox{CORRECT?} I am SORRY if I made a MESS.}
+
 \begin{proof}%[Proof of Proposition \ref{prop:likelihood-ratio-thresholding}]
-The proof is entirely analogous to that of Proposition \ref{prop:optimal-oracle-procedures}.
-Since we know from \eqref{eq:uniform} that $\pi(S)$ is uniform, the problem reduces to showing that $f(x|\widehat{S}_{\text{opt}}) = f(x|\widehat{S})$, where 
+The proof is analogous to that of Proposition \ref{prop:optimal-oracle-procedures}.
+We need to show that
+$
+\widehat{S}_{\rm LRT} \in \argmax_{S \in \mathcal{S}} f(x|S) \pi(S).
+$
+Since the distribution $\pi$ of the support $S$ 
+is uniform (recall \eqref{eq:uniform}), it is equivalent to prove that 
 $$
-\widehat{S} \in \argmax_{S \in \mathcal{S}} f(x|S) \pi(S).
-$$
-and
-$f(x|S)$ is the conditional distribution of data given the unordered support $S$,
+f(x|\widehat{S}_{\text{LRT}}) = \max_{S \in \mathcal {S}} f(x|S),
+$$ 
+where  $f(x|S)$ is the conditional distribution of the data given the unordered support $S$,
 \begin{equation} \label{eq:likelihood-ratio-thresholding-proof}
     f(x|S) = \sum_P f(x|P) \pi^{\text{ord}}(P|S) = \prod_{j\in S} f_a(x(j)) \prod_{j\not\in S}{f_0(x(j))}.
 \end{equation}
-Suppose $\widehat{S} \neq \widehat{S}_{\text{opt}}$, then there must be indices $j \in \widehat{S}$ and $j' \in \widehat{S}^c$ such that $L(j) \le L(j')$.
-If we exchange the labels of $L(j)$ and $L(j')$, that is, we form a new estimate $\widehat{S}\,' = \big(\widehat{S}\setminus\{j\}\big)\cup\{j'\}$,
+Suppose $\widehat S\in {\mathcal S}$ is {\em not} an oracle likelihood thresholding estimator. 
+Then from the definition of the likelihood ratio thresholding procedure, there 
+must be indices 
+$j \in \widehat S$ and $j' \not \in \widehat{S}$ such that $L(j) < L(j')$.
+If we exchange the labels of $L(j)$ and $L(j')$, that is, we form a new estimate 
+$\widehat{S}\,' = \big(\widehat{S}\setminus\{j\}\big)\cup\{j'\}$,
 comparing the log-likelihoods under $\widehat{S}$ and $\widehat{S}\,'$, we have
 \begin{equation*}
     \log{f(x|\widehat{S})} - \log{f(x|\widehat{S}\,')} 
@@ -261,14 +335,17 @@ comparing the log-likelihoods under $\widehat{S}$ and $\widehat{S}\,'$, we have
 By the definition of $L(j)$'s, and the order relations, we obtain
 \begin{equation*}
     \log{f(x|\widehat{S})} - \log{f(x|\widehat{S}\,')} 
-    = \log{L(j)} - \log{L(j')} \le 0
+    = \log{L(j)} - \log{L(j')} > 0
 \end{equation*}
-This implies that any estimator that is not $\widehat{S}_{\text{opt}}$ may be improved, and the optimality follows.
+\stilian{This shows that $\widehat S$ cannot be Bayes optimal unless it is a likelihood thresholding estimator.
+Note that with the same argument for every two likelihood thresholding estimators $\widehat S'$
+and $\widehat S''$, we have $ f(x|\widehat{S}') = f(x|\widehat{S}'')$, proving the desired optimality.
+}{\fbox{Please check.} See also the change in the oracle thresholding argument.}
 \end{proof}
 
 
-The characterization of optimal likelihood ratio thresholding procedures in Proposition \ref{prop:likelihood-ratio-thresholding} may not always yield practical estimators, as the density of alternatives, and number of signals are typically unknown.
-Still, some insights can be gained by virtue of Proposition \ref{prop:likelihood-ratio-thresholding}.
+The characterization of optimal likelihood ratio thresholding procedures in Proposition \ref{prop:likelihood-ratio-thresholding} may not always yield practical estimators, as the density of the alternatives, and the number of signals $s$ 
+are typically unknown. Still, some insights can be gained by virtue of Proposition \ref{prop:likelihood-ratio-thresholding}.
 In particular, when MLR fails (or equivalently, when the errors in model \eqref{eq:model-additive} do not have log-concave densities), data thresholding is sub-optimal. 
 
 
@@ -286,7 +363,7 @@ that even though $x_1<x_2$, the set $\{1\}$ is a better estimate of support than
 This simple example shows that, in the case when the errors have super-exponential tails, the optimal procedures are in general \emph{not} data thresholding.
 A slightly more general conclusion can be found in Corollary \ref{cor:log-convex}.
 
-\subsection{Sub-optimality of data thresholding procedures}
+\subsection{Sub-optimality of data thresholding procedures}\label{sec:sup-optimality-of-thresholding}
 
 We provide a slightly more general result on the sub-optimality of data thresholding procedures.
 
@@ -296,26 +373,30 @@ Let the errors $\epsilon$ be independent with common distribution $F$.
 Let each of the $s$ signals be located on $\{1,\ldots,p\}$ uniformly at random with equal magnitude $0<\delta<\infty$.
 % , independently with probability $p_1,\ldots,p_s$.
 % , {\color{red} so that we have $f_a = p_1f_1 + p_2f_2 + \ldots + p_sf_s$.}
-If errors $\epsilon$ are iid with density $f$ log-convex on $[K, +\infty)$, then whenever $j\in\widehat{S}_{\text{opt}}$ for some $x(j) > K+\delta$, we must have $j'\in\widehat{S}_{\text{opt}}$ for all $j'$ such that $K+\delta \le x(j') < x(j)$.
+Assume the errors $\epsilon(i)$'s are iid with density $f$ that is log-convex on $[K, +\infty)$, for some $K>0$. 
+
+If $\widehat{S}_{\rm opt}$ is the Bayes optimal (i.e., the oracle likelihood thresholding estimator), then, whenever 
+$j\in\widehat{S}_{\text{opt}}$ for some $x(j) > K+\delta$, we must necessarily have $j'\in\widehat{S}_{\text{opt}}$ for 
+all $j'$ such that $K+\delta \le x(j') < x(j)$.
 \end{corollary} 
 
-Specifically, if there are $m$ observations exceeding $K+\delta_s$, with $m>s$, then the top $m-s$ observations will \emph{not} be included in the optimal estimator $\widehat{S}_{\text{opt}}$.
-This shows that, in the case when the errors have super-exponential tails, the optimal procedures are in general \emph{not} data thresholding.
+Specifically, if there are $m$ observations exceeding $K+\delta$, with $m>s$, then the top $m-s$ observations will \emph{not} be included in the optimal estimator $\widehat{S}_{\text{opt}}$. This shows that, in the case when the 
+errors have super-exponential tails, the optimal procedures are in general \emph{not} data thresholding.
 
 \begin{proof}[Proof of Corollary \ref{cor:log-convex}]
-Since the alternative $f_{a}(t) = {f(t-\delta)}$ are log-convex on $[K+\delta, \infty)$, by Relation \eqref{eq:concavity-implies-MLR} in the proof of Lemma \ref{lemma:MLR-log-concavity} and appealing to log-convexity (rather than log-concavity), the likelihood ratio
+Since the density of the alternatives $f_{a}(t) = {f(t-\delta)}$ is log-convex on $[K+\delta, \infty)$, by Relation \eqref{eq:concavity-implies-MLR} in the proof of Lemma \ref{lemma:MLR-log-concavity} and appealing to log-convexity (rather than log-concavity), the likelihood ratio
 $$
 L(j) := \frac{f_a(x(j))}{f_0(x(j))} %= \sum_{i=1}^s \frac{p_if_{i}(x(j))}{f_0(x(j))},
 $$
-is decreasing in $x(j)$ on $[K+\delta, \infty)$.
-The proof is complete by applying Proposition \ref{prop:likelihood-ratio-thresholding}.
+is decreasing in $x(j)$ on $[K+\delta, \infty)$.  The claim follows from Proposition \ref{prop:likelihood-ratio-thresholding}.
 \end{proof}
 
-\begin{remark}[An open problem]
-In the non-log-concave setting, where we know that thresholding procedures are suboptimal, likelihood thresholding procedures are promising, thanks to Proposition \ref{prop:likelihood-ratio-thresholding}. 
+\begin{remark}[An open problem] As we have seen, the thresholding estimators are no longer optimal 
+in the additive model with error-densities heavier than exponential.   Thanks to Proposition 
+\ref{prop:likelihood-ratio-thresholding}, the oracle likelihood thresholding procedures are promising alternatives
+that can lead us to practical support estimators.  
 
-In the case where the signals have difference sizes, however, likelihood thresholding procedures are undefined since 
-in the proof of Proposition \ref{prop:likelihood-ratio-thresholding}, the signal densities need to be identical for Relation \eqref{eq:likelihood-ratio-thresholding-proof} to hold.  In such cases, the existence of an optimal procedure is an open problem.
+In the case where the signals have difference sizes, however, the argument in the proof of Proposition \ref{prop:likelihood-ratio-thresholding} breaks downs since the signal densities need to be identical for Relation \eqref{eq:likelihood-ratio-thresholding-proof} to hold.  In such cases, the characterization of the optimal procedure is an open problem.
 \end{remark}
 
 
@@ -346,7 +427,7 @@ We refer to this result as \emph{point-wise} minimax, to emphasize the fact that
 Meanwhile, if we search over \emph{all procedures}, but expand the model space to include {\em all} dependence 
 structures, then a different minimax optimality statement holds for Bonferroni's procedure.
 This result, formally stated in Section \ref{subsec:minimax-over-dependence}, is a consequence of our characterization 
-of the finite-sample Bayes optimality of thresholding procedures in Sections \ref{subsec:Bayes-optimality} and \ref{subsec:optimal-procedure-sub-exponential}.
+of the finite-sample Bayes optimality of thresholding procedures in Section \ref{subsec:optimal-procedure-sub-exponential}.
 % The result is of independent interest and it is the main contribution of this section.
 
 

@@ -10,51 +10,6 @@ This result, formally stated in Section \ref{subsec:minimax-over-dependence}, is
 
 Finally, we offer some insights into the support recovery problem in the case when errors have heavier-than-exponential tails in Section \ref{subsec:optimal-procedure-super-exponential}.
 
-\subsection{Point-wise minimax optimality}
-\label{subsec:point-wise-minimax}
-
-Theorems \ref{thm:sufficient} and \ref{thm:necessary} can be cast in the form of an asymptotic minimax statement. 
-% (concealing the gap between sufficient and necessary conditions as pointed out in Remark \ref{rmk:gap-between-sufficient-necessary}).
-
-\begin{corollary}[Point-wise minimax]
-\label{cor:point-wise-minimax}
-Let $\widehat{S}^{\text{Bonf}}$ be the sequence of Bonferroni's procedure described in Theorem \ref{thm:sufficient}. 
-Let also the errors have common $\text{AGG}(\nu)$ distribution $F$ with parameter $\nu>0$, and $\Theta_p^+$ be as defined in \eqref{eq:minimax-signal-config-over}.
-If $\underline{r}>g(\beta)$, then we have
-\begin{equation} \label{eq:point-wise-minimax-above}
-    \limsup_{p\to\infty} \sup_{\mu\in\Theta_p^+(\beta, \underline{r})} \P(\widehat{S}^{\text{Bonf}}_p \neq S_p) = 0,
-\end{equation}
-for arbitrary dependence structure of the error array ${\cal E} = \{\epsilon_p(i)\}_p$.
-Let $\cal T$ be the class of thresholding procedures \eqref{eq:thresholding-procedure}. 
-If $\underline{r}<g(\beta)$, then we have
-\begin{equation} \label{eq:point-wise-minimax-below}
-    \liminf_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \sup_{\mu\in\Theta_p^+(\beta, \underline{r})} \P(\widehat{S}_p \neq S_p) = 1,
-\end{equation}
-for any error dependence structure such that ${\cal E}\in U(F)$ and ${(-\cal E)}\in U(F)$.
-\end{corollary}
-
-\begin{proof}[Proof of Corollary \ref{cor:point-wise-minimax}]
-The first conclusion \eqref{eq:point-wise-minimax-above} is a restatement of Theorem \ref{thm:sufficient}.
-
-For the second statement \eqref{eq:point-wise-minimax-below}, since $\underline{r}<g(\beta)$, we can pick a sequence $\mu^*\in\Theta_p^+(\beta, \underline{r})$ such that $|S_p| = \lfloor p^{1-\beta}\rfloor$, with signals having the same signal size $\mu(i)=(2r\log{p})^{1/\nu}$ for all $i\in S_p$, where $\underline{r}<{r}<g(\beta)$.
-For this particular choice of $\mu^*$ we have $\mu^*\in\Theta_p^-(\beta, \overline{r})$ where $r<\overline{r}<g(\beta)$,
-and according to Theorem \ref{thm:necessary}, we obtain $\lim_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \mathbb P[\widehat{S}_p \neq S_p] = 1$, for all dependence structures in the URS class.
-\end{proof}
-
-\begin{remark}
-Theorem \ref{thm:necessary} is a stronger result than the traditional minimax claim in Relation \eqref{eq:point-wise-minimax-below}.
-Indeed,  \eqref{eq:classification-impossible-dependent} involves an infimum (over the class $\Theta^-_p$) while \eqref{eq:point-wise-minimax-below} has a supremum (over the class $\Theta^+_p$).
-
-On the other hand, Corollary \ref{cor:point-wise-minimax} is more informative than many minimax-type statements, since it applies ``point-wise'' to any fixed error dependence structure in the URS class.
-\end{remark}
-
-\begin{remark}
-Corollary \ref{cor:point-wise-minimax} echoes Remark \ref{rmk:dependence-assumptions}: for a very large class of dependence structures, we cannot improve upon Bonferroni's procedure in exact support recovery problems (asymptotically), unless we look beyond thresholding procedures.
-% There is a limited amount of literature on non-thresholding procedures that utilize the error dependence structures to improve power.
-% A notable effort was made by \citet{jin2014optimality}, where the performance (in terms of Hamming loss) of a so-called graphlet screening procedure was studied. 
-\end{remark}
-
-% This is an enhancement (in the asymptotic sense) of the minimax results in Section 4.1 of \cite{butucea2018variable}, where the supremum was taken over the dependence structures.
 
 
 
