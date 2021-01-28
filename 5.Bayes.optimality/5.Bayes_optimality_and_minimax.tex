@@ -6,13 +6,13 @@ will complete the characterization of the fundamental limits in exact support re
 
 To this end, we begin by characterizing the finite-sample Bayes optimality of the thresholding procedures (Section
 \ref{subsec:optimal-procedure-sub-exponential}). As we will see, the so-called oracle thresholding estimators are in 
-fact finite-sample optimal for certain classes of models.  These optimality results allow us to establish 
+fact finite-sample optimal for many classes of models.  These optimality results allow us to establish 
 powerful minimax formulations of the exact support recovery phase-transition phenomenon showing its universality for all estimators (Theorem \ref{thm:necessary-strengthened}). 
 
 Perhaps surprisingly, however, thresholding estimators can be sub-optimal.  This is so for example 
 in the additive noise model with heavier than exponential error densities (Example 
-\ref{exmp:suboptimal-data-thresholding}).   In this case, the likelihood ratio
-thresholding rather than data thresholding can lead to optimal support estimators
+\ref{exmp:suboptimal-data-thresholding}).   In this case, {\em likelihood ratio
+thresholding} rather than {\em data thresholding} can lead to optimal support estimators
 (Section \ref{subsec:optimal-procedure-super-exponential}).  In such cases, the universality 
 of the exact support recovery boundary remains an open question. 
 
@@ -147,7 +147,7 @@ $$
 \frac{f_i(x(j))}{f_0(x(j))} - \frac{f_i(x(j'))}{f_0(x(j'))} \le 0 \implies f_i(x(j)) f_0(x(j')) - f_i(x(j')) f_0(x(j)) \le 0.
 $$
 Using Relation \eqref{eq:MLR-optimality-proof}, we conclude that $f(x|\widehat{S}) \le f(x|\widehat{S}\,')$.
-\stilian{Continuing this way, we can successively improve the likelihood of every estimator until we arrive at an oracle thresholding estimator, proving the desired optimality.  Note that with the same argument, any two oracle 
+\stilian{Continuing this way, we can successively improve the likelihood of every estimator until we arrive at an oracle thresholding estimator, proving the desired optimality.  Note that with the same argument, we obtain that any two oracle 
 thresholding estimators have the same likelihood.}{
 \fbox{replacing} This implies that any estimator that is not $\widehat{S}^*$ may be improved, and the optimality follows.}
 \end{proof}
@@ -370,12 +370,12 @@ $$
 is decreasing in $x(j)$ on $[K+\delta, \infty)$.  The claim follows from Proposition \ref{prop:likelihood-ratio-thresholding}.
 \end{proof}
 
-\begin{remark}[An open problem] As we have seen, the thresholding estimators are no longer optimal 
+\begin{remark}[{\bf An open problem\!}\,] As we have seen, the thresholding estimators are no longer optimal 
 in the additive model with error-densities heavier than exponential.   Thanks to Proposition 
 \ref{prop:likelihood-ratio-thresholding}, the oracle likelihood thresholding procedures are promising alternatives
 that can lead us to practical support estimators.  
 
-In the case where the signals have difference sizes, however, the argument in the proof of Proposition \ref{prop:likelihood-ratio-thresholding} breaks downs since the signal densities need to be identical for Relation \eqref{eq:likelihood-ratio-thresholding-proof} to hold.  In such cases, the characterization of the optimal procedure is an open problem.
+In the case where the signals have different sizes, however, the argument in the proof of Proposition \ref{prop:likelihood-ratio-thresholding} breaks downs since the signal densities need to be identical for Relation \eqref{eq:likelihood-ratio-thresholding-proof} to hold.  In such cases, the characterization of the optimal procedure is an open problem.
 \end{remark}
 
 
