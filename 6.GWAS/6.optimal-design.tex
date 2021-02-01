@@ -45,7 +45,36 @@ the optimal design $(\phi^*_1, \phi^*_2)$ that maximizes the signal size per sam
 % when the denominator in \eqref{eq:optimal-design} is non-zero; otherwise, $\phi_1^*=\phi_2^*=1/2$.
 \end{corollary} 
 
-Corollary \ref{cor:optimal-design} is proved in Section \ref{subsec:proof-signal-size-odds-ratio}. 
+
+\begin{proof}
+	Using the parametrization in \eqref{eq:reparametrize-2-by-2-table-1}, we solve for $\delta$ in \eqref{eq:odds-ratio-delta} to obtain
+	\begin{align}
+		\delta &= \frac{\phi_1 fR}{fR+1-f} - \left(\frac{\phi_1 fR}{fR+1-f} + f(1-\phi_1)\right)\phi_1 \nonumber \\
+		&= \frac{f(1-f)\phi_1(1-\phi_1)(R-1)}{fR+1-f}. \label{eq:reparametrize-2-by-2-table-2}
+	\end{align}
+	Substituting \eqref{eq:reparametrize-2-by-2-table-2} into the expression \eqref{eq:signal-size-chisq-delta}, after some simplification, yields
+	\begin{equation} \label{eq:reparametrize-2-by-2-table-3}
+	w^2 = \frac{f(1-f)\phi_1(1-\phi_1)(R-1)^2}{\left[\phi_1 R + (1-\phi_1)D\right]\left[\phi_1 + (1-\phi_1)D\right]},
+	\end{equation}
+	where $D = fR+1-f > 0$.
+	Therefore, he derivative of \eqref{eq:reparametrize-2-by-2-table-3} with respect to $\phi_1$ is
+	\begin{equation} \label{eq:signal-size-first-derivative}
+	\frac{\mathrm{d}w^2}{\mathrm{d}\phi_1} = 
+	\frac{f(1-f)(R-1)^2}{\left[\phi_1 R+(1-\phi_1)D\right]^2 \left[\phi_1+(1-\phi_1)D\right]^2} \left[(D^2-R)\phi_1^2 - 2D^2\phi_1 + D^2\right].
+	\end{equation}
+	Further, we obtain the second derivative with respect to $\phi_1$,
+	\begin{equation} \label{eq:signal-size-second-derivative}
+	\frac{\mathrm{d}^2w^2}{\mathrm{d}\phi_1^2} = 
+	h(R,f) \left[(\phi_1-1)D^2 - \phi_1R\right],
+	\end{equation}
+	where $h$ is some function of $(R,f)$ taking on strictly positive values.
+	
+	Since $\left[(\phi_1-1)D^2 - \phi_1R\right]<0$, the second derivative \eqref{eq:signal-size-second-derivative} must be strictly negative on $[0,1]$.
+	This implies that the first derivative \eqref{eq:signal-size-first-derivative} is strictly decreasing on $[0,1]$. 
+	Since the first derivative \eqref{eq:signal-size-first-derivative} is strictly positive at $\phi_1=0$, and strictly negative at $\phi_1=1$, it must have a unique zero between 0 and 1, and hence, the solution to $(D^2-R)\phi_1^2 - 2D^2\phi_1 + D^2 = 0$ in the interval of $[0,1]$ must be the maximizer of \eqref{eq:reparametrize-2-by-2-table-3} --- when $D^2-R>0$, the smaller of the two roots maximizes \eqref{eq:reparametrize-2-by-2-table-3}, and when $D^2-R<0$, it is the larger of the two.
+	They share the same expression ${D}/{(D+\sqrt{R})}$, which coincides with \eqref{eq:optimal-design}.
+	Finally, when $D^2=R$, the only root $\phi_1^*=1/2$, which also coincides with \eqref{eq:optimal-design}, is the maximizer of \eqref{eq:reparametrize-2-by-2-table-3}.
+\end{proof}
 
 Of particular interest in the genetics literature are genetic variants with very low allele frequencies in the control group (i.e., $f\approx 0$), known as rare variants.
 In such cases, Equation \eqref{eq:optimal-design} can be approximated using the Taylor expansion,
