@@ -1,5 +1,5 @@
 
-Similar to the analysis of additive error models in Chapter \ref{chap:phase-transitions}, we will work with triangular arrays of chi-square models \eqref{eq:model-chisq} indexed by $p$.
+Similar to the analysis of additive error models in Chapter \ref{chap:phase-transitions}, we will work with triangular arrays of chi-square models \eqref{eq:model-chisq-Chapter6} indexed by $p$.
 We adopt the same parametrization for the sparsity of the non-centrality parameter vectors $\lambda = \lambda_p$,
 \begin{equation} \label{eq:signal-sparsity}
     |S_p| = \left\lfloor p^{1-\beta} \right\rfloor, \quad \beta\in(0,1]
@@ -21,7 +21,7 @@ for some constants $0<\underline{r}\le\overline{r}\le+\infty$.
 The first main result characterizes the phase transition phenomenon in the exact support recovery problem under the chi-square model.
 
 \begin{theorem} \label{thm:chi-squared-exact-boundary}
-Consider the high-dimensional chi-squared model \eqref{eq:model-chisq} with signal sparsity and size as described in \eqref{eq:signal-sparsity} and \eqref{eq:signal-size}.
+Consider the high-dimensional chi-squared model \eqref{eq:model-chisq-Chapter6} with signal sparsity and size as described in \eqref{eq:signal-sparsity} and \eqref{eq:signal-size}.
 The function 
 \begin{equation} \label{eq:exact-boundary-chisquared}
     g(\beta) = \left(1 + \sqrt{1-\beta}\right)^2
@@ -82,7 +82,7 @@ Theorem \ref{thm:chi-squared-exact-approx-boundary} is proved in Section \ref{su
 Our third main result characterizes the phase transition phenomenon in the approximate support recovery problem in the chi-square model.
 
 \begin{theorem} \label{thm:chi-squared-approx-boundary}
-Consider the high-dimensional chi-squared model \eqref{eq:model-chisq} with signal sparsity and size as described in \eqref{eq:signal-sparsity} and \eqref{eq:signal-size}.
+Consider the high-dimensional chi-squared model \eqref{eq:model-chisq-Chapter6} with signal sparsity and size as described in \eqref{eq:signal-sparsity} and \eqref{eq:signal-size}.
 The function 
 \begin{equation} \label{eq:approx-boundary-chisquared}
     h(\beta) = \beta
@@ -119,7 +119,7 @@ We refer readers to Figure \ref{fig:phase-Gaussian-errors} in Section \ref{sec:a
 
 \medskip
 
-The all four Theorems so far focus only on the idealized models \eqref{eq:model-chisq} where statistics are \emph{independent}.
+The all four Theorems so far focus only on the idealized models \eqref{eq:model-chisq-Chapter6} where statistics are \emph{independent}.
 Support recovery problems under dependent observations remain to be explored.
 Recall in Chapter \ref{chap:phase-transitions} we showed that the boundary for the exact support recovery problem in the additive error model \eqref{eq:model-additive} continues to hold even under severe dependence and general distributional assumptions.
 We conjecture that similar results would also hold, under classes of dependence structures that are ``not too different from independence'', in the chi-square models.
@@ -157,12 +157,12 @@ Specifically, the approximate support recovery problem in the Gaussian additive 
 Similar to the exact support recovery problem, this indicates vanishing difference in the difficulties of the two types alternatives in approximate support recovery problems.
 
 Comparing Theorems \ref{thm:chi-squared-exact-approx-boundary} to \ref{thm:Gaussian-error-exact-approx-boundary} and Theorems \ref{thm:chi-squared-approx-exact-boundary} to \ref{thm:Gaussian-error-approx-exact-boundary}, we see that the phase transition boundaries under the two types of alternatives are also identical in the exact-approximate and approximate-exact support recovery problems.
-The additional uncertainty in the two-sided alternatives do not call for larger signal sizes asymptotically in these problems.
-
-\medskip
 
 To complete the comparisons, we point out that the phase transition boundaries for the sparse signal {detection} problem in the two types of alternatives are both identical to \eqref{eq:detection-boundary-large-signals}. This was analyzed in \cite{donoho2004higher}.
 
-
+Therefore, all phase transition boundaries coincide with those in the additive error models obtained in Chapter \ref{chap:phase-transitions} under their respective parametrizations.
+% and Figure \ref{fig:phase-chi-squared} continues to apply.
+This indicates vanishing differences between the difficulties of the one-sided and two-sided alternatives in the Gaussian additive error model \eqref{eq:model-additive}.
+The additional uncertainty in the two-sided alternatives do not call for larger signal sizes in these problems, asymptotically.
 
 
