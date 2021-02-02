@@ -30,13 +30,13 @@ In fact, for all location families $\{F_\delta(x)\}_\delta$ where $F_\delta(x) =
 Relation \eqref{eq:stochastic-monotonicity-Gaussian} holds, of course, when $F$ is the standard Gaussian distribution. \\
 
 {\bf Slepian's lemma and the Sudakov-Fernique inequality.} 
-The following two result will play fundamental roles in our characterization of uniform relative stability for Gaussian triangular arrays in 
-Chapter \ref{chap:URS}. 
+The following two results will be instrumental in our characterization of uniform relative stability for 
+Gaussian triangular arrays in Chapter \ref{chap:URS}.  
 % Many more details and deeper insights can be found for example in the monographs 
 %\cite{leadbetter2012extremes} and \cite{adler2009random}, among others. 
 The first is the celebrated result due to \citet{slepian1962one}.
 
-\begin{theorem}[Slepian's Lemma]\label{thm:Slepian-lemma} Let $\epsilon = (\epsilon(i))_{i=1}^p$ and $\eta = (\eta(i))_{i=1}^p$ be 
+\begin{theorem}[Slepian's lemma]\label{thm:Slepian-lemma} Let $\epsilon = (\epsilon(i))_{i=1}^p$ and $\eta = (\eta(i))_{i=1}^p$ be 
 two multivariate normally distributed random vectors with zero means $\E [\epsilon(i)] = \E[\eta(i)] = 0$. 
 
  If for all $i,j=1,\cdots,p$, we have
@@ -50,15 +50,20 @@ $$
 \end{theorem}
 
 
-This result implies in particular that $M_\epsilon:= \max_{i=1,\cdots,p}\epsilon(i)$ dominates stochastically $M_\eta:= \max_{i=1,\cdots,p} \eta(i)$.
-Thus, for example, the maximum of iid Gaussians are stochastically larger the maxima any positively correlated Gaussian vector 
-with the same marginal distributions. 
+This result implies in particular that $M_\epsilon:= \max_{i=1,\cdots,p}\epsilon(i)$ dominates stochastically $M_\eta:= \max_{i=1,\cdots,p} \eta(i)$ in the
+sense that
+\begin{equation}\label{e:Slepian-lemma-maxima}
+ \P[ M_\eta > u] \le \P [M_\epsilon > u],\ \ \mbox{ for all }u\in\mathbb R.
+\end{equation}
+In this case, we shall write $M_\eta \stackrel{d}{\le} M_\epsilon$.  This result shows, for example, that the maximum of iid Gaussians is 
+stochastically larger the maximum of any positively correlated Gaussian vector with the same marginal distributions. 
 
 Slepian's lemma can be obtained as a corollary from the general Normal Comparison Lemma 
 \citep[see, e.g., Theorem 4.2.1 on page 81 in][]{leadbetter2012extremes}.  See also Ch.\ 2 in \cite{adler2009random}.
 
-The following result, known as the Sudakov-Fernique inequality is similar in spirit to Slepian's lemma but does not assume that the Gaussian 
-vectors are centered. For a proof and, in fact, a more general result, see e.g., Theorem 2.2.5 on page 61 in \cite{adler2009random}.
+The following result, known as the Sudakov-Fernique inequality, is similar in spirit to Slepian's lemma but it does not assume that the Gaussian 
+vectors are centered and yields a weaker conclusion -- an inequality between expectations. For a proof, many insights, and, in fact, a more 
+general result, see e.g., Theorem 2.2.5 on page 61 in \cite{adler2009random}.
 
 \begin{theorem} [Sudakov-Fernique Inequality] \label{th:Sudakov-Fernique} 
 Let $\epsilon = (\epsilon(i))_{i=1}^p$ and $\eta = (\eta(i))_{i=1}^p$ be 
@@ -66,11 +71,11 @@ two multivariate normally distributed random vectors.
 
 If for all $i,j=1,\cdots,p$, we have 
 $$
-\E [ \epsilon(i) ] = \E [\eta(i)] \ \ \mbox{ and }\ \ \E [ (\epsilon(i)-\epsilon(j))^2] \le \E [ (\eta(i)-\eta(j))^2],
+\E [ \epsilon(i) ] = \E [\eta(i)] \ \ \mbox{ and }\ \ \E [ (\eta(i)-\eta(j))^2] \le \E [ (\epsilon(i)-\epsilon(j))^2],
 $$
 then for $M_\epsilon = \max_{i=1,\cdots,p}\epsilon(i)$ and $M_\eta = \max_{i=1,\cdots,p} \eta(i)$, we have 
 $$
- \E [ M_\epsilon ] \le \E [M_\eta].
+ \E [ M_\eta ] \le \E [M_\epsilon].
 $$
 \end{theorem}
 
