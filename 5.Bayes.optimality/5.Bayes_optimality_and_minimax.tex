@@ -66,7 +66,7 @@ where the expectation is taken over the random configurations $P$, with a unifor
 
 If, however, the sparsity $s = |S|$ of the problem is known, then a natural estimator for $S$ would be based on the set of top $s$ order statistics. Such estimators will be referred to as oracle thresholding estimators and formally defined next. 
 
-\stilian{ 
+%\stilian{ 
 For any collection of numbers $\{a_i,\ i=1,\cdots,s\}$, let 
 $$
 \langle a_1,\cdots,a_s\rangle := (a_{[1]},\cdots,a_{[s]})
@@ -84,11 +84,12 @@ the data vector $x$.  Any estimator $\widehat{S}^* :=\{ i_1,\cdots,i_s\}$, where
  Simply put, the oracle thresholding estimators are comprised of the indices corresponding to the $s$ largest values in the
  data.  Note that, in the absence of ties among the largest $s+1$ data values, the oracle thresholding estimator is unique.  
  For concreteness,  one can break possible ties lexicographically.  In many cases, 
- the oracle thresholding estimators will be almost surely unique.}
-{\fbox{IMPORTANT, replacing the following}
-\begin{definition}[Oracle data thresholding]
-We call $\widehat{S}^* = \{i\,|\, x(i)\ge x_{[s]}\}$ the oracle data thresholding procedure, where $x_{[1]} \ge \ldots \ge x_{[p]}$ are the order statistics of $x$.
-\end{definition}}
+ the oracle thresholding estimators will be almost surely unique.
+ %}
+%{\fbox{IMPORTANT, replacing the following}
+%\begin{definition}[Oracle data thresholding]
+%We call $\widehat{S}^* = \{i\,|\, x(i)\ge x_{[s]}\}$ the oracle data thresholding procedure, where $x_{[1]} \ge \ldots \ge x_{[p]}$ are the order statistics of $x$.
+%\end{definition}}
 
 
 
@@ -147,9 +148,8 @@ $$
 \frac{f_i(x(j))}{f_0(x(j))} - \frac{f_i(x(j'))}{f_0(x(j'))} \le 0 \implies f_i(x(j)) f_0(x(j')) - f_i(x(j')) f_0(x(j)) \le 0.
 $$
 Using Relation \eqref{eq:MLR-optimality-proof}, we conclude that $f(x|\widehat{S}) \le f(x|\widehat{S}\,')$.
-\stilian{Continuing this way, we can successively improve the likelihood of every estimator until we arrive at an oracle thresholding estimator, proving the desired optimality.  Note that with the same argument, we obtain that any two oracle 
-thresholding estimators have the same likelihood.}{
-\fbox{replacing} This implies that any estimator that is not $\widehat{S}^*$ may be improved, and the optimality follows.}
+Continuing this way, we can successively improve the likelihood of every estimator until we arrive at an oracle thresholding estimator, proving the desired optimality.  Note that with the same argument, we obtain that any two oracle 
+thresholding estimators have the same likelihood.
 \end{proof}
 
 We emphasize that under the MLR conditions in Proposition \ref{prop:optimal-oracle-procedures},
@@ -254,7 +254,8 @@ When the MLR condition in Proposition \ref{prop:optimal-oracle-procedures} is vi
 procedures can in fact be sub-optimal (see Example \ref{exmp:suboptimal-data-thresholding} and 
 Section \ref{sec:sup-optimality-of-thresholding}, below).  
 %
-\stilian{In this section, we demonstrate that thresholding the \emph{likelihood ratio} rather than signal values
+
+In this section, we demonstrate that thresholding the \emph{likelihood ratio} rather than signal values
 yields the finite-sample Bayes optimal procedures.  We consider a special but sufficiently general case of signal 
 models with equal densities.
 
@@ -279,11 +280,6 @@ procedure $\widehat{S}_{\text{LRT}}$ is finite-sample optimal in terms of Bayes 
 \end{equation}
 for all $s$ and $p$, where the infimum on $\widehat{S}$ is taken over all support estimators of size $s$.
 \end{proposition} 
-}{Introducing part of the proposition as a definition....}
-
-\stilian{NOTE}{This change \& definition
- was motivated by the annoying fact that we could have ties among the likelihood ratios.  Also, to my understanding we
- must LIMIT OURSELVES to estimators of size $s$, so we should limit $|\widehat{S}_{{\rm LRT}}|$ to $s$. \fbox{CORRECT?} I am SORRY if I made a MESS.}
 
 \begin{proof}%[Proof of Proposition \ref{prop:likelihood-ratio-thresholding}]
 The proof is analogous to that of Proposition \ref{prop:optimal-oracle-procedures}.
@@ -316,10 +312,9 @@ By the definition of $L(j)$'s, and the order relations, we obtain
     \log{f(x|\widehat{S})} - \log{f(x|\widehat{S}\,')} 
     = \log{L(j)} - \log{L(j')} > 0
 \end{equation*}
-\stilian{This shows that $\widehat S$ cannot be Bayes optimal unless it is a likelihood thresholding estimator.
+This shows that $\widehat S$ cannot be Bayes optimal unless it is a likelihood thresholding estimator.
 Note that with the same argument for every two likelihood thresholding estimators $\widehat S'$
 and $\widehat S''$, we have $ f(x|\widehat{S}') = f(x|\widehat{S}'')$, proving the desired optimality.
-}{\fbox{Please check.} See also the change in the oracle thresholding argument.}
 \end{proof}
 
 

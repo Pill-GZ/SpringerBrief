@@ -57,7 +57,7 @@ By our choice of $q$ in \eqref{eq:choice-of-q}, the last probability in \eqref{e
     &\sim \frac{\phi\left(-\sqrt{2(1-\beta)\log{p}}\right)}{\sqrt{2(1-\beta)\log{p}}} \\
     &= \frac{1}{\sqrt{2(1-\beta)\log{p}}}p^{-(1-\beta)},
 \end{align*}
-where the first line uses Mill's ratio for Gaussian distributions (see Section \ref{sec:Gaussian-distributions} and Relation \eqref{eq:Mills-ratio}).
+where the first line uses Mill's ratio for Gaussian distributions (see Section \ref{sec:Gaussian} and Relation \eqref{eq:Mills-ratio}).
 This, combined with \eqref{eq:chi-square-sufficient-1}, completes the proof of the sufficient condition for the Bonferroni's procedure.
 
 Under the assumption of independence, Sid\'ak's, Holm's, and Hochberg's procedures are strictly more powerful than Bonferroni's procedure, while controlling FWER at the nominal levels.
@@ -114,7 +114,7 @@ On the one hand, we know (by solving a quadratic inequality) that
 \begin{equation} \label{eq:chi-square-necessary-5}
     f_p(x)<1-\delta \iff \frac{x}{\sqrt{2\log{p}}} \in (-(\sqrt{\overline{r}}+\sqrt{1-\delta}), -(\sqrt{\overline{r}}-\sqrt{1-\delta})).
 \end{equation}
-On the other hand, we know (by relative stability of iid Gaussians \cite{gao2018fundamental}) that 
+On the other hand, we know (by the relative stability of iid Gaussians, recall Section \ref{sec:Gaussian}) that 
 \begin{equation} \label{eq:chi-square-necessary-6}
     % f_p(\min_{i\in S}z_\nu(i)) =
     \frac{\min_{i\in S} Z_\nu(i)}{\sqrt{2\log{p}}}
@@ -170,7 +170,7 @@ We first show the necessary condition.
 That is, when $\overline{r} < \beta$, no thresholding procedure is able to achieve approximate support recovery.
 
 The proof follows the ideas in \cite{arias2017distribution}, and is very similar to the proof of Theorem \ref{thm:Gaussian-error-approx-boundary}. 
-One could in principle obtain the proofs in this section by referencing arguments that have appeared in Section \ref{sec:proofs}.
+One could in principle obtain the proofs in this section by referencing arguments that have appeared in Chapter \ref{chap:phase-transitions}.
 We choose to present the proof here in full to make this section self-contained.
 
 \begin{proof}[Proof of necessary condition in Theorem \ref{thm:chi-squared-approx-boundary}]
@@ -357,8 +357,9 @@ The proof for the sufficient condition is complete.
 \section{Proof of Theorems \ref{thm:chi-squared-exact-approx-boundary} and \ref{thm:chi-squared-approx-exact-boundary}}
 \label{subsec:proof-chi-squared-mix-boundaries}
 
-As with the proof of Theorem \ref{thm:chi-squared-approx-boundary}, one could shorten the presentations in this section by referencing arguments Section \ref{sec:proofs}.
-Again, we choose to present the proof in full to make this section self-contained.
+As with the proof of Theorem \ref{thm:chi-squared-approx-boundary}, one could shorten the presentations in this section by 
+referencing arguments in Chapter \ref{chap:phase-transitions}.  Again, we choose to present the proof in full to make this section 
+self-contained.
 
 \begin{proof}[Proof of Theorem \ref{thm:chi-squared-exact-approx-boundary}]
 % The reduction to equal signal sizes can be achieved 

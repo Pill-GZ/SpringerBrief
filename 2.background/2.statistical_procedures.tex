@@ -18,7 +18,7 @@ For example, in the additive error model \eqref{eq:model-additive}, suppose we w
 \end{equation}
 Then, one might consider monitoring the sum (or equivalently, the arithmetic average) of the observations, 
 \begin{equation} \label{eq:sum-statistic}
-    S(x) := \sum_{i=1}^p{x(i)},
+    T(x) := \sum_{i=1}^p{x(i)},
 \end{equation}
 or the maximum of the observations,
 \begin{equation} \label{eq:max-statistic}
@@ -130,12 +130,12 @@ On the other hand, Hochberg's procedure rejects the set of hypotheses as long as
 %\end{definition}
 
 It can be shown that both Bonferroni's and Holm's procedures control FWER at their nominal levels, regardless of dependence in the 
-data \citep{holm1979simple}. In contrast, Sid\'ak's and Hochberg's procedures control FWER at nominal levels when data are independent \citep{vsidak1967rectangular, hochberg1988sharper}. \stilian{DISCUSS}{Explain in the Supplement?}
+data \citep{holm1979simple}. In contrast, Sid\'ak's and Hochberg's procedures control FWER at nominal levels when data are independent \citep{vsidak1967rectangular, hochberg1988sharper}. 
 
 Last but not least, we review the \ac{BH} procedure, which aims at controlling \ac{FDR} in 
 \eqref{eq:FDR-FNR}, proposed by  \cite{benjamini1995controlling}.
 
-Recall the order statistics of our observations $x_{[1]} \ge x_{[2]}  \ge \ldots \ge x_{[p]}$.
+Recall the order statistics of our observations are: $x_{[1]} \ge x_{[2]}  \ge \ldots \ge x_{[p]}$.
 \begin{definition}[Benjamini-Hochberg's procedure] \label{def:BH}
 Let $i^*$ be the largest index such that
 $$
@@ -147,7 +147,7 @@ The Benjamini-Hochberg (BH) procedure with level $\alpha$ is the thresholding pr
 \end{equation}
 \end{definition}
 The \ac{BH} procedure is shown to control the FDR at level $\alpha$ when the $x(i)$'s are independent \citep{benjamini1995controlling}. 
-\stilian{DISCUSS}{Again, explain in the Supplement?} Variations of this procedure have been proposed to control the \ac{FDR} under certain models of dependent observations \citep{benjamini2001control}.
+ Variations of this procedure have been proposed to control the \ac{FDR} under certain models of dependent observations \citep{benjamini2001control}.
 
 
 % We now turn to discuss the framework for anlayzing the asymptotic risks in high dimensions.

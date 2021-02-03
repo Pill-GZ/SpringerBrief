@@ -12,9 +12,9 @@ every undirected graph with at least $R(k,k)$ vertices will contain {\em either}
 Recall that a clique is a complete sub-graph where all pairs of nodes are connected, and an independent set is a set of nodes where no two nodes are connected.
 
 This result is a consequence of the celebrated work of \citet{ramsey2009problem}, which 
-gave birth to Ramsey Theory (see e.g., \citet{conlon2015recent}).  
-The Ramsey Theorem and the upper bound \eqref{eq:Ramsey-number} (established first in \cite{erdos1935combinatorial}) are at the heart of the proof of the following result.
-%An excellent introduction to Ramsey theory is given in \url{http://math.mit.edu/~fox/MAT307-lecture05.pdf}.
+gave birth to Ramsey Theory \citep[see e.g.,][]{conlon2015recent}.  
+The Ramsey Theorem and the upper bound \eqref{eq:Ramsey-number} \citep[established first in][]{erdos1935combinatorial} are at the heart of the proof of the following result.  A recent improvement on the upper bound is given by \cite{sah:2020}.
+%An excellent introduction to Ramsey theory is given in \url{http://math.mit.edu/~fox/MAT307-lecture05.pdf}. 
 
 \begin{proposition} \label{prop:lower-bound-correlation-Ramsey}
   Fix $\gamma\in(0,1)$ and let $P = \left(\rho(i,j)\right)_{n\times n}$ be an arbitrary correlation
@@ -29,7 +29,7 @@ The Ramsey Theorem and the upper bound \eqref{eq:Ramsey-number} (established fir
   \end{equation}
 \end{proposition}
 
-\begin{proof}[Proof of Proposition \ref{prop:lower-bound-correlation-Ramsey}]
+\begin{proof}%[Proof of Proposition \ref{prop:lower-bound-correlation-Ramsey}]
 By using \eqref{eq:Ramsey-number} and a refinement of the Stirling's formula, 
 we will show at the end of the proof that for $k \le \log_2({n})/2$, we have 
 \begin{equation}\label{eq:Ramsey-bounds}
@@ -37,8 +37,9 @@ we will show at the end of the proof that for $k \le \log_2({n})/2$, we have
 \end{equation}
 where $R(k,k)$ is the Ramsey number.  
 
-Now, construct a graph with vertices $\{1,\dots,n\}$ such that there is an edge between nodes $i$ and $j$ if and only if $\rho(i,j) > -\gamma$. 
-In view of \eqref{eq:Ramsey-bounds} and Ramsey's theorem (see e.g., Theorem 1 in \cite{fox2009lecture} or \cite{conlon2015recent} for a recent survey on Ramsey theory), there is a subset of $k$ nodes $K =\{l_1,\dots,l_k\}$, which is either a {\em complete graph} or an {\em independent set}.
+Now, construct a graph with vertices $\{1,\dots,n\}$ such that there is an edge between nodes $i$ and $j$ if and only if $\rho(i,j) \ge -\gamma$. 
+In view of \eqref{eq:Ramsey-bounds} and Ramsey's theorem (see e.g., Theorem 1 in \cite{fox2009lecture} or \cite{conlon2015recent} for a recent survey on Ramsey theory), there is a subset of $k$ nodes $K =\{l_1,\dots,l_k\}$, which is either a {\em complete graph} or an {\em independent set}.  Recall that in a
+complete graph, every two nodes are connected with an edge; while in independent sets, no two nodes are connected.
 
 If $K$ is a complete graph, then by our construction of the graph, Relation \eqref{eq:lower-bound-correlation-Ramsey} holds. 
 
@@ -98,22 +99,22 @@ Using Proposition \ref{prop:lower-bound-correlation-Ramsey}, we establish the ke
     Let $Z_1, \ldots, Z_{n+1}$ be random variables with covariance matrix $P$.
     Denote $\rho_j = \rho(1,j)$ and define 
     \begin{equation}
-      R(j) = 
+      R_j = 
       \begin{cases}
-        \frac{1}{\sqrt{1-\rho_j^2}}\left(Z(j) - \rho_j Z(1)\right), &\mbox{if } \rho_j<1,\\
+        \frac{1}{\sqrt{1-\rho_j^2}}\left(Z_j - \rho_j Z_1\right), &\mbox{if } \rho_j<1,\\
         R^* &\mbox{if } \rho_j=1,
       \end{cases}
     \end{equation}
     where $R^*$ is an arbitrary zero-mean, unit-variance random variable.
-    It is easy to see that $\var(R(j)) = 1$, and
+    It is easy to see that $\var(R_j) = 1$, and
     \begin{align*}
-    \cov\left(Z(i), Z(j)\right) &= \cov\left(\rho_i Z(1) + \sqrt{1-\rho_i^2} R(i), \; \rho_j Z(1) + \sqrt{1-\rho_j^2} R(j)\right) \\
-        &= \rho_i\rho_j + \sqrt{1-\rho_i^2}\sqrt{1-\rho_j^2} \;\cov\left(R(i), R(j)\right) \\
-        &\ge c^2 + \min\left\{\cov\left(R(i), R(j)\right), 0\right\}.
+    \cov\left(Z_i, Z_j\right) &= \cov\left(\rho_i Z_1 + \sqrt{1-\rho_i^2} R_i, \; \rho_j Z_1 + \sqrt{1-\rho_j^2} R_j\right) \\
+        &= \rho_i\rho_j + \sqrt{1-\rho_i^2}\sqrt{1-\rho_j^2} \;\cov\left(R_i, R_j\right) \\
+        &> c^2 + \min\left\{\cov\left(R_i, R_j\right), 0\right\}.
     \end{align*}
     
-    Therefore, Relation \eqref{eq:positive-correltation-lemma-conclusion} would hold if we can find a set of indices $K = \{l_1,\ldots,l_k\}$ such that $\cov\left(R(i),R(j)\right)>-c^2/2$ for all $i,j\in K$, where $k=|K|=\lfloor\log_2\sqrt{n}\rfloor$.
-    This, however, follows from Proposition \ref{prop:lower-bound-correlation-Ramsey} applied to $\left(R(j)\right)_{j=2}^{n+1}$ with $\gamma = c^2/2$, provided that 
+    Therefore, Relation \eqref{eq:positive-correltation-lemma-conclusion} would hold if we can find a set of indices $K = \{l_1,\ldots,l_k\}$ such that $\cov\left(R_i,R_j\right)\ge -c^2/2$ for all $i,j\in K$, where $k=|K|=\lfloor\log_2\sqrt{n}\rfloor$.
+    This, however, follows from Proposition \ref{prop:lower-bound-correlation-Ramsey} applied to $\left(R_j\right)_{j=2}^{n+1}$ with $\gamma = c^2/2$, provided that 
     $$
     k = \lfloor\log_2\sqrt{n}\rfloor \ge \lceil 2/c^2 \rceil + 1.
     $$

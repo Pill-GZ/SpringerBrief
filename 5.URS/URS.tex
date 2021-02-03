@@ -226,44 +226,48 @@ a_p = \sqrt{2\log p},\quad b_p  = \sqrt{2\log p} - \frac{1}{2}\left(\sqrt{2\log 
 $$ 
 are {\em the same} centering and normalization sequences
 as in the case of iid $\epsilon(i)$'s.  
-Berman's condition is one of the weakest dependence conditions  in the literature for which this result holds. See, e.g., Theorem 4.4.8 in \cite{embrechts2013modelling}, where \eqref{eq:Berman} is described as ``very weak''.
+Berman's condition is one of the weakest dependence conditions  in the literature for which the convergence in \eqref{eq:Gauss-max-in-distribution} holds. 
+See, e.g., Theorem 4.4.8 in \cite{embrechts2013modelling}, where \eqref{eq:Berman} is described as ``very weak''.
 
-For dependence conditions weaker than \eqref{eq:Berman}, the sequences of normalizing and centering constants in \eqref{eq:Gauss-max-in-distribution} are {\em different} from the iid case, and the corresponding limit is no longer Gumbel; see, for example, Theorems 6.5.1 and  6.6.4 in \cite{leadbetter2012extremes}, and \cite{mccormick1976weak}. 
+Instances where the dependence in the time series is so strong that Berman's condition \eqref{eq:Berman} fails have also been studied.  In such 
+cases, one may continue to have \eqref{eq:Gauss-max-in-distribution} but typically the sequences of normalizing and centering constants will be
+{\em different} from the iid case, and the corresponding limit is usually no longer Gumbel; see, for example, Theorems 6.5.1 and  6.6.4 in \cite{leadbetter2012extremes}, and \cite{mccormick1976weak}. 
 % In particular, \cite{mccormick1976weak} derived the normalizing constants when both $r_p\to 0$ monotonically and  $r_p \log p \to \infty$ monotonically, as $p\to\infty$. 
 % In this case, convergence in distribution still takes place, with the maxima concentrating along a sequence asymptotic to \eqref{eq:quantiles}.
 
-On the other hand, in our high dimensional support estimation context, the notion of relative stability is sufficient and more natural than the finer notions of distributional convergence.
-If one is merely interested in the asymptotic relative stability of the Gaussian maxima, then Berman's condition can be relaxed significantly (see also, Theorem 4.1 of \cite{berman1964limit}). 
-Observe that by Proposition \ref{prop:UDD-equivalent},  the Berman condition \eqref{eq:Berman} implies UDD and hence relative stability (Theorem \ref{thm:Gaussian-weak-dependence}), i.e., 
+In our high dimensional support estimation context, the notion of relative stability is sufficient and more natural than the finer notions of distributional convergence.
+If one is merely interested in the asymptotic relative stability of the Gaussian maxima, then Berman's condition can be relaxed significantly 
+\citep[see also, Theorem 4.1 of][]{berman1964limit}.  Observe that by Proposition \ref{prop:UDD-equivalent},  the Berman condition \eqref{eq:Berman} implies UDD and hence relative stability (Theorem \ref{thm:Gaussian-weak-dependence}), i.e., 
 \begin{equation} \label{eq:Gaussian-URS}
   \frac{1}{b_p} M_p \stackrel{\mathbb P}{\to} 1,\quad\mbox{as}\quad p\to\infty.
 \end{equation}
 This {\em concentration of maxima} property can be readily deduced from \eqref{eq:Gauss-max-in-distribution}, since $a_p b_p \sim 2\log(p) \to \infty$ as $p\to\infty$.
 Theorem \ref{thm:Gaussian-weak-dependence} shows that \eqref{eq:Gaussian-URS} holds if the much weaker uniform dependence condition UDD holds. 
-Note that our condition is coordinate free --- neither monotonicity of the sequence $r_p$ nor stationarity of the underlying array is required. 
+Note that our condition is coordinate free --- neither monotonicity of the sequence $r_p$ nor stationarity of the underlying array is required. This
+makes it substantially broader than the time series setting in the seminal work \cite{berman1964limit}.
 
 % The method of proof is also very different from the results on distributional convergence in the references mentioned above. 
 
 \medskip
 
 The rest of this chapter is devoted to the proof of the main result, i.e., Theorem \ref{thm:Gaussian-weak-dependence}. 
-We first introduce a key lemma regarding the structure of correlation matrix of high-dimensional random variables.
+We first introduce a key lemma regarding the structure of an {\em arbitrary} correlation matrix of high-dimensional random variables.
 The proof uses a surprising, yet elegant application of Ramsey's Theorem from the study of combinatorics.
 %; this application, and its consequences in high-dimensional probability, are presented in Section \ref{subsec:Ramsey}.
 The `only if' part of Theorem \ref{thm:Gaussian-weak-dependence} follows from this lemma, in Section \ref{sec:URS=>UDD}. 
 
 The proof of the `if' part is detailed in Section \ref{sec:UDD=>URS}.
-The arguments there was recently extended to establish bounds on the rate of concentration of maxima in \cite{kartsioukas2019rate}; see also, \cite{tanguy2015some} and references therein for related work on this topic.
+The arguments there have been recently extended to establish bounds on the rate of concentration of maxima in \cite{kartsioukas2019rate}; see also, \cite{tanguy2015some} and the related notion of super-concentration of \cite{chatterjee2014superconcentration}.
 
-\section{Ramsey's Coloring theorem and structure of correlation matrices} 
+\section{Ramsey's  theory and the structure of correlation matrices} 
 \label{sec:Ramsey}
 \input{5.URS/5.proofs-Ramsey.tex}
 
-\section{URS implies UDD (`only if' part of Theorem \ref{thm:Gaussian-weak-dependence})} 
+\section{URS implies UDD (Proof of the `only if' part of Theorem \ref{thm:Gaussian-weak-dependence})} 
 \label{sec:URS=>UDD}
 \input{5.URS/5.proofs-URS-UDD.tex}
 
-\section{UDD implies URS (`if' part of Theorem \ref{thm:Gaussian-weak-dependence})} 
+\section{UDD implies URS (Proof of the `if' part of Theorem \ref{thm:Gaussian-weak-dependence})} 
 \label{sec:UDD=>URS}
 \input{5.URS/5.proofs-UDD-URS.tex}
 
