@@ -1,6 +1,6 @@
 
 We review some properties of the chi-square distributions in Section \ref{sec:chi-square-distributions}, before presenting the proofs of the main theorems on phase transitions in Sections \ref{subsec:proof-chi-squared-exact-boundary}, \ref{subsec:proof-chi-squared-approx-boundary}, and \ref{subsec:proof-chi-squared-mix-boundaries}.
-Results relating signal sizes and effect sizes in association tests will be justified in Section \ref{subsec:proof-signal-size-odds-ratio}.
+%Results relating signal sizes and effect sizes in association tests will be justified in Section \ref{subsec:proof-signal-size-odds-ratio}.
 
 
 \section{Auxiliary facts of chi-square distributions}
@@ -11,7 +11,7 @@ Results relating signal sizes and effect sizes in association tests will be just
 \section{Proof of Theorem \ref{thm:chi-squared-exact-boundary}}
 \label{subsec:proof-chi-squared-exact-boundary}
 
-\begin{proof}[Proof of Theorem \ref{thm:chi-squared-exact-boundary}]
+\begin{proof}[Theorem \ref{thm:chi-squared-exact-boundary}]
 We first prove the sufficient condition.
 The Bonferroni procedure sets the threshold at $t_p = F^\leftarrow(1-\alpha/p)$, which, by Lemma \ref{lemma:chisq-quantiles}, is asymptotic to $2\log{p} - 2\log{\alpha}$.
 By the assumption on $\alpha$ in \eqref{eq:slowly-vanishing-error}, for any $\delta>0$, we have $p^{-\delta}=o(\alpha)$.
@@ -173,7 +173,7 @@ The proof follows the ideas in \cite{arias2017distribution}, and is very similar
 One could in principle obtain the proofs in this section by referencing arguments that have appeared in Chapter \ref{chap:phase-transitions}.
 We choose to present the proof here in full to make this section self-contained.
 
-\begin{proof}[Proof of necessary condition in Theorem \ref{thm:chi-squared-approx-boundary}]
+\begin{proof}[Necessary condition in Theorem \ref{thm:chi-squared-approx-boundary}]
 Denote the distributions of $\chi^2_\nu(0)$, $\chi^2_\nu(\underline{\Delta})$ and $\chi^2_\nu(\overline{\Delta})$ as $F_0$, $F_{\underline{a}}$, and $F_{\overline{a}}$ respectively.
 
 % We first show the necessary condition, i.e., when $\overline{r}<\beta$, approximate support recovery cannot be achieved with any thresholding procedure.
@@ -255,7 +255,7 @@ We now turn to the sufficient condition.
 That is, when $\underline{r} > \beta$, the Benjamini-Hochberg procedure with slowly vanishing FDR levels achieves asymptotic approximate support recovery.
 The structure for the proof of sufficient condition follows that of Theorem 2 in \cite{arias2017distribution}. 
 
-\begin{proof}[Proof of sufficient condition in Theorem \ref{thm:chi-squared-approx-boundary}]
+\begin{proof}[Sufficient condition in Theorem \ref{thm:chi-squared-approx-boundary}]
 The FDR vanishes by our choice of $\alpha$ and the FDR-controlling property of the BH procedure.
 It only remains to show that FNR also vanishes.
 
@@ -361,7 +361,7 @@ As with the proof of Theorem \ref{thm:chi-squared-approx-boundary}, one could sh
 referencing arguments in Chapter \ref{chap:phase-transitions}.  Again, we choose to present the proof in full to make this section 
 self-contained.
 
-\begin{proof}[Proof of Theorem \ref{thm:chi-squared-exact-approx-boundary}]
+\begin{proof}[Theorem \ref{thm:chi-squared-exact-approx-boundary}]
 % The reduction to equal signal sizes can be achieved 
 We first show the sufficient condition.
 Similar to the proof of Theorem \ref{thm:chi-squared-approx-boundary}, it suffices to show that
@@ -397,7 +397,7 @@ This completes the proof of the necessary condition.
 \end{proof}
 
 
-\begin{proof}[Proof of Theorem \ref{thm:chi-squared-approx-exact-boundary}]
+\begin{proof}[Theorem \ref{thm:chi-squared-approx-exact-boundary}]
 We first show the sufficient condition.
 Since FDR control is guaranteed by the BH procedure, we only need to show that the FWNR also vanishes, that is,
 \begin{equation} \label{eq:approx-exact-boundary-proof-sufficient-1}
@@ -516,7 +516,7 @@ Let $\beta_0\in(0,1]$ and define $k=\lfloor s^{1-\beta_0}\rfloor$, then we have
 \end{equation}
 \end{lemma}
 
-\begin{proof}[Proof of Lemma \ref{lemma:relative-stability-order-statistics}]
+\begin{proof}[Lemma \ref{lemma:relative-stability-order-statistics}]
 Using the Renyi representation for order statistics, we write
 \begin{equation} \label{eq:relative-stability-order-statistics-proof-1}
     Z_{[i]} = \Phi^{\leftarrow}(U_{[i]}),

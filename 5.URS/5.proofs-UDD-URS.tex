@@ -61,7 +61,7 @@ Theorem \ref{thm:Gaussian-weak-dependence}. \qed
 \label{subsec:bounding-upper-tails-of-maxima}
 
 
-\begin{proof}[Proof of Lemma \ref{lemma:AGG-maxima-upper-tails}]
+\begin{proof}[Lemma \ref{lemma:AGG-maxima-upper-tails}]
 Recall by \eqref{eq:AGG-quantiles} that 
 \begin{equation*}
     u_q\sim\left(\nu\log{q}\right)^{1/\nu}, \quad q\to\infty,
@@ -93,7 +93,7 @@ Then there exist $p_0, t_0 > 0$, and an absolute constant $C>0$ such that
 \end{equation}
 In particular, the set of random variables $\{\left(\xi_p\right)_+,p\in\N\}$ is uniformly integrable.
 \end{lemma}
-\begin{proof}[Proof of Lemma \ref{lemma:AGG-max-uniform-integrability}]
+\begin{proof}[Lemma \ref{lemma:AGG-max-uniform-integrability}]
 Recalling that $(1+c_p)u_p = u_{p\log{p}}$, and by applying the union bound as in \eqref{eq:AGG-maxima-upper-tails-proof-1}, we have
 \begin{align}
     \log \P\left[\xi_p > t\right] 
@@ -120,7 +120,7 @@ The upper tails of AGG maxima vanish in expectation, i.e.,
 where $(a)_+ := \max\{a,0\}$.
 \end{corollary}
 
-\begin{proof}[Proof of Corollary \ref{cor:AGG-max-upper-bound-expectation}]
+\begin{proof}[Corollary \ref{cor:AGG-max-upper-bound-expectation}]
 Since $c_p\ge0$ is a sequence converging to 0, we have $c_p < 1$ for $p \ge p_0$. Hence for any $t>0$, we have
 \begin{align}
     \P\left[\left(\frac{M_p}{u_p} - (1+c_p)\right)_+ > t\right] 
@@ -151,7 +151,7 @@ where $M_S = \max_{j\in S}\epsilon(j)$.
 We will first show that Lemma \ref{lemma:Gaussian-maxima-lower-expectation}, which is the key to the proof of the `if' part of 
 Theorem \ref{thm:Gaussian-weak-dependence}, follows immediately from this proposition.
 
-\begin{proof}[Proof of Lemma \ref{lemma:Gaussian-maxima-lower-expectation}]
+\begin{proof}[Lemma \ref{lemma:Gaussian-maxima-lower-expectation}]
 We start with the identity
 $$
 \E\left[\frac{M_{S_p}}{u_q}-(1+c_q)\right] = \E\left[\left(\frac{M_{S_p}}{u_q}-(1+c_q)\right)_+\right] - \E\left[\left(\frac{M_{S_p}}{u_q}-(1+c_q)\right)_-\right].
