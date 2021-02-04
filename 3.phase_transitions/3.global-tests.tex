@@ -76,7 +76,7 @@ Consider the signal detection problem in the triangular array of Gaussian error 
     succeed asymptotically in the sense of \eqref{eq:support-recovery-success} when $\underline{r}>\beta-1/2$.\\
      
  {\em (iv)} In the dense and faint signal setting of {\em (iii)}, the $L_1$ and $L_2$ statistics are both 
- sub-optimal. More precisely, they succeed in the sense of  \eqref{eq:support-recovery-success},  for $\underline{r}>\beta/2-{1}/{4}$, but fail in the 
+ sub-optimal. More precisely, they succeed in the sense of  \eqref{eq:support-recovery-success} when $\underline{r}>\beta/2-{1}/{4}$, but fail in the 
  sense of \eqref{eq:support-recovery-failure} when $\overline{r}<\beta/2-{1}/{4}$.
 \end{theorem}
 %Theorem \ref{thm:detection-optimality} is proved in Section \ref{sec:supplement}.
@@ -125,13 +125,13 @@ and
 respectively.
 By the central limit theorem, we have
 \begin{equation}
-    {\color{red}\frac{1}{\sqrt{2p}}}\sum_{i=1}^p \left(x(i)^2-1\right) \implies \mathrm{N}(0,1),  
+    \frac{1}{\sqrt{2p}}\sum_{i=1}^p \left(x(i)^2-1\right) \implies \mathrm{N}(0,1),  
 \end{equation}
 under the null.    On the other hand, under the alternative, since $p^{2r-\beta}\to0$ for all $r<0$ and $\beta>0$, 
  the variance in \eqref{e:detection-variance} converges to $2$, as $p\to\infty$ and an application of the Lyapunov version of 
  the CLT, entails
  \begin{equation}
-    {\color{red} \frac{1}{\sqrt{2p}}}\left(\sum_{i=1}^p \left(x(i)^2-1\right) - p^{1/2-\beta+2r}\right) \implies \mathrm{N}(0,1).
+    \frac{1}{\sqrt{2p}}\left(\sum_{i=1}^p \left(x(i)^2-1\right) - p^{1/2-\beta+2r}\right) \implies \mathrm{N}(0,1).
 \end{equation}
 Hence, perfect detection with the $L_2$-norm is possible if $p^{1/2-\beta+2r}$ diverges, i.e., $r>\beta/2-1/4$.
 On the other hand, if $r<\beta/2-1/4$, the distributions of the (scaled) statistics merge under the null and the alternative. % \fbox{Hellinger distance is scale-invariant (show), detection is impossible}.
@@ -167,7 +167,7 @@ On the other hand, when the alternative hypothesis holds, we have
 and 
 \begin{align*}
     \mathrm{Var} \left(\frac{1}{\sqrt{p}} \left(\sum_{i=1}^p |x(i)| - \sqrt{\frac{2}{\pi}}\right) \right) 
-    & = {\color{red}\frac{1}{p}}  (p-p^{1-\beta})(1-2/\pi) + {\color{red}\frac{1}{p}}   p^{1-\beta}\sigma_{Y}^2 \\
+    & = \frac{1}{p} (p-p^{1-\beta})(1-2/\pi) + \frac{1}{p} p^{1-\beta}\sigma_{Y}^2 \\
     & \to 1-2/\pi,
 \end{align*}
 by the boundedness of $\sigma_{Y}^2$ shown in \eqref{eq:bounded-variance-abs-Gaussian}.

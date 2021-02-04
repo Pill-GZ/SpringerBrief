@@ -22,13 +22,13 @@ of the exact support recovery boundary remains an open question.
 \section{Bayes optimality in support recovery problems}
 \label{subsec:Bayes-optimality}
 
-In studying support recovery problems \citep[e.g.,][]{arias2017distribution}, restrictions to the thresholding procedures 
-are sometimes justified by arguing that such procedures are the ``reasonable'' choice for estimating the support set.
+In studying support recovery problems, restrictions to the thresholding procedures 
+are sometimes justified by arguing that such procedures are the ``reasonable'' choice for estimating the support set \citep[e.g.,][]{arias2017distribution}.
 We show in this chapter that, perhaps surprisingly, for general error models, thresholding procedures are not always 
 optimal, even when the observations are independent.
 
 We shall identify the optimal procedure for support recovery problems under a Bayesian setting with general distributional assumptions (including but not limited to additive models \eqref{eq:model-additive}).
-Specifically, we assume that there is an ordered set $P = (i_1,\ldots,i_s)$, $i_i\in\{1,\ldots,p\}$, and $s$ (not necessarily equal) densities $f_{1}, \ldots, f_{s}$, such that the observations indexed by $P$ have corresponding densities. That is,
+Specifically, we assume that there is an ordered set $P = (i_1,\ldots,i_s)$, $i_i\in\{1,\ldots,p\}$, and $s$ not necessarily equal densities $f_{1}, \ldots, f_{s}$, such that the observations indexed by set $P$ have corresponding densities. That is,
 \begin{equation} \label{eq:signal-distributions-ordered}
 x(i_j) \sim f_j, \quad j=1,\ldots,s.
 \end{equation}
@@ -40,7 +40,7 @@ Let the ordered support $P=(i_1,\ldots,i_s)$ have prior
 \begin{equation} \label{eq:uniform-ordered}
 \pi((i_1,\ldots, i_s)) = {(p-s)!}/{p!},
 \end{equation}
-for all distinct $1\le i_1, \ldots, i_s\le p$.
+for all distinct $1\le i_1 < \ldots < i_s\le p$.
 Consequently, the unordered support $S=\{i_1,\ldots,i_s\}$ is distributed uniformly in the collection of all set of size $s$, with the unordered uniform distribution $\pi^{\text{u}}$. That is, for all for all $S\in\mathcal{S}:=\left\{S\subseteq\{1,\ldots,p\};|S|=s\right\}$, we have 
 \begin{equation} \label{eq:uniform}
 \pi^{\text{u}}
@@ -52,8 +52,8 @@ For any fixed configuration $P$, consider the loss function,
 $$
 \ell(\widehat{S},S) := \P[\widehat{S} \neq S] = \P_{P}[\widehat{S} \neq S],
 $$
-where the probability is taken over the randomness in the observations only.
-The Bayes optimal procedures should minimize 
+where the probability is taken over the randomness in the observations $x$ only.
+The Bayes optimal procedures, by definitions, should minimize 
 \begin{equation} \label{eq:Bayes-risk}
     \E_\pi \P[\widehat{S} \neq S],
 \end{equation}
@@ -64,7 +64,7 @@ where the expectation is taken over the random configurations $P$, with a unifor
 %     R(\widehat{S}) := \limsup_{p\to\infty} \E_{P,{\cal E}} [\ell(\widehat{S},S)] = \limsup_{p\to\infty} \P_{P,{\cal E}}[\widehat{S} \neq S].
 % \end{equation}
 
-If, however, the sparsity $s = |S|$ of the problem is known, then a natural estimator for $S$ would be based on the set of top $s$ order statistics. Such estimators will be referred to as oracle thresholding estimators and formally defined next. 
+If, however, the sparsity $s = |S|$ of the problem is known, then a ``natural'' estimator for $S$ would be based on the set of top $s$ order statistics. Such estimators will be referred to as oracle thresholding estimators and formally defined next. 
 
 %\stilian{ 
 For any collection of numbers $\{a_i,\ i=1,\cdots,s\}$, let 
@@ -117,7 +117,7 @@ for all $s$ and $p$.
 \begin{proof}%[Proof of Proposition \ref{prop:optimal-oracle-procedures}]
 The problem of support recovery can be equivalently stated as a classification problem, where the discrete parameter space is $\mathcal{S} = \{S\subseteq\{1,\ldots,p\}:|S|=s\}$, and the observation $x \in\R^p$ has likelihood $f(x|S)$ indexed by the support set $S$.
 
-By the optimality of the Bayes classifier \citep[see, e.g.,][]{domingos1997optimality}, a set estimator that maximizes the probability of support recovery is such that
+By the optimality of the Bayes classifier \citep[see, e.g.,][]{domingos1997optimality}, a set estimator that maximizes the probability of support recovery is one such that
 $$
 \widehat{S} \in \argmax_{S\in \mathcal{S}} f(x|S) \pi(S).
 $$
@@ -131,7 +131,7 @@ where $\sigma(S)$ is the set of all permutations of the indices in the support s
 
 Suppose that $\widehat{S}$ is {\em not} an oracle thresholding estimator, then there must be indices 
 $j \in \widehat{S}$ and $j' \not \in \widehat{S}$ such that $x(j) < x(j')$.
-We exchange the labels of $x(j)$ and $x(j')$, and form a new estimate 
+We exchange the classifications of $x(j)$ and $x(j')$, and form a new estimate 
 $\widehat{S}\,' = \big(\widehat{S}\setminus\{j\}\big)\cup\{j'\}$.
 Comparing the likelihoods under $\widehat{S}$ and $\widehat{S}\,'$, we have
 \begin{align}
@@ -320,7 +320,7 @@ and $\widehat S''$, we have $ f(x|\widehat{S}') = f(x|\widehat{S}'')$, proving t
 
 The characterization of optimal likelihood ratio thresholding procedures in Proposition \ref{prop:likelihood-ratio-thresholding} may not always yield practical estimators, as the density of the alternatives, and the number of signals $s$ 
 are typically unknown. Still, some insights can be gained by virtue of Proposition \ref{prop:likelihood-ratio-thresholding}.
-In particular, when MLR fails (or equivalently, when the errors in model \eqref{eq:model-additive} do not have log-concave densities), data thresholding is sub-optimal. 
+In particular, when MLR fails (for example, when the errors in model \eqref{eq:model-additive} do not have log-concave densities), data thresholding is sub-optimal. 
 
 
 \begin{example}[Sub-optimality of data thresholding] \label{exmp:suboptimal-data-thresholding}
