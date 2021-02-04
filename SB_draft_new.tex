@@ -97,7 +97,9 @@
 \newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}}
 \newcommand\version[2]{{#1}} % The short version of the paper
 %\newcommand\version[2]{{#2}} % The long version of the paper
+
 \newcommand\stilian[2]{{\color{blue}\fbox{Stilian:} #1 }{\color{red}#2}}
+%\newcommand\stilian[2]{#1}
 
 %\usepackage{amsthm}
 %\startlocaldefs
@@ -144,23 +146,10 @@
 
 %\include{author/dedication}
 %\include{author/foreword}
-%\include{author/preface}
+%\include{author/preface}            
 %\include{author/acknowledgement}
 
 
-\stilian{I suggest to:
-
-\begin{itemize}
-  \item Create a chapter called Supplement, which will become an ``online supplement".
-  \item Begin moving some lengthy background material and the exercises to the Supplement.
-  \item Respond to R2's question about the role of dependence on the rate of growth of maxima 
-  with a sub-section and/or examples in the Supplement.  This will be an illustration of the ``Folklore Theorem"
-  {\em Dependence can only slow down the rate of growth of the maxima of identically distributed random variables}.
-  \item Add index. {\bf Should we have an Index?}
-  \item Add more examples and references to the planted matrix problems.  {\bf If we have time, it would be great 
-  to broaden the scope of applications.}
-\end{itemize}
-}{}
 
 \tableofcontents
 
@@ -180,14 +169,19 @@
 \input{./2.background/background.tex}
 
 
-\chapter{The Phase Transition Phenomena in Independent Gaussian Error Models} 
+%\chapter{The Phase Transition Phenomena in Independent Gaussian Error Models} 
+\chapter{A Panorama of Phase Transitions}
 \label{chap:phase-transitions}
 \input{./3.phase_transitions/phase_transitions.tex}
 
 
-\chapter{Exact Support Recovery}% and Minimax Optimality} 
+\chapter{Exact Support Recovery Under Dependence }% and Minimax Optimality} 
 \label{chap:exact-support-recovery}
 \input{./4.exact_support_recovery/exact_support_recovery.tex}
+
+\chapter{Bayes and Minimax Optimality}
+\label{chap:optimality}
+\input{5.Bayes.optimality/5.Bayes_optimality_and_minimax.tex}
 
 \chapter{\comment{Characterization of} Uniform Relative Stability for Gaussian Arrays}
 \label{chap:URS}
@@ -294,3 +288,4 @@ Fundamental Statistical Limits in Genome-wide Association Studies}
 \bibliography{./tex/thesis}
 
 \end{document}
+\grid

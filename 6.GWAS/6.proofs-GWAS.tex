@@ -1,17 +1,17 @@
 
 We review some properties of the chi-square distributions in Section \ref{sec:chi-square-distributions}, before presenting the proofs of the main theorems on phase transitions in Sections \ref{subsec:proof-chi-squared-exact-boundary}, \ref{subsec:proof-chi-squared-approx-boundary}, and \ref{subsec:proof-chi-squared-mix-boundaries}.
-Results relating signal sizes and effect sizes in association tests will be justified in Section \ref{subsec:proof-signal-size-odds-ratio}.
+%Results relating signal sizes and effect sizes in association tests will be justified in Section \ref{subsec:proof-signal-size-odds-ratio}.
 
 
-\subsection{Auxiliary facts of chi-square distributions}
+\section{Auxiliary facts of chi-square distributions}
 \label{sec:chi-square-distributions}
 \input{6.GWAS/6.chi-square-distributions.tex}
 
 
-\subsection{Proof of Theorem \ref{thm:chi-squared-exact-boundary}}
+\section{Proof of Theorem \ref{thm:chi-squared-exact-boundary}}
 \label{subsec:proof-chi-squared-exact-boundary}
 
-\begin{proof}[Proof of Theorem \ref{thm:chi-squared-exact-boundary}]
+\begin{proof}[Theorem \ref{thm:chi-squared-exact-boundary}]
 We first prove the sufficient condition.
 The Bonferroni procedure sets the threshold at $t_p = F^\leftarrow(1-\alpha/p)$, which, by Lemma \ref{lemma:chisq-quantiles}, is asymptotic to $2\log{p} - 2\log{\alpha}$.
 By the assumption on $\alpha$ in \eqref{eq:slowly-vanishing-error}, for any $\delta>0$, we have $p^{-\delta}=o(\alpha)$.
@@ -57,7 +57,7 @@ By our choice of $q$ in \eqref{eq:choice-of-q}, the last probability in \eqref{e
     &\sim \frac{\phi\left(-\sqrt{2(1-\beta)\log{p}}\right)}{\sqrt{2(1-\beta)\log{p}}} \\
     &= \frac{1}{\sqrt{2(1-\beta)\log{p}}}p^{-(1-\beta)},
 \end{align*}
-where the first line uses Mill's ratio for Gaussian distributions (see Section \ref{sec:Gaussian-distributions} and Relation \eqref{eq:Mills-ratio}).
+where the first line uses Mill's ratio for Gaussian distributions (see Section \ref{sec:Gaussian} and Relation \eqref{eq:Mills-ratio}).
 This, combined with \eqref{eq:chi-square-sufficient-1}, completes the proof of the sufficient condition for the Bonferroni's procedure.
 
 Under the assumption of independence, Sid\'ak's, Holm's, and Hochberg's procedures are strictly more powerful than Bonferroni's procedure, while controlling FWER at the nominal levels.
@@ -114,7 +114,7 @@ On the one hand, we know (by solving a quadratic inequality) that
 \begin{equation} \label{eq:chi-square-necessary-5}
     f_p(x)<1-\delta \iff \frac{x}{\sqrt{2\log{p}}} \in (-(\sqrt{\overline{r}}+\sqrt{1-\delta}), -(\sqrt{\overline{r}}-\sqrt{1-\delta})).
 \end{equation}
-On the other hand, we know (by relative stability of iid Gaussians \cite{gao2018fundamental}) that 
+On the other hand, we know (by the relative stability of iid Gaussians, recall Section \ref{sec:Gaussian}) that 
 \begin{equation} \label{eq:chi-square-necessary-6}
     % f_p(\min_{i\in S}z_\nu(i)) =
     \frac{\min_{i\in S} Z_\nu(i)}{\sqrt{2\log{p}}}
@@ -163,17 +163,17 @@ In view of \eqref{eq:chi-square-necessary-0}, \eqref{eq:chi-square-necessary-1},
 The proof of the necessary condition is complete.
 \end{proof}
 
-\subsection{Proof of Theorem \ref{thm:chi-squared-approx-boundary}}
+\section{Proof of Theorem \ref{thm:chi-squared-approx-boundary}}
 \label{subsec:proof-chi-squared-approx-boundary}
 
 We first show the necessary condition. 
 That is, when $\overline{r} < \beta$, no thresholding procedure is able to achieve approximate support recovery.
 
 The proof follows the ideas in \cite{arias2017distribution}, and is very similar to the proof of Theorem \ref{thm:Gaussian-error-approx-boundary}. 
-One could in principle obtain the proofs in this section by referencing arguments that have appeared in Section \ref{sec:proofs}.
+One could in principle obtain the proofs in this section by referencing arguments that have appeared in Chapter \ref{chap:phase-transitions}.
 We choose to present the proof here in full to make this section self-contained.
 
-\begin{proof}[Proof of necessary condition in Theorem \ref{thm:chi-squared-approx-boundary}]
+\begin{proof}[Necessary condition in Theorem \ref{thm:chi-squared-approx-boundary}]
 Denote the distributions of $\chi^2_\nu(0)$, $\chi^2_\nu(\underline{\Delta})$ and $\chi^2_\nu(\overline{\Delta})$ as $F_0$, $F_{\underline{a}}$, and $F_{\overline{a}}$ respectively.
 
 % We first show the necessary condition, i.e., when $\overline{r}<\beta$, approximate support recovery cannot be achieved with any thresholding procedure.
@@ -255,7 +255,7 @@ We now turn to the sufficient condition.
 That is, when $\underline{r} > \beta$, the Benjamini-Hochberg procedure with slowly vanishing FDR levels achieves asymptotic approximate support recovery.
 The structure for the proof of sufficient condition follows that of Theorem 2 in \cite{arias2017distribution}. 
 
-\begin{proof}[Proof of sufficient condition in Theorem \ref{thm:chi-squared-approx-boundary}]
+\begin{proof}[Sufficient condition in Theorem \ref{thm:chi-squared-approx-boundary}]
 The FDR vanishes by our choice of $\alpha$ and the FDR-controlling property of the BH procedure.
 It only remains to show that FNR also vanishes.
 
@@ -354,13 +354,14 @@ By definition of $\tau$ (recall \eqref{eq:approx-boundary-proof-tau}), this impl
 The proof for the sufficient condition is complete.
 \end{proof}
 
-\subsection{Proof of Theorems \ref{thm:chi-squared-exact-approx-boundary} and \ref{thm:chi-squared-approx-exact-boundary}}
+\section{Proof of Theorems \ref{thm:chi-squared-exact-approx-boundary} and \ref{thm:chi-squared-approx-exact-boundary}}
 \label{subsec:proof-chi-squared-mix-boundaries}
 
-As with the proof of Theorem \ref{thm:chi-squared-approx-boundary}, one could shorten the presentations in this section by referencing arguments Section \ref{sec:proofs}.
-Again, we choose to present the proof in full to make this section self-contained.
+As with the proof of Theorem \ref{thm:chi-squared-approx-boundary}, one could shorten the presentations in this section by 
+referencing arguments in Chapter \ref{chap:phase-transitions}.  Again, we choose to present the proof in full to make this section 
+self-contained.
 
-\begin{proof}[Proof of Theorem \ref{thm:chi-squared-exact-approx-boundary}]
+\begin{proof}[Theorem \ref{thm:chi-squared-exact-approx-boundary}]
 % The reduction to equal signal sizes can be achieved 
 We first show the sufficient condition.
 Similar to the proof of Theorem \ref{thm:chi-squared-approx-boundary}, it suffices to show that
@@ -396,7 +397,7 @@ This completes the proof of the necessary condition.
 \end{proof}
 
 
-\begin{proof}[Proof of Theorem \ref{thm:chi-squared-approx-exact-boundary}]
+\begin{proof}[Theorem \ref{thm:chi-squared-approx-exact-boundary}]
 We first show the sufficient condition.
 Since FDR control is guaranteed by the BH procedure, we only need to show that the FWNR also vanishes, that is,
 \begin{equation} \label{eq:approx-exact-boundary-proof-sufficient-1}
@@ -515,7 +516,7 @@ Let $\beta_0\in(0,1]$ and define $k=\lfloor s^{1-\beta_0}\rfloor$, then we have
 \end{equation}
 \end{lemma}
 
-\begin{proof}[Proof of Lemma \ref{lemma:relative-stability-order-statistics}]
+\begin{proof}[Lemma \ref{lemma:relative-stability-order-statistics}]
 Using the Renyi representation for order statistics, we write
 \begin{equation} \label{eq:relative-stability-order-statistics-proof-1}
     Z_{[i]} = \Phi^{\leftarrow}(U_{[i]}),
@@ -547,84 +548,5 @@ and similarly $\Phi^{\leftarrow}\left(s^{-\beta_0}(1+\epsilon)\right)\sim -\sqrt
 Since both ends of the interval in \eqref{eq:relative-stability-order-statistics-proof-2} are asymptotic to $-\sqrt{2\beta_0\log{s}}$, 
 % dividing through by $\sqrt{2\log{s}}$, and 
 the desired conclusion follows.
-\end{proof}
-
-
-\subsection{Proof of Proposition \ref{prop:signal-size-odds-ratio} and Corollary \ref{cor:signal-limits-OR}}
-\label{subsec:proof-signal-size-odds-ratio}
-
-
-\begin{proof}[Proof of Proposition \ref{prop:signal-size-odds-ratio} and Corollary \ref{cor:signal-limits-OR}]
-We parametrize the 2-by-2 multinomial distribution with the parameter $\delta$, 
-\begin{equation} \label{eq:reparametrize-2-by-2-table-1}
-    \mu_{11} = \phi_1\theta_1+\delta,\quad 
-    \mu_{12} = \phi_1\theta_2-\delta,\quad 
-    \mu_{21} = \phi_2\theta_1-\delta,\quad 
-    \mu_{22} = \phi_2\theta_2+\delta.
-\end{equation}
-By relabelling of categories, we may assume $0<\theta_1,\phi_1\le1/2$ without loss of generality.
-Note that $\delta$ must lie within the range $[\delta_\mathrm{min}, \delta_\mathrm{max}]$, where
-$$
-\delta_\mathrm{min} := \max\{-\phi_1\theta_1, -\phi_2\theta_2, \phi_1\theta_2-1, \phi_2\theta_1-1\} 
-= -\phi_1\theta_1,
-$$
-and
-$$
-\delta_\mathrm{max} := \min\{1-\phi_1\theta_1, 1-\phi_2\theta_2, \phi_1\theta_2, \phi_2\theta_1\}
-= \min\{\phi_1\theta_2, \phi_2\theta_1\},
-$$
-in order for $\mu_{ij}\ge0$ for all $i,j\in \{1,2\}$.
-Under this parametrization, Relation \eqref{eq:odds-ratio} then becomes
-\begin{equation} \label{eq:odds-ratio-delta}
-    \text{R} = \frac{\mu_{11}\mu_{22}}{\mu_{12}\mu_{21}}
-    = \frac{\phi_1\theta_1\phi_2\theta_2 + \delta(\phi_1\theta_1+\phi_2\theta_2)+\delta^2}{\phi_1\theta_1\phi_2\theta_2 - \delta(\phi_1\theta_2+\phi_2\theta_1)+\delta^2},
-\end{equation}
-which is one-to-one and increasing in $\delta$ on $(\delta_\mathrm{min}, \delta_\mathrm{max})$.
-Equation \eqref{eq:signal-size-chisq} becomes
-\begin{equation} \label{eq:signal-size-chisq-delta}
-w^2 = \sum_{i=1}^2 \sum_{j=1}^2 \frac{(\mu_{ij} - \phi_i\theta_j)^2}{\phi_i\theta_j}
-= \delta^2\sum_i\sum_j \frac{1}{\phi_i\theta_j}
-= \frac{\delta^2}{\phi_1\theta_1\phi_2\theta_2},
-\end{equation}
-Solving for $\delta$ in \eqref{eq:odds-ratio-delta}, and plugging into the expression for signal size \eqref{eq:signal-size-chisq-delta} yields Relation \eqref{eq:signal-size-odds-ratio}.
-Corollary \ref{cor:signal-limits-OR} follows from the fact that $w^2(\delta)$ is decreasing on $[\delta_\mathrm{min},0)$, increasing on $(0,\delta_\mathrm{max}]$, with limits
-$$
-\lim_{d\to \delta_\mathrm{min}} w^2(\delta) = \frac{\phi_1\theta_1}{\phi_2\theta_2},
-\quad
-\text{and}
-\quad
-\lim_{d\to \delta_\mathrm{max}} w^2(\delta) = \min\left\{\frac{\phi_1\theta_2}{\phi_2\theta_1}, \frac{\phi_2\theta_1}{\phi_1\theta_2}\right\}.
-$$
-The other three cases ($1/2\le\theta_1,\phi_1\le1$; $0<\theta_1\le1/2\le\phi_1\le1$; and $0\le\phi_1\le1/2\le\theta_1\le1$) may be obtained similarly, or by appealing to the symmetry of the problem.
-\end{proof}
-
-\begin{proof}[Proof of Corollary \ref{cor:optimal-design}]
-Using the parametrization in \eqref{eq:reparametrize-2-by-2-table-1} and in Corollary \ref{cor:signal-size-odds-ratio-conditional-frequency}, we solve for $\delta$ in \eqref{eq:odds-ratio-delta} to obtain
-\begin{align}
-    \delta &= \frac{\phi_1 fR}{fR+1-f} - \left(\frac{\phi_1 fR}{fR+1-f} + f(1-\phi_1)\right)\phi_1 \nonumber \\
-    &= \frac{f(1-f)\phi_1(1-\phi_1)(R-1)}{fR+1-f}. \label{eq:reparametrize-2-by-2-table-2}
-\end{align}
-Substituting \eqref{eq:reparametrize-2-by-2-table-2} into the expression \eqref{eq:signal-size-chisq-delta}, after some simplification, yields
-\begin{equation} \label{eq:reparametrize-2-by-2-table-3}
-    w^2 = \frac{f(1-f)\phi_1(1-\phi_1)(R-1)^2}{\left[\phi_1 R + (1-\phi_1)D\right]\left[\phi_1 + (1-\phi_1)D\right]},
-\end{equation}
-where $D = fR+1-f > 0$.
-Therefore, he derivative of \eqref{eq:reparametrize-2-by-2-table-3} with respect to $\phi_1$ is
-\begin{equation} \label{eq:signal-size-first-derivative}
-    \frac{\mathrm{d}w^2}{\mathrm{d}\phi_1} = 
-    \frac{f(1-f)(R-1)^2}{\left[\phi_1 R+(1-\phi_1)D\right]^2 \left[\phi_1+(1-\phi_1)D\right]^2} \left[(D^2-R)\phi_1^2 - 2D^2\phi_1 + D^2\right].
-\end{equation}
-Further, we obtain the second derivative with respect to $\phi_1$,
-\begin{equation} \label{eq:signal-size-second-derivative}
-    \frac{\mathrm{d}^2w^2}{\mathrm{d}\phi_1^2} = 
-    h(R,f) \left[(\phi_1-1)D^2 - \phi_1R\right],
-\end{equation}
-where $h$ is some function of $(R,f)$ taking on strictly positive values.
-
-Since $\left[(\phi_1-1)D^2 - \phi_1R\right]<0$, the second derivative \eqref{eq:signal-size-second-derivative} must be strictly negative on $[0,1]$.
-This implies that the first derivative \eqref{eq:signal-size-first-derivative} is strictly decreasing on $[0,1]$. 
-Since the first derivative \eqref{eq:signal-size-first-derivative} is strictly positive at $\phi_1=0$, and strictly negative at $\phi_1=1$, it must have a unique zero between 0 and 1, and hence, the solution to $(D^2-R)\phi_1^2 - 2D^2\phi_1 + D^2 = 0$ in the interval of $[0,1]$ must be the maximizer of \eqref{eq:reparametrize-2-by-2-table-3} --- when $D^2-R>0$, the smaller of the two roots maximizes \eqref{eq:reparametrize-2-by-2-table-3}, and when $D^2-R<0$, it is the larger of the two.
-They share the same expression ${D}/{(D+\sqrt{R})}$, which coincides with \eqref{eq:optimal-design}.
-Finally, when $D^2=R$, the only root $\phi_1^*=1/2$, which also coincides with \eqref{eq:optimal-design}, is the maximizer of \eqref{eq:reparametrize-2-by-2-table-3}.
 \end{proof}
 

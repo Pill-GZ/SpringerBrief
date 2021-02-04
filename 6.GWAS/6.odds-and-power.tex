@@ -64,7 +64,42 @@ If $R=1$, we have $w^2 = 0$; if $R\in(0,1)\cup(1,+\infty)$, then we have
 where $A = \phi_1\theta_1\phi_2\theta_2$, $B = \phi_1\theta_1+\phi_2\theta_2$, and $C = \phi_1\theta_2+\phi_2\theta_1$.
 \end{proposition}
 
-Proposition \ref{prop:signal-size-odds-ratio} is derived in Section \ref{subsec:proof-signal-size-odds-ratio}. 
+\begin{proof}
+	We parametrize the 2-by-2 multinomial distribution with the parameter $\delta$, 
+	\begin{equation} \label{eq:reparametrize-2-by-2-table-1}
+	\mu_{11} = \phi_1\theta_1+\delta,\quad 
+	\mu_{12} = \phi_1\theta_2-\delta,\quad 
+	\mu_{21} = \phi_2\theta_1-\delta,\quad 
+	\mu_{22} = \phi_2\theta_2+\delta.
+	\end{equation}
+	By relabelling of categories, we may assume $0<\theta_1,\phi_1\le1/2$ without loss of generality.
+	Note that $\delta$ must lie within the range $[\delta_\mathrm{min}, \delta_\mathrm{max}]$, where
+	$$
+	\delta_\mathrm{min} := \max\{-\phi_1\theta_1, -\phi_2\theta_2, \phi_1\theta_2-1, \phi_2\theta_1-1\} 
+	= -\phi_1\theta_1,
+	$$
+	and
+	$$
+	\delta_\mathrm{max} := \min\{1-\phi_1\theta_1, 1-\phi_2\theta_2, \phi_1\theta_2, \phi_2\theta_1\}
+	= \min\{\phi_1\theta_2, \phi_2\theta_1\},
+	$$
+	in order for $\mu_{ij}\ge0$ for all $i,j\in \{1,2\}$.
+	Under this parametrization, Relation \eqref{eq:odds-ratio} then becomes
+	\begin{equation} \label{eq:odds-ratio-delta}
+	\text{R} = \frac{\mu_{11}\mu_{22}}{\mu_{12}\mu_{21}}
+	= \frac{\phi_1\theta_1\phi_2\theta_2 + \delta(\phi_1\theta_1+\phi_2\theta_2)+\delta^2}{\phi_1\theta_1\phi_2\theta_2 - \delta(\phi_1\theta_2+\phi_2\theta_1)+\delta^2},
+	\end{equation}
+	which is one-to-one and increasing in $\delta$ on $(\delta_\mathrm{min}, \delta_\mathrm{max})$.
+	Equation \eqref{eq:signal-size-chisq} becomes
+	\begin{equation} \label{eq:signal-size-chisq-delta}
+	w^2 = \sum_{i=1}^2 \sum_{j=1}^2 \frac{(\mu_{ij} - \phi_i\theta_j)^2}{\phi_i\theta_j}
+	= \delta^2\sum_i\sum_j \frac{1}{\phi_i\theta_j}
+	= \frac{\delta^2}{\phi_1\theta_1\phi_2\theta_2},
+	\end{equation}
+	Solving for $\delta$ in \eqref{eq:odds-ratio-delta}, and plugging into the expression for signal size \eqref{eq:signal-size-chisq-delta} yields Relation \eqref{eq:signal-size-odds-ratio}.
+	
+	The other three cases ($1/2\le\theta_1,\phi_1\le1$; $0<\theta_1\le1/2\le\phi_1\le1$; and $0\le\phi_1\le1/2\le\theta_1\le1$) may be obtained similarly, or by appealing to the symmetry of the problem.
+\end{proof}
 
 To understand Proposition \ref{prop:signal-size-odds-ratio}, we illustrate Relation \eqref{eq:signal-size-odds-ratio} for selected values of marginals $\theta_1$ and $\phi_1$ in Figure \ref{fig:signal-vs-odds}.
 Observe in the figure that an odds ratio further away from one corresponds to stronger statistical signal per sample, ceteris paribus.
@@ -92,6 +127,18 @@ and
 \end{equation}
 \end{corollary}
 % Proof of Corollary \ref{cor:signal-limits-OR} is found in Appendix \ref{sec:proof-signal-size-odds-ratio}. 
+
+\begin{proof}
+	As in the proof of Proposition \ref{prop:signal-size-odds-ratio}, we examine the case where $0<\theta_1,\phi_1\le1/2$, and leave the other three cases an exercise.
+	Take the first derivative of the expression for $w^2$ in equation \eqref{eq:signal-size-chisq-delta} with respect to $\delta$, it is evident that $w^2(\delta)$ is decreasing on $[\delta_\mathrm{min},0)$, increasing on $(0,\delta_\mathrm{max}]$, with limits
+	$$
+	\lim_{d\to \delta_\mathrm{min}} w^2(\delta) = \frac{\phi_1\theta_1}{\phi_2\theta_2},
+	\quad
+	\text{and}
+	\quad
+	\lim_{d\to \delta_\mathrm{max}} w^2(\delta) = \min\left\{\frac{\phi_1\theta_2}{\phi_2\theta_1}, \frac{\phi_2\theta_1}{\phi_1\theta_2}\right\}.
+	$$
+\end{proof}
 
 Corollary \ref{cor:signal-limits-OR} immediately implies that balanced designs with roughly equal number of cases and controls are not necessarily the most informative.
 

@@ -1,0 +1,82 @@
+
+We end this chapter with several facts about univariate and multivariate Gaussian distributions that will be used in the rest of the manuscript. \\
+
+{\bf Relative stability.} We first state the relative stability of iid standard Gaussian random variables.  Since the standard Gaussian distribution falls in the 
+class of asymptotically generalized Gaussians (AGG; see Definition \ref{def:AGG}), by Example \ref{exmp:AGG}, we know that the triangular array ${\cal E} = \{\left(\epsilon_p(i)\right)_{i=1}^p, p\in\N\}$ has relatively stable (RS) maxima in the sense of \eqref{eq:RS-condition}, i.e.,
+\begin{equation} \label{eq:relative-stability-Gaussian-maxima}
+    \frac{1}{u_{p}} \max_{i=1,\ldots,p} \epsilon_p(i) \xrightarrow{\P} 1,\quad \text{as }\;p\to\infty,
+\end{equation}
+where $u_p$ is the $(1/p)$-th upper quantile as defined in \eqref{eq:AGG-quantiles}.
+Similarly, since the array ${\cal E}$ has distributions symmetric around 0, it also has relatively stable minima
+\begin{equation} \label{eq:relative-stability-Gaussian-minima}
+    \frac{1}{u_{p}} \min_{i=1,\ldots,p} \epsilon_p(i) \xrightarrow{\P} -1,\quad \text{as }\;p\to\infty.
+\end{equation}
+The convergence in \eqref{eq:relative-stability-Gaussian-maxima} also holds almost surely.\\
+
+{\bf Mill's ratio.} We give next the well-known bounds for the Mill's ratio of Gaussian tails.
+Let $\Phi$ denote the CDF of the standard Gaussian distribution and $\phi$ its density.
+One can show that for all $x>0$ we have
+\begin{equation} \label{eq:Mills-ratio}
+    \frac{x}{1+x^2}\phi(x) \le \overline{\Phi}(x) = 1-\Phi(x) \le \frac{1}{x}\phi(x),
+\end{equation}
+using e.g., integration by parts.  Note that this fact may be used to verify the rapid variation of $\Phi$, which entails 
+the relative stability property above.\\
+
+{\bf Stochastic monotonicity.} The third fact is the stochastic monotonicity of the Gaussian location family. 
+In fact, for all location families $\{F_\delta(x)\}_\delta$ where $F_\delta(x) = F(x-\delta)$, we have,
+\begin{equation} \label{eq:stochastic-monotonicity-Gaussian}
+    F_{\delta_1}(t) \ge F_{\delta_2}(t), \quad \text{for all}\quad t\in\mathbb{R}\quad\text{and all}\quad \delta_1 \le \delta_2.
+\end{equation}
+Relation \eqref{eq:stochastic-monotonicity-Gaussian} holds, of course, when $F$ is the standard Gaussian distribution. \\
+
+{\bf Slepian's lemma and the Sudakov-Fernique inequality.} 
+The following two results will be instrumental in our characterization of uniform relative stability for 
+Gaussian triangular arrays in Chapter \ref{chap:URS}.  
+% Many more details and deeper insights can be found for example in the monographs 
+%\cite{leadbetter2012extremes} and \cite{adler2009random}, among others. 
+The first is the celebrated result due to \citet{slepian1962one}.
+
+\begin{theorem}[Slepian's lemma]\label{thm:Slepian-lemma} Let $\epsilon = (\epsilon(i))_{i=1}^p$ and $\eta = (\eta(i))_{i=1}^p$ be 
+two multivariate normally distributed random vectors with zero means $\E [\epsilon(i)] = \E[\eta(i)] = 0$. 
+
+ If for all $i,j=1,\cdots,p$, we have
+$$
+\E [\epsilon(i)^2] = \E[\eta(i)^2],\ \ \ \mbox{ and }\ \ \ {\rm Cov}(\epsilon(i),\epsilon(j)) \le {\rm Cov}(\eta(i),\ \eta(j)),
+$$
+ then $\epsilon \stackrel{{\rm st}}{\ge} \eta$, i.e.,
+$$
+\P [ \epsilon(i) \le x_i,\ i=1,\cdots,p] \le \P [ \eta(i) \le x_i,\ i=1,\cdots,p].
+$$
+\end{theorem}
+
+
+This result implies in particular that $M_\epsilon:= \max_{i=1,\cdots,p}\epsilon(i)$ dominates stochastically $M_\eta:= \max_{i=1,\cdots,p} \eta(i)$ in the
+sense that
+\begin{equation}\label{e:Slepian-lemma-maxima}
+ \P[ M_\eta > u] \le \P [M_\epsilon > u],\ \ \mbox{ for all }u\in\mathbb R.
+\end{equation}
+In this case, we shall write $M_\eta \stackrel{d}{\le} M_\epsilon$.  This result shows, for example, that the maximum of iid Gaussians is 
+stochastically larger the maximum of any positively correlated Gaussian vector with the same marginal distributions. 
+
+Slepian's lemma can be obtained as a corollary from the general Normal Comparison Lemma 
+\citep[see, e.g., Theorem 4.2.1 on page 81 in][]{leadbetter2012extremes}.  See also Ch.\ 2 in \cite{adler2009random}.
+
+The following result, known as the Sudakov-Fernique inequality, is similar in spirit to Slepian's lemma but it does not assume that the Gaussian 
+vectors are centered and yields a weaker conclusion -- an inequality between expectations. For a proof, many insights, and, in fact, a more 
+general result, see e.g., Theorem 2.2.5 on page 61 in \cite{adler2009random}.
+
+\begin{theorem} [The Sudakov-Fernique inequality] \label{th:Sudakov-Fernique} 
+Let $\epsilon = (\epsilon(i))_{i=1}^p$ and $\eta = (\eta(i))_{i=1}^p$ be 
+two multivariate normally distributed random vectors.
+
+If for all $i,j=1,\cdots,p$, we have 
+$$
+\E [ \epsilon(i) ] = \E [\eta(i)] \ \ \mbox{ and }\ \ \E [ (\eta(i)-\eta(j))^2] \le \E [ (\epsilon(i)-\epsilon(j))^2],
+$$
+then for $M_\epsilon = \max_{i=1,\cdots,p}\epsilon(i)$ and $M_\eta = \max_{i=1,\cdots,p} \eta(i)$, we have 
+$$
+ \E [ M_\eta ] \le \E [M_\epsilon].
+$$
+\end{theorem}
+
+

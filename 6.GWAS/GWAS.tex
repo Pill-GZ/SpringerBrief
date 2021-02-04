@@ -1,41 +1,51 @@
 
-We investigate the fundamental limits of multiple testing problems in high-dimensional chi-square models, and in genome-wide association studies as introduced in Section \ref{sec:motivation-chisq}.
+The process of scientific discovery, as famously explained by Richard Faynman, usually starts with guesses in one form or another.
+The consequences of such guesses are then computed, and compared with experimental results.
+If the predictions disagree with experiment, then our guesses are wrong. ``That is all there is to it''  \citep{feynman2017character}.
 
-In Section \ref{sec:chisq-boundaries}, we shall establish the phase transitions of the sparse chi-square model \eqref{eq:model-chisq}.
-Recall that in large-scale screening studies where a large number of association tests are conducted, resulting statistics may be approximated by
+In previous chapters, we delved deep in to the theoretical underpinnings of the phase transition phenomena in high-dimensional multiple testing problems.
+The results are interesting in their own right.
+However, in the spirit of Faynman, we have not discovered any scientific law, but merely worked out mathematical consequences of our postulated models.
+In this chapter, our goal is to relate these predictions to real experimental data from the field of genetics, where large-scale simultaneous hypotheses testing problems often arise.
+From such comparisons, we will demonstrate that the phase transition laws are indeed accurate predictions of some curious phenomena in the real world.
+The accuracy of our predictions will lend credibility to the application of these ``laws of large dimensions'' in actual statistical problems.
+
+\medskip
+
+In our case, the experimental data used as the measuring stick come from genome-wide association studies (\ac{GWAS}), introduced in Section \ref{sec:motivation-chisq}.
+Recall that in \ac{GWAS}, a large number of marginal association tests are conducted simultaneously, resulting in statistics that can be approximated by
 \begin{equation} \label{eq:model-chisq-Chapter6}
     %x(i) \distras{\mathrm{ind.}} \chi_\nu^2\left(\lambda(i)\right), \quad i=1,\ldots,p.
     x(i) \sim \chi_\nu^2\left(\lambda(i)\right), \quad i=1,\ldots,p,
 \end{equation}
 where $\chi_\nu^2\left(\lambda(i)\right)$ is a chi-square distributed random variable with $\nu$ degrees of freedom and non-centrality parameter $\lambda(i)$.
-In parallel to results in Chapter \ref{chap:phase-transitions}, we show that several commonly used family-wise error rate-control procedures --- including Bonferroni's procedure --- are asymptotically optimal for the {exact}, and {exact-approximate} support recovery problems (as defined in Definition \ref{def:exact-recovery-success-failure}) in idealized chi-square models \eqref{eq:model-chisq-Chapter6} with independent components.
-We further show that the \ac{BH} procedure is asymptotically optimal for the {approximate}, and {approximate-exact} support recovery problems.
+
+We establish our theoretical predictions in two steps.
+In Section \ref{sec:chisq-boundaries} below, we shall first establish the phase transitions of the model \eqref{eq:model-chisq-Chapter6}.
+In parallel to results in Chapter \ref{chap:phase-transitions}, we show that several commonly used family-wise error rate-control procedures --- including Bonferroni's procedure --- are asymptotically optimal for the {exact}, and {exact-approximate} support recovery problems (recall Definition \ref{def:exact-recovery-success-failure}) in idealized chi-square models with independent components.
+Analogously, the \ac{BH} procedure is asymptotically optimal for the {approximate}, and {approximate-exact} support recovery problems.
 % \ref{thm:chi-squared-exact-boundary}, \ref{thm:chi-squared-exact-approx-boundary}, \ref{thm:chi-squared-approx-boundary}, and \ref{thm:chi-squared-approx-exact-boundary}.
 Under appropriate parametrizations of the signal sizes and sparsity, they establish the phase transitions of support recovery problems in the chi-square model.
 Remarkably, the degree-of-freedom parameter does not affect the asymptotic boundaries in any of the four support recovery problems.
 
-All phase transition boundaries coincide with those in the additive error models obtained in Chapter \ref{chap:phase-transitions} under suitable parametrizations.
-% and Figure \ref{fig:phase-chi-squared} continues to apply.
-This indicates vanishing differences between the difficulties of the one-sided and two-sided alternatives in the Gaussian additive error model \eqref{eq:model-additive}.
-
-\medskip
-
-We then return to association screenings of categorical variables in
-Section \ref{sec:odds-and-power}, and present the consequences of the phase transition in the exact-approximate problem in large-scale genetic association studies.
+We then translate the canonical signal size and sparsity parametrizations into the vernacular of statistical geneticists in Section \ref{sec:odds-and-power}.
 % present empirical evidence for the phase transition in the exact-approximate problem using real data from large-scale association studies on breast cancer obtained from the NHGRI-EBI GWAS Catalog \citep{macarthur2016new}.
 % demystify the notion of signal size $\lambda$ in this context.
 % which is perhaps less transparent than in additive error models.
-We do so by characterizing the relationship between the signal size $\lambda$ and the marginal frequencies, odds ratio, and sample sizes for association tests on 2-by-2 contingency tables.
+We do so by characterizing the relationship between the signal size $\lambda$ and the marginal frequencies, odds ratio, and sample sizes for association tests on 2-by-2 contingency tables. 
+These parameters are more often estimated and reported in \ac{GWAS} than the elusive signal size parameter $\lambda$.
 % Specifically, the amount of signal, when rare variants are present, is weaker compared to the signal when the marginal distributions are balanced.
 % In other words, reliable detection of the effects by rare variants would require more samples compared to common variants, even at the same odds ratio.
-This result, establishing the relationship between sample sizes and signal sizes, is made precise in Section \ref{sec:odds-and-power}.
-
-We elaborate on the implications of this relationship on optimal study designs for association studies in Section \ref{sec:optimal-design}.
+% This result, establishing the relationship between sample sizes and signal sizes, is made precise in Section \ref{sec:odds-and-power}.
+As a bonus, we point out an implications of this relationship on optimal study designs for association studies in Section \ref{sec:optimal-design}.
 Perhaps surprisingly, our analysis reveals that balanced designs with equal number of cases and controls are often statistically inefficient.
-Practical consequences of these results in power analysis will be illustrated with data examples in Section \ref{sec:phase-transitions-in-GWAS}. 
+% Practical consequences of these results in power analysis will be illustrated with data examples in Section \ref{sec:phase-transitions-in-GWAS}. 
+
+Armed with the results on phase transitions in the chi-square model, and a translation from the language of high-dimenstional statistics to the patois of association screening studies, we finally present in Section \ref{sec:phase-transitions-in-GWAS} the consequences of the phase transitions in \ac{GWAS}, and compare against real experimental data to evaluate the success of our predictions.
 
 The phase transitions in the chi-square models are demonstrated with numerical simulations in Section \ref{sec:numerical}.
-Proofs of results in this Chapter are collected in Section \ref{sec:proof-signal-size-odds-ratio}.
+Proofs are collected in the online Supplement.
+%in Section \ref{sec:proof-signal-size-odds-ratio}.
 
 % Practical issues are also addressed to make for simple and effective power analysis.
 
@@ -64,6 +74,6 @@ Proofs of results in this Chapter are collected in Section \ref{sec:proof-signal
 \input{6.GWAS/6.numerical.tex}
 
 
-\section{Proofs}
-\label{sec:proof-signal-size-odds-ratio}
-\input{6.GWAS/6.proofs-GWAS.tex}
+%\section{Proofs}
+%\label{sec:proof-signal-size-odds-ratio}
+%\input{6.GWAS/6.proofs-GWAS.tex}

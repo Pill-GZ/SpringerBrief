@@ -57,7 +57,8 @@ Thus we have, as $p\to\infty$,
 where the convergence in probability follows from Proposition \ref{prop:rapid-varying-tails} part \ref{prop:rapid-varying-tails_part-ii}.
 %The fact that the last limit is strictly less than $1$, together with Relation \eqref{eq:Slepian-conclusion}, shows that \eqref{eq:URS-condition} is impossible, for $S_p:=K_p(c)$.
 
-Relations \eqref{eq:Slepian-conclusion-condition-1} and \eqref{eq:Slepian-conclusion-condition-2}, by Slepian's Lemma \cite{slepian1962one}, also imply,
+Relations \eqref{eq:Slepian-conclusion-condition-1} and \eqref{eq:Slepian-conclusion-condition-2}, by Slepian's Lemma (recall
+Theorem \ref{thm:Slepian-lemma}), also imply,
 \begin{equation}\label{eq:Slepian-conclusion}
   \frac{1}{u_{k_p(c)}} \max_{j\in K_p(c)} \epsilon^*(j) \stackrel{d}{\ge} \frac{1}{u_{k_p(c)}} \max_{j\in K_p(c)} \epsilon_p(j).
 \end{equation}
@@ -65,5 +66,6 @@ Therefore, by \eqref{eq:Slepian-conclusion} and \eqref{eq:!UDD=>subsequence-fail
 $$
 \P\left[\frac{1}{u_{k_p(c)}} \max_{j\in K_p(c)} \epsilon_p(j) < \delta \right] \to 1 \quad\mbox{as  }p\to\infty.
 $$
-This contradicts the definition of URS (with the particular choice of $S_p:=K_p(c)$), and the proof of the `only if' part is complete.
+This contradicts the definition of URS (with the particular choice of $S_p:=K_p(c)$), and the proof of the `only if' part of 
+Theorem \ref{thm:Gaussian-weak-dependence} is complete.
 

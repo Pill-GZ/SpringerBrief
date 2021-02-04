@@ -1,5 +1,7 @@
 
-In this chapter, we establish a complete characterization of URS for Gaussian arrays in terms of a simple condition on the covariance structures.
+Recall that the notion of uniform relative stability (URS) in Definition \ref{def:URS} is the key to the necessary conditions for exact support recovery 
+established in Theorem \ref{thm:necessary}.
+In this chapter, we provide a complete characterization of the class of URS Gaussian arrays in terms of a simple condition on their covariance structure.
 The condition is as follows.
 
 % The proof of the main result is deferred until Section \ref{sec:proofs}.
@@ -44,14 +46,14 @@ check in a time-series context.
 For $\epsilon_p \sim \mathrm{N}(0,\Sigma_p)$ with unit variances, an array ${\cal E} = \left(\epsilon_p(i)\right)_{i=1}^p$ is said to satisfy the UDD\,$^\prime$ condition if there 
 exist:
 \begin{enumerate}
-    \item[(i)] permutations $l = l_p$ of $\{1,\ldots,p\}$, for all $p\in\N$, and
+    \item[(i)] permutations $l_p$ of $\{1,\ldots,p\}$, for all $p\in\N$, and
     \item[(ii)] a non-negative sequence $(r_n)_{n=1}^\infty$ converging to zero $r_n\to 0$, as $n\to\infty$,
 \end{enumerate}
 such that 
 \begin{equation} \label{eq:weak-correlation}
     \sup_{p\in\N} |\Sigma_p\left(i',j'\right)| \le r_{|i-j|}.
 \end{equation}
-where $i' = l(i)$, $j' = l(j)$, for all $i,j\in\{1,\ldots,p\}$.
+where $i' = l_p(i)$, $j' = l_p(j)$, for all $i,j\in\{1,\ldots,p\}$.
 \end{definition}
 
 \begin{remark}
@@ -114,8 +116,9 @@ $N(\delta) = 2M+1$.
 % $N(\delta) \to 1$ as $\delta \to 0$.
 % \end{remark}
 
-We now state the main result of this section: a Gaussian sequence is URS if and only if it is UDD.
-The URS condition essentially requires that the dependencies decay in a uniform fashion, the rate at which dependence decay does \emph{not} matter.
+We now state the main result of this chapter.  It states that a Gaussian array is URS if and only if it is UDD.
+The URS condition essentially requires that the dependencies decay in a uniform fashion, the rate at which dependence decay 
+does \emph{not} matter.
 
 \begin{theorem} \label{thm:Gaussian-weak-dependence}
 Let ${\cal E}$ be a Gaussian triangular array with standard normal marginals.  
@@ -134,30 +137,77 @@ Then $\cal E$ is {URS} if and only if the autocovariance function $\cov(Z(k), Z(
 Corollary \ref{cor:stationary-Gaussian-errors} follows by Theorem \ref{thm:Gaussian-weak-dependence} and the observation that UDD is equivalent to vanishing autocovariance of $\cal Z$.
 A slightly weaker form of the ``if'' part was established in Theorem 3 of \cite{berman1964limit}.
 
-Returning again to the study of support recovery problems, Theorem \ref{thm:Gaussian-weak-dependence} and the necessary condition for exact support recovery in Theorem \ref{thm:necessary} yields the following result.
+Returning again to the study of support recovery problems, Theorem \ref{thm:Gaussian-weak-dependence} and the necessary condition for exact support recovery in Theorem \ref{thm:necessary} yield the following result.
 
 \begin{corollary} \label{cor:weakly-dependent-errors}
 For UDD Gaussian errors, the result in Theorem \ref{thm:necessary} holds.
 \end{corollary}
 
-As a counterpart to Remark \ref{rmk:dependence-assumptions}, we demonstrate the tightness of the dependence conditions in Theorem \ref{thm:necessary}.
-Specifically, we demonstrate that if the URS dependence condition is violated, then it may be possible to recover the support of weaker signals below the boundary.
+One may ask, whether the UDD (equivalently, URS) condition can be relaxed further for the phase-transition result in Theorem \ref{thm:necessary} to 
+hold.  As a counterpart to Remark \ref{rmk:dependence-assumptions}, we demonstrate next that the dependence conditions in Theorem \ref{thm:necessary} 
+are nearly optimal.  Specifically, we show that if the URS dependence condition is violated, then it may be possible to recover the support 
+of weaker signals, falling below the boundary.   The main idea is to use the equivalence of URS and UDD to construct a Gaussian error array,
+whose correlations do not decay in a uniform fashion (UDD fails). As we will see, in such a case one can do substantially better in terms of 
+support recovery.  This shows that the URS condition is nearly optimal in the Gaussian setting.  
+Numerical simulations illustrating this example can be found in Section \ref{suppsec:numerical}, below. 
 
-\begin{example} \label{exmp:counter-example}
-Suppose ${\cal E} = \left(\epsilon_p(i)\right)_{i=1}^p$ is Gaussian, and is comprised of $\lfloor p^{1-\beta}\rfloor$ blocks, each of size at least $\lfloor p^\beta \rfloor$; 
-let the elements of each block have correlation 1, and let elements from different blocks be independent. 
-If $\underline{r} \ge 4(1-\beta)$, then the procedure $\widehat{S} = \big\{i:x(i)>\sqrt{2(1-\beta)\log{p}}\big\}$ yields $\mathbb P[\widehat{S} = S] \to 1$. 
-This requirement on signal size is strictly weaker than that of the strong classification boundary, since $4(1-\beta) < (1 + \sqrt{1-\beta})^2$ on $\beta\in(0,1)$.
+\begin{example}[On the tightness of the URS condition for exact support recovery] \label{exmp:counter-example}
+Suppose ${\cal E} = \left(\epsilon_p(i)\right)_{i=1}^p$ is Gaussian, and is comprised of $\lfloor p^{1-\beta}\rfloor$ blocks, each of size at least $\lfloor p^\beta \rfloor$.  Let the elements within each block have correlation 1, and let the elements from different blocks be independent. 
+If $\underline{r} \ge 4(1-\beta)$, then the procedure 
+$$
+ \widehat{S} = \big\{i:x(i)>\sqrt{2(1-\beta)\log{p}}\big\}
+ $$ 
+yields exact support recovery, i.e., $\mathbb P[\widehat{S} = S] \to 1$, as $p\to\infty$.  This requirement on the signal size is strictly 
+weaker than that of the strong classification boundary, since $4(1-\beta) < (1 + \sqrt{1-\beta})^2$ on $\beta\in(0,1)$.
 \end{example} 
+\begin{proof}[Example \ref{exmp:counter-example}]
+Let $t_p^* = \sqrt{2(1-\beta)\log{p}}$  and observe that $\widehat{S} = \{j:x(j)>t_p^*\}$.
+Analogous to \eqref{eq:Bonferroni-FWER-control} in the proof of Theorem \ref{thm:sufficient}, we have
+\begin{align*}
+    \P\left[\widehat{S} \subseteq S\right] 
+        &= 1 - \P\left[\max_{j\in S^c}x(j) > t_p^*\right] 
+        = 1 - \P\left[\max_{j\in S^c}\epsilon(j) > t_p^*\right] \nonumber \\
+      % \ge 1 - \P\left[\max_{j\in\{1,\ldots,p\}}\epsilon(j) > t_p\right] \nonumber \\
+        &\ge 1 - \P\left[\max_{j\in\{1,\ldots,p\}}\epsilon(j) > t_p^*\right] 
+        \ge 1 - \P\left[\max_{j\in\{1,\ldots,\lfloor p^{1-\beta}\rfloor\}}\widetilde{\epsilon}(j) > t_p^*\right]
+\end{align*}
+where $\left(\widetilde{\epsilon}\right)_{j=1}^{\lfloor p^{1-\beta}\rfloor}$'s are independent Gaussian errors; in the last inequality we used the assumption that there are at most $\lfloor p^{1-\beta}\rfloor$ independently distributed Gaussian errors in $\left(\epsilon_p(j)\right)_{j=1}^p$.
+By Example \ref{exmp:FWER-controlling_procedures} (with $\lfloor p^{1-\beta}\rfloor$ taking the role of $p$), we know that the FWER goes to 0 at a rate of 
+$\left(2\log{\lfloor p^{1-\beta}\rfloor}\right)^{-1/2}$.
+Therefore, the probability of no false inclusion converges to 1.
 
-The above example shows that if the correlations of the Gaussian errors do not decay in a uniform fashion (UDD fails), then we can do substantially better in terms of support recovery.
-The claims in the example are verified in Section \ref{suppsec:proofs}, while numerical simulations of this example can be found in Section \ref{suppsec:numerical}.
+
+On the other hand, since the signal sizes are no smaller than $(\nu\underline{r}\log p)^{1/\nu} = \sqrt{2\underline{r}\log p}$ (for $\nu = 2$), similar to 
+\eqref{eq:sufficient-proof-eq1}, we obtain
+\begin{align}
+    \P\left[\widehat{S} \supseteq S\right] 
+    &\ge \P\left[\min_{j\in S}\epsilon(j) > \sqrt{2(1-\beta)\log{p}} - \sqrt{2\underline{r}\log{p}} \right] \nonumber \\
+    &= \P\left[\max_{j\in S}\left(-\epsilon(j)\right) < \sqrt{2\log{p}}\left(\sqrt{\underline{r}}-\sqrt{1-\beta}\right) \right] \nonumber \\
+    &= \P\left[\frac{\max_{j\in S}(-\epsilon(j))}{u_{|S|}} < \frac{\sqrt{\underline{r}}-\sqrt{1-\beta}}{\sqrt{1-\beta}}\left(1+o(1)\right) \right], \label{eq:sufficient-proof-counter-example}
+\end{align}
+where in the last line we used the quantiles \eqref{eq:AGG-quantiles}.
+Since the minimum signal size is bounded below by $\underline{r} > 4(1-\beta)$, the right-hand-side of the inequality in \eqref{eq:sufficient-proof-counter-example} converges to a constant strictly larger than 1. While the left-hand-side, by Slepian's lemma (recall 
+Theorem \ref{thm:Slepian-lemma} and Relation \ref{e:Slepian-lemma-maxima}), is stochastically smaller than a r.v.\ going to 1.  Namely, we have
+\begin{equation}
+  \frac{1}{u_{|S|}} \max_{j\in S}(-\epsilon(j)) \stackrel{d}{\le} \frac{1}{u_{|S|}} \max_{j\in S} \epsilon^*(j) \stackrel{\P}{\longrightarrow} 1,
+\end{equation}
+where $\left({\epsilon^*}\right)_{j=1}^{\lfloor p^{1-\beta}\rfloor}$'s are independent Gaussian errors.
+Therefore the probability in \eqref{eq:sufficient-proof-counter-example} must also converge to 1.
+\end{proof}
+
+
+
 
 \medskip
 
-We conclude with a brief discussion on the relationships between UDD and other dependence conditions in the context of extreme value theory, before proceeding to the proof of Theorem \ref{thm:Gaussian-weak-dependence}.
+Before proceeding to the proof of Theorem \ref{thm:Gaussian-weak-dependence}, we will briefly discuss 
+the relationships between UDD and other dependence conditions in the context of extreme value theory. The main idea
+we would like to convey is that UDD (and equivalently URS) is an exceptionally mild condition on the dependence of the array.
 
-Suppose that the array of errors  ${\cal E}$ comes from a stationary Gaussian time series $\epsilon(i),\ i\in \mathbb{N}$, with auto-covariance $r_p=\cov(\epsilon(i+p),\epsilon(i))$. 
+\medskip
+\noindent{\bf The Berman and UDD conditions.} 
+ \label{UDD_and_Berman}
+ Suppose that the array of errors  ${\cal E}$ comes from a stationary Gaussian time series $\epsilon(i),\ i\in \mathbb{N}$, with auto-covariance $r_p=\cov(\epsilon(i+p),\epsilon(i))$. 
 One is interested in the asymptotic behavior of the maxima $M_p:=\max_{i=1,\dots,p} \epsilon(i)$.
 
 In this setting, the Berman's condition, introduced in \cite{berman1964limit}, requires that
@@ -176,44 +226,48 @@ a_p = \sqrt{2\log p},\quad b_p  = \sqrt{2\log p} - \frac{1}{2}\left(\sqrt{2\log 
 $$ 
 are {\em the same} centering and normalization sequences
 as in the case of iid $\epsilon(i)$'s.  
-Berman's condition is one of the weakest dependence conditions  in the literature for which this result holds. See, e.g., Theorem 4.4.8 in \cite{embrechts2013modelling}, where \eqref{eq:Berman} is described as ``very weak''.
+Berman's condition is one of the weakest dependence conditions  in the literature for which the convergence in \eqref{eq:Gauss-max-in-distribution} holds. 
+See, e.g., Theorem 4.4.8 in \cite{embrechts2013modelling}, where \eqref{eq:Berman} is described as ``very weak''.
 
-For dependence conditions weaker than \eqref{eq:Berman}, the sequences of normalizing and centering constants in \eqref{eq:Gauss-max-in-distribution} are {\em different} from the iid case, and the corresponding limit is no longer Gumbel; see, for example, Theorems 6.5.1 and  6.6.4 in \cite{leadbetter2012extremes}, and \cite{mccormick1976weak}. 
+Instances where the dependence in the time series is so strong that Berman's condition \eqref{eq:Berman} fails have also been studied.  In such 
+cases, one may continue to have \eqref{eq:Gauss-max-in-distribution} but typically the sequences of normalizing and centering constants will be
+{\em different} from the iid case, and the corresponding limit is usually no longer Gumbel; see, for example, Theorems 6.5.1 and  6.6.4 in \cite{leadbetter2012extremes}, and \cite{mccormick1976weak}. 
 % In particular, \cite{mccormick1976weak} derived the normalizing constants when both $r_p\to 0$ monotonically and  $r_p \log p \to \infty$ monotonically, as $p\to\infty$. 
 % In this case, convergence in distribution still takes place, with the maxima concentrating along a sequence asymptotic to \eqref{eq:quantiles}.
 
-On the other hand, in our high dimensional support estimation context, the notion of relative stability is sufficient and more natural than the finer notions of distributional convergence.
-If one is merely interested in the asymptotic relative stability of the Gaussian maxima, then Berman's condition can be relaxed significantly (see also, Theorem 4.1 of \cite{berman1964limit}). 
-Observe that by Proposition \ref{prop:UDD-equivalent},  the Berman condition \eqref{eq:Berman} implies UDD and hence relative stability (Theorem \ref{thm:Gaussian-weak-dependence}), i.e., 
+In our high dimensional support estimation context, the notion of relative stability is sufficient and more natural than the finer notions of distributional convergence.
+If one is merely interested in the asymptotic relative stability of the Gaussian maxima, then Berman's condition can be relaxed significantly 
+\citep[see also, Theorem 4.1 of][]{berman1964limit}.  Observe that by Proposition \ref{prop:UDD-equivalent},  the Berman condition \eqref{eq:Berman} implies UDD and hence relative stability (Theorem \ref{thm:Gaussian-weak-dependence}), i.e., 
 \begin{equation} \label{eq:Gaussian-URS}
   \frac{1}{b_p} M_p \stackrel{\mathbb P}{\to} 1,\quad\mbox{as}\quad p\to\infty.
 \end{equation}
 This {\em concentration of maxima} property can be readily deduced from \eqref{eq:Gauss-max-in-distribution}, since $a_p b_p \sim 2\log(p) \to \infty$ as $p\to\infty$.
 Theorem \ref{thm:Gaussian-weak-dependence} shows that \eqref{eq:Gaussian-URS} holds if the much weaker uniform dependence condition UDD holds. 
-Note that our condition is coordinate free --- neither monotonicity of the sequence $r_p$ nor stationarity of the underlying array is required. 
+Note that our condition is coordinate free --- neither monotonicity of the sequence $r_p$ nor stationarity of the underlying array is required. This
+makes it substantially broader than the time series setting in the seminal work \cite{berman1964limit}.
 
 % The method of proof is also very different from the results on distributional convergence in the references mentioned above. 
 
 \medskip
 
 The rest of this chapter is devoted to the proof of the main result, i.e., Theorem \ref{thm:Gaussian-weak-dependence}. 
-We first introduce a key lemma regarding the structure of correlation matrix of high-dimensional random variables.
+We first introduce a key lemma regarding the structure of an {\em arbitrary} correlation matrix of high-dimensional random variables.
 The proof uses a surprising, yet elegant application of Ramsey's Theorem from the study of combinatorics.
 %; this application, and its consequences in high-dimensional probability, are presented in Section \ref{subsec:Ramsey}.
 The `only if' part of Theorem \ref{thm:Gaussian-weak-dependence} follows from this lemma, in Section \ref{sec:URS=>UDD}. 
 
 The proof of the `if' part is detailed in Section \ref{sec:UDD=>URS}.
-The arguments there was recently extended to establish bounds on the rate of concentration of maxima in \cite{kartsioukas2019rate}; see also, \cite{tanguy2015some} and references therein for related work on this topic.
+The arguments there have been recently extended to establish bounds on the rate of concentration of maxima in \cite{kartsioukas2019rate}; see also, \cite{tanguy2015some} and the related notion of super-concentration of \cite{chatterjee2014superconcentration}.
 
-\section{Ramsey's Coloring theorem and structure of correlation matrices} 
+\section{Ramsey's  theory and the structure of correlation matrices} 
 \label{sec:Ramsey}
 \input{5.URS/5.proofs-Ramsey.tex}
 
-\section{URS implies UDD (`only if' part of Theorem \ref{thm:Gaussian-weak-dependence})} 
+\section{URS implies UDD (Proof of the `only if' part of Theorem \ref{thm:Gaussian-weak-dependence})} 
 \label{sec:URS=>UDD}
 \input{5.URS/5.proofs-URS-UDD.tex}
 
-\section{UDD implies URS (`if' part of Theorem \ref{thm:Gaussian-weak-dependence})} 
+\section{UDD implies URS (Proof of the `if' part of Theorem \ref{thm:Gaussian-weak-dependence})} 
 \label{sec:UDD=>URS}
 \input{5.URS/5.proofs-UDD-URS.tex}
 
