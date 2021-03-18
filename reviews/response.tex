@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
-\usepackage{fullpage,amsfonts,amsmath,hyperref}
+\usepackage{fullpage,amsfonts,amsmath,hyperref,natbib}
 \def\P{{\mathbb P}}
+\bibliographystyle{plain}
 \title{Response to the reviews of the manuscript: ``Concentration of Maxima and Fundamental Limits in High-Dimensional Testing and Inference'' by Zheng Gao
 and Stilian Stoev submitted to {\em SpringerBriefs Series in Probability and Statistics} }
 
@@ -181,12 +182,14 @@ and Stilian Stoev submitted to {\em SpringerBriefs Series in Probability and Sta
     \item {\em Most existing works assume the constant signal strength, which essen- tially assume that the location parameters are drawn from a two-point distribution... However, it is a bit far from realistic from my perspective because the practical case often involves a mixture of strong and weak signals. A recent paper by Li 2020 considers the generic distribution of alternative means under appropriate rescaling, and shows the surprising result that the higher criticism test no longer dominates Bonferroni’s method even in the sparse regime $\beta >3/4$. It would be more instructive if the paper can start from the more general model to provide a fuller picture.}
     
     \medskip
-    Thank you.  We were not aware of the interesting and very recent work of Li and Fithian, 2020 (\url{https://arxiv.org/abs/2006.12489}). We wholeheartedly 
-    agree that the set-up proposed my the reviewer is much more realistic.  It is quite interesting and stimulating for us to learn that the Higher Criticism
-    statistic no longer dominates the Bonferonni thresholding procedure.  We have now included brief comments
-    about this very recent development in Chapters 2 and 3.  Since our focus in this manuscript is mostly on the support estimation problem (rather than on the 
-     detection problem), we decided not to pursue this new and important line of research, which may require resolving some new mathematical challenges. 
-     We hope to understand this phenomenon better in the near future.
+    Thank you.  We were not aware of the interesting and very recent work \cite{li2020optimality}
+     of Li and Fithian. We wholeheartedly agree that the set-up proposed my the reviewer is much more realistic.  
+     It is quite interesting and stimulating for us to learn that the Higher Criticism statistic no longer dominates the Bonferonni thresholding procedure.  
+     This changes our general understanding about optimality of the max-statistic.  Although, we are not prepared to contribute more to the subject from 
+     the more general perspective of  \cite{li2020optimality}, we have included brief comments about this very recent development in Chapters 2 and 3.  
+     Since our focus in this manuscript is mostly on the support estimation problem (rather than on the detection problem), we decided not to pursue 
+     this new and important line of research, which may require resolving some new mathematical challenges. We hope to understand this phenomenon 
+     better in the near future.
      
      \fbox{Zheng, PLEASE CHECK how if I quoted the work of  Li and Fithian in Ch 2 and 3, appropriately.  Thanks!}
      
@@ -231,10 +234,10 @@ see e.g. Efron 2007 and Fan 2012. Is there any connection between these two type
   where $B_H$ is the fractional Brownian motion process -- a Gaussian, stationary increment and  self-similar process with 
   exponent $H = 1 - \gamma/2 \in (1/2,1)$.  This is in stark contrast with the usual Brownian motion limit which arises 
   under the {\em weak dependence}.  The behaviors of many sum-based statistics will change dramatically when the dependence switches from
-  short- to long-range.  For more details, see e.g. \cite{----}.
+  short- to long-range.  For more details, see e.g. \cite{pipiras:taqqu:2017} and the references therein.
   
   Shockingly, when considering even most heavily dependent (say Gaussian) stationary time series $\{X_k\}$, the limit behavior of the maxima
-  is no different than had they been iid.  Indeed, the Berman condition
+  is no different than in the iid case.  Indeed, the Berman condition (cf \cite{berman1964limit,leadbetter2012extremes})
   $$
   {\rm Cov}(X_k,X_0) = o (\log k),\ \ \mbox{ as }k\to\infty,
   $$
@@ -251,20 +254,92 @@ see e.g. Efron 2007 and Fan 2012. Is there any connection between these two type
   
   In particular, the Berman condition holds for Gaussian long-range dependent models!  Thus, even when the traditional notions of weak dependence for
   sums no longer hold, the dependence is weak enough for the maxima to behave as in the iid setting.  Please note that in our monograph we need an even weaker notion of dependence since we need only have relative stability, i.e., 
-  $$
+  \begin{equation}\label{e:RS}
   \frac{1}{a_n} \max_{k=1,\cdots,n} X_k \stackrel{\P}{\longrightarrow} 1,
-  $$
-  as $n\to\infty$.  As shown in the seminal work of Berman (and in a more general situation for triangular arrays in our 
-  Chapter 6), for the latter to hold one needs the auto-covariance to vanish, i.e., 
+  \end{equation}
+  as $n\to\infty$.  As shown in the seminal work of Berman \cite{berman1964limit} and in a more general situation for triangular arrays in our 
+  Chapter 6), for the latter convergence \eqref{e:RS} to hold one merely needs the auto-covariance to vanish, i.e., 
   $$
   {\rm Cov}(X_k,X_0) = o(1),\ \ \ \mbox{ as }k\to\infty.
   $$
-  We find this to be an important and perhaps somewhat overlooked universality phenomenon showing that light-tailed maxima continue to 
-  concentrate under drastically stronger dependence than we are accustomed to deal with.
+  We find this to be an important and perhaps somewhat overlooked universality phenomenon showing that maxima of Gaussians 
+  (and in fact, general light-tailed variables) continue to concentrate under drastically stronger dependence than we are accustomed to deal with 
+  in the case of sums/averages.
    
    
-   \end{enumerate}
    
+   \item {\em This is another line of work that studies the strong dependence structure where the covariance matrix has a factor structure 
+   (eg. Fan 2012). For instance, this includes the equi-correlated case. Are you aware of any results under strong dependence in your context?}
+   
+   We thank the reviewer for the important reference to the work of Fan, Xu and Gu \cite{fan:xu:gu:2012}, which we had overlooked.  
+   It can be seen that the {\em weak dependence} condition in their Definition 1, implies our UDD condition (for a correlation matrix).  
+   Therefore, the Gaussian error arrays of the $K_i$-variables in Relation (10) in the latter reference, are URS (uniformly relatively stable).  
+   This suggests that the PFA methodology in \cite{fan:xu:gu:2012} can perhaps be extended to apply to the exact support recovery problem.  
+   That is, one can project on the orthogonal complement of the space spanned by the top$-k$ eigenvectors of the error-covariance.  Then, perhaps 
+   under standard in-coherence conditions, between the  signal and the covariance, the simple Bonferonni thresholding estimator is optimal for exact 
+   support recovery.  We are not aware of many more examples, but hope that the developed general theory applies in many more setting.  We now 
+   include a remark on this important reference.
+   
+   
+   \item  {\em The results in Chapter 4 require different dependence structure but some of them are not clearly stated. For instance, the results in Section 4.2.2 and 4.2.3 rely on the independence assumption that is stated in the last sentence of the first paragraph in page 59. It would be more clear if this assumption can be included in the Propositions and Theorems.}
+   
+   Thank you.  Indeed, to clarify and better present the two very distinct themes -- exact support recovery under dependence, on one hand, and 
+   finite-sample Bayes optimality (under independence), we have divided the previous Chapter 4 in two -- the new Chapters 4 and 5. The new
+   Chapter 5 entitled ``Bayes and Minimax Optimality'' now presents the results in a much more organized fashion where the independence 
+   assumptions are clearly stated. 
+    
+   \item {\em Proposition 4.3 still requires $f_a$ to be MLR, right? If so, please state it.}
+   
+   Thank you for the sharp observation.  The previous presentation was not sufficiently clear.  We have now devoted the new Ch.\ 5 to the
+   finite-sample Bayes optimality (and minimax optimality) to better present these topics.  
+   The former Proposition 4.3 appears now as Theorem 5.2.  The MLR property on $f_a$
+   is no longer necessary.  This is because the {\em likelihood ratio theresholding} estimator is defined in such a way (in terms of the likelihood) that
+   the desired monotonicity property is guaranteed.  The MLR property was essential in Theorem 5.1 since there we deal with thresholding (as opposed to
+   likelihood thresholding). The MLR property basically ensures that in the setting of Theorem 5.1, the simple thresholding estimators are in fact of
+   {\em likelihood thresholding} type.  We realize that Theorem 5.2 is a bit too theoretical (i.e., not directly useful in practice since we don't have the 
+   likelihood) but it provides some insights on
+   the general Bayes (sub)optimal support estimation procedures.
+   
+\item  {\em Fig 3.2 shows that the exact-approximate support recovery is strictly easier to achieve than the approximate-exact support recovery. 
+Do you have intuition on it?}
+
+\fbox{Help, please! Is it related to the fact that $p\gg p^{1-\beta}$. }
+
+\item {\em The phrase ``exact support recovery''  is used for both the general problem
+(as in the title of Chapter 2), and for the specific criterion risk$^{\rm E}$. This is a bit confusing.}
+
+We have clarified the terminology througout.  In particular, Chapter 2 is a now entitled ``Risks, Procedures, and Error Models''.
+   
+    \end{enumerate}
+
+We thank the reviewer for pointing a number of typos, which we have corrected.  We respond below to a subset of the minor points
+and comments raised in the report.
+
+\medskip
+\noindent {\bf Typos and other minor comments}
+\begin{itemize}
+ \item [10.] {\em Page 46, ``these Hamming loss-minimax studies naturally amounts to the analysis of the elementary case of iid data,...'' 
+ Is this true? Although the indicators can be dealt with separately but the threshold may depend on the entire dataset as in Holm, 
+ Hochberg, and BH procedures. }
+ 
+ You are right that our statement was a bit exaggerated and thus perhaps misleading. We have clarified and tempered the language.
+ 
+ \item[11.]{\em Page 50, ``Intuitively, this is because the maxima of the errors grow at their fastest in the case of independence." Is it true that the maxima of negatively equi-correlated statistics grow slower than that of independent statistics?}
+ 
+  Thank you for the insightful comment.  Indeed, by Slepian's Lemma, negatively correlated Gaussian variables have smaller maxima (in stochastic order)
+  than iid maxima (with the same marginals).  This difference, however, is negligible asymptotically.  Intuitively, this is due to the fact that while Gaussian
+  vectors can be equi-correlated with correlation $\rho$ that can be arbitrarily close to $1$, this common correlation is bounded below by $-1/(p-1)$,
+  where $p$ is the number of the variables. 
+  
+  Our choice of words was imprecise. We should have said that the rate of growth of dependent maxima is no faster than in the iid case.  
+  We now clarify this point in the new Remark 2.1 (see Relation (2.41)). 
+  
+  This general observation is entirely due to the light-tailed (rapidly varying) nature of the marginal distributions.  It applies to error-arrays with arbitrary
+  dependence and the proof involves the union bound and the rapid variation property of the marginal distributions.  Please see Proposition 2.2.
+   
+ 
+\end{itemize}
+
    \subsection{Reviewer 5 (R5)}
    
   {\em The book definitely looks interesting and extremely timely. These concentration tools are fundamental for high-dimensional statistics 
@@ -276,5 +351,7 @@ see e.g. Efron 2007 and Fan 2012. Is there any connection between these two type
    existing literature and presenting our own work.  
    %We hope that we have contributed to providing a more complete picture of a dynamic 
    %research area.
+   
+   \bibliography{../tex/thesis.bib}
    
 \end{document}

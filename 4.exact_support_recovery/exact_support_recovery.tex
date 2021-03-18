@@ -56,8 +56,14 @@ That is, when the errors are \emph{independent} Gaussians, the Hamming loss cann
 Conversely, if signal size falls below, the Hamming loss can be made to vanish with a specific thresholding procedure.
 
 Unfortunately, as pointed out in Section \ref{sec:risks-relations}, vanishing Hamming loss is only sufficient, not necessary for support recovery \eqref{eq:exact-recovery}, and the latter sharp results do not carry over directly to the study of the probability of support recovery or exact support recovery risk.
-More importantly, despite their elegance, these Hamming loss-minimax studies naturally reduce to the analysis of the elementary case of iid data, and is by design blind to non-trivial error-dependence structures.
-This prevents us from fully exploring of the phase transition phenomena under other dependence conditions.
+%More importantly, despite their elegance, these Hamming loss-minimax studies often amount to the analysis of the elementary case of iid data, and 
+%unless is by design blind to non-trivial error-dependence structures.
+%This prevents us from fully exploring of the phase transition phenomena under other dependence conditions.
+More importantly, since the Hamming loss is the same for both independent and dependent data, typical Hamming loss-minimax studies
+amount to the analysis of the elementary case of iid data. This prevents one from fully exploring the phase transition phenomena under 
+other dependence conditions.
+
+
 % This is arguably a consequence of the inherent limitation of the Hamming-loss approach. 
 % For practitioners, a minimax statement in the Gaussian case seems to offer little guidance.
 % Indeed, in applications, independence is an exception rather than the rule; Gaussianity of the errors may also be unnecessarily restrictive.
