@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
-\usepackage{fullpage,amsfonts,amsmath}
-
+\usepackage{fullpage,amsfonts,amsmath,hyperref}
+\def\P{{\mathbb P}}
 \title{Response to the reviews of the manuscript: ``Concentration of Maxima and Fundamental Limits in High-Dimensional Testing and Inference'' by Zheng Gao
 and Stilian Stoev submitted to {\em SpringerBriefs Series in Probability and Statistics} }
 
@@ -173,7 +173,97 @@ and Stilian Stoev submitted to {\em SpringerBriefs Series in Probability and Sta
    
    \subsection{Reviewer 4 (R4)}
    
-   We are very grateful to the reviewer for their exceptionally detailed and helpful feedback.  
+   We are very grateful to the reviewer for their exceptionally detailed and helpful feedback!  We appreciate the reviewer's encouraging assessment and 
+   important suggestions on improving the manuscript, which have all been taken into account in the present revision.  We respond below only to some
+   of the major points raised but would be happy to provide a more detailed account.
+  
+   \begin{enumerate}
+    \item {\em Most existing works assume the constant signal strength, which essen- tially assume that the location parameters are drawn from a two-point distribution... However, it is a bit far from realistic from my perspective because the practical case often involves a mixture of strong and weak signals. A recent paper by Li 2020 considers the generic distribution of alternative means under appropriate rescaling, and shows the surprising result that the higher criticism test no longer dominates Bonferroni’s method even in the sparse regime $\beta >3/4$. It would be more instructive if the paper can start from the more general model to provide a fuller picture.}
+    
+    \medskip
+    Thank you.  We were not aware of the interesting and very recent work of Li and Fithian, 2020 (\url{https://arxiv.org/abs/2006.12489}). We wholeheartedly 
+    agree that the set-up proposed my the reviewer is much more realistic.  It is quite interesting and stimulating for us to learn that the Higher Criticism
+    statistic no longer dominates the Bonferonni thresholding procedure.  We have now included brief comments
+    about this very recent development in Chapters 2 and 3.  Since our focus in this manuscript is mostly on the support estimation problem (rather than on the 
+     detection problem), we decided not to pursue this new and important line of research, which may require resolving some new mathematical challenges. 
+     We hope to understand this phenomenon better in the near future.
+     
+     \fbox{Zheng, PLEASE CHECK how if I quoted the work of  Li and Fithian in Ch 2 and 3, appropriately.  Thanks!}
+     
+    \item {\em The statistical risks for exact-approximate and approximate-exact support recovery look artificial and uninterpretable. 
+    Could you provide further explanations of these two criteria?} 
+    
+    \fbox{Zheng, need help here?}
+        
+        \item {\em In practice, type-I error/FWER/FDR and type-II error/FNER/FNR are typically not equally weighted. The former is often worse than the latter. Is there any work that considers the asymmetric version like FDR plus a fraction of FNR? Does the weighted risk give a fundamentally different phase transition in some regimes?}
+        
+        \fbox{Help.}
+        
+        \item {\em The uniform relative stability (URS) is type of weak dependence based on the results in Chapter 5. In FDR literature, the statistics are 
+        said to be weakly dependent if 
+        $$
+        \frac{1}{p^2} \sum_{i=1}^n |{\rm Cor}(x_i,x_j)| = o(1),
+        $$
+see e.g. Efron 2007 and Fan 2012. Is there any connection between these two types of weak dependence?}
+
+   \medskip
+   \noindent Indeed, the notion of {\em weak dependence} in its various forms of mixing coefficients and dependence functionals
+    has a long and fruitful history in the study of large-sample limit theorems.  We appreciate this natural question!  There is a fundamental 
+    difference between the notions of weak dependence required to establish the asymptotic behavior of sums and those for maxima.     
+    As a rule, the maxima of dependent variables behave
+   very similarly to the maxima of independent variables even under {\em severe dependence}.  This is in stark contrast with the large-sample 
+   behavior of dependent sums (averages), which have been much more extensively studied in the literature.  We have now
+    clarified and emphasized these differences in several places in the text. 
+    
+    We provide below some brief comments on the way we understand the differences between the asymptotic behaviors of sums and maxima 
+    under dependence.  This is certainly a big and important subject and the following discussion is just on the level of ideas.
+    The weak dependence condition stated by the referee appears to be tailored to the study of sums rather than maxima.  For example, a 
+    stationary (finite-variance) time-series $\{X_k,\ k\in \mathbb Z\}$ is said to be short-range dependent if
+   $$
+   \sum_{k=1}^\infty |{\rm Cov} (X_{k}, X_0) | <\infty.
+   $$
+   If the latter sum is infinite, the time series is referred to as long-range dependent. For example, consider the Gaussian case, where
+   the time series has a power-law auto-covariance ${\rm Cov}(X_{k}, X_0) \propto k^{-\gamma},\ \ k\to\infty$, for $\gamma \in (0,1)$.  In this long-range
+   dependent regime, it can be shown that, as $n\to\infty$,
+  $$
+  \Big\{ \frac{1}{n^H} \sum_{k=1}^{[nt]} (X_k -\mathbb E X_k) \Big\}_{t\ge 0} \stackrel{f.d.d.}{\longrightarrow} B_H = \{B_H(t),\ t\ge 0\},
+  $$   
+  where $B_H$ is the fractional Brownian motion process -- a Gaussian, stationary increment and  self-similar process with 
+  exponent $H = 1 - \gamma/2 \in (1/2,1)$.  This is in stark contrast with the usual Brownian motion limit which arises 
+  under the {\em weak dependence}.  The behaviors of many sum-based statistics will change dramatically when the dependence switches from
+  short- to long-range.  For more details, see e.g. \cite{----}.
+  
+  Shockingly, when considering even most heavily dependent (say Gaussian) stationary time series $\{X_k\}$, the limit behavior of the maxima
+  is no different than had they been iid.  Indeed, the Berman condition
+  $$
+  {\rm Cov}(X_k,X_0) = o (\log k),\ \ \mbox{ as }k\to\infty,
+  $$
+  guarantees in this setting that, as $n\to\infty$,
+  \begin{equation}\label{e:Gumbel}
+  \frac{1}{a_n} \max_{k=1,\cdots,n} X_k - b_n \stackrel{d}{\longrightarrow} Z \sim {\rm Gumbel},
+  \end{equation}
+  where $a_n$ and $b_n$ are {\em the same} scaling and shift sequences as in the case of iid data.  That is, if $X_k^*$ are iid with the same marginal 
+  distribution as the $X_k$'s, then
+  $$
+  \frac{1}{a_n} \max_{k=1,\cdots,n} X_k^* - b_n \stackrel{d}{\longrightarrow} Z,
+  $$
+  where the normalizing constants $a_n$ and $b_n$ as well as the limit $Z$ are the same as in \eqref{e:Gumbel}.
+  
+  In particular, the Berman condition holds for Gaussian long-range dependent models!  Thus, even when the traditional notions of weak dependence for
+  sums no longer hold, the dependence is weak enough for the maxima to behave as in the iid setting.  Please note that in our monograph we need an even weaker notion of dependence since we need only have relative stability, i.e., 
+  $$
+  \frac{1}{a_n} \max_{k=1,\cdots,n} X_k \stackrel{\P}{\longrightarrow} 1,
+  $$
+  as $n\to\infty$.  As shown in the seminal work of Berman (and in a more general situation for triangular arrays in our 
+  Chapter 6), for the latter to hold one needs the auto-covariance to vanish, i.e., 
+  $$
+  {\rm Cov}(X_k,X_0) = o(1),\ \ \ \mbox{ as }k\to\infty.
+  $$
+  We find this to be an important and perhaps somewhat overlooked universality phenomenon showing that light-tailed maxima continue to 
+  concentrate under drastically stronger dependence than we are accustomed to deal with.
+   
+   
+   \end{enumerate}
    
    \subsection{Reviewer 5 (R5)}
    
