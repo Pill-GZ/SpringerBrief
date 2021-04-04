@@ -1,23 +1,17 @@
 
-In this chapter, we investigate the universality of the phase-transition results on exact support recovery established in
-Chapter \ref{chap:exact-support-recovery}.  Specifically, we would like to know to what extent the signal classification 
-boundary valid for thresholding estimators applies to the best possible support estimators.  The answer to this question 
-will complete the characterization of the fundamental limits in exact support recovery.
+In this chapter, we investigate the universality of the phase-transition results on exact support recovery established in Chapter \ref{chap:exact-support-recovery}.
+Specifically, we would like to know to what extent the strong classification 
+boundary applies to all support estimators, and not just thresholding ones.
+The answer to this question will complete the characterization of the fundamental limits in exact support recovery.
 
-To this end, we begin by characterizing the finite-sample Bayes optimality of the thresholding procedures (Section
-\ref{subsec:optimal-procedure-sub-exponential}). As we will see, the so-called oracle thresholding estimators are in 
-fact finite-sample optimal for many classes of models.  These optimality results allow us to establish 
-powerful minimax formulations of the exact support recovery phase-transition phenomenon showing its universality for all estimators (Theorem \ref{thm:necessary-strengthened}). 
+To this end, we begin by characterizing the finite-sample Bayes optimality of the thresholding procedures. 
+As we will see, the so-called oracle thresholding estimators are in fact finite-sample optimal for many classes of models. 
+These optimality results allow us to establish a minimax formulation of the exact support recovery phase-transition phenomenon that covers arbitrary procedures. 
 
-Perhaps surprisingly, however, thresholding estimators can be sub-optimal.  This is so for example 
-in the additive noise model with heavier than exponential error densities (Example 
-\ref{exmp:suboptimal-data-thresholding}).   In this case, {\em likelihood ratio
-thresholding} rather than {\em data thresholding} can lead to optimal support estimators
-(Section \ref{subsec:optimal-procedure-super-exponential}).  In such cases, the universality 
-of the exact support recovery boundary remains an open question. 
-
-
-
+Perhaps surprisingly, thresholding estimators can be sub-optimal.
+This is so, for example, in the additive noise model when the error tail densities are heavier than exponential. 
+In this case, we will see that {\em likelihood ratio thresholding} rather than {\em data thresholding} are the optimal support estimators.
+%In such cases, the universality of the exact support recovery boundary remains an open question. 
 
 \section{Bayes optimality in support recovery problems}
 \label{subsec:Bayes-optimality}
