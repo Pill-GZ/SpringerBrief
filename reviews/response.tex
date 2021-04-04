@@ -58,24 +58,25 @@ and Stilian Stoev submitted to {\em SpringerBriefs Series in Probability and Sta
   
  
   \item {\bf (Organization)} 
-  The manuscript has been revised substantially to include a brief introductory chapter and 6 substantive chapters, which amount to a total of 125 pages.
+  The manuscript has been revised substantially and now includes a brief introductory chapter and 6 substantive chapters, which amount to a total of 125 pages.
   As with the original submission, Chapter 2 reviews the statistical risks, estimation and testing procedures, as well as probability models for the errors used in the rest of the manuscript. 
   
-  After very careful deliberation, we decided to keep most of the content in Chapter 3, which provides a panorama of the phase-transition results in the signal detection and support estimation problems for the additive iid Gaussian error model.
+  After very careful deliberation, we decided to keep a majority of the content in Chapter 3, which provides a panorama of the phase-transition results in the signal detection and support estimation problems for the additive iid Gaussian error model.
   There were some mixed opinions from the reviewers regarding the inclusion of a chapter that paints the landscape in broad strokes and provides references to the state-of-the-art of the literature, at the expense of delaying entirely original contributions.
   We think that providing an accessible account of the subject of high-dimensional multiple testing would benefit readers who are not already experts in the area, and might just narrowly outweigh the additional patience required on the part of experts before we get to the more exciting material.
-  Details and explanations of the changes we made can be found in the reponse to Reviewer 2 below.
+  Details and explanations of the changes we made can be found in the reponse to Reviewer 2 (R2) below.
   
   To better balance the exposition, we reorganized Chapter 4 of the previous version of the draft into two new chapters (now Ch.\ 4, entitled ``Exact Support Recovery Under Dependence'',  and Ch.\ 5 ``Bayes and Minimax Optimality''). 
   This change, in addition to making all chapters more manageable and of about equal lengths, exposes more clearly our contributions. 
   The results contained in Chapters 4 and 5 as well as the more probabilistic Chapter 6 and the more applied Chapter 7 are original contributions to the literature.
   
-  Following the suggestion of Reviewer 2 ({\bf R2}),  we have placed most proofs in the text after the corresponding claims (theorems, propositions, lemmas).  In the interest of space and to conform with the format of the SpringerBriefs series, we no longer include ``Exercises'' sections. 
+  Following the suggestion of R2,  we have placed most proofs in the text after the corresponding claims (theorems, propositions, lemmas).  In the interest of space and to conform with the format of the SpringerBriefs series, we no longer include ``Exercises'' sections. 
   
-  \item {\bf (Typos, grammar, and style)}  Prompted by criticism of a referee ({\bf R2}), we have revised the language of the manuscript. 
-  We have corrected a number of typos and missing articles.   
-  There have been re-writes throughout the manuscript in order to make the style more consistent.  
+  \item {\bf (Typos, grammar, and style)}  Prompted by the suggestions of R2, we have revised the language of the manuscript. 
+  There have been extensive re-writes throughout the manuscript in order to make the content more connected and style more consistent.  
   In trying to make the text more accessible, we re-formatted the statements of most theorems to make them more modular. 
+  We have also corrected typos and missing articles.   
+    
 
  \item {\bf (Length and online supplement)} We have shortened the manuscript to just under 125 pages. The Appendix appearing after the 
  References is meant to become an online supplement when the manuscript becomes ready for publication.  The appendix contains some proofs of phase-transition results stated in Ch.\ 7, which are similar to ones appearing in Ch.\ 3.% as well as some phase transition results for lighter and/or
@@ -214,12 +215,12 @@ and Stilian Stoev submitted to {\em SpringerBriefs Series in Probability and Sta
     \begin{quote}
     $\dots$
 	In applications, however, attitudes towards false discoveries and missed signals are often asymmetric.
-	In the example of GWAS, where the number of candidate locations \$p\$ could be in the millions, and a class imbalance between the number of nulls and signals exists, researchers are typically interested in the marginal (location-wise) power of discovery, while exercising stringent (family-wise) false discovery control. 
+	In the example of GWAS, where the number of candidate locations $p$ could be in the millions, and a class imbalance between the number of nulls and signals exists, researchers are typically interested in the marginal (location-wise) power of discovery, while exercising stringent (family-wise) false discovery control. 
 	These types of asymmetric considerations, while important in applications, have not been studied theoretically.  
-	For example, the GWAS application motivates the \textbackslash\{\}emph\{exact-approximate\} support recovery risk, which weighs both the family-wise error rate and the marginal power of discovery:
+	For example, the GWAS application motivates the \emph{exact-approximate} support recovery risk, which weighs both the family-wise error rate and the marginal power of discovery:
 	$\dots$
     \end{quote}
-    In fact, we believe that power calculations for GWAS is most natrually interpreted when viewed through the exact-approximate support recovery risk.
+    In fact, we believe that power calculations for GWAS are most natrually interpreted when viewed through the exact-approximate support recovery risk.
     
     On the other hand, we are not aware of an equally strong motivating application for the approximate-exact support recovery risk. 
     It is harder to come up with a scenario where we want to weed out a few nulls from a large number of signals, with strong type II control and evaluate marginal type I errors. 
@@ -267,7 +268,7 @@ and Stilian Stoev submitted to {\em SpringerBriefs Series in Probability and Sta
     $$
     and therefore ${\cal E}$ is weakly dependent as defined in \cite{fan:xu:gu:2012}, but not UDD/URS.
     
-    However, it is not clear to us whether the weak dependence condition is weaker than UDD as well.
+    However, it is not clear to us whether the weak dependence condition is always weaker than UDD.
     The comparison is complicated by the fact that the definition of UDD only cares about positive correlations, while the weak dependence condition takes the sum of absolute values of the correlations.
     
 
@@ -334,8 +335,8 @@ and Stilian Stoev submitted to {\em SpringerBriefs Series in Probability and Sta
     
     We thank the reviewer for pointing to the interesting methodological work of Fan, Xu and Gu \cite{fan:xu:gu:2012}, which aimed to estimate false discovery proportions for heavily dependent observations. 
     We are not aware of works that discuss optimality or feasibility of support recovery (i.e., multiple testing) problems under such dependence conditions.
-    The results in our text in their current form do easily extend to that of Fan et al., since even the remainder term $K_i$'s in the factor model can be more heavily dependent than under the UDD/URS condition, as discussed in the response to the previous question.
-    Nevertheless, Fan et al provides a glimpse into how heavy dependence (e.g., the equi-correlated case) may be handled, and how theoretical analysis may be carried out. We do hope to develop general theory that applies to the more setting.
+    The results in our text in their current form do not easily extend to that of Fan et al., since even the remainder term $K_i$'s in the factor model can be more heavily dependent than under the UDD/URS condition, as discussed in the response to the previous question.
+    Nevertheless, Fan et al provides a glimpse into how heavy dependence (e.g., the equi-correlated case) may be handled, and how theoretical analysis may be carried out. We do hope to develop a theory that applies to the more general setting.
 %   It can be seen that the {\em weak dependence} condition in their Definition 1, implies our UDD condition (for a correlation matrix).  
 %   Therefore, the Gaussian error arrays of the $K_i$-variables in Relation (10) in the latter reference, are URS (uniformly relatively stable).  
 %   This suggests that the PFA methodology in \cite{fan:xu:gu:2012} can perhaps be extended to apply to the exact support recovery problem.  
@@ -366,14 +367,14 @@ and Stilian Stoev submitted to {\em SpringerBriefs Series in Probability and Sta
    
     \item  {\em Fig 3.2 shows that the exact-approximate support recovery is strictly easier to achieve than the approximate-exact support recovery. Do you have intuition on it?}
 
-    To provide an intuition, consider the distances between the decision boundaries and the means of the null and signal part of the observations, respectively.
+    To provide some intuition, consider the distances between the decision boundaries and the means of the null and signal part of the observations, respectively.
     Controlling the FWER requires setting the decision boundaries approximately 
     \begin{equation} \label{FWER}
     \sqrt{2\log{p}}
     \end{equation}
     away from zero (mean of nulls), as is well-known in the Bonferroni adjustment.
     
-    Controlly FDR, on the other hand, depends on the number of signals present.
+    Controlling FDR, on the other hand, depends on the number of signals present.
     When there are fewer signals, a FDR-controlling procedure has to be more conservative -- when the number of true signals is small, the number of false discoveries reported along with them has to reduce as well.
     Consequently, the decision boundary has to be further away from zero as $\beta\to1$.
     Quantitatively, this distance varies with $\beta$ approximately as
@@ -414,25 +415,45 @@ and comments raised in the report.
 \medskip
 \noindent {\bf Typos and other minor comments}
 \begin{itemize}
- \item [10.] {\em Page 46, ``these Hamming loss-minimax studies naturally amounts to the analysis of the elementary case of iid data,...'' 
- Is this true? Although the indicators can be dealt with separately but the threshold may depend on the entire dataset as in Holm, 
- Hochberg, and BH procedures. }
+	\item [8.] {Page 25, what does the dark-gray area that is below the area marked by
+	``M'' and on the right of the area marked by ``$S, L_1 , L_2$'' correspond to?}
+    
+    The area is detectable by the HC statistic. We have made changes to the figure and clarified this in the caption.
+	
+	\item [9.] {Chapter 3, the notation $f(\beta), g(\beta), h(\beta), \widetilde{g}(\beta), \widetilde{h}(\beta)$ is hard to memorize. What about $f_P(\beta)$ where $P\in\{\mathrm{D, A, E, AE, EA}\}$?}
+	
+	Agreed! We have made changes everywhere in the text.
+	
+	 \item [10.] {\em Page 46, ``these Hamming loss-minimax studies naturally amounts to the analysis of the elementary case of iid data,...'' 
+	 Is this true? Although the indicators can be dealt with separately but the threshold may depend on the entire dataset as in Holm, 
+	 Hochberg, and BH procedures. }
+	 
+	% You are right that our statement was a bit exaggerated and thus perhaps misleading.
+	Thank you for the feedback. We have clarified and tempered the language:
+	\begin{quote}
+	 More importantly, since Hamming loss decomposes into expectations on individual terms that are not affected by dependence, Hamming loss-minimax studies do not reveal the difference in probability of support recovery between independent and dependent observations. 
+	\end{quote}
+	Our analysis, and e.g. that of Butucea et al \citep{butucea2018variable}, consider all thresholding procedures which include data-dependent procedures that are affected by dependence.
+	 
+	\item[11.]{\em Page 50, ``Intuitively, this is because the maxima of the errors grow at their fastest in the case of independence." Is it true that the maxima of negatively equi-correlated statistics grow slower than that of independent statistics?}
  
- You are right that our statement was a bit exaggerated and thus perhaps misleading. We have clarified and tempered the language.
- 
- \item[11.]{\em Page 50, ``Intuitively, this is because the maxima of the errors grow at their fastest in the case of independence." Is it true that the maxima of negatively equi-correlated statistics grow slower than that of independent statistics?}
- 
-  Thank you for the insightful comment.  Indeed, by Slepian's Lemma, negatively correlated Gaussian variables have larger maxima (in stochastic order)
-  than iid maxima (with the same marginals).  This difference, however, is negligible asymptotically.  Intuitively, this is due to the fact that while Gaussian
-  vectors can be equi-correlated with correlation $\rho$ that can be arbitrarily close to $1$, this common correlation is bounded below by $-1/(p-1)$,
-  where $p$ is the number of the variables. 
+    Thank you for the insightful comment.  Indeed, by Slepian's Lemma, negatively correlated Gaussian variables have larger maxima (in stochastic order)
+    than iid maxima (with the same marginals).  This difference, however, is negligible asymptotically.  Intuitively, this is due to the fact that while Gaussian vectors can be equi-correlated with correlation $\rho$ that can be arbitrarily close to $1$, this common correlation is bounded below by $-1/(p-1)$, where $p$ is the number of the variables. 
   
-  Our choice of words was imprecise. We should have said that the rate of growth of dependent maxima is no faster than in the iid case.  
-  We now clarify this point in the new Remark 2.1 (see Relation (2.41)). 
+    Our choice of words was imprecise. We should have said that the rate of growth of dependent maxima is no faster than in the iid case.  
+    We now clarify this point in the new Remark 2.1 (see Relation (2.41)). 
   
-  This general observation is entirely due to the light-tailed (rapidly varying) nature of the marginal distributions.  It applies to error-arrays with arbitrary
-  dependence and the proof involves the union bound and the rapid variation property of the marginal distributions.  Please see Proposition 2.2.
+    This general observation is entirely due to the light-tailed (rapidly varying) nature of the marginal distributions.  It applies to error-arrays with arbitrary
+    dependence and the proof involves the union bound and the rapid variation property of the marginal distributions.  Please see Proposition 2.2.
    
+    \item[12.] {Page 52, scenario 1, $r^{(2)} = (1 + \delta) \implies r^{(2)} = (1 + \delta)g(\beta)$.}
+    
+    Thank you for your careful reading of the text! 
+    However this was not a typo -- we wanted to provide an example where signals sizes straddle the boundary but exact support recovery is still achieved. 
+    There is only one signal of size $r^{(2)}$ which corresponds to the required signal size at its sparsity $\beta=1$, i.e., $r^{(2)} = (1 + \delta)g(1)$.
+%    We have changed the expression to
+%    $$r^{(2)} = (1+\delta)f_{\mathrm{E}}(1)$$
+%    for clarification.
  
 \end{itemize}
 

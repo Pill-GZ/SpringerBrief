@@ -296,8 +296,7 @@ Therefore, the probability in \eqref{eq:classification-possible-dependent-proof-
 
 % We comment on some consequences of the theorem, before presenting its proof.
 We end this section with several remarks on the scope and consequences
-of our results. Our first comment is on the signal sizes, and in particular, the gap 
-between the sufficient conditions (Theorem \ref{thm:sufficient}) and the necessary 
+of our results. Our first comment is on the signal sizes, and in particular, on the gap between the sufficient conditions (Theorem \ref{thm:sufficient}) and the necessary 
 conditions (Theorem \ref{thm:necessary}).
 
 \begin{remark}[Minding the gap] \label{rmk:gap-between-sufficient-necessary}
@@ -315,8 +314,8 @@ For simplicity, assume that the errors are iid standard Gaussians.
 
 Consider two scenarios
 \begin{enumerate}
-    \item $r^{(1)} = (1+\delta)f_{\mathrm{E}}(\beta)$, $r^{(2)} = (1+\delta)$ with $|S_p^{(1)}|=|S_p|-1$, $|S_p^{(2)}|=1$, 
-    \item $r^{(1)} = (1+\delta)f_{\mathrm{E}}(\beta)$, $r^{(2)} = (1-\delta)f_{\mathrm{E}}(\beta)$ with $|S_p^{(1)}|=\lfloor|S_p|/2\rfloor$, $|S_p^{(2)}|=|S_p| - |S_p^{(1)}|$.
+    \item $r^{(1)} = (1+\delta)f_{\mathrm{E}}(\beta)$, $r^{(2)} = (1+\delta)$,  with $|S_p^{(1)}|=|S_p|-1$, $|S_p^{(2)}|=1$, 
+    \item $r^{(1)} = (1+\delta)f_{\mathrm{E}}(\beta)$, $r^{(2)} = (1-\delta)f_{\mathrm{E}}(\beta)$, with $|S_p^{(1)}|=\lfloor|S_p|/2\rfloor$, $|S_p^{(2)}|=|S_p| - |S_p^{(1)}|$.
 \end{enumerate}
 for some constants $0<\delta<1-\beta<1$. 
 In both cases, signals in $S_p^{(1)}$ (respectively, $S_p^{(2)}$) are above (respectively, below) the strong classification boundary \eqref{eq:strong-classification-boundary}.
@@ -383,8 +382,8 @@ to conclude the convergence in probability.
 
 Our second remark is on the restriction to thresholding procedures.
 \begin{remark}
-	we emphasize that the sharp phase transition result just established apply only to the general class of thresholding procedures. It is natural to ask if we have left out the other good procedures in this restriction.
-	We will establish in Chapter \ref{chap:optimality} below that in many cases the optimal procedures are in fact thresholding procedures. In general, however, thresholding procedures can be sub-optimal, e.g., when the errors have heavy (regularly-varying) tails. 
+	Since the sharp phase transition result just established apply only to the general class of thresholding procedures, it is natural to ask if other good procedures have left out by this restriction.
+	We will establish later in Chapter \ref{chap:optimality} that in many cases the optimal procedures are in fact thresholding procedures. In general, however, thresholding procedures can be sub-optimal, e.g., when the errors have heavy (regularly-varying) tails. 
 	We will also demonstrate the absence of a phase transition phenomenon in exact support recovery by thresholding, in Supplement Section \ref{suppsec:heavy-tailed}. 
 \end{remark}
 
@@ -405,14 +404,13 @@ Theorem \ref{thm:necessary} answers a question raised in \citet{butucea2018varia
 In particular, the authors of \citep{butucea2018variable} commented that independent error is the  `least favorable model' in the problem of support recovery, and 
 conjectured that the support recovery problem may be easier to solve under dependence, similar to how the problem of signal detection is easier under dependent 
 errors \citep{hall2010innovated}. 
-Surprisingly, our results here state that asymptotically, \emph{all} error dependence structures in the large URS class are equally difficult for \emph{thresholding procedures}. Therefore, the phase transition behavior is universal in the class of dependence structures characterized by URS.
+Surprisingly, our results here state that asymptotically, \emph{all} error dependence structures in the large URS class are equally difficult for {thresholding procedures}. Therefore, the phase transition behavior is universal in the class of dependence structures characterized by URS.
 %For more details, see also Section \ref{sec:minimax}.
 \end{remark}
 
-The restriction to the URS dependence class in Theorem \ref{thm:necessary} is \emph{not} an assumption of convenience. 
-The dependence condition characterized by uniform relative stability is, in fact, one of the weakest in the literature.
+We emphasize the restriction to the URS dependence class in Theorem \ref{thm:necessary} is {not} an assumption of convenience. 
+The dependence condition characterized by uniform relative stability is in fact one of the weakest in the literature.
 We will characterize the class URS dependence class in Chapter \ref{chap:URS} below.
-
 
 % \begin{remark}   {\color{blue} Here is an idea -- one could estimate the threshold robustly.  For example,
 % suppose that we know that the support set is of size $\le p^{1-\beta_0}$, for some fixed $\beta_0\in(0,1)$.  Assume also (for simplicity) that the

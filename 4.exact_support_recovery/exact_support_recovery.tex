@@ -2,13 +2,13 @@
 We focus on exact support recovery problems in this chapter.
 %Here, we limit ourselves to the general class of thresholding estimators but allow for nearly arbitrary error dependence structure.  
 %Questions on optimality and extensions to other classes of estimators are pursued in Chapter \ref{chap:optimality}.  
-As in Theorem \ref{thm:Gaussian-error-exact-boundary}, in order to study the asymptotic behaviors of $\mathrm{risk}^{\mathrm{E}}$, it is sufficient to establish minimal conditions under which the support sets can be consistently estimated, i.e.,
+Recall from Lemma \ref{lemma:risk-exact-recovery-probability} that in order to study the asymptotic behaviors of $\mathrm{risk}^{\mathrm{E}}$, it is sufficient to establish minimal conditions under which the support sets can be consistently estimated, i.e.,
 \begin{equation} \label{eq:exact-recovery} 
 \P[\widehat{S}_p = S_p] \longrightarrow 1 \quad \text{as } \; p\to\infty, 
 \end{equation}
-where $\widehat{S}_p$ is an estimate of the true support set $S_p$ of a high-dimensional signal vector $\mu_p$ (recall Lemma \ref{lemma:risk-exact-recovery-probability}).
+where $\widehat{S}_p$ is an estimate of the true support set $S_p$ of a high-dimensional signal vector $\mu_p$.
 
-To generalize the results we obtained in Chapter \ref{chap:phase-transitions} to additive error models with relaxed distributional and dependence assumptions on the additive error array, described next.
+We will establish minimal conditions such that \eqref{eq:exact-recovery} holds, by generalizing the results we obtained in Chapter \ref{chap:phase-transitions} to additive error models with relaxed distributional and dependence assumptions on the additive error array.
 
 %Sufficient conditions for exact support recovery are given in Section \ref{subsec:sufficient}.  A very general class of 
 %dependence structures characterized by the uniform relative stability concept will be introduced in Section \ref{subsec:URS}, to prepare us 
@@ -29,8 +29,8 @@ In contrast to the assumptions in Chapter \ref{chap:phase-transitions}, we only 
 Although our method of analysis applies to all light-tailed error distributions with rapidly varying tails (see Definition \ref{def:rapid-variation}), to be concrete and better convey the main ideas, we will focus on the class of $\mathrm{AGG}(\nu)$ laws (see Definition \ref{def:AGG}).
 Extensions of the results to other classes of error models are presented in Section \ref{suppsec:other-boundaries}.
 
-This generalized distributional assumption on the error terms call for a suitable change to parametrization of the signal sizes in order to analyze the problem.
-As in Chapter \ref{chap:phase-transitions}, we assume the signals in model \eqref{eq:model-additive} to be a sparse vector $\mu = \left(\mu(i)\right)_{i=1}^p$ where its sparsity, with a few exceptions which will be explicitly stated, is parametrized as
+This generalized distributional assumption on the errors call for a suitable generalization of the signal size parametrization in order to analyze the problem as we did in the previous chapter.
+As before, we assume the signals in model \eqref{eq:model-additive} to be a sparse vector $\mu = \left(\mu(i)\right)_{i=1}^p$ where its sparsity, with a few exceptions which will be explicitly stated, is parametrized as
 \begin{equation} \label{eq:sparsity-parametrized}
     s = |S_p| = \lfloor p^{1 -\beta} \rfloor, % \quad \text{with } 0 < \beta \le 1 \; \text{(fixed)},
 \end{equation}
@@ -48,48 +48,44 @@ with parameters $0 < \underline{r} \le \overline{r} \le +\infty$.
 
 \medskip
 
-Dependence conditions are also relaxed.
+We now turn to the dependence conditions.
 Several authors have studied the support recovery problem in terms of the Hamming loss and obtained minimax optimality results (see, e.g., \cite{ji2012ups, genovese2012comparison, jin2014optimality, butucea2018variable}).
 %% We briefly review the recent work by \cite{butucea2018variable}, whose .
-%In the special case of Gaussian marginals, \cite{butucea2018variable} showed that the boundary \eqref{eq:strong-classification-boundary-Gaussian} exists in a minimax sense.
-%That is, when the errors are \emph{independent} Gaussians, the Hamming loss cannot be made to vanish if the signal sizes are sufficiently small by any procedure. 
-%Conversely, if signal size falls below, the Hamming loss can be made to vanish with a very specific thresholding procedure.
+In the special case of Gaussian marginals, \cite{butucea2018variable} showed that the boundary \eqref{eq:strong-classification-boundary-Gaussian} exists in a minimax sense.
+That is, when the errors are \emph{independent} Gaussians, the Hamming loss cannot be made to vanish if the signal sizes are sufficiently small by any procedure. 
+Conversely, if signal size falls below, the Hamming loss can be made to vanish for some thresholding procedure.
 %
-%However, as pointed out in Section \ref{sec:risks-relations}, vanishing Hamming loss is only sufficient, not necessary for support recovery \eqref{eq:exact-recovery}, and results on the former do not carry over directly to the study of the exact support recovery problem.
+However, as pointed out in Section \ref{sec:risks-relations}, vanishing Hamming loss is only sufficient, not necessary for support recovery \eqref{eq:exact-recovery}, and results on the former do not carry over directly to the study of the exact support recovery problem.
 %%More importantly, despite their elegance, these Hamming loss-minimax studies often amount to the analysis of the elementary case of iid data, and 
 %%unless is by design blind to non-trivial error-dependence structures.
 %%This prevents us from fully exploring of the phase transition phenomena under other dependence conditions.
-%More importantly, since the Hamming loss is the same for both independent and dependent data, aforementioned Hamming loss-minimax studies amounted to the analysis of the elementary case of iid data. 
-%This prevents one from fully exploring the phase transition phenomena under other dependence conditions.
-%
-%
+More importantly, since Hamming loss decomposes into expectations on individual terms that are not affected by dependence, Hamming loss-minimax studies do not reveal the difference in probability of support recovery between independent and dependent observations. 
+This prevents one from fully exploring the phase transition phenomena under other dependence conditions.
 %% This is arguably a consequence of the inherent limitation of the Hamming-loss approach. 
 %% For practitioners, a minimax statement in the Gaussian case seems to offer little guidance.
 %% Indeed, in applications, independence is an exception rather than the rule; Gaussianity of the errors may also be unnecessarily restrictive.
-However, so far in the literature, the role of dependence, and that of the distributional assumptions in model \eqref{eq:model-additive} have remained largely unexplored. 
-This chapter offers advances in both directions, and provides a close-to-complete solution of the exact support recovery problem. (See also, Chapter \ref{chap:URS}.)
-We briefly summarize our contributions next.
+As a result, so far in the literature, the role of dependence in model \eqref{eq:model-additive} have remained largely unexplored. 
+%This chapter offers an advances in this direction, and provides a close-to-complete solution of the exact support recovery problem. (See also, Chapter \ref{chap:URS}.)
+%We briefly summarize our contributions next.
 
+We take a different approach in this text. 
+In particular, we study the exact support recovery problem \eqref{eq:exact-recovery} directly, and show that for thresholding procedures the phase transition phenomena exists {universally} in a large class of dependence structures, and not just in a minimax sense.
 
-\medskip
-In Section \ref{subsec:sufficient}, we study exact support recovery in the sense of \eqref{eq:exact-recovery} directly, under general 
-distributional and dependence assumptions.  In particular, we describe the phase transition phenomena in the dependent AGG model, under the scaling described in \eqref{eq:sparsity-parametrized} and \eqref{eq:signal-size-parametrized}.
-Consider the function
+In a first step, we show that in the AGG model under \emph{arbitrary} dependence, under the scaling described in \eqref{eq:sparsity-parametrized} and \eqref{eq:signal-size-parametrized}, the function
 \begin{equation} \label{eq:strong-classification-boundary}
     f_{\mathrm{E}}(\beta) = f_{\mathrm{E},\nu}(\beta) = (1 + (1 - \beta)^{1/\nu})^\nu, \quad \nu>0,
 \end{equation}
-which we refer to as the {\em strong classification boundary}.
-In Theorem \ref{thm:sufficient} we show that, 
-% under the general distributional assumptions in Section \ref{subsec:set-up}, 
-if the signal sizes are above the boundary (i.e., $\underline{r}> f_{\mathrm{E}}(\beta)$), the \ac{FWER}-controlling procedures described in Section \ref{sec:statistical-procedures} with appropriately calibrated levels achieve \emph{exact support recovery} as in \eqref{eq:exact-recovery}.
+demarcates the region of possibility for the exact support recovery problem.
+That is, if the signal sizes are above the boundary (i.e., $\underline{r}> f_{\mathrm{E}}(\beta)$), then \ac{FWER}-controlling procedures with appropriately calibrated levels achieve exact support recovery (Theorem \ref{thm:sufficient} below).
+We refer to \eqref{eq:strong-classification-boundary} as the {\em strong classification boundary}.
 
-Conversely, in Section \ref{subsec:necessary}, we show in Theorem \ref{thm:necessary} that for a surprisingly large class of dependence structures characterized by the concept of \emph{uniform relative stability} (URS, see Definition \ref{def:URS} below), when the signal size is below the boundary  (i.e., $r<f_{\mathrm{E}}(\beta)$), no thresholding procedure can achieve the asymptotically perfect support recovery \eqref{eq:exact-recovery}. In fact,
+Conversely, we show that for a surprisingly large class of dependence structures characterized by the concept of \emph{uniform relative stability} (URS, see Definition \ref{def:URS} below), when the signal size is below the boundary  (i.e., $r<f_{\mathrm{E}}(\beta)$), no thresholding procedure can achieve the asymptotically perfect support recovery. In fact,
 \begin{equation} \label{eq:exact-recovery-failure}
     \mathbb{P}\left[\widehat{S}_p=S_p\right]\longrightarrow 0,\quad \mbox{ as }p\to \infty,
 \end{equation}
-for all $\widehat{S}_p$ in the form of \eqref{eq:thresholding-procedure}.
+for all thresholding procedures (Theorem \ref{thm:necessary} below).
 These two results show that the thresholding procedures obey a phase transition phenomenon in a strong, \emph{point-wise} sense over the class of URS dependence structures, and over the class of AGG$(\nu),\ \nu>0$ error distributions. 
-%  A transparent characterizations of the dependence conditions under which this result holds will be established in the Chapter \ref{chap:URS} later.
+% A transparent characterizations of the dependence conditions under which this result holds will be established in the Chapter \ref{chap:URS} later.
 
 
 %The conclusions are fundamentally stronger and more informative than the minimax statements in the literature (see, e.g., \cite{butucea2018variable}).
