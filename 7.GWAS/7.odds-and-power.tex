@@ -2,29 +2,23 @@
 We return to the application of association screenings for categorical variables, and put the results in the previous section to use.
 In particular, we focus on the exact-approximate support recovery problem, and demonstrate the consequences of its phase transition (Theorem \ref{thm:chi-squared-exact-approx-boundary}) in genetic association studies.
 
-In order to do so, we must first connect the concept of   ``statistical signal size'' $\lambda$ with some key quantities in association tests.
-While ``signal size'' likely sounds foreign to most practitioners, it is intimately linked with the concept of ``effect sizes'' --- or odds ratios --- in association studies, which are frequently estimated and reported in GWAS catalogs. This terminology, in turn, may be alien to some statisticians.  Here, we aim to clarify 
-the two languages.
+In order to do so, we must first connect the concept of statistical signal size $\lambda$ with some key quantities in association tests.
+While the term ``signal size'' likely sounds foreign to most practitioners, it is intimately linked with the concept of ``effect sizes'' --- or odds ratios --- in association studies, which are frequently estimated and reported in GWAS catalogs. 
+Effect sizes, on the other hand, may be alien to some statisticians.  
+In this section, we aim to bridge the two languages by characterizing the relationship between ``signal size'' and ``odds-ratio'' parameterizations in the special, but fairly common case of association tests on 2-by-2 contingency tables.
 
  %in Section \ref{sec:odds-and-power}.
 
 % Unlike in additive models where the parameter $\mu$ has the interpretation of signal-to-noise ratios, the meaning of the signal sizes $\lambda$ in chi-square model is perhaps not as transparent.
 
-\stilian{Recall the general setup of genetic association testing in Chapter \ref{sec:motivation-chisq}, where one wants to test 
-for the effect (or lack thereof) of a specific gene on the occurrence of a disease.  A randomly drawn individual from the entire population 
-is characterized by a pair $(P,G)$ of binary random variables, where $P$ encodes the phenotype and $G$, the genotype.  For example, in
-the context of a specific study,  by phenotype we mean whether or not the individual has the disease (belongs to the Cases group) or is healthy 
-(Controls group).  The genotype encodes whether or not the gene in question is expressed (Variant 1) or not (Variant 2). 
-Table  \ref{tab:multinomial-counts} in the introduction summarizes the {\em counts} for all phenotype-genotype combinations
-for the individuals in a given study sampled from the population. These counts can be assumed to follow a multinomial distribution, with probabilities 
-given in the following Table \ref{tab:multinomial-probabilites}.  Notice that there are fundamental study design questions here since the counts will 
-depend on the way individuals are recruited in the study.  For example, ``controlling'' the number of Cases or Controls (as opposed to sampling at
-random from the population) will change the theoretical parameters (probabilities) of the multinomial model.  
-These questions will be addressed in Section \ref{sec:optimal-design}  below.  
+Recall the general setup of genetic association testing in Section \ref{sec:motivation-chisq}, where one wants to detect the association between genetic variations at a specific location and the occurrence of a disease. 
+An individual randomly drawn from the target population will have two (random) characteristics: a phenotype indicating whether the individual has the condition or is healthy (i.e., belonging to the Case group or the Control group), and a genotype that encodes the genetic variation in question. 
+Table \ref{tab:multinomial-counts} in the introduction summarizes the {\em counts} for all phenotype-genotype combinations for the individuals in a given study sampled from the population.
+These counts may be assumed to follow a multinomial distribution, with probabilities given in Table \ref{tab:multinomial-probabilites} below. 
+% Notice that there are fundamental study design questions here since the counts will depend on the way individuals are recruited in the study. 
+% For example, ``controlling'' the number of Cases or Controls (as opposed to sampling at random from the population) will change the theoretical parameters (probabilities) of the multinomial model.
+% These questions will be addressed in Section \ref{sec:optimal-design} below.
 
-In this section, we characterize the relationship between the aforementioned ``signal size'' and ``odds-ratio'' parameterizations 
-in the special, but fairly common case of association tests on 2-by-2 contingency tables.
-}{\fbox{CHECK PLEASE}}
 Consider a 2-by-2 multinomial distribution with marginal probabilities of phenotypes $(\phi_1, \phi_2)$ and genotypes $(\theta_1, \theta_2)$.
 The \emph{probability} table (as opposed to the table of multinomial \emph{counts} in the introduction) is as follows.
 \begin{table}[h]\label{tab:multinomial-probabilites}

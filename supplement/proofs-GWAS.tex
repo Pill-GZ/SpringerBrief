@@ -22,7 +22,7 @@ Therefore, we have $-\log\alpha\le\delta\log{p}$ for large $p$, and
 for any $\delta>0$.
 Hence, $t_p\sim 2\log{p}$.
 
-The condition $\underline{r} > {{g}}(\beta)$ implies, after some algebraic manipulation,
+The condition $\underline{r} > f_{\mathrm{E}}(\beta)$ implies, after some algebraic manipulation,
 $\sqrt{\underline{r}} -\sqrt{1-\beta} > 1$.
 Therefore, we can pick $q>1$ such that 
 \begin{equation} \label{eq:choice-of-q}
@@ -171,7 +171,7 @@ That is, when $\overline{r} < \beta$, no thresholding procedure is able to achie
 
 The proof follows the ideas in \cite{arias2017distribution}, and is very similar to the proof of Theorem \ref{thm:Gaussian-error-approx-boundary}. 
 One could in principle obtain the proofs in this section by referencing arguments that have appeared in Chapter \ref{chap:phase-transitions}.
-We choose to present the proof here in full to make this section self-contained.
+We choose to present the proof here in full for completeness.
 
 \begin{proof}[Necessary condition in Theorem \ref{thm:chi-squared-approx-boundary}]
 Denote the distributions of $\chi^2_\nu(0)$, $\chi^2_\nu(\underline{\Delta})$ and $\chi^2_\nu(\overline{\Delta})$ as $F_0$, $F_{\underline{a}}$, and $F_{\overline{a}}$ respectively.
@@ -357,9 +357,8 @@ The proof for the sufficient condition is complete.
 \section{Proof of Theorems \ref{thm:chi-squared-exact-approx-boundary} and \ref{thm:chi-squared-approx-exact-boundary}}
 \label{subsec:proof-chi-squared-mix-boundaries}
 
-As with the proof of Theorem \ref{thm:chi-squared-approx-boundary}, one could shorten the presentations in this section by 
-referencing arguments in Chapter \ref{chap:phase-transitions}.  Again, we choose to present the proof in full to make this section 
-self-contained.
+As with the proof of Theorem \ref{thm:chi-squared-approx-boundary}, one could shorten the presentations in this section by referencing arguments in Chapter \ref{chap:phase-transitions}.  
+%Again, we choose to present the proof in full to make this section self-contained.
 
 \begin{proof}[Theorem \ref{thm:chi-squared-exact-approx-boundary}]
 % The reduction to equal signal sizes can be achieved 
@@ -370,7 +369,7 @@ Similar to the proof of Theorem \ref{thm:chi-squared-approx-boundary}, it suffic
 \end{equation}
 where $t_p$ is the threshold of Bonferroni's procedure.
 
-Since $\underline{r}>\widetilde{g}(\beta)=1$, we can pick $q$ such that $1<q<\underline{r}$.
+Since $\underline{r}>f_{\mathrm{EA}}(\beta)=1$, we can pick $q$ such that $1<q<\underline{r}$.
 Let $t^* = 2q\log{p}$, we have $t_p<t_p^*$ for large $p$ as in the proof of Theorem \ref{thm:chi-squared-exact-boundary}.
 Therefore for large $p$, we have
 $$
@@ -386,7 +385,7 @@ That is, we show that $\mathrm{FWER} + \mathrm{FNR}$ has liminf at least 1 by wo
     \mathrm{FWER}(\mathcal{R}) + \mathrm{FNR}(\mathcal{R}) \ge \P\left[\max_{i\in S^c}x(i)>u\right] \wedge \E\left[\frac{|S\setminus \widehat{S}(u)|}{|S|}\right],
 \end{equation}
 which holds for any thresholding procedure $\mathcal{R}$ and for arbitrary $u\in\R$.
-By the assumption that $\overline{r}<\widetilde{g}(\beta)=1$, we can pick $q$ such that $\overline{r}<q<1$ and let $u = t^*=2q\log{p}$.
+By the assumption that $\overline{r}<f_{\mathrm{EA}}(\beta)=1$, we can pick $q$ such that $\overline{r}<q<1$ and let $u = t^*=2q\log{p}$.
 By relative stability of chi-squared random variables (Lemma \ref{lemma:rapid-variation-chisq}), we have
 \begin{equation} \label{eq:exact-approx-boundary-proof-necessary-2}
     \P\left[\frac{\max_{i\in S^c} x(i)}{2\log{p}} > \frac{t^*}{2\log{p}}\right] \to 1.
@@ -405,7 +404,7 @@ Since FDR control is guaranteed by the BH procedure, we only need to show that t
 \end{equation}
 where $\tau$ is the threshold for the BH procedure.
 
-By the assumption that $\underline{r}>\widetilde{h}(\beta)=(\sqrt{\beta}+\sqrt{1-\beta})^2$, we have $\sqrt{\underline{r}}-\sqrt{1-\beta}>\sqrt{\beta}$, so we can pick $q>0$, such that 
+By the assumption that $\underline{r}>f_{\mathrm{AE}}(\beta)=(\sqrt{\beta}+\sqrt{1-\beta})^2$, we have $\sqrt{\underline{r}}-\sqrt{1-\beta}>\sqrt{\beta}$, so we can pick $q>0$, such that 
 \begin{equation} \label{eq:approx-exact-boundary-proof-sufficient-2}
 \sqrt{\underline{r}}-\sqrt{1-\beta}>\sqrt{q}>\sqrt{\beta}.
 \end{equation}
@@ -431,7 +430,7 @@ The necessary condition follows from the lower bound
 \end{equation}
 which holds for any thresholding procedure $\mathcal{R}$ and for arbitrary $u\in\R$.
 
-By the assumption that $\overline{r}<\widetilde{h}(\beta)=(\sqrt{\beta}+\sqrt{1-\beta})^2$, we can pick a constant $q>0$, such that 
+By the assumption that $\overline{r}<f_{\mathrm{AE}}(\beta)=(\sqrt{\beta}+\sqrt{1-\beta})^2$, we can pick a constant $q>0$, such that 
 \begin{equation} \label{eq:approx-exact-boundary-proof-necessary-2}
     \sqrt{\overline{r}} - \sqrt{1-\beta} < \sqrt{q} < \sqrt{\beta}.
 \end{equation}

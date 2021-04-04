@@ -416,13 +416,13 @@ Theorems \ref{thm:sufficient} and \ref{thm:necessary} can be cast in the form of
 \label{cor:point-wise-minimax}
 Let $\widehat{S}^{\text{Bonf}}$ be the sequence of Bonferroni's procedure described in Theorem \ref{thm:sufficient}. 
 Let also the errors have common $\text{AGG}(\nu)$ distribution $F$ with parameter $\nu>0$, and $\Theta_p^+$ be as defined in \eqref{eq:minimax-signal-config-over}.
-If $\underline{r}>g(\beta)$, then we have
+If $\underline{r}>f_{\mathrm{E}}(\beta)$, then we have
 \begin{equation} \label{eq:point-wise-minimax-above}
     \limsup_{p\to\infty} \sup_{\mu\in\Theta_p^+(\beta, \underline{r})} \P(\widehat{S}^{\text{Bonf}}_p \neq S_p) = 0,
 \end{equation}
 for arbitrary dependence structure of the error array ${\cal E} = \{\epsilon_p(i)\}_p$.
 Let $\cal T$ be the class of thresholding procedures \eqref{eq:thresholding-procedure}. 
-If $\underline{r}<g(\beta)$, then we have
+If $\underline{r}<f_{\mathrm{E}}(\beta)$, then we have
 \begin{equation} \label{eq:point-wise-minimax-below}
     \liminf_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \sup_{\mu\in\Theta_p^+(\beta, \underline{r})} \P(\widehat{S}_p \neq S_p) = 1,
 \end{equation}
@@ -432,8 +432,8 @@ for any error dependence structure such that ${\cal E}\in U(F)$ and ${(-\cal E)}
 \begin{proof}%[Proof of Corollary \ref{cor:point-wise-minimax}]
 The first conclusion \eqref{eq:point-wise-minimax-above} is a restatement of Theorem \ref{thm:sufficient}.
 
-For the second statement \eqref{eq:point-wise-minimax-below}, since $\underline{r}<g(\beta)$, we can pick a sequence $\mu^*\in\Theta_p^+(\beta, \underline{r})$ such that $|S_p| = \lfloor p^{1-\beta}\rfloor$, with signals having the same signal size $\mu(i)=(2r\log{p})^{1/\nu}$ for all $i\in S_p$, where $\underline{r}<{r}<g(\beta)$.
-For this particular choice of $\mu^*$ we have $\mu^*\in\Theta_p^-(\beta, \overline{r})$ where $r<\overline{r}<g(\beta)$,
+For the second statement \eqref{eq:point-wise-minimax-below}, since $\underline{r}<f_{\mathrm{E}}(\beta)$, we can pick a sequence $\mu^*\in\Theta_p^+(\beta, \underline{r})$ such that $|S_p| = \lfloor p^{1-\beta}\rfloor$, with signals having the same signal size $\mu(i)=(2r\log{p})^{1/\nu}$ for all $i\in S_p$, where $\underline{r}<{r}<f_{\mathrm{E}}(\beta)$.
+For this particular choice of $\mu^*$ we have $\mu^*\in\Theta_p^-(\beta, \overline{r})$ where $r<\overline{r}<f_{\mathrm{E}}(\beta)$,
 and according to Theorem \ref{thm:necessary}, we obtain $\lim_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \mathbb P[\widehat{S}_p \neq S_p] = 1$, for all dependence structures in the URS class.
 \end{proof}
 
@@ -467,7 +467,7 @@ of whether they are thresholding or not.
 Consider the additive model \eqref{eq:model-additive} where the $\epsilon_p(i)$'s are independent and identically distributed with log-concave densities in the AGG class. 
 Let the signals be as prescribed in Corollary \ref{c:log-concave}.
 If the signal sizes fall below the strong classification boundary \eqref{eq:strong-classification-boundary}, 
-i.e. $\overline{r}<g(\beta)$, then we have
+i.e. $\overline{r}<f_{\mathrm{E}}(\beta)$, then we have
 \begin{equation} \label{eq:classification-impossible-Bayes}
     \liminf_{p\to\infty} \inf_{\widehat{S}_p} \E_\pi \P[\widehat{S}_p\neq S_p] = 1,
 \end{equation}
@@ -486,7 +486,7 @@ Since $\widehat{S}^*_p$ belongs to the class of all thresholding procedures, we 
     &\ge \liminf_{p\to\infty} \inf_{\widehat{S}_p\in{\cal T}} \E_\pi\P[\widehat{S}_p\neq S_p] \\
     &\ge \liminf_{p\to\infty} \inf_{\widehat{S}_p\in{\cal T}} \inf_{S_p} \P[\widehat{S}_p\neq S_p] = 1,
 \end{align*}
-when $\overline{r}<g(\beta)$, where the last line follows from Theorem \ref{thm:necessary}.
+when $\overline{r}<f_{\mathrm{E}}(\beta)$, where the last line follows from Theorem \ref{thm:necessary}.
 \end{proof}
 
 
@@ -497,11 +497,11 @@ Theorem \ref{thm:necessary-strengthened} allows us to state another minimax conc
 \label{cor:minimax-over-dependence}
 Let $D(F)$ be the collection of error arrays with common marginal $F$ as defined in \eqref{eq:common-marginal-distribution} where $F$ is an $\text{AGG}(\nu)$ distribution.
 Let also $\widehat{S}^{\text{Bonf}}_p$ be Bonferroni's procedure as described in Theorem \ref{thm:sufficient}.
-If $\underline{r}>g(\beta)$, then we have
+If $\underline{r}>f_{\mathrm{E}}(\beta)$, then we have
 \begin{equation} \label{eq:minimax-over-dependence-over}
     \limsup_{p\to\infty} \sup_{\substack{\mu\in\Theta_p^+(\beta,\underline{r})\\ {\cal E}\in D(F)}} \P(\widehat{S}^{\text{Bonf}}_p \neq S_p) = 0.
 \end{equation}
-Further, when $\underline{r}<g(\beta)$, and $F$ has a positive log-concave density $f$, we have
+Further, when $\underline{r}<f_{\mathrm{E}}(\beta)$, and $F$ has a positive log-concave density $f$, we have
 \begin{equation} \label{eq:minimax-over-dependence-under}
     \liminf_{p\to\infty} \inf_{\widehat{S}_p} \sup_{\substack{\mu\in\Theta_p^+(\beta,\underline{r})\\ {\cal E}\in D(F)}} \P(\widehat{S}_p \neq S_p) = 
     1,
@@ -521,7 +521,7 @@ In particular, define $\pi$ to be the uniform distribution over the configuratio
 \begin{align*}
     \Theta_p^* &=
     \{\mu\in\mathbb{R}^d:\;|S_p|=\lfloor p^{1-\beta}\rfloor,\;\mu(i)=0\;\text{for all }i\not\in S, \;\text{and}\\
-    &\quad\quad\mu(i) = (\nu{r}\log{p})^{1/\nu}\;\text{for all }i\in S,\;\text{where}\;\underline{r}<r<g(\beta)\},
+    &\quad\quad\mu(i) = (\nu{r}\log{p})^{1/\nu}\;\text{for all }i\in S,\;\text{where}\;\underline{r}<r<f_{\mathrm{E}}(\beta)\},
 \end{align*}
 and 
 % \begin{align*}

@@ -2,7 +2,7 @@
 The optimality of sparse signal detection was first studied by \citet{ingster1998minimax}, who showed that a phase transition in the $r$-$\beta$ plane exists for the signal detection problem. 
 Specifically, consider the so-called {\em detection boundary} function:
 \begin{equation} \label{eq:detection-boundary-large-signals}
-    f(\beta) = 
+    f_{\mathrm{D}}(\beta) = 
     \begin{cases}
         \max\{0,\beta -1/2\} & 0<\beta\le 3/4\\
         \left(1 - \sqrt{1-\beta}\right)^2 & 3/4 < \beta \le 1.
@@ -10,20 +10,20 @@ Specifically, consider the so-called {\em detection boundary} function:
     \quad\quad \beta\in (0,1].
 \end{equation} 
 Assume that the non-zero signal sizes are all equal and parameterized as $\sqrt{2{r}\log{p}}$.
-If the signal size parameter $r$ is {\em above} the detection boundary, i.e., $r>f(\beta)$, then the global null 
-hypothesis $\mu(i)=0$ for all $i=1,\dots,p$ can be distinguished from the alternative as $p\to\infty$ in the sense of \eqref{eq:support-recovery-success} using the likelihood ratio test.  Otherwise, when the signal sizes fall below the boundary, i.e., $r< f(\beta)$, no test can do better than a 
+If the signal size parameter $r$ is {\em above} the detection boundary, i.e., $r>f_{\mathrm{D}}(\beta)$, then the global null 
+hypothesis $\mu(i)=0$ for all $i=1,\dots,p$ can be distinguished from the alternative as $p\to\infty$ in the sense of \eqref{eq:support-recovery-success} using the likelihood ratio test.  Otherwise, when the signal sizes fall below the boundary, i.e., $r< f_{\mathrm{D}}(\beta)$, no test can do better than a 
 random guess.  We visualize the detection boundary in the upper panel of Figure
 \ref{fig:phase-diagram-signal-detection}.
 
 Adaptive tests such as Tukey's \ac{HC} in \eqref{eq:HC-statistic} \citep{donoho2004higher} and a modified 
 goodness-of-fit test statistic of \citet{zhang2002powerful} have been identified to attain this performance limit 
-without knowledge of the sparsity and signal sizes. It is also known that the max-statistic \eqref{eq:max-statistic} is only efficient when $r>(1+\sqrt{1-\beta})^2$, and is therefore sub-optimal for denser signals where $1/2\le\beta\le 3/4$; see \cite{cai2011optimal}.  \stilian{This said,  the very recent contribution of \cite{li2020optimality} investigates a more realistic setting where the non-null signal is drawn from a general distribution with tails no lighter than the Gaussian additive error.  In this, much more practical regime, they show that the max statistic in fact achieves the optimal detection boundary for the entire 
-``sparsity'' regime $1/2<\beta<1$.  This surprising new development shows that the high-dimensional testing and inference is an active 
-area of research.}{}
+without knowledge of the sparsity and signal sizes. 
+It is also known that the max-statistic \eqref{eq:max-statistic} is only efficient when $r>(1+\sqrt{1-\beta})^2$, and is therefore sub-optimal for denser signals where $1/2\le\beta\le 3/4$; see \cite{cai2011optimal}. 
+(Recently, \cite{li2020optimality} showed that in the more general setting where signals themselves are dispersed, the sub-optimality of the max statistic disappears in the detection problem.)
 In contrast, the sum-of-square-type statistics such as $L_2$ was shown in \cite{fan1996test} to be asymptotically powerless when the $L_2$-norm of the signal $\|\mu\|_2^2$ is $o(\sqrt{p})$, or equivalently, when $\beta>1/2$ in our parametrization.
 
 Notice that the scaling for the signal magnitude $\Delta = \sqrt{2r\log{p}}$ is useful for studying very sparse signals ($\beta>1/2$), but fails to reveal the difficulties of the detection problems when the signals are relatively dense 
-($\beta<1/2$).  This is because $f(\beta) = 0,\ \beta\in (0,1/2]$. Thus, a different scaling is needed to study the regime of
+($\beta<1/2$).  This is because $f_{\mathrm{D}}(\beta) = 0,\ \beta\in (0,1/2]$. Thus, a different scaling is needed to study the regime of
 small but dense signals.  In this case, with slight overloading of notation, we parametrize signal sizes as 
 \begin{equation} \label{eq:signal-size-small} 
     \underline{\Delta} = p^{\underline{r}}
@@ -35,9 +35,9 @@ the signal magnitude vanishes, as $p\to\infty$.
 In this scaling, for the so-called faint signal regime, \citet{cai2011optimal} established a phase 
 transition result characterized by the following boundary,
 \begin{equation} \label{eq:detection-boundary-small-signals}
-    f_s(\beta) = \beta - 1/2, \quad 0 < \beta \le 1/2.
+    f_{\mathrm{D}'}(\beta) = \beta - 1/2, \quad 0 < \beta \le 1/2.
 \end{equation} 
-Specifically, if $\overline{r}<f_s(\beta)$, the signal detection fails in the sense of \eqref{eq:support-recovery-failure} regardless of the procedures, while the \ac{HC} statistic continues to attain asymptotically perfect detection when $\underline{r}>f_s(\beta)$. 
+Specifically, if $\overline{r}<f_{\mathrm{D}'}(\beta)$, the signal detection fails in the sense of \eqref{eq:support-recovery-failure} regardless of the procedures, while the \ac{HC} statistic continues to attain asymptotically perfect detection when $\underline{r}>f_{\mathrm{D}'}(\beta)$. 
 We visualize this boundary in the lower panel of Figure \ref{fig:phase-diagram-signal-detection}.
 
 \begin{figure}
@@ -53,7 +53,7 @@ We visualize this boundary in the lower panel of Figure \ref{fig:phase-diagram-s
       The detection problem is unsolvable for very sparse and weak signals in the undetectable regions.
       Notice that the $L_1$ and $L_2$ statistics are in fact sub-optimal for all sparsity levels.
       On the other hand, the max-statistic remains powerful for sparse signals ($\beta>1/2$), and is fully efficient when the problem is very sparse ($\beta\ge3/4$).
-      The \ac{HC} statistic can detect signals in all configurations in the detectable regions.
+      The \ac{HC} statistic can detect signals in all configurations in the detectable regions; we explicitly marked the region where signals are only detectable by \ac{HC} among the statistics considered.
       See the text and Theorem \ref{thm:detection-optimality}.}
       \label{fig:phase-diagram-signal-detection}
 \end{figure}

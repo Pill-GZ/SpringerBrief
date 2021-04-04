@@ -25,14 +25,14 @@ Theorem \ref{thm:Gaussian-error-exact-boundary}.
 Consider the high-dimensional chi-squared model \eqref{eq:model-chisq-Chapter6} with signal sparsity and size as described in \eqref{eq:signal-sparsity} and \eqref{eq:signal-size}.
 The function 
 \begin{equation} \label{eq:exact-boundary-chisquared}
-    g(\beta) = \left(1 + \sqrt{1-\beta}\right)^2
+    f_{\mathrm{E}}(\beta) = \left(1 + \sqrt{1-\beta}\right)^2
 \end{equation}
 characterizes the phase transition of exact support recovery problem.
 Namely, the following two results hold.\\
 
-{\rm (i)} If $\underline{r} > {{g}}(\beta)$, then Bonferroni's, Sid\'ak's, Holm's, and Hochberg's procedures with slowly vanishing (see Definition \ref{def:slowly-vanishing}) nominal FWER levels all achieve asymptotically exact support recovery in the sense of \eqref{eq:support-recovery-success}.\\
+{\rm (i)} If $\underline{r} > f_{\mathrm{E}}(\beta)$, then Bonferroni's, Sid\'ak's, Holm's, and Hochberg's procedures with slowly vanishing (see Definition \ref{def:slowly-vanishing}) nominal FWER levels all achieve asymptotically exact support recovery in the sense of \eqref{eq:support-recovery-success}.\\
 
-{\rm (ii)} Conversely, if $\overline{r} < {{g}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, we have $\P[\widehat{S}_p=S_p]\to0$.
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{E}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, we have $\P[\widehat{S}_p=S_p]\to0$.
 Therefore, in view of Lemma \ref{lemma:risk-exact-recovery-probability}, exact support recovery asymptotically fails for all thresholding procedures in the sense of \eqref{eq:support-recovery-failure}.
 \end{theorem}
 
@@ -70,15 +70,15 @@ Theorem \ref{thm:Gaussian-error-exact-approx-boundary}.
 In the context of Theorem \ref{thm:chi-squared-exact-boundary}, 
 the function 
 \begin{equation} \label{eq:exact-approx-boundary-chisquared}
-    \widetilde{g}(\beta) = 1
+    f_{\mathrm{EA}}(\beta) = 1
 \end{equation}
 characterizes the phase transition of exact-approximate support recovery problem.
  Namely, the following two results hold.\\
 
-{\rm (i)} If $\underline{r} > \widetilde{g}(\beta)$, then the procedures listed in Theorem \ref{thm:chi-squared-exact-boundary} with slowly 
+{\rm (i)} If $\underline{r} > f_{\mathrm{EA}}(\beta)$, then the procedures listed in Theorem \ref{thm:chi-squared-exact-boundary} with slowly 
 vanishing nominal FWER levels achieve asymptotically exact-approximate support recovery in the sense of \eqref{eq:support-recovery-success}. \\
 
-{\rm (ii)} Conversely, if $\overline{r} < \widetilde{g}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, the exact-approximate support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{EA}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, the exact-approximate support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
 \end{theorem}
 
 Theorem \ref{thm:chi-squared-exact-approx-boundary} is proved in Section \ref{subsec:proof-chi-squared-mix-boundaries}. 
@@ -94,13 +94,13 @@ It closely parallels Theorem \ref{thm:Gaussian-error-approx-boundary} for the ad
 Consider the high-dimensional chi-squared model \eqref{eq:model-chisq-Chapter6} with signal sparsity and size as described in \eqref{eq:signal-sparsity} and \eqref{eq:signal-size}.
 The function 
 \begin{equation} \label{eq:approx-boundary-chisquared}
-    h(\beta) = \beta
+    f_{\mathrm{A}}(\beta) = \beta
 \end{equation}
 characterizes the phase transition of approximate support recovery problem. Specifically the following two results hold.\\
 
-{\rm (i)} If $\underline{r} > {h}(\beta)$, then the \ac{BH} procedure $\widehat{S}_p$ (defined in Section \ref{sec:statistical-procedures}) with slowly vanishing (see Definition \ref{def:slowly-vanishing}) nominal FDR levels achieves asymptotically approximate support recovery in the sense of \eqref{eq:support-recovery-success}. \\
+{\rm (i)} If $\underline{r} > f_{\mathrm{A}}(\beta)$, then the \ac{BH} procedure $\widehat{S}_p$ (defined in Section \ref{sec:statistical-procedures}) with slowly vanishing (see Definition \ref{def:slowly-vanishing}) nominal FDR levels achieves asymptotically approximate support recovery in the sense of \eqref{eq:support-recovery-success}. \\
 
-{\rm (ii)} Conversely, if $\overline{r} < {h}(\beta)$, then approximate support recovery asymptotically fails in the sense of \eqref{eq:support-recovery-failure} for all thresholding procedures.
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{A}}(\beta)$, then approximate support recovery asymptotically fails in the sense of \eqref{eq:support-recovery-failure} for all thresholding procedures.
 \end{theorem}
 
 Theorem \ref{thm:chi-squared-approx-boundary} is proved in Section \ref{subsec:proof-chi-squared-mix-boundaries} below. 
@@ -114,14 +114,14 @@ A counterpart of Theorem \ref{thm:Gaussian-error-approx-exact-boundary} also hol
 \begin{theorem} \label{thm:chi-squared-approx-exact-boundary}
 In the context of Theorem \ref{thm:chi-squared-approx-boundary}, the function 
 \begin{equation} \label{eq:approx-exact-boundary-chisquared}
-    \widetilde{h}(\beta) = \left(\sqrt{\beta} + \sqrt{1-\beta}\right)^2
+    f_{\mathrm{AE}}(\beta) = \left(\sqrt{\beta} + \sqrt{1-\beta}\right)^2
 \end{equation}
 characterizes the phase transition of approximate-exact support recovery problem. Namely, 
 the following two results hold.\\
 
-{\rm (i)} If $\underline{r} > \widetilde{h}(\beta)$, then the Benjamini-Hochberg procedure with slowly vanishing nominal FDR levels achieves asymptotically approximate-exact support recovery in the sense of \eqref{eq:support-recovery-success}. \\
+{\rm (i)} If $\underline{r} > f_{\mathrm{AE}}(\beta)$, then the Benjamini-Hochberg procedure with slowly vanishing nominal FDR levels achieves asymptotically approximate-exact support recovery in the sense of \eqref{eq:support-recovery-success}. \\
 
-{\rm (ii)} Conversely, if $\overline{r} < \widetilde{h}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, the approximate-exact support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{AE}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, the approximate-exact support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
 \end{theorem}
 
 Theorem \ref{thm:chi-squared-approx-exact-boundary} is proved in Section \ref{subsec:proof-chi-squared-exact-boundary}. 
