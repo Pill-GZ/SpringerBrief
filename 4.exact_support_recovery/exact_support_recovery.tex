@@ -30,11 +30,18 @@ Although our method of analysis applies to all light-tailed error distributions 
 Extensions of the results to other classes of error models are presented in Section \ref{suppsec:other-boundaries}.
 
 This generalized distributional assumption on the errors call for a suitable generalization of the signal size parametrization in order to analyze the problem as we did in the previous chapter.
-As before, we assume the signals in model \eqref{eq:model-additive} to be a sparse vector $\mu = \left(\mu(i)\right)_{i=1}^p$ where its sparsity, with a few exceptions which will be explicitly stated, is parametrized as
+\stilian{As before, we assume the signals in model \eqref{eq:model-additive} to be a sparse vector
+$\mu_p = \left(\mu_p(i)\right)_{i=1}^p$, with support $S_p:= \{i\, :\, \mu_p(i)\not = 0\}$.  The sparsity of $\mu_p$ will be parameterized and quantified
+in terms of a {\em fixed} regularly varying sequence $\{s_p^*\}$ as follows:
+\begin{equation} \label{eq:sparsity-parametrized-new}
+s_p := |S_p| \sim s_p^* := \ell(p) p^{1-\beta},
+\end{equation}
+where $\ell(\cdot)$ is some fixed slowly varying function.  Recall that a function $\ell$ is slowly varying if $\ell(\lambda t)/\ell(t) \to 1$, as $t\to\infty$, for all $\lambda>0$.   As before, the fixed exponent $\beta \in (0,1]$ controls the sparsity.}{
+ where its sparsity, with a few exceptions which will be explicitly stated, is parametrized as
 \begin{equation} \label{eq:sparsity-parametrized}
    s = |S_p| = \lfloor p^{1 -\beta} \rfloor, % \quad \text{with } 0 < \beta \le 1 \; \text{(fixed)},
 \end{equation}
-with $0 < \beta \le 1$ fixed.
+with $0 < \beta \le 1$ fixed.}
 
 We assume that the non-zero entries of $\mu$ are positive and take values in the interval $\left[\underline{\Delta},\overline{\Delta}\right)\subset (0,\infty)$.
 That is, $0<\underline{\Delta}\le\mu(i)<\overline{\Delta}\le+\infty$, for all $i\in S_p$.

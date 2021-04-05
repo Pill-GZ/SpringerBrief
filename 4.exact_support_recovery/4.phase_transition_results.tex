@@ -10,13 +10,18 @@
 
 Following \citet*{butucea2018variable}, we define the parameter space for the signals $\mu$ as
 \begin{align} \label{eq:minimax-signal-config-over}
-    \Theta_p^+(\beta, \underline{r}) &= \{\mu\in\mathbb{R}^p:\;\text{there exists a set }S_p\subseteq\{1,\ldots,p\}\;\text{ such that }|S_p|\le\lfloor p^{1-\beta}\rfloor, \nonumber \\
-    &\quad\quad\mu(i)\ge (\nu\underline{r}\log{p})^{1/\nu}\;\text{for all }i\in S_p,\;\text{and }\mu(i)=0\;\text{for all }i\not\in S_p\}.
+    \Theta_p^+(\beta, \underline{r}) &= \{\mu\in\mathbb{R}^p:\;\text{there exists a set }S_p\subseteq\{1,\ldots,p\}\;\text{ such that }|S_p|\le \stilian{s_p^*}{\lfloor p^{1-\beta}\rfloor}, \nonumber \\
+    &\quad\quad\mu(i)\ge (\nu\underline{r}\log{p})^{1/\nu}\;\text{for all }i\in S_p,\;\text{and }\mu(i)=0\;\text{for all }i\not\in S_p\},
 \end{align}
+\stilian{where $s_p^*$ is as in \eqref{eq:sparsity-parametrized-new}.}
 Our first result states that, when $F\in \text{AGG}(\nu)$ with $\nu>0$, regardless of the error dependence structure, (asymptotic) perfect support recovery is achieved by applying Bonferroni's procedure with appropriately calibrated FWER, as long as the minimum signal size $\underline{r}$ is above the strong classification boundary \eqref{eq:strong-classification-boundary}.
 
 \begin{theorem} \label{thm:sufficient}
-Let the errors have common marginal distribution $F\in \text{AGG}(\nu)$ with $\nu>0$.
+Let the errors have common marginal distribution $F\in \text{AGG}(\nu)$ with $\nu>0$.  \stilian{if $\beta=1$, assume in addition that the
+slowly varying function in \eqref{eq:sparsity-parametrized-new} is such that
+\begin{equation}\label{e:new-beta=1-condition}
+\ell(p) = o(F(- c\log(p)^{1/\nu})),\ \ \mbox{ for all $c>0$.}
+\end{equation}}{}
 Let $\widehat{S}_p$ be the Bonferroni's procedure \eqref{eq:Bonferroni-procedure} with vanishing FWER $\alpha = \alpha(p) \to 0$, such that %\fbox{slower than any polynomial}
 $\alpha p^\delta\to \infty$ for every $\delta>0$.
 If
@@ -75,38 +80,38 @@ $M=M(\delta)$ such that $p/\alpha(p) < p^{1+\delta}$ for all $p\ge M$. Thus, fro
     \P\Big[\widehat{S} \supseteq S\Big]
       &\ge \P\Big[\min_{i\in S}\epsilon(i) > \left((1+\delta)\nu\log{p}\right)^{1/\nu}(1+o(1)) - (\nu\underline{r}\log p)^{1/\nu} \Big] \nonumber \\
       &= \P\Big[\max_{i\in S}\left(-\epsilon(i)\right) < \underbrace{\left(\underline{r}^{1/\nu} - (1+\delta)^{1/\nu}\right)(\nu\log{p})^{1/\nu}(1+o(1))}_{=:\text{A}} \Big] \nonumber \\
-      &\ge 1 - \lfloor p^{1-\beta} \rfloor \times \overline{F}_-(\text{A}), \label{eq:sufficient-proof-eq2}
+      &\ge 1 - \stilian{\ell(p)p^{1-\beta}}{\lfloor p^{1-\beta} \rfloor} \times \overline{F}_-(\text{A}), \label{eq:sufficient-proof-eq2}
       % &\ge 1 - |S|\times\P\Big[(-\epsilon(1)) \ge \left(\underline{r}^{1/\nu} - (1+\delta)^{1/\nu}\right)(\nu\log{p})^{1/\nu}(1+o(1)) \Big] 
 \end{align}
 where $\overline{F}_-(x) = \P[-\epsilon(i)>x]$ is the survival function of the $(-\epsilon(i))$'s.
-Notice that \eqref{eq:sufficient-proof-eq2} follows from the union bound and the assumption that ${|S_p|}\le{\lfloor p^{1-\beta}\rfloor}$. 
+Notice that \eqref{eq:sufficient-proof-eq2} follows from the union bound and the assumption that ${|S_p|}\le \stilian{s_p^*= \ell(p)p^{1-\beta}}{{\lfloor p^{1-\beta}\rfloor}}$. 
 Therefore, the lower bound does not depend on $\mu$ (nor on the error dependence structure), and holds uniformly in the parameter space. In turn, we obtain 
 \begin{equation} \label{eq:exact-supporot-recovery-FWNR}
-    \inf_{\mu\in\Theta_p^+(\beta, \underline{r})} \P[\widehat{S}_p \supseteq S_p] \ge 1 - \lfloor p^{1-\beta} \rfloor \times \overline{F}_-(\text{A}).
+    \inf_{\mu\in\Theta_p^+(\beta, \underline{r})} \P[\widehat{S}_p \supseteq S_p] \ge 1 - \stilian{\ell(p)p^{1-\beta}}{\lfloor p^{1-\beta} \rfloor} \times \overline{F}_-(\text{A}).
 \end{equation}
 
 If $\beta=1$, we conclude that the right-hand-side of \eqref{eq:exact-supporot-recovery-FWNR} 
-converges to $1$, since $\text{A}\to+\infty$.
+converges to $1$, \stilian{in view of \eqref{e:new-beta=1-condition} applied with $c \log(p)^{1/\nu}:= A$.}{ since $\text{A}\to+\infty$.}
 
 Let now $\beta\in (0,1)$ and $u_p^- :=  F_-^{\leftarrow}(1-1/p)$. 
 The fact that $p\overline{F}_-(u_p^-) \le 1$, implies
 \begin{equation}
-    \lfloor p^{1-\beta} \rfloor \times \overline{F}_-(\text{A}) \le 
-    \frac{\overline{F}_-\left(\text{B}\times{u_{\lfloor p^{1-\beta}\rfloor}^-}\right)} {\overline{F}_-\left({u_{\lfloor p^{1-\beta}\rfloor}^-}\right)} \label{eq:sufficient-proof-eq3}
+    \stilian{s_p^*}{\lfloor p^{1-\beta} \rfloor} \times \overline{F}_-(\text{A}) \le 
+    \frac{\overline{F}_-\left(\text{B}\times{u_{s_p^*}^-}\right)} {\overline{F}_-\left({u_{s_p^*}}\right)} \label{eq:sufficient-proof-eq3}
     % \P\Big[\frac{\max_{i\in S}(-\epsilon(i))}{u_{|S|}}\frac{u_{|S|}}{u_{\lfloor p^{1-\beta}\rfloor}} < \underbrace{\frac{\underline{r}^{1/\nu} - (1+\delta)^{1/\nu}}{(1-\beta)^{1/\nu}}\left(1+o(1)\right)}_{=:\text{B}}\Big], \label{eq:exact-supporot-recovery-FWNR}
 \end{equation}
-where $\text{B} := {\text{A}}/{u_{\lfloor p^{1-\beta}\rfloor}^-}$.
+where $\text{B} := {\text{A}}/{u_{s_p^*}^-}$.
 
 Notice that by assumption, the $-\epsilon(i)$'s are also 
 AGG$(\nu)$ distributed and by Proposition \ref{prop:quantile}, 
 $u_p^{-}:= F_-^{\leftarrow}(1-1/p) \sim (\nu \log(p))^{1/\nu}$,
 as $p\to\infty$. Therefore, we have
 \begin{equation} \label{eq:sufficient-proof-eq4}
-    u_{\lfloor p^{1-\beta}\rfloor}^- \sim \left(\nu(1-\beta)\log{p}\right)^{1/\nu}
+    u_{s_p^*}^- \equiv u_{\ell(p)p^{1-\beta}}^-\sim \left(\nu(1-\beta)\log{p}\right)^{1/\nu},
 \end{equation}
-and 
+\stilian{where we used the fact that $\log(\ell(p)) = o(\log(p))$. Hence,}{and} 
 \begin{equation*}
-\text{B} = \frac{\text{A}}{u_{\lfloor p^{1-\beta}\rfloor}^-}
+\text{B} = \frac{\text{A}}{u_{s_p^*}^-}
 = \frac{\underline{r}^{1/\nu} - (1+\delta)^{1/\nu}}{(1-\beta)^{1/\nu}}\left(1+o(1)\right) \to c>1
 \end{equation*}
 as $p\to\infty$, by our choice of $\delta$ in \eqref{eq:choice-of-delta}.
