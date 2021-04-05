@@ -32,7 +32,7 @@ Extensions of the results to other classes of error models are presented in Sect
 This generalized distributional assumption on the errors call for a suitable generalization of the signal size parametrization in order to analyze the problem as we did in the previous chapter.
 As before, we assume the signals in model \eqref{eq:model-additive} to be a sparse vector $\mu = \left(\mu(i)\right)_{i=1}^p$ where its sparsity, with a few exceptions which will be explicitly stated, is parametrized as
 \begin{equation} \label{eq:sparsity-parametrized}
-    s = |S_p| = \lfloor p^{1 -\beta} \rfloor, % \quad \text{with } 0 < \beta \le 1 \; \text{(fixed)},
+   s = |S_p| = \lfloor p^{1 -\beta} \rfloor, % \quad \text{with } 0 < \beta \le 1 \; \text{(fixed)},
 \end{equation}
 with $0 < \beta \le 1$ fixed.
 
@@ -45,6 +45,11 @@ The lower and upper bound on the signal sizes $\underline{\Delta}$ and $\overlin
 \end{equation}
 with parameters $0 < \underline{r} \le \overline{r} \le +\infty$.
 %The signal sizes now depends on the shape of the assumed error distributions $\mathrm{AGG}(\nu)$ through the parameter $\nu$.
+
+ \stilian{\begin{remark}Without much effort, one can relax the above parameterization of the support size in \eqref{eq:sparsity-parametrized} to $|S_p| \sim p^{1-\beta}$ or in fact, to the 
+much more general case of $|S_p|\sim L(p) p^{1-\beta}$, for a slowly varying function $L$.  Going along this path would would naturally lead to
+more sophisticated signal models, which merit independent study.  Here, we opt for simplicity of exposition and thus adopt 
+\eqref{eq:sparsity-parametrized} and \eqref{eq:signal-size-parametrized}.\end{remark}}
 
 \medskip
 
