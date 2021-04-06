@@ -31,12 +31,12 @@ Extensions of the results to other classes of error models are presented in Sect
 
 This generalized distributional assumption on the errors call for a suitable generalization of the signal size parametrization in order to analyze the problem as we did in the previous chapter.
 \stilian{As before, we assume the signals in model \eqref{eq:model-additive} to be a sparse vector
-$\mu_p = \left(\mu_p(i)\right)_{i=1}^p$, with support $S_p:= \{i\, :\, \mu_p(i)\not = 0\}$.  The sparsity of $\mu_p$ will be parameterized and quantified
-in terms of a {\em fixed} regularly varying sequence $\{s_p^*\}$ as follows:
+$\mu_p = \left(\mu_p(i)\right)_{i=1}^p$, with support $S_p:= \{i\, :\, \mu_p(i)\not = 0\}$.  The sparsity of $\mu_p$  with a few exceptions which will be explicitly stated, is parametrized in terms of a {\em fixed} regularly varying sequence $\{s_p^\dagger\}$ as follows:
 \begin{equation} \label{eq:sparsity-parametrized-new}
-s_p := |S_p| \sim s_p^* := \ell(p) p^{1-\beta},
+ |S_p| =   \lfloor s_p^\dagger \rfloor,\ \ \mbox{ where }\ \ s_p^\dagger := \ell(p) p^{1-\beta},
 \end{equation}
-where $\ell(\cdot)$ is some fixed slowly varying function.  Recall that a function $\ell$ is slowly varying if $\ell(\lambda t)/\ell(t) \to 1$, as $t\to\infty$, for all $\lambda>0$.   As before, the fixed exponent $\beta \in (0,1]$ controls the sparsity.}{
+for some fixed slowly varying function $\ell$.  Recall that a function $\ell$ is slowly varying 
+if $\ell(\lambda t)/\ell(t) \to 1$, as $t\to\infty$, for all $\lambda>0$.   As before, the exponent $$0 <\beta \le 1$$ controls the sparsity.}{
  where its sparsity, with a few exceptions which will be explicitly stated, is parametrized as
 \begin{equation} \label{eq:sparsity-parametrized}
    s = |S_p| = \lfloor p^{1 -\beta} \rfloor, % \quad \text{with } 0 < \beta \le 1 \; \text{(fixed)},
@@ -53,10 +53,10 @@ The lower and upper bound on the signal sizes $\underline{\Delta}$ and $\overlin
 with parameters $0 < \underline{r} \le \overline{r} \le +\infty$.
 %The signal sizes now depends on the shape of the assumed error distributions $\mathrm{AGG}(\nu)$ through the parameter $\nu$.
 
- \stilian{\begin{remark}Without much effort, one can relax the above parameterization of the support size in \eqref{eq:sparsity-parametrized} to $|S_p| \sim p^{1-\beta}$ or in fact, to the 
+\comment{ \stilian{\begin{remark}Without much effort, one can relax the above parameterization of the support size in \eqref{eq:sparsity-parametrized} to $|S_p| \sim p^{1-\beta}$ or in fact, to the 
 much more general case of $|S_p|\sim L(p) p^{1-\beta}$, for a slowly varying function $L$.  Going along this path would would naturally lead to
 more sophisticated signal models, which merit independent study.  Here, we opt for simplicity of exposition and thus adopt 
-\eqref{eq:sparsity-parametrized} and \eqref{eq:signal-size-parametrized}.\end{remark}}
+\eqref{eq:sparsity-parametrized} and \eqref{eq:signal-size-parametrized}.\end{remark}}}
 
 \medskip
 

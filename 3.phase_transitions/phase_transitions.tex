@@ -18,11 +18,12 @@ $$
 $$
 We shall assume that the size of the support is
 \begin{equation} \label{eq:signal-sparsity-additive}
-   \stilian{|S_p| \sim p^{1-\beta} }{\mbox{instead of $= \left\lfloor p^{1-\beta} \right\rfloor$ \fbox{CAN WE DO THAT?}}}, \quad \beta\in(0,1],
+   |S_p| = \lfloor p^{1-\beta} \rfloor, \quad \beta\in(0,1],
 \end{equation}
-where $\beta$ parametrizes the problem sparsity\stilian{, and $\sim$ stands for asymptotic equivalence, i.e., $a_p\sim b_p$ if $a_p/b_p\to 1$, as $p\to\infty$.}{}
-The closer $\beta$ is to 1, the sparser the support $S_p$.  
-Conversely, when $\beta$ is close to 0, the support is dense with many non-null signals.
+where $\beta$ parametrizes the problem sparsity.\stilian{A more general parameterization of the support involving a slowly 
+varying function is considered in Chapter \ref{chap:exact-support-recovery}.}{} 
+
+The closer $\beta$ to 1, the sparser the support $S_p$. Conversely, when $\beta$ is close to 0, the support is dense with many non-null signals.
 We consider one-sided alternatives \eqref{eq:global-test-one-sided}, and parametrize the range of the non-zero (and perhaps unequal) signals with
 \begin{equation} \label{eq:signal-size-additive}
     \underline{\Delta} = \sqrt{2\underline{r}\log{p}}
