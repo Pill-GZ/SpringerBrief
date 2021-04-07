@@ -17,12 +17,7 @@ Following \citet*{butucea2018variable}, we define the parameter space for the si
 Our first result states that, when $F\in \text{AGG}(\nu)$ with $\nu>0$, regardless of the error dependence structure, (asymptotic) perfect support recovery is achieved by applying Bonferroni's procedure with appropriately calibrated FWER, as long as the minimum signal size $\underline{r}$ is above the strong classification boundary \eqref{eq:strong-classification-boundary}.
 
 \begin{theorem} \label{thm:sufficient}
-Let the errors have common marginal distribution $F\in \text{AGG}(\nu)$ with $\nu>0$.  \stilian{If $\beta=1$, assume in addition that the
-slowly varying function in \eqref{eq:sparsity-parametrized-new} is such that
-\begin{equation}\label{e:new-beta=1-condition}
-\ell(p) = o\Big(1/ F(- c\log(p)^{1/\nu})\Big),\ \ \mbox{ for all $c>0$.}
-\end{equation}}{}
-Let $\widehat{S}_p$ be the Bonferroni's procedure \eqref{eq:Bonferroni-procedure} with vanishing FWER $\alpha = \alpha(p) \to 0$, such that %\fbox{slower than any polynomial}
+Let the errors have common marginal distribution $F\in \text{AGG}(\nu)$ with $\nu>0$.  Let $\widehat{S}_p$ be the Bonferroni's procedure \eqref{eq:Bonferroni-procedure} with vanishing FWER $\alpha = \alpha(p) \to 0$, such that %\fbox{slower than any polynomial}
 $\alpha p^\delta\to \infty$ for every $\delta>0$.
 If
 \begin{equation} \label{eq:signal-above-boundary}
@@ -33,10 +28,7 @@ then we have
     \lim_{p\to\infty}\sup_{\mu\in\Theta_p^+(\beta, \underline{r})} \P[\widehat{S}_p \neq S_p] = 0.
 \end{equation}
 \end{theorem}
-\stilian{\begin{remark} The seemingly technical condition \eqref{e:new-beta=1-condition} is rather mild.
-It is trivially satisfied if $\ell(p) \sim {\rm const}$.  This condition is only needed in the extremely sparse regime $\beta=1$.
-\end{remark}}{}
-\begin{proof}[Proof of Theorem \ref{thm:sufficient}]
+\begin{proof}%[Proof of Theorem \ref{thm:sufficient}]
 Throughout the proof, the dependence on $p$ will be suppressed to simplify notations when such omissions do not lead to ambiguity.
 
 Under the $\text{AGG}(\nu)$ model, it is easy to see from equation \eqref{eq:AGG-quantiles} that the thresholds in Bonferroni's procedure are 
@@ -95,7 +87,13 @@ Therefore, the lower bound does not depend on $\mu$ (nor on the error dependence
 \end{equation}
 
 If $\beta=1$, we conclude that the right-hand-side of \eqref{eq:exact-supporot-recovery-FWNR} 
-converges to $1$, \stilian{in view of \eqref{e:new-beta=1-condition} applied with $c \log(p)^{1/\nu}:= A$.}{ since $\text{A}\to+\infty$.}
+converges to $1$. \stilian{ Indeed, since $F\in {\rm AGG}(\mu)$, we have that 
+$$
+\overline{F}_{-}({\rm A}) \le \overline{F}_-(c(\nu \log(p))^{1/\nu}) = {\cal O}( p^{-c'} ),
+$$
+for some $c>c'>0$.  On the other hand, the celebrated Potter bounds for slowly-varying functions \citep[see, e.g.,][]{bingham:goldie:teugels:1987}
+entail $\ell(p) = o(p^{c'})$, for every $c'>0$ and
+hence $\ell(p) \overline{F}_{-}({\rm A}) \to 0$, as $p\to\infty$.}{ since $\text{A}\to+\infty$.}
 
 Let now $\beta\in (0,1)$ and $u_p^- :=  F_-^{\leftarrow}(1-1/p)$. 
 The fact that $p\overline{F}_-(u_p^-) \le 1$, implies
@@ -291,7 +289,8 @@ Since the error arrays ${\cal E}$ and $(-{\cal E})$ are URS by assumption, using
 \frac{m_{S^*}}{u_p} = \frac{m_{S^*}}{u_{|S^*|}} \frac{u_{|S^*|}}{u_p} \xrightarrow{\P} (1-\beta)^{1/\nu},
 \end{equation}
 so that the two random terms in probability \eqref{eq:classification-possible-dependent-proof-2} converge to constants.
-Notice that the second relation in \eqref{eq:classification-possible-dependent-proof-3} holds by URS for any $\beta\in(0,1)$; when $\beta=1$, the relation holds because \stilian{$\{{m_{S^*}}/{u_{|S^*|}}\}$ is tight while $0\le u_{|S^*|}/u_p \le u_{\ell(p)}/u_p \to 0$ since $\ell(p) = o(p)$. }{${u_{|S^*|}}/{u_p}$  vanishes while $\{{m_{S^*}}/{u_{|S^*|}}\}$ is tight.}
+Notice that the second relation in \eqref{eq:classification-possible-dependent-proof-3} holds by URS for any $\beta\in(0,1)$; when $\beta=1$, the relation holds because \stilian{$\{{m_{S^*}}/{u_{|S^*|}}\}$ is tight while $0\le u_{|S^*|}/u_p \le u_{\ell(p)}/u_p \to 0$ since $\ell(p) = o(p)$ 
+by the Potter bounds for slowly varying functions \citep[see, e.g.,][]{bingham:goldie:teugels:1987}. }{${u_{|S^*|}}/{u_p}$  vanishes while $\{{m_{S^*}}/{u_{|S^*|}}\}$ is tight.}
 
 Since signal sizes are bounded above by $\overline{r} < \left(1 + (1-\beta)^{1/\nu}\right)^{\nu}$, we can write $\overline{r}^{1/\nu} = 1 + (1-\beta)^{1/\nu} - d$ for some $d > 0$. By our parametrization of $\overline{\Delta}$, we have
 \begin{equation} \label{eq:classification-possible-dependent-proof-4}
