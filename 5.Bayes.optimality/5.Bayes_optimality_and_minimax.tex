@@ -409,7 +409,7 @@ Theorems \ref{thm:sufficient} and \ref{thm:necessary} can be cast in the form of
 \begin{corollary}[Point-wise minimax]
 \label{cor:point-wise-minimax}
 Let $\widehat{S}^{\text{Bonf}}$ be the sequence of Bonferroni's procedure described in Theorem \ref{thm:sufficient}. 
-Let also the errors have common $\text{AGG}(\nu)$ distribution $F$ with parameter $\nu>0$, and $\Theta_p^+$ be as defined in \eqref{eq:minimax-signal-config-over}.
+Let also the errors have common $\text{AGG}(\nu)$ distribution $F$ with parameter $\nu>0$, and $\Theta_p^+(\beta,\underline{r})$ be as defined in \eqref{eq:minimax-signal-config-over}. \stilian{If $\beta=1$, assume in addition that \eqref{e:new-beta=1-condition} holds.}{}
 If $\underline{r}>f_{\mathrm{E}}(\beta)$, then we have
 \begin{equation} \label{eq:point-wise-minimax-above}
     \limsup_{p\to\infty} \sup_{\mu\in\Theta_p^+(\beta, \underline{r})} \P(\widehat{S}^{\text{Bonf}}_p \neq S_p) = 0,
@@ -426,9 +426,10 @@ for any error dependence structure such that ${\cal E}\in U(F)$ and ${(-\cal E)}
 \begin{proof}%[Proof of Corollary \ref{cor:point-wise-minimax}]
 The first conclusion \eqref{eq:point-wise-minimax-above} is a restatement of Theorem \ref{thm:sufficient}.
 
-For the second statement \eqref{eq:point-wise-minimax-below}, since $\underline{r}<f_{\mathrm{E}}(\beta)$, we can pick a sequence $\mu^*\in\Theta_p^+(\beta, \underline{r})$ such that $|S_p| = \lfloor p^{1-\beta}\rfloor$, with signals having the same signal size $\mu(i)=(2r\log{p})^{1/\nu}$ for all $i\in S_p$, where $\underline{r}<{r}<f_{\mathrm{E}}(\beta)$.
-For this particular choice of $\mu^*$ we have $\mu^*\in\Theta_p^-(\beta, \overline{r})$ where $r<\overline{r}<f_{\mathrm{E}}(\beta)$,
-and according to Theorem \ref{thm:necessary}, we obtain $\lim_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \mathbb P[\widehat{S}_p \neq S_p] = 1$, for all dependence structures in the URS class.
+For the second statement \eqref{eq:point-wise-minimax-below}, since $\underline{r}<f_{\mathrm{E}}(\beta)$, we can pick a sequence $\mu^*\in\Theta_p^+(\beta, \underline{r})$ such that \stilian{$|S_p| = \lfloor \ell(p) p^{1-\beta} \rfloor$}{$|S_p| = \lfloor p^{1-\beta}\rfloor$}, with signals having the same signal size $\mu(i)=(2r\log{p})^{1/\nu}$ for all $i\in S_p$, where $\underline{r}<{r}<f_{\mathrm{E}}(\beta)$.
+For this particular choice of $\mu^*$ we have $\mu^*\in\Theta_p^-(\beta, \overline{r})$ (recall \eqref{eq:minimax-signal-config-under}),
+where $r<\overline{r}<f_{\mathrm{E}}(\beta)$, and according to Theorem \ref{thm:necessary}, we obtain 
+$\lim_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \mathbb P[\widehat{S}_p \neq S_p] = 1$, for all dependence structures in the URS class.
 \end{proof}
 
 \begin{remark}
@@ -489,7 +490,7 @@ Theorem \ref{thm:necessary-strengthened} allows us to state another minimax conc
 
 \begin{corollary}
 \label{cor:minimax-over-dependence}
-Let $D(F)$ be the collection of error arrays with common marginal $F$ as defined in \eqref{eq:common-marginal-distribution} where $F$ is an $\text{AGG}(\nu)$ distribution.
+Let $D(F)$ be the collection of error arrays with common marginal $F$ as defined in \eqref{eq:common-marginal-distribution} where $F$ is an $\text{AGG}(\nu)$ distribution. \stilian{If $\beta=1$, assume in addition that \eqref{e:new-beta=1-condition} holds.}{}
 Let also $\widehat{S}^{\text{Bonf}}_p$ be Bonferroni's procedure as described in Theorem \ref{thm:sufficient}.
 If $\underline{r}>f_{\mathrm{E}}(\beta)$, then we have
 \begin{equation} \label{eq:minimax-over-dependence-over}
@@ -514,7 +515,7 @@ since the supremum is bounded from below by expectations.
 In particular, define $\pi$ to be the uniform distribution over the configurations $\Theta_p^*\times I(f)$, where
 \begin{align*}
     \Theta_p^* &=
-    \{\mu\in\mathbb{R}^d:\;|S_p|=\lfloor p^{1-\beta}\rfloor,\;\mu(i)=0\;\text{for all }i\not\in S, \;\text{and}\\
+    \{\mu\in\mathbb{R}^d:\;|S_p|=\stilian{\lfloor \ell(p)p^{1-\beta} \rfloor}{\lfloor p^{1-\beta}\rfloor},\;\mu(i)=0\;\text{for all }i\not\in S, \;\text{and}\\
     &\quad\quad\mu(i) = (\nu{r}\log{p})^{1/\nu}\;\text{for all }i\in S,\;\text{where}\;\underline{r}<r<f_{\mathrm{E}}(\beta)\},
 \end{align*}
 and 
