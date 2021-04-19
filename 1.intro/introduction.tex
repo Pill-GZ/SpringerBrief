@@ -108,8 +108,8 @@ The genetic compositions of the subjects are then examined for variations known 
 These physical traits are commonly referred to as \emph{phenotypes}, and the genetic variations are known as \emph{genotypes}.
 
 Focusing on one specific genomic location, the counts of observed genotypes, if two variants are present, can be tabulated as follows.
-% \begin{table}[ht]
-% \centering
+ \begin{table}[ht] \label{tab:multinomial-counts}
+ \centering
 \begin{center}
     \begin{tabular}{cccc}
     \hline
@@ -121,9 +121,9 @@ Focusing on one specific genomic location, the counts of observed genotypes, if 
     Controls & $O_{21}$ & $O_{22}$ & $n_2$ \\
     \hline
     \end{tabular}
-    % \caption{Tabulated counts of genotype-phenotype combinations in a genetic association test.}
+     \caption{Tabulated counts of genotype-phenotype combinations in a genetic association test.}
 \end{center}
-% \end{table}
+\end{table}
 Researchers test for associations between the genotypes and phenotypes using, for example, the Pearson chi-square test with statistic
 \begin{equation} \label{eq:chisq-statistic}
     x = \sum_{j=1}^2 \sum_{k=1}^2 \frac{(O_{jk} - E_{jk})^2}{E_{jk}},

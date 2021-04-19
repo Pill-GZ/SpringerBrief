@@ -21,7 +21,7 @@ Let $\widehat{S}_p$ be the Bonferroni's procedure \eqref{eq:Bonferroni-procedure
 $\alpha p^\delta\to \infty$ for every $\delta>0$.
 If
 \begin{equation} \label{eq:signal-above-boundary}
-    \underline{r} > g(\beta) = (1 + (1 - \beta)^{1/\nu})^\nu,
+    \underline{r} > f_{\mathrm{E}}(\beta) = (1 + (1 - \beta)^{1/\nu})^\nu,
 \end{equation}
 then we have
 \begin{equation} \label{eq:exact-supporot-recovery}
@@ -125,7 +125,7 @@ This includes Holm's procedure \citep*{holm1979simple}, and in the case of indep
 
 \begin{example} \label{exmp:FWER-controlling_procedures}
 Under Gaussian errors, the particular choice of the thresholding at $t_p = \sqrt{2\log{p}}$ in \eqref{eq:Bonferroni-procedure} corresponds to a Bonferroni's procedure with FWER decreasing at a rate of ${\cal O}((\log{p})^{-1/2})$, and hence Theorem \ref{thm:sufficient} applies. 
-By Corollary \ref{cor:FWER-controlling_procedures}, Holm's procedure --- and when the errors are independent, the {\v{S}}id{\'a}k, and Hochberg procedures --- with FWER controlled at $(\log{p})^{-1/2}$ all achieve perfect support recovery provided that $\underline{r}>g(\beta)$.
+By Corollary \ref{cor:FWER-controlling_procedures}, Holm's procedure --- and when the errors are independent, the {\v{S}}id{\'a}k, and Hochberg procedures --- with FWER controlled at $(\log{p})^{-1/2}$ all achieve perfect support recovery provided that $\underline{r}>f_{\mathrm{E}}(\beta)$.
 
 \begin{proof}[Example \ref{exmp:FWER-controlling_procedures}]
 By the Mill's ratio for the standard Gaussian distribution,
@@ -150,7 +150,7 @@ Therefore, \eqref{eq:exact-supporot-recovery-FWER} and \eqref{eq:exact-supporot-
 \begin{equation} \label{eq:exact-supporot-recovery-strengthened}
     \lim_{p\to\infty}\sup_{\substack{\mu\in\Theta_p^+(\beta, \underline{r})\\ {\cal E}\in D(F)}} P[\widehat{S}_p \neq S_p] = 0,
 \end{equation}
-for $\underline{r} > g(\beta)$, where $D(F)$ is the collection of all arrays with common marginal $F$, i.e., 
+for $\underline{r} > f_{\mathrm{E}}(\beta)$, where $D(F)$ is the collection of all arrays with common marginal $F$, i.e., 
 \begin{equation} \label{eq:common-marginal-distribution}
     D(F)=\{{\cal E}=(\epsilon_p(i))_p:\;\epsilon_p(i)\sim F\;\text{for all }i=1,\ldots,p, \text{and}\; p=1,2,\ldots\}.
 \end{equation}
@@ -224,7 +224,7 @@ Formally, we define the parameter space for the signals $\mu$ to be
     Assume further that the errors ${\cal E}$ have uniform relatively stable maxima and minima, i.e., ${\cal E}\in U(F)$, and $(-{\cal E}) = \{-\epsilon_{p}(i)\} \in U(F)$.
     If 
     \begin{equation} \label{eq:signal-below-boundary}
-        \overline{r} < g(\beta) = \left(1+(1-\beta)^{1/\nu}\right)^\nu,
+        \overline{r} < f_{\mathrm{E}}(\beta) = \left(1+(1-\beta)^{1/\nu}\right)^\nu,
     \end{equation}
     then
     \begin{equation} \label{eq:classification-impossible-dependent}
@@ -296,14 +296,13 @@ Therefore, the probability in \eqref{eq:classification-possible-dependent-proof-
 
 % We comment on some consequences of the theorem, before presenting its proof.
 We end this section with several remarks on the scope and consequences
-of our results. Our first comment is on the signal sizes, and in particular, the gap 
-between the sufficient conditions (Theorem \ref{thm:sufficient}) and the necessary 
+of our results. Our first comment is on the signal sizes, and in particular, on the gap between the sufficient conditions (Theorem \ref{thm:sufficient}) and the necessary 
 conditions (Theorem \ref{thm:necessary}).
 
 \begin{remark}[Minding the gap] \label{rmk:gap-between-sufficient-necessary}
-The sufficient condition in Theorem \ref{thm:sufficient} requires that \emph{all} signals be larger than the strong classification boundary $g(\beta)$ in order to achieve exact support recovery \eqref{eq:exact-recovery}, while Theorem \ref{thm:necessary} states that exact support recovery fails (in the sense of \eqref{eq:exact-recovery-failure}) when \emph{all} signal sizes are below the boundary --- the two conditions are \emph{not} complements of each other.
+The sufficient condition in Theorem \ref{thm:sufficient} requires that \emph{all} signals be larger than the strong classification boundary $f_{\mathrm{E}}(\beta)$ in order to achieve exact support recovery \eqref{eq:exact-recovery}, while Theorem \ref{thm:necessary} states that exact support recovery fails (in the sense of \eqref{eq:exact-recovery-failure}) when \emph{all} signal sizes are below the boundary --- the two conditions are \emph{not} complements of each other.
 This gap between the sufficient and necessary conditions on signal sizes, however, may be difficult to bridge.
-Indeed, in general, when signal sizes straddle the boundary $g(\beta)$, either outcome is possible, as we demonstrate in 
+Indeed, in general, when signal sizes straddle the boundary $f_{\mathrm{E}}(\beta)$, either outcome is possible, as we demonstrate in 
 Example \ref{exmp:signals-straddling-the-boundary} below.
 \end{remark}
 
@@ -315,8 +314,8 @@ For simplicity, assume that the errors are iid standard Gaussians.
 
 Consider two scenarios
 \begin{enumerate}
-    \item $r^{(1)} = (1+\delta)g(\beta)$, $r^{(2)} = (1+\delta)$ with $|S_p^{(1)}|=|S_p|-1$, $|S_p^{(2)}|=1$, 
-    \item $r^{(1)} = (1+\delta)g(\beta)$, $r^{(2)} = (1-\delta)g(\beta)$ with $|S_p^{(1)}|=\lfloor|S_p|/2\rfloor$, $|S_p^{(2)}|=|S_p| - |S_p^{(1)}|$.
+    \item $r^{(1)} = (1+\delta)f_{\mathrm{E}}(\beta)$, $r^{(2)} = (1+\delta)$,  with $|S_p^{(1)}|=|S_p|-1$, $|S_p^{(2)}|=1$, 
+    \item $r^{(1)} = (1+\delta)f_{\mathrm{E}}(\beta)$, $r^{(2)} = (1-\delta)f_{\mathrm{E}}(\beta)$, with $|S_p^{(1)}|=\lfloor|S_p|/2\rfloor$, $|S_p^{(2)}|=|S_p| - |S_p^{(1)}|$.
 \end{enumerate}
 for some constants $0<\delta<1-\beta<1$. 
 In both cases, signals in $S_p^{(1)}$ (respectively, $S_p^{(2)}$) are above (respectively, below) the strong classification boundary \eqref{eq:strong-classification-boundary}.
@@ -360,16 +359,16 @@ $$
     \le \P\left[\max_{j\in S^c}x(j) \le t_p < \min_{j\in S}x(j)\right]
     \le \P\left[\max_{j\in S^c}x(j) < \min_{j\in S^{(2)}}x(j)\right].
 $$
-By the assumption that signals in $S^{(2)}$ have size parameter $(1-\delta)g(\beta)$, we have
+By the assumption that signals in $S^{(2)}$ have size parameter $(1-\delta)f_{\mathrm{E}}(\beta)$, we have
 \begin{equation}
 \P\left[\max_{j\in S^c}x(j) < \min_{j\in S^{(2)}}x(j)\right]
-= \P\left[ \frac{M_{S^{c}}}{u_p} < \frac{\sqrt{2(1-\delta)g(\beta)\log{p}} - m_{S^{(2)}}}{u_p}\right], 
+= \P\left[ \frac{M_{S^{c}}}{u_p} < \frac{\sqrt{2(1-\delta)f_{\mathrm{E}}(\beta)\log{p}} - m_{S^{(2)}}}{u_p}\right], 
 \end{equation}
 where $M_{S^{c}} = \max_{j\in S^{c}}\epsilon(j)$ and $m_{S^{(2)}} = \max_{j\in S^{(2)}}\left(-\epsilon(j)\right)$.
 The ratio on the left-hand-side of the inequality converges to 1 as in \eqref{eq:classification-possible-dependent-proof-3} in the main text, whereas the term on the right-hand-side
 \begin{align*}
-    \frac{\sqrt{2(1-\delta)g(\beta)\log{p}} - m_{S^{(2)}}}{u_p} 
-    &= \sqrt{(1-\delta)g(\beta)} - \frac{m_{S^{(2)}}}{u_{|S^{(2)}|}} \frac{u_{|S^{(2)}|}}{u_p} \\
+    \frac{\sqrt{2(1-\delta)f_{\mathrm{E}}(\beta)\log{p}} - m_{S^{(2)}}}{u_p} 
+    &= \sqrt{(1-\delta)f_{\mathrm{E}}(\beta)} - \frac{m_{S^{(2)}}}{u_{|S^{(2)}|}} \frac{u_{|S^{(2)}|}}{u_p} \\
     &\xrightarrow{\P} \sqrt{(1-\delta)} + \sqrt{1-\beta}(\sqrt{(1-\delta)} - 1) < 1.
 \end{align*}
 where we used the URS of the error arrays, and that 
@@ -381,16 +380,22 @@ to conclude the convergence in probability.
 \end{proof}
 \end{example}
 
-Our second comment is on the interplay between thresholding procedures and the dependence class characterized by URS.
+Our second remark is on the restriction to thresholding procedures.
+\begin{remark}
+	Since the sharp phase transition result just established apply only to the general class of thresholding procedures, it is natural to ask if other good procedures have left out by this restriction.
+	We will establish later in Chapter \ref{chap:optimality} that in many cases the optimal procedures are in fact thresholding procedures. In general, however, thresholding procedures can be sub-optimal, e.g., when the errors have heavy (regularly-varying) tails. 
+	We will also demonstrate the absence of a phase transition phenomenon in exact support recovery by thresholding, in Supplement Section \ref{suppsec:heavy-tailed}. 
+\end{remark}
+
+Our final comment is on the interplay between thresholding procedures and the dependence class characterized by URS.
 \begin{remark} \label{rmk:dependence-assumptions}
-Paraphrasing Theorems \ref{thm:sufficient} and \ref{thm:necessary}: 
-if we consider only thresholding procedures, then for a very large class of dependence structures, we cannot improve upon the Bonferroni procedure $\widehat{S}_p^{\text{Bonf}}$. 
+Paraphrasing Theorems \ref{thm:sufficient} and \ref{thm:necessary}: if we consider only thresholding procedures, then for a very large class of dependence structures, we cannot improve upon the Bonferroni procedure $\widehat{S}_p^{\text{Bonf}}$. 
 Specifically, for all ${\cal E}\in U(F)$ and ${-\cal E}\in U(F)$, and for all $S_p\in {\cal S}$, where $\mathcal{S} = \left\{S\subseteq\{1,\ldots,p\};|S|=\lfloor p^{1-\beta}\rfloor\right\}$, we have
 \begin{equation}
     \lim_{p\to\infty} \P[\widehat{S}_p^{\text{Bonf}}\neq S_p]
     = \begin{cases}
-    \limsup_{p\to\infty} \inf_{\widehat{S}_p \in {\cal T}} \P[\widehat{S}_p\neq S_p] = 0, & \text{if}\quad \underline{r} > g(\beta),\\
-    \liminf_{p\to\infty} \inf_{\widehat{S}_p \in {\cal T}} \P[\widehat{S}_p\neq S_p] = 1, & \text{if}\quad \overline{r} < g(\beta)\\
+    \limsup_{p\to\infty} \inf_{\widehat{S}_p \in {\cal T}} \P[\widehat{S}_p\neq S_p] = 0, & \text{if}\quad \underline{r} > f_{\mathrm{E}}(\beta),\\
+    \liminf_{p\to\infty} \inf_{\widehat{S}_p \in {\cal T}} \P[\widehat{S}_p\neq S_p] = 1, & \text{if}\quad \overline{r} < f_{\mathrm{E}}(\beta)\\
     \end{cases}
 \end{equation}
 where $\cal T$ is the set of all thresholding procedures \eqref{eq:thresholding-procedure}. 
@@ -399,15 +404,13 @@ Theorem \ref{thm:necessary} answers a question raised in \citet{butucea2018varia
 In particular, the authors of \citep{butucea2018variable} commented that independent error is the  `least favorable model' in the problem of support recovery, and 
 conjectured that the support recovery problem may be easier to solve under dependence, similar to how the problem of signal detection is easier under dependent 
 errors \citep{hall2010innovated}. 
-Surprisingly, our results here state that asymptotically, \emph{all} error dependence structures in the large URS class are equally difficult for \emph{thresholding procedures}. Therefore, the phase transition behavior is universal in the class of dependence structures characterized by URS.
-For more details, see also Section \ref{sec:minimax}.
+Surprisingly, our results here state that asymptotically, \emph{all} error dependence structures in the large URS class are equally difficult for {thresholding procedures}. Therefore, the phase transition behavior is universal in the class of dependence structures characterized by URS.
+%For more details, see also Section \ref{sec:minimax}.
 \end{remark}
 
-\begin{remark} We emphasize that the restriction to the URS dependence class in Theorem \ref{thm:necessary} is 
-\emph{not} an assumption of convenience. 
-The dependence condition characterized by uniform relative stability is, in fact, the weakest of its kind in the literature.
+We emphasize the restriction to the URS dependence class in Theorem \ref{thm:necessary} is {not} an assumption of convenience. 
+The dependence condition characterized by uniform relative stability is in fact one of the weakest in the literature.
 We will characterize the class URS dependence class in Chapter \ref{chap:URS} below.
-\end{remark}
 
 % \begin{remark}   {\color{blue} Here is an idea -- one could estimate the threshold robustly.  For example,
 % suppose that we know that the support set is of size $\le p^{1-\beta_0}$, for some fixed $\beta_0\in(0,1)$.  Assume also (for simplicity) that the
@@ -468,7 +471,7 @@ where ${\cal T}$ is the class of all thresholding procedures \eqref{eq:threshold
 
 \begin{remark}
 Notice that the boundary for the signal size parameter is identically $1$ in this dense regime.
-Therefore, if we interpret $\beta = 0$ of the parametrization \eqref{eq:sparsity-parametrized} as $s\sim cp$, where $c\in(0,1)$, then the strong classification boundary \eqref{eq:strong-classification-boundary} may be continuously extended to the left-end point where $g(0)=1$.
+Therefore, if we interpret $\beta = 0$ of the parametrization \eqref{eq:sparsity-parametrized} as $s\sim cp$, where $c\in(0,1)$, then the strong classification boundary \eqref{eq:strong-classification-boundary} may be continuously extended to the left-end point where $f_{\mathrm{E}}(0)=1$.
 \end{remark}
 
 \begin{proof}[Theorem \ref{thm:dense-signals}]

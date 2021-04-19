@@ -4,7 +4,7 @@ We adopt the same parametrization for the sparsity of the non-centrality paramet
 \begin{equation} \label{eq:signal-sparsity}
     |S_p| = \left\lfloor p^{1-\beta} \right\rfloor, \quad \beta\in(0,1]
 \end{equation}
-where $\beta$ parametrizes the problem sparsity.
+where $S_p:= \{ i\, :\, \lambda(i) >0 \}$ is the {\em signal support} set and  $\beta$ parametrizes the problem {\em sparsity}.
 The closer $\beta$ is to 1, the sparser the support $S_p$; conversely, when $\beta$ is close to 0, the support is dense with many non-null signals.
 
 We parametrize the range of the non-zero and perhaps unequal signals in the chi-square model with
@@ -18,18 +18,21 @@ for some constants $0<\underline{r}\le\overline{r}\le+\infty$.
 \subsection{The exact support recovery problem}
 \label{subsec:exact-support-recovery-chisq}
 
-The first main result characterizes the phase transition phenomenon in the exact support recovery problem under the chi-square model.
+The first main result characterizes the phase transition phenomenon in the exact support recovery problem under the chi-square model.  It parallels
+Theorem \ref{thm:Gaussian-error-exact-boundary}.
 
 \begin{theorem} \label{thm:chi-squared-exact-boundary}
 Consider the high-dimensional chi-squared model \eqref{eq:model-chisq-Chapter6} with signal sparsity and size as described in \eqref{eq:signal-sparsity} and \eqref{eq:signal-size}.
 The function 
 \begin{equation} \label{eq:exact-boundary-chisquared}
-    g(\beta) = \left(1 + \sqrt{1-\beta}\right)^2
+    f_{\mathrm{E}}(\beta) = \left(1 + \sqrt{1-\beta}\right)^2
 \end{equation}
 characterizes the phase transition of exact support recovery problem.
-Specifically, if $\underline{r} > {{g}}(\beta)$, then Bonferroni's, Sid\'ak's, Holm's, and Hochberg's procedures with slowly vanishing (see Definition \ref{def:slowly-vanishing}) nominal FWER levels all achieve asymptotically exact support recovery in the sense of \eqref{eq:support-recovery-success}. 
+Namely, the following two results hold.\\
 
-Conversely, if $\overline{r} < {{g}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, we have $\P[\widehat{S}_p=S_p]\to0$.
+{\rm (i)} If $\underline{r} > f_{\mathrm{E}}(\beta)$, then Bonferroni's, Sid\'ak's, Holm's, and Hochberg's procedures with slowly vanishing (see Definition \ref{def:slowly-vanishing}) nominal FWER levels all achieve asymptotically exact support recovery in the sense of \eqref{eq:support-recovery-success}.\\
+
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{E}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, we have $\P[\widehat{S}_p=S_p]\to0$.
 Therefore, in view of Lemma \ref{lemma:risk-exact-recovery-probability}, exact support recovery asymptotically fails for all thresholding procedures in the sense of \eqref{eq:support-recovery-failure}.
 \end{theorem}
 
@@ -43,34 +46,39 @@ Therefore, in view of Lemma \ref{lemma:risk-exact-recovery-probability}, exact s
 
 
 The procedures listed in Theorem \ref{thm:chi-squared-exact-boundary} were reviewed in Section \ref{sec:statistical-procedures}. 
-Proof of the theorem can be found in Section \ref{subsec:proof-chi-squared-exact-boundary}. 
+The proof of the theorem can be found in Section \ref{subsec:proof-chi-squared-exact-boundary}. 
 % The boundary \eqref{eq:exact-boundary-chisquared} is plotted in Figure \ref{fig:phase-chi-squared}.
 
 It is evident that the exact support recovery boundary \eqref{eq:exact-boundary-chisquared} coincides with that in parallel results for the Gaussian additive error models \eqref{eq:model-additive} in Chapter \ref{chap:phase-transitions}.
 Implications of these results will be discussed in Section \ref{subsec:one-vs-two-sided} below.
 
 \begin{remark} \label{rmk:strong-classification-boundary-2}
-Theorem \ref{thm:chi-squared-exact-boundary} predicts that the asymptotic boundaries are the same for all values of the parameter $\nu$.
-In simulations (Section \ref{sec:numerical}), we find this asymptotic prediction to be quite accurate for $\nu\le3$ even in moderate dimensions ($p=100$). 
-For $\nu>3$, the phase transitions take place somewhat above the boundary ${g}$.
-The behavior is qualitatively similar for the other three phase transitions (see Theorems \ref{thm:chi-squared-exact-approx-boundary}, \ref{thm:chi-squared-approx-boundary}, and \ref{thm:chi-squared-approx-exact-boundary} below).
+Theorem \ref{thm:chi-squared-exact-boundary} predicts that the asymptotic boundaries are the same for all values of the degrees of freedom 
+parameter $\nu$.  In simulations (Section \ref{sec:numerical}), we find this asymptotic prediction to be quite accurate for $\nu\le3$ even in 
+moderate dimensions ($p=100$).  For $\nu>3$, the phase transitions take place somewhat above the boundary ${g}$.
+The behavior is qualitatively similar for the other three phase transitions (see Theorems \ref{thm:chi-squared-exact-approx-boundary}, 
+\ref{thm:chi-squared-approx-boundary}, and \ref{thm:chi-squared-approx-exact-boundary} below).
 \end{remark}
 
 \subsection{The exact-approximate support recovery problem}
 \label{subsec:exact-approx-support-recovery-chisq}
 
-The next theorem describes the phase transition in the exact-approximate support recovery problem.
+The next theorem describes the phase transition in the exact-approximate support recovery problem. Recall also
+Theorem \ref{thm:Gaussian-error-exact-approx-boundary}.
 
 \begin{theorem} \label{thm:chi-squared-exact-approx-boundary}
 In the context of Theorem \ref{thm:chi-squared-exact-boundary}, 
 the function 
 \begin{equation} \label{eq:exact-approx-boundary-chisquared}
-    \widetilde{g}(\beta) = 1
+    f_{\mathrm{EA}}(\beta) = 1
 \end{equation}
 characterizes the phase transition of exact-approximate support recovery problem.
-Specifically, if $\underline{r} > \widetilde{g}(\beta)$, then the procedures listed in Theorem \ref{thm:chi-squared-exact-boundary} with slowly vanishing nominal FWER levels achieve asymptotically exact-approximate support recovery in the sense of \eqref{eq:support-recovery-success}. 
+ Namely, the following two results hold.\\
 
-Conversely, if $\overline{r} < \widetilde{g}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, the exact-approximate support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
+{\rm (i)} If $\underline{r} > f_{\mathrm{EA}}(\beta)$, then the procedures listed in Theorem \ref{thm:chi-squared-exact-boundary} with slowly 
+vanishing nominal FWER levels achieve asymptotically exact-approximate support recovery in the sense of \eqref{eq:support-recovery-success}. \\
+
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{EA}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, the exact-approximate support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
 \end{theorem}
 
 Theorem \ref{thm:chi-squared-exact-approx-boundary} is proved in Section \ref{subsec:proof-chi-squared-mix-boundaries}. 
@@ -79,18 +87,20 @@ Theorem \ref{thm:chi-squared-exact-approx-boundary} is proved in Section \ref{su
 \subsection{The approximate support recovery problem}
 \label{subsec:approx-support-recovery-chisq}
 
-Our third main result characterizes the phase transition phenomenon in the approximate support recovery problem in the chi-square model.
+Our third asymptotic result characterizes the phase transition phenomenon in the approximate support recovery problem in the chi-square model.
+It closely parallels Theorem \ref{thm:Gaussian-error-approx-boundary} for the additive errors model.
 
 \begin{theorem} \label{thm:chi-squared-approx-boundary}
 Consider the high-dimensional chi-squared model \eqref{eq:model-chisq-Chapter6} with signal sparsity and size as described in \eqref{eq:signal-sparsity} and \eqref{eq:signal-size}.
 The function 
 \begin{equation} \label{eq:approx-boundary-chisquared}
-    h(\beta) = \beta
+    f_{\mathrm{A}}(\beta) = \beta
 \end{equation}
-characterizes the phase transition of approximate support recovery problem.
-Specifically, if $\underline{r} > {h}(\beta)$, then the \ac{BH} procedure $\widehat{S}_p$ (defined in Section \ref{sec:statistical-procedures}) with slowly vanishing (see Definition \ref{def:slowly-vanishing}) nominal FDR levels achieves asymptotically approximate support recovery in the sense of \eqref{eq:support-recovery-success}. 
+characterizes the phase transition of approximate support recovery problem. Specifically the following two results hold.\\
 
-Conversely, if $\overline{r} < {h}(\beta)$, then approximate support recovery asymptotically fails in the sense of \eqref{eq:support-recovery-failure} for all thresholding procedures.
+{\rm (i)} If $\underline{r} > f_{\mathrm{A}}(\beta)$, then the \ac{BH} procedure $\widehat{S}_p$ (defined in Section \ref{sec:statistical-procedures}) with slowly vanishing (see Definition \ref{def:slowly-vanishing}) nominal FDR levels achieves asymptotically approximate support recovery in the sense of \eqref{eq:support-recovery-success}. \\
+
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{A}}(\beta)$, then approximate support recovery asymptotically fails in the sense of \eqref{eq:support-recovery-failure} for all thresholding procedures.
 \end{theorem}
 
 Theorem \ref{thm:chi-squared-approx-boundary} is proved in Section \ref{subsec:proof-chi-squared-mix-boundaries} below. 
@@ -104,26 +114,31 @@ A counterpart of Theorem \ref{thm:Gaussian-error-approx-exact-boundary} also hol
 \begin{theorem} \label{thm:chi-squared-approx-exact-boundary}
 In the context of Theorem \ref{thm:chi-squared-approx-boundary}, the function 
 \begin{equation} \label{eq:approx-exact-boundary-chisquared}
-    \widetilde{h}(\beta) = \left(\sqrt{\beta} + \sqrt{1-\beta}\right)^2
+    f_{\mathrm{AE}}(\beta) = \left(\sqrt{\beta} + \sqrt{1-\beta}\right)^2
 \end{equation}
-characterizes the phase transition of approximate-exact support recovery problem.
-Specifically, if $\underline{r} > \widetilde{h}(\beta)$, then the Benjamini-Hochberg procedure with slowly vanishing nominal FDR levels achieves asymptotically approximate-exact support recovery in the sense of \eqref{eq:support-recovery-success}. 
+characterizes the phase transition of approximate-exact support recovery problem. Namely, 
+the following two results hold.\\
 
-Conversely, if $\overline{r} < \widetilde{h}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, the approximate-exact support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
+{\rm (i)} If $\underline{r} > f_{\mathrm{AE}}(\beta)$, then the Benjamini-Hochberg procedure with slowly vanishing nominal FDR levels achieves asymptotically approximate-exact support recovery in the sense of \eqref{eq:support-recovery-success}. \\
+
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{AE}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, the approximate-exact support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
 \end{theorem}
 
 Theorem \ref{thm:chi-squared-approx-exact-boundary} is proved in Section \ref{subsec:proof-chi-squared-exact-boundary}. 
 
-Notice that all phase transitions boundaries are identical to those in the Gaussian additive error model \eqref{eq:model-additive} under one-side alternative.
+Notice that all phase transitions boundaries are identical to those in the Gaussian additive error model \eqref{eq:model-additive} under one-sided alternative.
 We refer readers to Figure \ref{fig:phase-Gaussian-errors} in Section \ref{sec:additive-error-model-boundaries} for a visualization of the results in Theorems \ref{thm:chi-squared-exact-boundary} through \ref{thm:chi-squared-approx-exact-boundary}.
 
 \medskip
 
-The all four Theorems so far focus only on the idealized models \eqref{eq:model-chisq-Chapter6} where statistics are \emph{independent}.
+All four phase transitions results in Theorems \ref{thm:chi-squared-exact-boundary} through \ref{thm:chi-squared-approx-exact-boundary} 
+focus only on the idealized models \eqref{eq:model-chisq-Chapter6} where the statistics are \emph{independent}.
 Support recovery problems under dependent observations remain to be explored.
-Recall in Chapter \ref{chap:phase-transitions} we showed that the boundary for the exact support recovery problem in the additive error model \eqref{eq:model-additive} continues to hold even under severe dependence and general distributional assumptions.
-We conjecture that similar results would also hold, under classes of dependence structures that are ``not too different from independence'', in the chi-square models.
-As an example, in the GWAS application, dependence among the genetic markers at different locations (known as linkage disequilibrium) decay as a function of their physical distances on the genome \citep{bush2012genome}, resulting in locally dependent test statistics.
+Recall in Chapter \ref{chap:exact-support-recovery} we showed that the boundary for the exact support recovery problem in the additive error model 
+\eqref{eq:model-additive} continues to hold even under {\em severe dependence} and general distributional assumptions.
+We conjecture that the concentration of maxima phenomenon, which is at the heart of the results in Chapter \ref{chap:exact-support-recovery}, will play
+a role and all of the above phase-transition results will continue to hold, under broad dependence conditions in the chi-square models. As an example, 
+in the GWAS application, dependence among the genetic markers at different locations (known as linkage disequilibrium) decay as a function of their physical distances on the genome \citep{bush2012genome}, resulting in locally dependent test statistics.
 It would be of great interest to extend the current theory to cover important dependence structures that arise in such applications.
 
 
@@ -132,7 +147,7 @@ It would be of great interest to extend the current theory to cover important de
 
 
 % $\mathrm{risk}^{\mathrm{EA}}$ and $\mathrm{risk}^{\mathrm{AE}}$.
-As alluded to in Section \ref{sec:motivation-chisq} in the introduction, we draw explicit comparisons between the one-sided and two-sided alternatives in Gaussian additive error models \eqref{eq:model-additive}.
+As alluded to in Chapter \ref{sec:motivation-chisq} in the introduction, we draw explicit comparisons between the one-sided and two-sided alternatives in Gaussian additive error models \eqref{eq:model-additive}.
 % The exact, and the approximate support recovery problems in the additive error model \eqref{eq:model-additive} under standard Gaussian errors have been studied in \cite{gao2018fundamental} and \cite{arias2017distribution}, respectively. 
 
 The exact support recovery problem in the dependent Gaussian additive error model \eqref{eq:model-additive} was studied in Chapter \ref{chap:phase-transitions}, with parametrization of sparsity identical to that in \eqref{eq:signal-sparsity}, whereas the range of the non-zero (and perhaps unequal) mean shifts $\mu(i)$ was parametrized as 
@@ -156,13 +171,14 @@ Comparisons can also be drawn in the approximate, approximate-exact, and exact a
 Specifically, the approximate support recovery problem in the Gaussian additive error model \eqref{eq:model-additive} under one-sided alternatives exhibits a phase transition phenomenon characterized by a boundary that coincides with \eqref{eq:approx-boundary-chisquared} in Theorem \ref{thm:chi-squared-approx-boundary}.
 Similar to the exact support recovery problem, this indicates vanishing difference in the difficulties of the two types alternatives in approximate support recovery problems.
 
-Comparing Theorems \ref{thm:chi-squared-exact-approx-boundary} to \ref{thm:Gaussian-error-exact-approx-boundary} and Theorems \ref{thm:chi-squared-approx-exact-boundary} to \ref{thm:Gaussian-error-approx-exact-boundary}, we see that the phase transition boundaries under the two types of alternatives are also identical in the exact-approximate and approximate-exact support recovery problems.
+Comparing Theorems \ref{thm:chi-squared-exact-approx-boundary} and \ref{thm:Gaussian-error-exact-approx-boundary} as well as
+ Theorems \ref{thm:chi-squared-approx-exact-boundary} and \ref{thm:Gaussian-error-approx-exact-boundary}, we see that the phase transition boundaries under the two types of alternatives are also identical in the exact-approximate and approximate-exact support recovery problems.
 
 To complete the comparisons, we point out that the phase transition boundaries for the sparse signal {detection} problem in the two types of alternatives are both identical to \eqref{eq:detection-boundary-large-signals}. This was analyzed in \cite{donoho2004higher}.
 
 Therefore, all phase transition boundaries coincide with those in the additive error models obtained in Chapter \ref{chap:phase-transitions} under their respective parametrizations.
 % and Figure \ref{fig:phase-chi-squared} continues to apply.
-This indicates vanishing differences between the difficulties of the one-sided and two-sided alternatives in the Gaussian additive error model \eqref{eq:model-additive}.
-The additional uncertainty in the two-sided alternatives do not call for larger signal sizes in these problems, asymptotically.
+This indicates vanishing differences between the difficulties of the one-sided and two-sided alternatives in the Gaussian additive error model 
+\eqref{eq:model-additive}. The additional uncertainty in the two-sided alternatives does not call for larger signal sizes in these problems, asymptotically.
 
 

@@ -51,10 +51,10 @@ Inspired by the phase transition results for the signal detection problem, \cite
 Specifically, these papers establish minimax-type phase transition results in their respective settings. 
 Under the sparsity parametrization in \eqref{eq:signal-sparsity-additive} and assuming equal signal sizes of ${(2r\log{p})^{1/2}}$, Hamming losses were shown to diverge to $+\infty$ when $r$ falls below the threshold
 \begin{equation} \label{eq:strong-classification-boundary-Gaussian}
-    g(\beta) = (1 + (1 - \beta)^{1/2})^2,
+    f_{\mathrm{E}}(\beta) = (1 + (1 - \beta)^{1/2})^2,
 \end{equation}
 for any method of support estimation.
-Conversely, under orthogonal, or near-orthogonal random designs, if $r>g(\beta)$, they showed that the methods they proposed achieve vanishing Hamming loss.
+Conversely, under orthogonal, or near-orthogonal random designs, if $r>f_{\mathrm{E}}(\beta)$, they showed that the methods they proposed achieve vanishing Hamming loss.
 
 Very recently, \citet{butucea2018variable}\; studied both asymptotics and non-asymptotics of support recovery problems in the additive noise model \eqref{eq:model-additive-Chapter3} under the assumption of equal signal sizes, using the Hamming loss.
 Again, the analysis of asymptotic optimality focused on a newly proposed procedure which is very specific to the Gaussian model.
@@ -67,10 +67,10 @@ Consider the high-dimensional additive error model \eqref{eq:model-additive-Chap
 The function \eqref{eq:strong-classification-boundary-Gaussian} characterizes the phase transition of the exact support recovery problem.
 Namely, the following two results hold.\\
 
-{\rm (i)} If $\underline{r} > {{g}}(\beta)$, then Bonferroni's, Sid\'ak's, Holm's, and Hochberg's procedures with slowly vanishing  nominal FWER levels 
+{\rm (i)} If $\underline{r} > f_{\mathrm{E}}(\beta)$, then Bonferroni's, Sid\'ak's, Holm's, and Hochberg's procedures with slowly vanishing  nominal FWER levels 
 (as defined in Definition \ref{def:slowly-vanishing}) all achieve asymptotically exact support recovery in the sense of \eqref{eq:support-recovery-success}. \\
 
-{\rm (ii)} Conversely, if $\overline{r} < {{g}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, we have $\P[\widehat{S}_p=S_p]\to0$.
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{E}}(\beta)$, then for any thresholding procedure $\widehat{S}_p$, we have $\P[\widehat{S}_p=S_p]\to0$.
 Therefore, in view of Lemma \ref{lemma:risk-exact-recovery-probability}, exact support recovery asymptotically fails for all thresholding procedures in the sense of \eqref{eq:support-recovery-failure}.
 \end{theorem}
 
@@ -94,16 +94,17 @@ larger alternatives. This fact will be formalized in Lemma \ref{lemma:monotonici
 \begin{theorem} \label{thm:Gaussian-error-approx-boundary}
 In the context of Theorem \ref{thm:Gaussian-error-exact-boundary}, the function 
 \begin{equation} \label{eq:approx-boundary-Gaussian}
-    h(\beta) = \beta
+    f_{\mathrm{A}}(\beta) = \beta
 \end{equation}
 characterizes the phase transition of approximate support recovery problem.  Specifically the following two results hold.\\
 
-{\rm (i)} If $\underline{r} > {h}(\beta)$, then the Benjamini-Hochberg procedure (defined in Section \ref{sec:statistical-procedures}) with slowly 
+{\rm (i)} If $\underline{r} > f_{\mathrm{a}}(\beta)$, then the Benjamini-Hochberg procedure (defined in Section \ref{sec:statistical-procedures}) with slowly 
 vanishing nominal FDR levels (as defined in Definition \ref{def:slowly-vanishing}) achieves asymptotically approximate support recovery in the sense of \eqref{eq:support-recovery-success}.\\ 
 
 {\rm (ii)}
-Conversely, if $\overline{r} < {h}(\beta)$, then approximate support recovery asymptotically fails in the sense of \eqref{eq:support-recovery-failure} for all thresholding procedures.
+Conversely, if $\overline{r} < f_{\mathrm{a}}(\beta)$, then approximate support recovery asymptotically fails in the sense of \eqref{eq:support-recovery-failure} for all thresholding procedures.
 \end{theorem}
+
 
 \begin{proof}[Necessary condition in Theorem \ref{thm:Gaussian-error-approx-boundary}]
 We first show part {\rm (ii)}.  That is, when $\overline{r} < \beta$, no thresholding procedure is able to achieve approximate support recovery.
@@ -313,18 +314,25 @@ The proof for the sufficient condition is complete.
 \label{subsec:exact-approx-support-recovery-Gaussian}
 
 We now derive two new asymptotic phase transition results for the \emph{asymmetric} statistical risks, \eqref{eq:risk-exact-approx} and \eqref{eq:risk-approx-exact}, in the Gaussian error models.
+As discussed in Section \ref{sec:risks}, the exact-approximate support recovery risk is the natural criteria when considering the marginal power of discovery while controlling for family-wise error rates in applications such as GWAS.
+
+Although there have been discussions of weighted sums of type I and type II errors in the literature (see, e.g., Genovese and Wasserman \citep{genovese2002operating} Section 6, where the authors sought to minimize $\textrm{FDR} + \lambda\textrm{FNR}$), asymptotic limits were not discussed.
+We point out that the asymptotic limits for the unequally-weighted risks are no different from the equally-weighted risk, so long as $\lambda$ is bounded away from zero and infinity.
+This is because $\textrm{FDR} + \lambda\textrm{FNR}$ vanishes if and only if both FDR and FNR vanish; conversely, non-vanishing FDR and FNR is equivalent to non-vanishing weighted sums.
+Therefore, a different phase transition would only arise if we weight the type I and type II errors by combining family-wise error metrics with marginal error rates.
+
 The next theorem describes the phase transition in the exact-approximate support recovery problem.
 
 \begin{theorem} \label{thm:Gaussian-error-exact-approx-boundary}
 In the context of Theorem \ref{thm:Gaussian-error-exact-boundary}, the function 
 \begin{equation} \label{eq:exact-approx-boundary-Gaussian}
-    \widetilde{g}(\beta) = 1
+    f_{\mathrm{EA}}(\beta) = 1
 \end{equation}
 characterizes the phase transition of exact-approximate support recovery problem.  Namely, the following two results hold.\\
 
-{\rm (i)} If $\underline{r} > \widetilde{g}(\beta)$, then the procedures listed in Theorem \ref{thm:Gaussian-error-exact-boundary} with slowly vanishing nominal FWER levels (as defined in Definition \ref{def:slowly-vanishing}) achieve asymptotically exact-approximate support recovery in the sense of \eqref{eq:support-recovery-success}. \\
+{\rm (i)} If $\underline{r} > f_{\mathrm{EA}}(\beta)$, then the procedures listed in Theorem \ref{thm:Gaussian-error-exact-boundary} with slowly vanishing nominal FWER levels (as defined in Definition \ref{def:slowly-vanishing}) achieve asymptotically exact-approximate support recovery in the sense of \eqref{eq:support-recovery-success}. \\
 
-{\rm (ii)} Conversely, if $\overline{r} < \widetilde{g}(\beta)$, then for any thresholding procedure $\widehat{S}$, the exact-approximate support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{EA}}(\beta)$, then for any thresholding procedure $\widehat{S}$, the exact-approximate support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
 \end{theorem}
 
 The phase transition boundary \eqref{eq:exact-approx-boundary-Gaussian} is visualized in Figure \ref{fig:phase-Gaussian-errors}. The proof of this result
@@ -350,7 +358,7 @@ $$
 t_p=F^\leftarrow(1-\alpha/p)\sim(2\log{p}-2\log{\alpha})^{1/2} \sim(2\log{p})^{1/2}.
 $$
 
-Since $\underline{r}>\widetilde{g}(\beta)=1$, we can pick $q$ such that $1<q<\underline{r}$.
+Since $\underline{r}>f_{\mathrm{EA}}(\beta)=1$, we can pick $q$ such that $1<q<\underline{r}$.
 Let $t^* = \sqrt{2q\log{p}}$, we know that $t_p<t_p^*$ for large $p$.
 Therefore for large $p$, we have
 $$
@@ -370,7 +378,7 @@ The proof of the necessary condition follows similar structure as in the proof o
 \end{equation}
 which holds for any arbitrary thresholding procedure $\mathcal{R}$ and arbitrary real $u\in\R$.
 
-By the assumption that $\overline{r}<\widetilde{g}(\beta)=1$, we can pick $q$ such that $\overline{r}<q<1$ and let $u = t^*=\sqrt{2q\log{p}}$ in \eqref{eq:additive-error-exact-approx-boundary-proof-necessary-1}.
+By the assumption that $\overline{r}<f_{\mathrm{EA}}(\beta)=1$, we can pick $q$ such that $\overline{r}<q<1$ and let $u = t^*=\sqrt{2q\log{p}}$ in \eqref{eq:additive-error-exact-approx-boundary-proof-necessary-1}.
 By relative stability of iid Gaussian random variables \eqref{eq:relative-stability-Gaussian-maxima}, we have
 \begin{equation} \label{eq:additive-error-exact-approx-boundary-proof-necessary-2}
     \P\left[\frac{\max_{i\in S^c} x(i)}{\sqrt{2\log{p}}} > \frac{t^*}{\sqrt{2\log{p}}}\right] \to 1.
@@ -410,14 +418,14 @@ The last phase transition is in terms of the approximate-exact support recovery 
 \begin{theorem} \label{thm:Gaussian-error-approx-exact-boundary}
 In the context of Theorem \ref{thm:Gaussian-error-exact-boundary}, the function 
 \begin{equation} \label{eq:approx-exact-boundary-Gaussian}
-    \widetilde{h}(\beta) = \left(\sqrt{\beta} + \sqrt{1-\beta}\right)^2
+    f_{\mathrm{AE}}(\beta) = \left(\sqrt{\beta} + \sqrt{1-\beta}\right)^2
 \end{equation}
 characterizes the phase transition of approximate-exact support recovery problem.  Namely, the following two results 
 hold.\\
 
-{\rm (i)} If $\underline{r} > \widetilde{h}(\beta)$, then the Benjamini-Hochberg procedure with slowly vanishing nominal FDR levels (as defined in Definition \ref{def:slowly-vanishing}) achieves asymptotically approximate-exact support recovery in the sense of \eqref{eq:support-recovery-success}. \\
+{\rm (i)} If $\underline{r} > f_{\mathrm{AE}}(\beta)$, then the Benjamini-Hochberg procedure with slowly vanishing nominal FDR levels (as defined in Definition \ref{def:slowly-vanishing}) achieves asymptotically approximate-exact support recovery in the sense of \eqref{eq:support-recovery-success}. \\
 
-{\rm (ii)} Conversely, if $\overline{r} < \widetilde{h}(\beta)$, then for any thresholding procedure $\widehat{S}$, the approximate-exact support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
+{\rm (ii)} Conversely, if $\overline{r} < f_{\mathrm{AE}}(\beta)$, then for any thresholding procedure $\widehat{S}$, the approximate-exact support recovery fails in the sense of \eqref{eq:support-recovery-failure}.
 \end{theorem}
 
 %Theorem \ref{thm:Gaussian-error-approx-exact-boundary} is proved in Section \ref{sec:proofs}.
@@ -431,7 +439,7 @@ Since FDR control is guaranteed by the BH procedure, we only need to show that t
 \end{equation}
 where $\tau$ is the threshold for the BH procedure.
 
-By the assumption that $\underline{r}>\widetilde{h}(\beta)=(\sqrt{\beta}+\sqrt{1-\beta})^2$, we have $\sqrt{\underline{r}}-\sqrt{1-\beta}>\sqrt{\beta}$, so we can pick $q>0$, such that 
+By the assumption that $\underline{r}>f_{\mathrm{AE}}(\beta)=(\sqrt{\beta}+\sqrt{1-\beta})^2$, we have $\sqrt{\underline{r}}-\sqrt{1-\beta}>\sqrt{\beta}$, so we can pick $q>0$, such that 
 \begin{equation} \label{eq:approx-exact-boundary-proof-sufficient-2-Gaussian}
 \sqrt{\underline{r}}-\sqrt{1-\beta}>\sqrt{q}>\sqrt{\beta}.
 \end{equation}
@@ -510,18 +518,18 @@ This completes the proof of the necessary condition.
 Theorems \ref{thm:Gaussian-error-exact-boundary} through \ref{thm:Gaussian-error-approx-exact-boundary} allow us to asymptotically quantify the required signals sizes in support recovery problems, as well as in the global hypothesis testing problem in the Gaussian additive error model \eqref{eq:model-additive-Chapter3}. 
 Specifically, these results indicate that at all sparsity levels $\beta\in(0,1)$, the difficulties of the problems in terms of the required signal sizes have the following ordering
 $$
-f(\beta) < h(\beta) < \widetilde{g}(\beta) < \widetilde{h}(\beta) < g(\beta),
+f_{\mathrm{D}}(\beta) < f_{\mathrm{A}}(\beta) < f_{\mathrm{EA}}(\beta) < f_{\mathrm{AE}}(\beta) < f_{\mathrm{E}}(\beta),
 $$
 as previewed in Figure \ref{fig:phase-Gaussian-errors}.
 The ordering aligns with our intuition that the required signal sizes must increase as we move from detection to support recovery problems.
 Similarly, more stringent criteria for error control (e.g., FWER compared to FDR) require larger signals.
-We can now also compare $\widetilde{g}(\beta)$ and $\widetilde{h}(\beta)$, whose ordering may not be clear from this line of reasoning.
+We can now also compare $f_{\mathrm{EA}}(\beta)$ and $f_{\mathrm{AE}}(\beta)$, whose ordering may not be clear from this line of reasoning.
 
 
 \medskip
 
 Our last comment is on the gap between FDR and FWER under sparsity assumptions. 
-Although it is believed that FWER control is sometimes too stringent compared to, say, FDR control in support recovery problems, the fact that all three thresholds (detection, weak, and strong classification) involve the same scaling indicates that the difficulties of the three problems (signal detection, approximate, and exact support recovery) are comparable when signals are very sparse, i.e., when $\beta$ is close to 1.
+Although it is believed that FWER control is sometimes too stringent compared to, say, FDR control in support recovery problems, the fact that all five thresholds involve the same scaling indicates that the difficulties of the problems (signal detection, and the four support recovery problems) are comparable when signals are very sparse, i.e., when $\beta$ is close to 1.
 This is illustrated with the next example.
 
 \begin{example}[Power analysis for variable selection] \label{exmp:gap-when-signal-sparse}
@@ -532,7 +540,7 @@ The required signal sizes increases, but are within the same order of magnitude.
 
 If $m$ independent copies $x_1,\ldots,x_m$ of the observations were made on the same set of $p$ locations, then by taking location-wise averages, $\overline{x}_{m}(j) = \frac{1}{m}\sum_{i=1}^{m} x_i(j)$,
 we can reduce error standard deviation, and hence boost the signal-to-noise ratio, by a factor of $\sqrt{m}$.
-By the simple calculations above, if $m$ samples are needed to detect (sparse) signals of a certain magnitude, then $3m$ samples will enable approximate support recovery with FDR control, and in fact, $9m$ samples would enable exact support recovery with FWER control.
+By the simple calculations above, if $m$ samples are needed to detect (sparse) signals of a certain magnitude, then $3m$ samples will enable approximate support recovery with false discovery and non-discovery control, and in fact, $9m$ samples would enable exact support recovery with family-wise error rates control.
 \end{example}
 
 On the other hand, the gap between FDR and FWER is much larger when signals are dense.

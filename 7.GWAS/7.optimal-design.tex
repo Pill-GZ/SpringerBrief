@@ -9,7 +9,7 @@ Fortunately, the conditional distributions of genotypes in the healthy control g
 % Assume (after appropriate relabelling, hence without loss of generality) that the first variant is associated with an increased risk of disease, and is henceforth referred to as the risk variant.
 We denote the conditional frequency of the first genetic variant in the control group as $(f, 1-f)$, where
 \begin{equation} \label{eq:RAF}
-    f := \mu_{21} / \phi_2.
+    f := \mu_{21} / \phi_2 = \mu_{21}/ (1-\phi_1).
 \end{equation}
 The multinomial probability is fully parametrized by the new trio: $(f, \phi_1, R)$.
 \begin{center}
@@ -57,7 +57,7 @@ the optimal design $(\phi^*_1, \phi^*_2)$ that maximizes the signal size per sam
 	w^2 = \frac{f(1-f)\phi_1(1-\phi_1)(R-1)^2}{\left[\phi_1 R + (1-\phi_1)D\right]\left[\phi_1 + (1-\phi_1)D\right]},
 	\end{equation}
 	where $D = fR+1-f > 0$.
-	Therefore, he derivative of \eqref{eq:reparametrize-2-by-2-table-3} with respect to $\phi_1$ is
+	Therefore, the derivative of \eqref{eq:reparametrize-2-by-2-table-3} with respect to $\phi_1$ is
 	\begin{equation} \label{eq:signal-size-first-derivative}
 	\frac{\mathrm{d}w^2}{\mathrm{d}\phi_1} = 
 	\frac{f(1-f)(R-1)^2}{\left[\phi_1 R+(1-\phi_1)D\right]^2 \left[\phi_1+(1-\phi_1)D\right]^2} \left[(D^2-R)\phi_1^2 - 2D^2\phi_1 + D^2\right].
@@ -73,7 +73,11 @@ the optimal design $(\phi^*_1, \phi^*_2)$ that maximizes the signal size per sam
 	This implies that the first derivative \eqref{eq:signal-size-first-derivative} is strictly decreasing on $[0,1]$. 
 	Since the first derivative \eqref{eq:signal-size-first-derivative} is strictly positive at $\phi_1=0$, and strictly negative at $\phi_1=1$, it must have a unique zero between 0 and 1, and hence, the solution to $(D^2-R)\phi_1^2 - 2D^2\phi_1 + D^2 = 0$ in the interval of $[0,1]$ must be the maximizer of \eqref{eq:reparametrize-2-by-2-table-3} --- when $D^2-R>0$, the smaller of the two roots maximizes \eqref{eq:reparametrize-2-by-2-table-3}, and when $D^2-R<0$, it is the larger of the two.
 	They share the same expression ${D}/{(D+\sqrt{R})}$, which coincides with \eqref{eq:optimal-design}.
-	Finally, when $D^2=R$, the only root $\phi_1^*=1/2$, which also coincides with \eqref{eq:optimal-design}, is the maximizer of \eqref{eq:reparametrize-2-by-2-table-3}.
+	Finally, when $D^2=R$, the only root $\phi_1^*=1/2$, which also coincides with \eqref{eq:optimal-design}, is the maximizer 
+	of \eqref{eq:reparametrize-2-by-2-table-3}.  
+	%\stilian{This is so, in particular, when 
+	%$R=1$ and confirms our intuition that the symmetric design is optimal when the odds ratio 
+	%equals one.  This is not the only case when symmetrical designs are optimal though. }{\fbox{ Am I CORRECT?}}
 \end{proof}
 
 Of particular interest in the genetics literature are genetic variants with very low allele frequencies in the control group (i.e., $f\approx 0$), known as rare variants.

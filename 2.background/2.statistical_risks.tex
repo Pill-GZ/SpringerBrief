@@ -94,11 +94,10 @@ The relationship between probability of support recovery $\P[\widehat{S} = S]$, 
 \medskip
 
 Notice that all risk metrics introduced so far penalize false discoveries and missed signals somewhat symmetrically --- the approximate support recovery risk combines proportions of errors, the exact support recovery risk combines probabilities of errors, and the Hamming loss increments the risk by one regardless of the types of errors made.
-In applications, however, attitudes towards Type I and Type II errors are often different.
-In the example of GWAS, where the number of candidate locations $p$ could be in the millions, researchers are typically interested in the marginal (location-wise) power of discovery, while exercising stringent (family-wise) false discovery control. 
-Such types of asymmetric risks, while important in applications, have not been studied theoretically.  
-This asymmetric consideration, and in particular the GWAS application, prompts us to consider risks that weigh both the family-wise error rate and the marginal power of discovery.
-One such risk metric is what shall be referred to as the \emph{exact-approximate} support recovery risk
+In applications, however, attitudes towards false discoveries and missed signals are often asymmetric.
+In the example of GWAS, where the number of candidate locations $p$ could be in the millions, and a class imbalance between the number of nulls and signals exists, researchers are typically interested in the marginal (location-wise) power of discovery, while exercising stringent (family-wise) false discovery control. 
+These types of asymmetric considerations, while important in applications, have not been studied theoretically.  
+For example, the GWAS application motivates the \emph{exact-approximate} support recovery risk, which weighs both the family-wise error rate and the marginal power of discovery:
 \begin{equation} \label{eq:risk-exact-approx}
     \mathrm{risk}^{\mathrm{EA}}(\mathcal{R}) := \mathrm{FWER}(\mathcal{R}) + \mathrm{FNR}(\mathcal{R}).
 \end{equation}

@@ -1,7 +1,8 @@
-We illustrate with simulations the phase transition phenomena in the chi-square model, and compare numerically the required signal sizes in support recovery problems between the two types of alternatives in the additive error model.
+We illustrate with simulations the phase transition phenomena in the chi-square model, and compare numerically the required signal sizes in support recovery problems between the two types of alternatives in the additive error model.  
+% These results can provide further guidance to practitioners on when to expect genetic association discoveries. 
 % We also demonstrate the fundamental trade-off between odds ratios and relative frequencies in association studies, as outlined in Proposition \ref{prop:signal-size-odds-ratio} and Corollary \ref{cor:signal-size-odds-ratio-conditional-frequency}, using evidence from large-scale genetic studies.
 
-\subsection{Exact support recovery}
+\subsection{Exact support recovery} \label{sec:ch7-exact-support-numerics}
 
 The sparsity of the signal vectors in the experiments are parametrized as in \eqref{eq:signal-sparsity}. 
 Signal sizes are assumed equal with magnitude $\lambda(i)=2r\log{p}$ for $i\in S$.
@@ -69,7 +70,7 @@ We conduct further experiments to examine the optimality claims in Theorem \ref{
 We also examine the claims in Section \ref{subsec:one-vs-two-sided}, and compare the one-sided alternatives in Gaussian additive models with the two-sided alternatives (or equivalently, the chi-square model with $\nu=1$).
 We apply Bonferroni's procedure and the oracle thresholding procedure in both settings.
 
-Experiments were repeated 1000 times for a grid of signal size values ranging from $r=0$ to $6$, and for dimensions $10^2, 10^3$, and $10^5$.
+The experiments were repeated 1000 times for a grid of signal size values ranging from $r=0$ to $6$, and for dimensions $10^2, 10^3$, and $10^5$.
 Results of the experiments, shown in Figure \ref{fig:one-vs-two-sided-exact_support_recovery}, suggest vanishing difference between difficulties of two-sided vs one-sided alternatives in the additive error models, as well as vanishing difference between the powers of Bonferroni's procedures and the oracle procedures as $p\to\infty$.
 
 \begin{figure}
@@ -97,8 +98,9 @@ t_p(x, S) \in \argmin_{t\in\R} \frac{|\widehat{S}(t)\setminus S|}{\max\{|\wideha
 $$
 where $\widehat{S}(t) = \{i\;|\;x(i)\ge t\}$;
 in implementation, we only need to scan the values of observations $t\in\{x(1), \ldots, x(p)\}$. 
-The nominal FDR level for the BH procedure is set at $1/(5{\log{p}})$, therefore slowly vanishing, in line with the assumptions in Theorem \ref{thm:chi-squared-approx-boundary}; all other parameters are identical to that in the experiments for exact support recovery.
-Results of the experiments are shown in Figure \ref{fig:one-vs-two-sided-approx_support_recovery} and in the middle column of Figure \ref{fig:phase-simulated-chi-squared}.
+The nominal FDR level for the BH procedure is set at $1/(5{\log{p}})$, therefore slowly vanishing, in line with the assumptions in Theorem \ref{thm:chi-squared-approx-boundary}; all other parameters are identical to that in the experiments for exact support recovery in 
+Section \ref{sec:ch7-exact-support-numerics}.  The results of the experiments are shown in 
+Figure \ref{fig:one-vs-two-sided-approx_support_recovery} and in the middle column of Figure \ref{fig:phase-simulated-chi-squared}.
 
 We also examine the boundary described in Theorem \ref{thm:chi-squared-exact-approx-boundary}.
 Experimental settings are identical to that in the experiments for approximate support recovery.
@@ -107,7 +109,7 @@ We compare the performance of the BH procedure with an oracle procedure with thr
 $$
 t_p(x, S) \in \min_{i\in S} x(i),
 $$
-and visualize results of the experiments in the right column of Figure \ref{fig:phase-simulated-chi-squared}.
+and visualize the results of the experiments in the right column of Figure \ref{fig:phase-simulated-chi-squared}.
 Notice that the BH procedure sets its threshold somewhat higher than the oracle, especially for small $\beta$'s. 
 The empirical risk of the oracle procedure (not shown here in the interest of space) follows much more closely the predicted boundary \eqref{eq:approx-exact-boundary-chisquared}.
 

@@ -11,7 +11,8 @@ Recall Theorem \ref{thm:chi-squared-exact-approx-boundary} predicts that FWER an
 \begin{equation}
     r = \frac{\lambda}{2\log{p}} = \frac{w^2n}{2\log{p}} > 1.
 \end{equation}
-Therefore, if we were to apply FWER-controlling procedures at low nominal levels (say, $5\%$), then the FNR would experience a phase transition in the sense that, if
+Therefore, if we were to apply FWER-controlling procedures at low nominal levels (say, $5\%$), then the FNR would experience a phase transition
+in the following sense.  If the signal size is strong enough, i.e., 
 \begin{equation} \label{eq:power-1-region}
     r>1 \iff w^2 > \frac{2\log{p}}{n},
 \end{equation}
@@ -58,7 +59,7 @@ We calculate this marginal power as a function of the parameters $(f,R)$ in thre
 \end{itemize}
 and visualize the results as heatmaps\footnote{Since genetic variants can always be relabelled such that Variant 1 is positively associated with Cases, we only produce part of the diagram where $R>1$.
 Sample sizes marked in the figure are adjusted by a factor of $1/2$, to reflect the genetic context where a pair of alleles are measured for every individual at every genomic location.} (referred to as OR-RAF diagrams) in Figure \ref{fig:OR-RAF_GWAS}.
-These parameter values are chosen so that $\log{p}/n$ are roughly constant (around $4.6\times10^{-5}$).
+These parameter values are chosen so that $\log(p)/n$ are roughly constant (around $4.6\times10^{-5}$).
 
 We also overlay ``equi-signal'' curves, i.e., functions implicitly defined by the equations $r=c$ for a range of $c$ (dashed curves), and highlight the predicted boundary of phase transition for the exact-approximate support recovery problem $r=1$ (red curves).
 The change in marginal power clearly sharpens around the predicted boundary $r=1$ as dimensionality diverges.
@@ -86,9 +87,9 @@ In a GWAS with $p = 10^6$ genomic marker locations, researchers wish to locate g
 Specifically, they wish to maximize power in the region where genetic variants have risk allele frequencies of $0.01$ and odds ratios of $1.2$.
 By Corollary \ref{cor:optimal-design}, the optimal design has a fraction of cases $\phi^* = 0.478$, yielding the statistical signal size per sample $w^2\approx9.00\times10^{-5}$ according to Corollary \ref{cor:signal-size-odds-ratio-conditional-frequency}.
 
-If we wish to achieve exact-approximate support recovery in the sense of \eqref{eq:support-recovery-success}, Theorem \ref{thm:chi-squared-exact-approx-boundary} predicts that the signal size parameter $r$ has to be at least $\widetilde{g}(\beta)= 1$.
+If we wish to achieve exact-approximate support recovery in the sense of \eqref{eq:support-recovery-success}, Theorem \ref{thm:chi-squared-exact-approx-boundary} predicts that the signal size parameter $r$ has to be at least $f_{\mathrm{EA}}(\beta)= 1$.
 This signal size calls for a sample size of $n = \lambda / w^2 = 2r\log(p)/w^2 \approx 307,011$.
-In a typically GWAS, a pair of alleles are sequenced for every marker location, bringing the required number of subjects in the study to $n/2 \approx 153,509$.
+In a typical GWAS, a pair of alleles are sequenced for every marker location, bringing the required number of subjects in the study to $n/2 \approx 153,509$.
 \end{example}
 
 In comparison, a more accurate power calculation directly using \eqref{eq:power-approximation} predicts that $n / 2 = 165,035$ subjects are needed, under the set of parameters ($p=10^6$, $f=0.01$, $R=1.2$) and $\mathrm{FWER}=0.05$, $\mathrm{FNR}=0.5$; this is $7\%$ higher than our crude asymptotic approximation.
