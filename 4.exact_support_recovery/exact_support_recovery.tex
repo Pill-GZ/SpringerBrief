@@ -30,18 +30,14 @@ Although our method of analysis applies to all light-tailed error distributions 
 Extensions of the results to other classes of error models are presented in Section \ref{suppsec:other-boundaries}.
 
 This generalized distributional assumption on the errors call for a suitable generalization of the signal size parametrization in order to analyze the problem as we did in the previous chapter.
-\stilian{As before, we assume the signals in model \eqref{eq:model-additive} to be a sparse vector
-$\mu_p = \left(\mu_p(i)\right)_{i=1}^p$, with support $S_p:= \{i\, :\, \mu_p(i)\not = 0\}$.  The sparsity of $\mu_p$  with a few exceptions which will be explicitly stated, is parametrized in terms of a {\em fixed} regularly varying sequence $\{s_p^\dagger\}$ as follows:
-\begin{equation} \label{eq:sparsity-parametrized-new}
+As before, we assume the signals in model \eqref{eq:model-additive} to be a sparse vector $\mu_p = \left(\mu_p(i)\right)_{i=1}^p$, with support $S_p:= \{i\, :\, \mu_p(i)\not = 0\}$.
+The sparsity of $\mu_p$,  with a few exceptions which will be explicitly stated, is parametrized in terms of a {\em fixed} regularly varying sequence $\{s_p^\dagger\}$ as follows:
+\begin{equation} \label{eq:sparsity-parametrized}
  |S_p| =   \lfloor s_p^\dagger \rfloor,\ \ \mbox{ where }\ \ s_p^\dagger := \ell(p) p^{1-\beta},
 \end{equation}
-for some fixed slowly varying function $\ell$.  Recall that a function $\ell$ is slowly varying 
-if $\ell(\lambda t)/\ell(t) \to 1$, as $t\to\infty$, for all $\lambda>0$.   As before, the exponent $$0 <\beta \le 1$$ controls the sparsity.}{
- where its sparsity, with a few exceptions which will be explicitly stated, is parametrized as
-\begin{equation} \label{eq:sparsity-parametrized}
-   s = |S_p| = \lfloor p^{1 -\beta} \rfloor, % \quad \text{with } 0 < \beta \le 1 \; \text{(fixed)},
-\end{equation}
-with $0 < \beta \le 1$ fixed.}
+for some fixed slowly varying function $\ell$.  
+Recall that a function $\ell$ is slowly varying if $\ell(\lambda t)/\ell(t) \to 1$, as $t\to\infty$, for all $\lambda>0$. 
+As before, the exponent $$0 <\beta \le 1$$ controls the sparsity.
 
 We assume that the non-zero entries of $\mu$ are positive and take values in the interval $\left[\underline{\Delta},\overline{\Delta}\right)\subset (0,\infty)$.
 That is, $0<\underline{\Delta}\le\mu(i)<\overline{\Delta}\le+\infty$, for all $i\in S_p$.

@@ -426,7 +426,7 @@ for any error dependence structure such that ${\cal E}\in U(F)$ and ${(-\cal E)}
 \begin{proof}%[Proof of Corollary \ref{cor:point-wise-minimax}]
 The first conclusion \eqref{eq:point-wise-minimax-above} is a restatement of Theorem \ref{thm:sufficient}.
 
-For the second statement \eqref{eq:point-wise-minimax-below}, since $\underline{r}<f_{\mathrm{E}}(\beta)$, we can pick a sequence $\mu^*\in\Theta_p^+(\beta, \underline{r})$ such that \stilian{$|S_p| = \lfloor \ell(p) p^{1-\beta} \rfloor$}{$|S_p| = \lfloor p^{1-\beta}\rfloor$}, with signals having the same signal size $\mu(i)=(2r\log{p})^{1/\nu}$ for all $i\in S_p$, where $\underline{r}<{r}<f_{\mathrm{E}}(\beta)$.
+For the second statement \eqref{eq:point-wise-minimax-below}, since $\underline{r}<f_{\mathrm{E}}(\beta)$, we can pick a sequence $\mu^*\in\Theta_p^+(\beta, \underline{r})$ such that $|S_p| = \lfloor \ell(p) p^{1-\beta} \rfloor$, with signals having the same signal size $\mu(i)=(2r\log{p})^{1/\nu}$ for all $i\in S_p$, where $\underline{r}<{r}<f_{\mathrm{E}}(\beta)$.
 For this particular choice of $\mu^*$ we have $\mu^*\in\Theta_p^-(\beta, \overline{r})$ (recall \eqref{eq:minimax-signal-config-under}),
 where $r<\overline{r}<f_{\mathrm{E}}(\beta)$, and according to Theorem \ref{thm:necessary}, we obtain 
 $\lim_{p\to\infty} \inf_{\widehat{S}_p\in \cal T} \mathbb P[\widehat{S}_p \neq S_p] = 1$, for all dependence structures in the URS class.
@@ -515,7 +515,7 @@ since the supremum is bounded from below by expectations.
 In particular, define $\pi$ to be the uniform distribution over the configurations $\Theta_p^*\times I(f)$, where
 \begin{align*}
     \Theta_p^* &=
-    \{\mu\in\mathbb{R}^d:\;|S_p|=\stilian{\lfloor \ell(p)p^{1-\beta} \rfloor}{\lfloor p^{1-\beta}\rfloor},\;\mu(i)=0\;\text{for all }i\not\in S, \;\text{and}\\
+    \{\mu\in\mathbb{R}^d:\;|S_p|=\lfloor \ell(p)p^{1-\beta} \rfloor,\;\mu(i)=0\;\text{for all }i\not\in S, \;\text{and}\\
     &\quad\quad\mu(i) = (\nu{r}\log{p})^{1/\nu}\;\text{for all }i\in S,\;\text{where}\;\underline{r}<r<f_{\mathrm{E}}(\beta)\},
 \end{align*}
 and 
