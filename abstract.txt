@@ -1,0 +1,25 @@
+This dissertation consists of results on the fundamental performance limits of statistical procedures in sparse signal detection and support recovery problems.
+We begin by studying idealized models where sparse high-dimensional signals are observed with independent additive Gaussian noise.
+We derive the minimal conditions needed for statistical procedures to simultaneously control false discovery (in terms of Type I error, {FDR}, or {FWER}) and missed detection (in terms of Type II error, {FNR}, or {FWNR}).
+Several new phase transition phenomena are characterized.
+Specifically, we show that, depending on the signal sparsity and signal sizes, the sum of the statistical risks for false discovery  and missed detection either can be controlled at very low levels in high dimensions, or must be at least 1 in the limit for all thresholding procedures.
+
+The phase transition in the case of family-wise type I and type II error control is further generalized to cover non-Gaussian and dependent observations.
+We show that the sharp 0-1 law continues to hold under a very broad class of error dependence structures, and for a very broad class of error distributions with light, rapidly varying, tails.
+The key to this important generalization is a certain {concentration of maxima} phenomenon known as relative stability. 
+We demystify the dependence conditions of the phase transition by providing a complete characterization of the relative stability concept for Gaussian triangular arrays in terms of their correlation structures.
+% The proof uses classic Sudakov-Fernique and Slepian lemma arguments along with a curious application of Ramsey's coloring theorem. 
+
+Finally, motivated by marginal screenings of categorical variables, we study high-dimensional multiple testing problems where test statistics have approximate chi-square distributions.
+Phase transitions are established for support recovery problems in high-dimensional chi-square models prevalent in statistical genetics applications.
+Remarkably, the degree-of-freedom parameters in the chi-square distributions do not affect the boundaries in all phase transitions.
+% Several well-known procedures are shown to attain these boundaries.
+We also elucidate on the notion of signal sizes in association tests by characterizing its relationship with marginal frequencies, odds ratio, and sample sizes in $2\times2$ contingency tables. 
+This allows us to illustrate an interesting manifestation of the phase transition phenomena in % \ac{GWAS},
+genome-wide association studies (GWAS), 
+and explain the long-observed sharp trade-off between allele frequency and penetrance in GWAS.
+As an auxiliary result, we show that, perhaps surprisingly, given total sample sizes, balanced designs in such association studies rarely deliver optimal power. % for detecting rare genetic variants with high odds ratios.
+We provide explicit formulas for power calculations, as well as software tools for finding the optimal study designs.
+% The phase transition phenomena is demonstrated with numerical simulations, and with empirical evidence from GWAS.
+% data from the NHGRI-EBI GWAS catalog.
+

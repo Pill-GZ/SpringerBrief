@@ -1,0 +1,293 @@
+%%%%%%%%%%%%%%%%%%%% book.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% sample root file for the chapters of your "monograph"
+%
+% Use this file as a template for your own input.
+%
+%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% RECOMMENDED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[graybox,envcountchap,sectrefs]{svmono}
+
+
+
+% choose options for [] as required from the list
+% in the Reference Guide
+
+%\usepackage{mathptmx}
+%\usepackage{helvet}
+%\usepackage{courier}
+%
+\usepackage{etoolbox}
+ \AtEndEnvironment{proof}{\phantom{}\qed} %Automatically add qed symbol to the end of proof environment
+
+\usepackage{type1cm}         
+
+\usepackage{makeidx}         % allows index generation
+\usepackage{graphicx}        % standard LaTeX graphics tool
+                             % when including figure files
+\usepackage{multicol}        % used for the two-column index
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+
+\usepackage{newtxtext}       % 
+\usepackage{newtxmath}       % selects Times Roman as basic font
+
+% see the list of further useful packages
+% in the Reference Guide
+
+\makeindex       % used for the subject index
+                         % please use the style svind.ist with
+                         % your makeindex program
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%  M Y  FORMATTING AND DEFINITIONS
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Use natbib for citation styling
+\usepackage{natbib}
+%\bibliographystyle{abbrvnat}
+\bibliographystyle{apa}
+\setcitestyle{authoryear,open={(},close={)}}
+
+%
+% My definitions:
+%
+
+%
+%
+%
+\def\DateEdited{\today}
+%
+%
+%
+
+\def\bbN{{\mathbb N}}
+\def\bbZ{{\mathbb Z}}
+\def\bbR{{\mathbb R}}
+\def\bbC{{\mathbb C}}
+
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+
+\newcommand{\var}{{\rm {Var}}}
+\newcommand{\cov}{{\rm {Cov}}}
+
+\def\N{\mathbb N}
+\def\R{\mathbb R}
+\def\Z{\mathbb Z}
+\usepackage{bm}
+\renewcommand\vec[1]{{\bm #1}}
+
+\def\alert#1{\fbox{#1}}
+\def\what{\widehat}
+\def\noi{\noindent}
+\def\MSE{{\rm m.s.e.}}
+\newcommand\comment[1]{{}}
+\def\refeq#1{(\ref{e:#1})}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}}
+\newcommand\version[2]{{#1}} % The short version of the paper
+%\newcommand\version[2]{{#2}} % The long version of the paper
+
+\newcommand\stilian[2]{{\color{blue}\fbox{Stilian:} #1 }{\color{red}#2}}
+%\newcommand\stilian[2]{#1}
+
+%\usepackage{amsthm}
+%\startlocaldefs
+%\numberwithin{equation}{chapter}
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}[chapter]
+% my defs
+%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{assumption}{Assumption}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+%\theoremstyle{remark}
+%\newtheorem{remark}[theorem]{Remark}
+%\newtheorem{example}[theorem]{Example}
+%\endlocaldefs
+
+
+%
+%
+% QUICK HACKS
+%
+\def\ac#1{#1}
+\usepackage{bbm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{makeidx}
+\usepackage[normalem]{ulem}
+
+%
+% Setting table of contents depth,
+%
+\setcounter{tocdepth}{1}
+
+\begin{document}
+
+\author{Zheng Gao \\ Stilian Stoev}
+\title{Concentration of Maxima and Fundamental Limits in High-Dimensional Testing and Inference}
+%\title{Concentration of Maxima and Phase Transitions in High-Dimensional Support Recovery}
+\maketitle
+
+\frontmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\include{author/dedication}
+%\include{author/foreword}
+%\include{author/preface}            
+%\include{author/acknowledgement}
+
+
+
+\tableofcontents
+
+\include{acronyms}
+
+\include{preamble}
+
+\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Introduction and Guiding Examples}
+\label{chap:intro}
+\input{./1.intro/introduction.tex}
+
+\chapter{Risks, Procedures, and Error Models} %Technical Preparations and Background}
+\label{chap:background}
+\input{./2.background/background.tex}
+
+
+%\chapter{The Phase Transition Phenomena in Independent Gaussian Error Models} 
+\chapter{A Panorama of Phase Transitions}
+\label{chap:phase-transitions}
+\input{./3.phase_transitions/phase_transitions.tex}
+
+
+\chapter{Exact Support Recovery Under Dependence }% and Minimax Optimality} 
+\label{chap:exact-support-recovery}
+\input{./4.exact_support_recovery/exact_support_recovery.tex}
+
+\chapter{Bayes and Minimax Optimality}
+\label{chap:optimality}
+\input{./5.Bayes.optimality/5.Bayes_optimality_and_minimax.tex}
+
+\chapter{Uniform Relative Stability for Gaussian Arrays}
+\label{chap:URS}
+\input{./6.URS/URS.tex}
+
+
+\chapter{\comment{The Phase Transition Phenomena in}
+Fundamental Statistical Limits in Genome-wide Association Studies} 
+\label{chap:GWAS}
+\input{./7.GWAS/GWAS.tex}
+
+
+
+
+%\include{author/part}
+%\include{author/chapter}
+%\include{author/appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\include{author/glossary}
+%\include{author/solutions}
+
+
+\chapter*{Bibliography}
+
+%\printindex
+
+\vspace{-2in}
+\bibliography{./tex/thesis}
+
+\backmatter
+\appendix
+ \input{./supplement/supplement.tex}
+
+%\chapter{}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+% Email
+%\email{gaozheng@umich.edu\\sstoev@umich.edu}
+
+% ORCID
+%\ORCID{xxxx-xxxx-xxxx-xxxx}
+
+% Department
+%\department{Statistics}
+
+% Year of completion
+%\year=2020
+
+% Frontispiece
+%\frontispiece{
+%\includegraphics[width=5.5in]{./pics/frontispiece.jpg}\\
+%\vspace{1in}
+%\begin{flushleft}
+%{%\fontfamily{pbk}\selectfont 
+%For what is a man, what has he got? %\\
+%If not himself, then he has naught.
+%}
+%\end{flushleft}
+%}
+
+% Default style for front pages
+%\frontpagestyle{1}
+
+% Dedication
+\dedication{ %
+\centering
+}
+
+% Acknowledgments
+\acknowledgments{ %
+}
+
+% This command sets the width of the acknowledgments area as a fraction
+% of the total width of the text area.
+\acknowledgmentswidth{0.8}
+
+% Preface
+% \preface[2]{ %
+% This is a preface.}
+
+
+% Commands to hide or show lists of figures, tables, etc.
+\hidelistoftables
+% \showlistofprograms
+% \showlistofappendices
+
+% Definition of any abbreviations used.
+%% DOCUMENT AREA
+\begin{document}
+
+
+
+% \appendix
+% \chapter{U-PASS: A Software for Unified Power Analysis and Forensics for Qualitative Traits in Genetic Association Studies} \label{app:UPASS}
+% \addcontentsline{toc}{chapter}{Appendix~\ref{app:UPASS}: U-PASS: A Software for Unified Power Analysis and Forensics for Qualitative Traits in Genetic Association Studies}
+% \input{./appendix/UPASS.tex}
+
+% \chapter{Using Appendices} \label{app:appendix2}
+
+% Give this command the relative path to the .bib file.
+\bibliography{./tex/thesis}
+
+\end{document}
+\grid

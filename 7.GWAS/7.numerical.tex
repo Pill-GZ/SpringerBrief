@@ -20,21 +20,21 @@ The numerical results suggest good accuracy of the predicted boundaries in high-
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.32\textwidth]{sim_strong_boundary/simulated_strong_boundary_chi-squared_nu1_p10000.eps}
-    \includegraphics[width=0.32\textwidth]{sim_weak_boundary/simulated_weak_boundary_chi-squared_nu1_p10000.eps}
-    \includegraphics[width=0.32\textwidth]{sim_approx-exact_boundary/simulated_approx-exact_boundary_chi-squared_nu1_p10000.eps}
+	\includegraphics[width=0.32\textwidth]{figures/sim_strong_boundary/simulated_strong_boundary_chi-squared_nu1_p10000.eps}
+    \includegraphics[width=0.32\textwidth]{figures/sim_weak_boundary/simulated_weak_boundary_chi-squared_nu1_p10000.eps}
+    \includegraphics[width=0.32\textwidth]{figures/sim_approx-exact_boundary/simulated_approx-exact_boundary_chi-squared_nu1_p10000.eps}
     
-	\includegraphics[width=0.32\textwidth]{sim_strong_boundary/simulated_strong_boundary_chi-squared_nu2_p10000.eps}
-    \includegraphics[width=0.32\textwidth]{sim_weak_boundary/simulated_weak_boundary_chi-squared_nu2_p10000.eps}
-    \includegraphics[width=0.32\textwidth]{sim_approx-exact_boundary/simulated_approx-exact_boundary_chi-squared_nu2_p10000.eps}
+	\includegraphics[width=0.32\textwidth]{figures/sim_strong_boundary/simulated_strong_boundary_chi-squared_nu2_p10000.eps}
+    \includegraphics[width=0.32\textwidth]{figures/sim_weak_boundary/simulated_weak_boundary_chi-squared_nu2_p10000.eps}
+    \includegraphics[width=0.32\textwidth]{figures/sim_approx-exact_boundary/simulated_approx-exact_boundary_chi-squared_nu2_p10000.eps}
 	
-	\includegraphics[width=0.32\textwidth]{sim_strong_boundary/simulated_strong_boundary_chi-squared_nu3_p10000.eps}
-    \includegraphics[width=0.32\textwidth]{sim_weak_boundary/simulated_weak_boundary_chi-squared_nu3_p10000.eps}
-    \includegraphics[width=0.32\textwidth]{sim_approx-exact_boundary/simulated_approx-exact_boundary_chi-squared_nu3_p10000.eps}
+	\includegraphics[width=0.32\textwidth]{figures/sim_strong_boundary/simulated_strong_boundary_chi-squared_nu3_p10000.eps}
+    \includegraphics[width=0.32\textwidth]{figures/sim_weak_boundary/simulated_weak_boundary_chi-squared_nu3_p10000.eps}
+    \includegraphics[width=0.32\textwidth]{figures/sim_approx-exact_boundary/simulated_approx-exact_boundary_chi-squared_nu3_p10000.eps}
 	
-	\includegraphics[width=0.32\textwidth]{sim_strong_boundary/simulated_strong_boundary_chi-squared_nu6_p10000.eps}
-    \includegraphics[width=0.32\textwidth]{sim_weak_boundary/simulated_weak_boundary_chi-squared_nu6_p10000.eps}
-    \includegraphics[width=0.32\textwidth]{sim_approx-exact_boundary/simulated_approx-exact_boundary_chi-squared_nu6_p10000.eps}
+	\includegraphics[width=0.32\textwidth]{figures/sim_strong_boundary/simulated_strong_boundary_chi-squared_nu6_p10000.eps}
+    \includegraphics[width=0.32\textwidth]{figures/sim_weak_boundary/simulated_weak_boundary_chi-squared_nu6_p10000.eps}
+    \includegraphics[width=0.32\textwidth]{figures/sim_approx-exact_boundary/simulated_approx-exact_boundary_chi-squared_nu6_p10000.eps}
 	\caption{The empirical risks of exact, approximate, and approximate-exact support recovery (left to right) in the chi-squared model \eqref{eq:model-chisq} with Bonferroni's procedure and the Benjamini-Hochberg procedure. 
 		We display results as a heatmap for $\nu=1, 2, 3, 6$ (first to last row) at dimension $p=10^4$ (left to right column), for a grid of sparsity levels $\beta$ and signal sizes $r$.
 		The experiments were repeated 1000 times for each sparsity-signal size combination; darker color indicates higher probability of exact support recovery.  
@@ -75,10 +75,10 @@ Results of the experiments, shown in Figure \ref{fig:one-vs-two-sided-exact_supp
 
 \begin{figure}
       \centering
-      \includegraphics[width=0.32\textwidth]{sim_one-vs-two-sided/exact_recovery_one-vs-two-sided_beta06_p100.eps}
-      \includegraphics[width=0.32\textwidth]{sim_one-vs-two-sided/exact_recovery_one-vs-two-sided_beta06_p1000.eps}
+      \includegraphics[width=0.32\textwidth]{figures/sim_one-vs-two-sided/exact_recovery_one-vs-two-sided_beta06_p100.eps}
+      \includegraphics[width=0.32\textwidth]{figures/sim_one-vs-two-sided/exact_recovery_one-vs-two-sided_beta06_p1000.eps}
       % \includegraphics[width=0.33\textwidth]{sim_one-vs-two-sided/exact_recovery_one-vs-two-sided_beta06_p10000.eps}
-      \includegraphics[width=0.32\textwidth]{sim_one-vs-two-sided/exact_recovery_one-vs-two-sided_beta06_p100000.eps}
+      \includegraphics[width=0.32\textwidth]{figures/sim_one-vs-two-sided/exact_recovery_one-vs-two-sided_beta06_p100000.eps}
       \caption{The empirical probability of exact support recovery of Bonferroni's procedure (solid curves) and the oracle procedure (dashed curves) in the chi-squared model with one degree of freedom (marked `2') in the additive Gaussian error model and under one-sided alternatives (marked `1'). 
       We simulate at dimensions $p=10^2, 10^3, 10^5$ (left to right) for a grid of signal sizes $r$ and sparsity level $\beta=0.6$.
       The experiments were repeated 1000 times for each method-model-signal-size combination. 
@@ -115,9 +115,9 @@ The empirical risk of the oracle procedure (not shown here in the interest of sp
 
 \begin{figure}
       \centering
-      \includegraphics[width=0.32\textwidth]{sim_one-vs-two-sided/approx_recovery_one-vs-two-sided_beta06_p100.eps}
-      \includegraphics[width=0.32\textwidth]{sim_one-vs-two-sided/approx_recovery_one-vs-two-sided_beta06_p1000.eps}
-      \includegraphics[width=0.32\textwidth]{sim_one-vs-two-sided/approx_recovery_one-vs-two-sided_beta06_p100000.eps}
+      \includegraphics[width=0.32\textwidth]{figures/sim_one-vs-two-sided/approx_recovery_one-vs-two-sided_beta06_p100.eps}
+      \includegraphics[width=0.32\textwidth]{figures/sim_one-vs-two-sided/approx_recovery_one-vs-two-sided_beta06_p1000.eps}
+      \includegraphics[width=0.32\textwidth]{figures/sim_one-vs-two-sided/approx_recovery_one-vs-two-sided_beta06_p100000.eps}
       \caption{The empirical risk of approximate support recovery of Benjamini-Hochberg's procedure (solid curves) and the oracle procedure (dashed curves) in the chi-squared model with one degree of freedom (marked `2') and in the additive Gaussian error model under one-sided alternatives (marked `1'). 
       We simulate at dimensions $p=10^2, 10^3, 10^5$ (left to right) for a grid of signal sizes $r$ and sparsity level $\beta=0.6$.
       The experiments were repeated 1000 times for each method-model-signal-size combination. 
