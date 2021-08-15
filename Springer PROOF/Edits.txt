@@ -1,3 +1,9 @@
-
+page 7, line 8: Replace, "And finally Sect." by "Section "
+page 14, line 22: Replace "diverge." by "deiverges."
+page 14, line 230: Add ":" after "exists"
+page 16, line 292: Please replace "that" by "those".
+page 16, line 314: Please re-format the reference to "(Donoho and Jin 2004)"
 page 18, line 363: Change "risk to fo to" to "risk to go to".
+page 19, line 382: Please add the words "is the generalized inverse of F." at the end of that sentence as indicated in the annotation.
+page 19, line 387: Add "the", i.e., "By the definition"
 page viii, line 49: Change "type thresholding" to "types of thresholding".
