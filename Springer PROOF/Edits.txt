@@ -36,4 +36,12 @@ This is a MINOR point and we can SKIP it.
 * page 42, line 441: Add "the" before "relative stability".
 * page 42, line 459: Delete "slightly" (if YOU THINK it is OK). I think the two problems ARE different so "slightly" is not needed.
 * page 43, line 468: Add "the" before "approximate".
-* page 45, line 533: Replace "increases" by "increase". 
+* page 45, line 533: Replace "increases" by "increase".
+
+CHAPTER 4
+
+ * page 48, line 43: Add "the" before "Hamming".
+ * page 53, line 194: Add "a" before "simple", I.e., " a simple ...".
+ * page 54, line 221: Add "the" before "null".
+ * 
+   
