@@ -7,3 +7,33 @@ page 18, line 363: Change "risk to fo to" to "risk to go to".
 page 19, line 382: Please add the words "is the generalized inverse of F." at the end of that sentence as indicated in the annotation.
 page 19, line 387: Add "the", i.e., "By the definition"
 page viii, line 49: Change "type thresholding" to "types of thresholding".
+
+* Page 31, line 154: Delete "at", i.e. should be "...high power for all sparsity levels."
+
+* Page 31, line 182: Delete "and", i.e., should be "Although ... in multiple testing problems, such procedures..."  NOTE:  Did you mean here: "Although ... in multiple testing and support recovery problems, such procedures ..."
+
+* Page 32, Caption of Fig. 3.2: Add a period, i.e., ".", at the end of the last sentence. 
+* Page 34, line 250: Add "the" before "approximate", i.e., should be "... phase transition of the approximate ...".
+* Page 34, line 259: Replace "that in" by "those in the proof of".
+* Page 34, line 261: An extra "(" in the third normal distribution, i.e., it should be "N(\overline{\Delta},1)".
+* Page 36, line 292: Delete "with", i.e., it should be "using (3.27)...".  Side note:  Maybe this is obvious to you but it took me some time to show that if X(i)<^d Y(i), where the pairs X(i)'s are independent and Y(i)'s are independent, then X(1)+...+X(n) <^d Y(1)+...+Y(n).
+The way I argued has by placing the pair (X(i),Y(i)) in the same probability space so that X(i)<= Y(i) almost surely.  Then, the claim follows...
+
+* Page 38, line 342: Add "the" before "definition".
+* Page 38, line 345: Add "the" before "power".
+
+
+* Page 39, line 367: We have "\hat G(x_{[i]}) = i/p" almost surely, only if we have continuous CDFs.  If we have ties among the order statistics, the above equality is formally not true.  MAYBE: we can sneakily add: (1) the assumption that F0 is continuous (which we also use); (2) add "a.s. (by since by continuity there are no ties in the order statistics, with probability one)" or the shorter "a.s. (by continuity of the alternatives)". 
+* Page 38, line 350: Add "continuous" after "common".  NOTE: This is in an attempt to resolve the issue with the order statistics above. 
+
+* page 41, line 418: Add "the" before "exact-approximate".
+* page 41, line 434 (This is one LONG line.  The subscript "p" is missing in the definition of "t^*", so it is best that we drop it throughout to avoid confusion OR IDEALLY write 
+
+ "we know that $t_p < t_p^* \equiv t^*$ for large p." 
+
+This is a MINOR point and we can SKIP it.
+
+* page 42, line 441: Add "the" before "relative stability".
+* page 42, line 459: Delete "slightly" (if YOU THINK it is OK). I think the two problems ARE different so "slightly" is not needed.
+* page 43, line 468: Add "the" before "approximate".
+* page 45, line 533: Replace "increases" by "increase". 
