@@ -43,5 +43,23 @@ CHAPTER 4
  * page 48, line 43: Add "the" before "Hamming".
  * page 53, line 194: Add "a" before "simple", I.e., " a simple ...".
  * page 54, line 221: Add "the" before "null".
- * 
+ * page 56, line 267 & 272: Add "the" before "signals".
+ * page 57, line 283: Delete "in the main text", I.e., it should be "... converges to 1, as in (4.27), whereas ..."
+ * page 57, line 290: Replace "apply" by "applies".
+ * page 57, line 292: Add "been" after "have", i.e., it should be "...have been left out...".
+ * page 58, line 317: Replace "the class URS" by "the URS", I.e., delete the first occurrence of the word "class" on this line.
+ * page 58, line 316: Add "partially" before "characterize", i.e., the full sentence should be "We will partially characterize the URS dependence class in Chap. 6."
+ * page 58 & 59: OPTIONAL: Ideally, we should clarify the statement of Theorem 4.3 as follows:
+    (a) Delete "\hat S=" on line 330
+    (b) Replace "\hat S_p" by "\hat S_p^{\rm Bonf}" in (4.34), line 333.
+   This way, the reader will not confuse "\hat S_p" with "\hat S_p^{\rm Bonf}".
+ 
+ * page 59, line 340:  A SMALL CORRECTION TO THE PROOF: Sorry, I introduced the slowly varying function "\ell" and created a small discrepancy:
+  
+    In LINE 2 of the "Proof", replace "... by replacing [p^{1-\beta}] with [cp]" with "... by replacing \ell(p)p^{1-\beta} with [cp]".
+
+ * page 60, Fig. 4.1: Caption: Please add a "." (Period) at the end of the last sentence in the caption of this figure.
+        
+
    
+  
